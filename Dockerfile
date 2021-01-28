@@ -46,8 +46,8 @@ RUN pip install librosa \
     koparadigm \
     g2pk \
     fugashi \
-    romkan \
     ipadic \
+    romkan \
     g2pM \
     jieba \
     opencv-python \
