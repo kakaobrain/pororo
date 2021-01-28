@@ -110,10 +110,6 @@ class PororoSimpleBase(PororoTaskBase):
     r"""Simple task base wrapper class"""
 
     def __call__(self, text: str):
-        # assert type(text) isinstance(text, str), "Input text should be string type"
-
-        # text = self._normalize(text)
-
         return self.predict(text)
 
 
