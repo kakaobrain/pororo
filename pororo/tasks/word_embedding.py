@@ -42,7 +42,7 @@ class PororoWordFactory(PororoFactoryBase):
         group (bool): return grouped dictionary or not (need for `find_similar_words`)
 
     Notes:
-        PororoWiki2Vec has two diffrent kinds of output format following below.
+        PororoWikipedia2Vec has two diffrent kinds of output format following below.
         1. 'something' (word) : word2vec result (non-hyperlink in wikipedia documents)
         2. 'something' (other) : entity2vec result (hyperlink in wikipedia documents)
 
@@ -123,18 +123,18 @@ class PororoWordFactory(PororoFactoryBase):
                 "zh": "zhwiki_20180420_100d.pkl",
             }
 
-            f_wiki2vec = download_or_load(
+            f_wikipedia2vec = download_or_load(
                 f"misc/{vec_map[self.config.lang]}",
                 self.config.lang,
             )
-            wiki2vec = Wikipedia2Vec(f_wiki2vec, device)
+            wikipedia2vec = Wikipedia2Vec(f_wikipedia2vec, device)
 
             f_index = download_or_load(
                 f"misc/{self.config.lang}_indexdir.zip",
                 self.config.lang,
             )
             index_dir = index.open_dir(f_index)
-            return PororoWikipedia2Vec(wiki2vec, index_dir, self.config)
+            return PororoWikipedia2Vec(wikipedia2vec, index_dir, self.config)
 
 
 class PororoWikipedia2Vec(PororoSimpleBase):
@@ -275,7 +275,7 @@ class PororoWikipedia2Vec(PororoSimpleBase):
                 results = self._model.most_similar(Word, top_n + 1)
                 if len(results
                       ) > 1:  # note that the first result is the word itself.
-                    for result in results[1:]:  # returned by wiki2vec
+                    for result in results[1:]:  # returned by wikipedia2vec
                         if hasattr(result[0], "text"):  # word
                             relative = result[0].text
                             relative_ = f"{relative} (word)"

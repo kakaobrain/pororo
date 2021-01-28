@@ -38,7 +38,7 @@ class PororoDpFactory(PororoFactoryBase):
 
     @staticmethod
     def get_available_models():
-        return {"ko": ["posbert.base.ko.dp", "charbert.base.ko.dp"]}
+        return {"ko": ["posbert.base.ko.dp"]}
 
     def load(self, device: str):
         """
