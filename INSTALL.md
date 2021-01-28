@@ -99,7 +99,7 @@ pip install jieba
 
 ## Etc.
 
-### Linux/MacOS Supported Tasks
+### Linux Supported Tasks
 
 - Automatic Speech Recognition
 - Speech Translation

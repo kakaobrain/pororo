@@ -99,7 +99,7 @@ pip install jieba
 
 ## 기타
 
-### Linux/MacOS 지원 태스크
+### Linux 지원 태스크
 
 - Automatic Speech Recognition
 - Speech Translation
