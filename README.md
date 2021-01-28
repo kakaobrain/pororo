@@ -64,17 +64,28 @@ bash asr-install.sh
 
 ```python
 >>> from pororo import Pororo
->>> mrc = Pororo(task="mrc", lang="ko")
+>>> ner = Pororo(task="ner", lang="ko")
 ```
 
-- After object construction, it can be used in a way that passes the input value as follows
+- After object construction, it can be used in a way that passes the input value as follows:
 
 ```python
->>> mrc(
-  "카카오브레인이 공개한 것은?",
-  """카카오 인공지능(AI) 연구개발 자회사 카카오브레인이 AI 솔루션을 첫 상품화했다. 카카오는 카카오브레인 '포즈(pose·자세분석) API'를 유료 공개한다고 24일 밝혔다. 카카오브레인이 AI 기술을 유료 API를 공개하는 것은 처음이다. 공개하자마자 외부 문의가 쇄도한다. 포즈는 AI 비전(VISION, 영상·화면분석) 분야 중 하나다. 카카오브레인 포즈 API는 이미지나 영상을 분석해 사람 자세를 추출하는 기능을 제공한다."""
-)
-('포즈(pose·자세분석) API', (33, 44))
+>>> ner("Michael Jeffrey Jordan (born February 17, 1963) is an American businessman and former professional basketball player.")
+[('Michael Jeffrey Jordan', 'PERSON'), ('(', 'O'), ('born', 'O'), ('February 17, 1963)', 'DATE'), ('is', 'O'), ('an', 'O'), ('American', 'NORP'), ('businessman', 'O'), ('and', 'O'), ('former', 'O'), ('professional', 'O'), ('basketball', 'O'), ('player', 'O'), ('.', 'O')]
+```
+
+- If task supports multiple languages, you can change the `lang` argument to take advantage of models trained in different languages.
+
+```python
+>>> ner = Pororo(task="ner", lang="ko")
+>>> ner("마이클 제프리 조던(영어: Michael Jeffrey Jordan, 1963년 2월 17일 ~ )은 미국의 은퇴한 농구 선수이다.")
+[('마이클 제프리 조던', 'PERSON'), ('(', 'O'), ('영어', 'CIVILIZATION'), (':', 'O'), (' ', 'O'), ('Michael Jeffrey Jordan', 'PERSON'), (',', 'O'), (' ', 'O'), ('1963년 2월 17일 ~', 'DATE'), (' ', 'O'), (')은', 'O'), (' ', 'O'), ('미국', 'LOCATION'), ('의', 'O'), (' ', 'O'), ('은퇴한', 'O'), (' ', 'O'), ('농구 선수', 'CIVILIZATION'), ('이다.', 'O')]
+>>> ner = Pororo(task="ner", lang="ja")
+>>> ner("マイケル・ジェフリー・ジョーダンは、アメリカ合衆国の元バスケットボール選手")
+[('マイケル・ジェフリー・ジョーダン', 'PERSON'), ('は', 'O'), ('、アメリカ合衆国', 'O'), ('の', 'O'), ('元', 'O'), ('バスケットボール', 'O'), ('選手', 'O')]
+>>> ner = Pororo(task="ner", lang="zh")
+>>> ner("麥可·傑佛瑞·喬丹是美國退役NBA職業籃球運動員，也是一名商人，現任夏洛特黃蜂董事長及主要股東")
+[('麥可·傑佛瑞·喬丹', 'PERSON'), ('是', 'O'), ('美國', 'GPE'), ('退', 'O'), ('役', 'O'), ('nba', 'ORG'), ('職', 'O'), ('業', 'O'), ('籃', 'O'), ('球', 'O'), ('運', 'O'), ('動', 'O'), ('員', 'O'), ('，', 'O'), ('也', 'O'), ('是', 'O'), ('一', 'O'), ('名', 'O'), ('商', 'O'), ('人', 'O'), ('，', 'O'), ('現', 'O'), ('任', 'O'), ('夏洛特黃蜂', 'ORG'), ('董', 'O'), ('事', 'O'), ('長', 'O'), ('及', 'O'), ('主', 'O'), ('要', 'O'), ('股', 'O'), ('東', 'O')]
 ```
 
 <br>
