@@ -1,3 +1,5 @@
+# Copyright (c) Hyeon Kyu Lee, Kakao Brain and its affiliates. All Rights Reserved
+
 import numpy as np
 import torch
 import torch.nn as nn

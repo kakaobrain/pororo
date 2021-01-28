@@ -1,3 +1,5 @@
+# Copyright (c) Facebook, Inc., Kakao Brain and its affiliates. All Rights Reserved
+
 import contextlib
 import itertools as it
 

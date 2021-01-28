@@ -1,3 +1,5 @@
+# Copyright (c) Studio Ousia, Kakao Brain and its affiliates. All Rights Reserved
+
 from itertools import chain
 
 import joblib

@@ -1,6 +1,7 @@
+# Copyright (c) Facebook, Inc., Kakao Brain and its affiliates. All Rights Reserved
+
 import datetime
 import math
-import os
 import unicodedata
 from typing import Tuple
 

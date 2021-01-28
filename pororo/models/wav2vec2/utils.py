@@ -1,3 +1,5 @@
+# Copyright (c) Facebook, Inc., Kakao Brain and its affiliates. All Rights Reserved
+
 import torch
 from torch import BoolTensor, Tensor
 
@@ -9,9 +11,11 @@ def get_mask_from_lengths(inputs: Tensor, seq_lengths: Tensor) -> Tensor:
         length = length.item()
 
         if (mask[idx].size(0) - length) > 0:
-            mask[idx].narrow(dim=0,
-                             start=length,
-                             length=mask[idx].size(0) - length).fill_(True)
+            mask[idx].narrow(
+                dim=0,
+                start=length,
+                length=mask[idx].size(0) - length,
+            ).fill_(True)
 
     return mask
 

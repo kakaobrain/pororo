@@ -1,3 +1,5 @@
+# Copyright (c) Facebook, Inc., Kakao Brain and its affiliates. All Rights Reserved
+
 from typing import Union
 
 import numpy as np

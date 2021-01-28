@@ -1,3 +1,5 @@
+# Copyright (c) Facebook, Inc., Kakao Brain and its affiliates. All Rights Reserved
+
 import torch
 from fairseq.models.roberta import RobertaHubInterface, RobertaModel
 

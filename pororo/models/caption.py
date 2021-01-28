@@ -1,4 +1,5 @@
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# Copyright (c) Facebook, Inc., Kakao Brain and its affiliates. All Rights Reserved
+
 """
 DETR Transformer class.
 Copy-paste from torch.nn.Transformer with modifications:
