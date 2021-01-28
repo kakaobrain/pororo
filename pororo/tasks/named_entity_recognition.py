@@ -304,6 +304,7 @@ class PororoBertCharNer(PororoSimpleBase):
                     pair[0],
                     self._tag[pair[1]],
                 ) if pair[1] in self._tag else pair for pair in res]
+                result.extend(res)
                 result.extend([(" ", "O")])
         return result[:-1]
 
