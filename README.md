@@ -1,5 +1,12 @@
 # Pororo: A Deep Learning based Multilingual Natural Language Processing Library
 
+<p align="center">
+  <a href="https://github.com/kakaobrain/pororo/releases"><img alt="Latest Release" src="https://img.shields.io/github/release/kakaobrain/pororo.svg" /></a>
+  <a href="https://github.com/kakaobrain/pororo/blob/master/LICENSE"><img alt="MIT License" src="https://img.shields.io/github/license/kakaobrain/pororo.svg?color=blue" /></a>
+</p>
+
+<br>
+
 ![](assets/usage.gif)
 
 `Pororo` performs Natural Language Processing and Speech-related tasks.
