@@ -27,7 +27,7 @@ with open("pororo/__version__.py", "r") as version_file:
 setup(
     name="pororo",
     version=VERSION["version"],
-    description="Pororo: A Deep Learning Based Korean NLP Library",
+    description="Pororo: A Deep Learning based Multilingual Natural Language Processing Library",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     classifiers=[
@@ -35,12 +35,10 @@ setup(
         "Intended Audience :: Science/Research",
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: Apache Software License",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-    url="https://github.com/kakaobrain",
+    url="https://github.com/kakaobrain/pororo",
     author="kakaobrain Team SIGNALS",
     author_email="contact@kakaobrain.com",
     license="Apache",
