@@ -1,4 +1,4 @@
-# Copyright (c) Hyeon Kyu Lee, Kakao Brain and its affiliates. All Rights Reserved
+# Copyright (c) Hyeon Kyu Lee and Kakao Brain. All Rights Reserved
 
 import numpy as np
 import torch

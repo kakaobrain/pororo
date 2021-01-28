@@ -1,7 +1,7 @@
 """
 This code is adapted from https://github.com/JaidedAI/EasyOCR/blob/master/easyocr/detection.py
-
 """
+
 from collections import OrderedDict
 
 import cv2

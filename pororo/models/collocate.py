@@ -1,4 +1,4 @@
-# Copyright (c) Kakao Brain and its affiliates. All Rights Reserved
+# Copyright (c) Kakao Brain. All Rights Reserved
 
 import re
 from collections import Counter

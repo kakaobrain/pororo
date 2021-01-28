@@ -3,6 +3,7 @@ This code is adapted from https://github.com/clovaai/CRAFT-pytorch/blob/master/c
 Copyright (c) 2019-present NAVER Corp.
 MIT License
 """
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

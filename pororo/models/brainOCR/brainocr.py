@@ -7,6 +7,7 @@ Basic usage:
 >>> ocr = Pororo(task="ocr", lang="ko")
 >>> ocr("IMAGE_FILE")
 """
+
 import ast
 from logging import getLogger
 from typing import List

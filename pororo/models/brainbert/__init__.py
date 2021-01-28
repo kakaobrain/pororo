@@ -1,3 +1,5 @@
+# Copyright (c) Facebook, Inc. and its affiliates and Kakao Brain. All Rights Reserved
+
 import glob
 import os
 

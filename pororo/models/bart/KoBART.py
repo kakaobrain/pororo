@@ -1,3 +1,5 @@
+# Copyright (c) SKT and its affiliates and Kakao Brain.
+
 from typing import Dict, List
 
 import torch

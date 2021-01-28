@@ -1,4 +1,4 @@
-# Copyright (c) Studio Ousia, Kakao Brain and its affiliates. All Rights Reserved
+# Copyright (c) Studio Ousia, its affiliates and Kakao Brain. All Rights Reserved
 
 from itertools import chain
 

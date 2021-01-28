@@ -1,7 +1,7 @@
 """
 This code is adapted from https://github.com/JaidedAI/EasyOCR/blob/8af936ba1b2f3c230968dc1022d0cd3e9ca1efbb/easyocr/recognition.py
-
 """
+
 import math
 
 import numpy as np

@@ -2,8 +2,8 @@
 This is adapted from https://github.com/clovaai/CRAFT-pytorch/blob/master/imgproc.py
 Copyright (c) 2019-present NAVER Corp.
 MIT License
-
 """
+
 import cv2
 import numpy as np
 from skimage import io

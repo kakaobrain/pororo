@@ -2,6 +2,7 @@
 This code is adapted from avhttps://github.com/clovaai/CRAFT-pytorch/blob/master/craft_utils.py
 MIT License
 """
+
 import math
 
 import cv2

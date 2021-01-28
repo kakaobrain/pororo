@@ -1,4 +1,4 @@
-# Copyright (c) UKP Lab, Kakao Brain and its affiliates. All Rights Reserved
+# Copyright (c) UKP Lab, its affiliates and Kakao Brain. All Rights Reserved
 
 import json
 import logging

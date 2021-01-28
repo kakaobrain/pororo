@@ -1,8 +1,8 @@
 """
 This code is adapted from
 https://github.com/clovaai/deep-text-recognition-benchmark/blob/master/model.py
-
 """
+
 import torch.nn as nn
 from torch import Tensor
 
