@@ -2,8 +2,10 @@
 
 import logging
 import os
-import numpy as np
 from typing import Optional
+
+import numpy as np
+
 from pororo.tasks.utils.base import PororoFactoryBase, PororoSimpleBase
 from pororo.tasks.utils.download_utils import download_or_load
 
