@@ -26,7 +26,6 @@ requirements = [
     "whoosh",
     "marisa-trie",
     "kss",
-    "python-mecab-ko",
 ]
 ```
 
@@ -35,6 +34,12 @@ requirements = [
 ## 한국어
 
 - 한국어의 특정 태스크를 수행하기 위해서는 추가적인 라이브러리를 설치할 필요가 있을 수 있습니다.
+
+- `python-mecab-ko`는 **한국어 Tokenization, PoS Tagging, Dependency Parsing** 등 여러 태스크의 수행을 위해 필요한 라이브러리입니다.
+
+```console
+pip install python-mecab-ko
+```
 
 - `kollocate`는 **한국어 Collocation** 태스크의 수행을 위해 필요한 라이브러리입니다.
 

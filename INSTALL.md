@@ -26,7 +26,6 @@ requirements = [
     "whoosh",
     "marisa-trie",
     "kss",
-    "python-mecab-ko",
 ]
 ```
 
@@ -35,6 +34,12 @@ requirements = [
 ## Korean
 
 - You may need to install additional libraries to perform specific tasks in Korean.
+
+- `python-mecab-ko` is a library needed for the **Korean Tokenization, PoS Tagging, Dependency Parsing, etc.**
+
+```console
+pip install python-mecab-ko
+```
 
 - `kollocate` is a library needed for the **Korean Collocation** task.
 

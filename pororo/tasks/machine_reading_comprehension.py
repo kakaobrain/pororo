@@ -72,14 +72,18 @@ class PororoMrcFactory(PororoFactoryBase):
                 f"bert/{self.config.n_model}",
                 self.config.lang,
             ).eval().to(device))
-            return PororoBertMrc(model, postprocess_span, self.config)
+
+            tagger = mecab.MeCab()
+
+            return PororoBertMrc(model, tagger, postprocess_span, self.config)
 
 
 class PororoBertMrc(PororoBiencoderBase):
 
-    def __init__(self, model, callback, config):
+    def __init__(self, model, tagger, callback, config):
         super().__init__(config)
         self._model = model
+        self._tagger = tagger
         self._callback = callback
 
     def predict(self, query: str, context: str) -> Tuple[str, Tuple[int, int]]:
@@ -96,6 +100,6 @@ class PororoBertMrc(PororoBiencoderBase):
         """
         pair_result = self._model.predict_span(query, context)
         return (
-            self._callback(pair_result[0]),
+            self._callback(self._tagger, pair_result[0]),
             pair_result[1],
         )

@@ -1,11 +1,10 @@
 from contextlib import contextmanager
 from tempfile import NamedTemporaryFile
 
-from mecab import MeCab
 from requests import get
 
 
-def postprocess_span(text: str) -> str:
+def postprocess_span(tagger, text: str) -> str:
     """
     Postprocess NOUN span to remove unnecessary character
 
@@ -22,7 +21,6 @@ def postprocess_span(text: str) -> str:
         '그녀'
 
     """
-    tagger = MeCab()
 
     # First, strip punctuations
     text = text.strip("""!"\#$&'()*+,\-./:;<=>?@\^_‘{|}~《》""")

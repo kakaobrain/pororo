@@ -17,7 +17,6 @@ requirements = [
     "whoosh",
     "marisa-trie",
     "kss",
-    "python-mecab-ko",
 ]
 
 VERSION = {}  # type: ignore
