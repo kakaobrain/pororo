@@ -1,3 +1,5 @@
+# Copyright (c) Kakao Brain and its affiliates. All Rights Reserved
+
 import pickle
 
 import torch
