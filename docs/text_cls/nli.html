@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Natural Language Inference &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="News Categorization" href="news.html" />
+    <link rel="prev" title="Language Model Scoring" href="lm_score.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#transformer">Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#huggingface-tokenizers">HuggingFace Tokenizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#others">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="absa.html">Aspect-Based Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Grammaticality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hate.html">Hate Speech Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm_score.html">Language Model Scoring</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News Categorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spam.html">Spam Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/aspect.html">Aspect Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/subword.html">Subword Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/coref.html">Coreference Resolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/segment.html">Semantic Segmentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/nli_gen.html">Natural Language Inference Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/vc.html">Verse Composition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/wsd.html">Word Sense Disambiguation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/speech_synthesis.html">Speech Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/nwp.html">Next Word Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/vad.html">Voice Activity Detection</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Natural Language Inference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text_cls/nli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.natural_language_inference">
+<span id="natural-language-inference"></span><h1>Natural Language Inference<a class="headerlink" href="#module-pororo.tasks.natural_language_inference" title="Permalink to this headline">¶</a></h1>
+<p>Natural Language Inference related modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.natural_language_inference.PororoNliFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.natural_language_inference.</code><code class="sig-name descname">PororoNliFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/natural_language_inference.html#PororoNliFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.natural_language_inference.PororoNliFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>Classification based Natural Language Inference using KorNLI, MNLI, SNLI dataset</p>
+<p>English (<cite>roberta.base.en.nli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: MNLI (Adina Williams et al. 2017)</p></li>
+<li><p>metric: Accuracy (87.6)</p></li>
+</ul>
+</div></blockquote>
+<p>Korean (<cite>brainbert.base.ko.kornli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: KorNLI (Ham et al. 2020)</p></li>
+<li><p>metric: Accuracy (82.75)</p></li>
+</ul>
+</div></blockquote>
+<p>Japanese (<cite>jaberta.base.ja.nli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: XNLI (Alexis Conneau et al. 2018)</p></li>
+<li><p>metric: Accuracy (85.27)</p></li>
+</ul>
+</div></blockquote>
+<p>Chinese (<cite>zhberta.base.zh.nli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: XNLI (Alexis Conneau et al. 2018)</p></li>
+<li><p>metric: Accuracy (84.25)</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;nli&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span><span class="p">(</span><span class="s2">&quot;저는, 그냥 알아내려고 거기 있었어요&quot;</span><span class="p">,</span> <span class="s2">&quot;나는 처음부터 그것을 잘 이해했다&quot;</span><span class="p">)</span>
+<span class="go">&#39;Contradiction&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;nli&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+<span class="go"># [&quot;오래된 신사는 세탁을하면서 사진을 찍고있는 것이 유머러스하다는 것을 알 수 있습니다.&quot;, &quot;세탁을하면서 남자가 웃는&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span><span class="p">(</span><span class="s1">&#39;古い紳士は、洗濯をしながら写真を撮っていることがユーモラスであることがわかります。&#39;</span><span class="p">,</span> <span class="s1">&#39;洗濯をしながら男が笑う&#39;</span><span class="p">)</span>
+<span class="go">&#39;Entailment&#39;</span>
+<span class="go"># [&quot;한 무리의 사람들이 건물 지붕 가장자리에있는 세 사람을 올려다 보았습니다.&quot;, &quot;세 사람이 계단을 내려 가고 있습니다.&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;nli&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span><span class="p">(</span><span class="s1">&#39;一群人抬头看着建筑物屋顶边缘的3人。&#39;</span><span class="p">,</span> <span class="s1">&#39;三人正在楼梯上爬下来。&#39;</span><span class="p">)</span>
+<span class="go">&#39;Contradiction&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;nli&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nli</span><span class="p">(</span><span class="s2">&quot;A soccer game with multiple males playing.&quot;</span><span class="p">,</span> <span class="s2">&quot;Some men are playing a sport.&quot;</span><span class="p">)</span>
+<span class="go">&#39;Entailment&#39;</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.natural_language_inference.PororoNliFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/natural_language_inference.html#PororoNliFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.natural_language_inference.PororoNliFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.natural_language_inference.PororoNliFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/natural_language_inference.html#PororoNliFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.natural_language_inference.PororoNliFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.natural_language_inference.PororoNliFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/natural_language_inference.html#PororoNliFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.natural_language_inference.PororoNliFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.natural_language_inference.PororoBertNli">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.natural_language_inference.</code><code class="sig-name descname">PororoBertNli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/natural_language_inference.html#PororoBertNli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.natural_language_inference.PororoBertNli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoBiencoderBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.natural_language_inference.PororoBertNli.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent_a</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">sent_b</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/natural_language_inference.html#PororoBertNli.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.natural_language_inference.PororoBertNli.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct Natural Language Inference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sent_a</strong> – (str) first sentence to be encoded</p></li>
+<li><p><strong>sent_b</strong> – (str) second sentence to be encoded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predicted NLI label - Neutral, Entailment, or Contradiction</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="news.html" class="btn btn-neutral float-right" title="News Categorization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lm_score.html" class="btn btn-neutral float-left" title="Language Model Scoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

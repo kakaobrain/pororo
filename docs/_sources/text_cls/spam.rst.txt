@@ -1,0 +1,8 @@
+Spam Detection
+=====================================================
+
+.. automodule:: pororo.tasks.spam_detection
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

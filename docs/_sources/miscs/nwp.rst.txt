@@ -1,0 +1,8 @@
+Next Word Prediction
+=====================================================
+
+.. automodule:: pororo.tasks.next_word_prediction
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

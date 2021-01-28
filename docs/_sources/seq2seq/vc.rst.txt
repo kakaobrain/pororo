@@ -1,0 +1,8 @@
+Verse Composition
+=====================================================
+
+.. automodule:: pororo.tasks.verse_composition
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

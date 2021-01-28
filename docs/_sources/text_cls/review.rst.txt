@@ -1,0 +1,5 @@
+Review Rating
+=====================================================
+
+.. automodule:: pororo.tasks.review_rating
+    :members:

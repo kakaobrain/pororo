@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dependency Parsing &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fill-in-the-blank" href="fill.html" />
+    <link rel="prev" title="Contextualized Embedding" href="contextualized.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#transformer">Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#huggingface-tokenizers">HuggingFace Tokenizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#others">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dependency Parsing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tagging/dp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.dependency_parsing">
+<span id="dependency-parsing"></span><h1>Dependency Parsing<a class="headerlink" href="#module-pororo.tasks.dependency_parsing" title="Permalink to this headline">¶</a></h1>
+<p>Dependency Parsing related modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.dependency_parsing.PororoDpFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.dependency_parsing.</code><code class="sig-name descname">PororoDpFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/dependency_parsing.html#PororoDpFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.dependency_parsing.PororoDpFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>Conduct dependency parsing</p>
+<p>Korean (<cite>posbert-base</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: <a class="reference external" href="https://corpus.korean.go.kr/">https://corpus.korean.go.kr/</a> 구문 분석 말뭉치</p></li>
+<li><p>metric: UAS (90.57), LAS (95.96)</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sent</strong> – (str) sentence to be parsed dependency</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>token index, token label, token head and its relation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Tuple[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>]]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;dep_parse&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="p">(</span><span class="s2">&quot;분위기도 좋고 음식도 맛있었어요. 한 시간 기다렸어요.&quot;</span><span class="p">)</span>
+<span class="go">[(1, &#39;분위기도&#39;, 2, &#39;NP_SBJ&#39;), (2, &#39;좋고&#39;, 4, &#39;VP&#39;), (3, &#39;음식도&#39;, 4, &#39;NP_SBJ&#39;), (4, &#39;맛있었어요.&#39;, 7, &#39;VP&#39;), (5, &#39;한&#39;, 6, &#39;DP&#39;), (6, &#39;시간&#39;, 7, &#39;NP_OBJ&#39;), (7, &#39;기다렸어요.&#39;, -1, &#39;VP&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="p">(</span><span class="s2">&quot;한시간 기다렸어요.&quot;</span><span class="p">)</span>
+<span class="go">[(1, &#39;한시간&#39;, 2, &#39;NP_OBJ&#39;), (2, &#39;기다렸어요.&#39;, -1, &#39;VP&#39;)]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.dependency_parsing.PororoDpFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/dependency_parsing.html#PororoDpFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.dependency_parsing.PororoDpFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.dependency_parsing.PororoDpFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/dependency_parsing.html#PororoDpFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.dependency_parsing.PororoDpFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.dependency_parsing.PororoDpFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/dependency_parsing.html#PororoDpFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.dependency_parsing.PororoDpFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.dependency_parsing.PororoSegmentBertDP">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.dependency_parsing.</code><code class="sig-name descname">PororoSegmentBertDP</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">tagger</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/dependency_parsing.html#PororoSegmentBertDP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.dependency_parsing.PororoSegmentBertDP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoSimpleBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.dependency_parsing.PororoSegmentBertDP.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/dependency_parsing.html#PororoSegmentBertDP.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.dependency_parsing.PororoSegmentBertDP.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct dependency parsing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sent</strong> – (str) sentence to be parsed dependency</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>token index, token label, token head and its relation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Tuple[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fill.html" class="btn btn-neutral float-right" title="Fill-in-the-blank" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="contextualized.html" class="btn btn-neutral float-left" title="Contextualized Embedding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview: module code &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Overview: module code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="pororo/tasks/age_suitability.html">pororo.tasks.age_suitability</a></li>
+<li><a href="pororo/tasks/aspect_based_sentiment_analysis.html">pororo.tasks.aspect_based_sentiment_analysis</a></li>
+<li><a href="pororo/tasks/aspect_extraction.html">pororo.tasks.aspect_extraction</a></li>
+<li><a href="pororo/tasks/automated_essay_scoring.html">pororo.tasks.automated_essay_scoring</a></li>
+<li><a href="pororo/tasks/automatic_speech_recognition.html">pororo.tasks.automatic_speech_recognition</a></li>
+<li><a href="pororo/tasks/collocate.html">pororo.tasks.collocate</a></li>
+<li><a href="pororo/tasks/collocation.html">pororo.tasks.collocation</a></li>
+<li><a href="pororo/tasks/constituency_parsing.html">pororo.tasks.constituency_parsing</a></li>
+<li><a href="pororo/tasks/contextualized_embedding.html">pororo.tasks.contextualized_embedding</a></li>
+<li><a href="pororo/tasks/coreference_resolution.html">pororo.tasks.coreference_resolution</a></li>
+<li><a href="pororo/tasks/dependency_parse.html">pororo.tasks.dependency_parse</a></li>
+<li><a href="pororo/tasks/dependency_parsing.html">pororo.tasks.dependency_parsing</a></li>
+<li><a href="pororo/tasks/fill_in_the_blank.html">pororo.tasks.fill_in_the_blank</a></li>
+<li><a href="pororo/tasks/grammatical_error_correction.html">pororo.tasks.grammatical_error_correction</a></li>
+<li><a href="pororo/tasks/grammaticality.html">pororo.tasks.grammaticality</a></li>
+<li><a href="pororo/tasks/grapheme_conversion.html">pororo.tasks.grapheme_conversion</a></li>
+<li><a href="pororo/tasks/hate_speech_detection.html">pororo.tasks.hate_speech_detection</a></li>
+<li><a href="pororo/tasks/image_captioning.html">pororo.tasks.image_captioning</a></li>
+<li><a href="pororo/tasks/inflection.html">pororo.tasks.inflection</a></li>
+<li><a href="pororo/tasks/lemmatization.html">pororo.tasks.lemmatization</a></li>
+<li><a href="pororo/tasks/lemmatize.html">pororo.tasks.lemmatize</a></li>
+<li><a href="pororo/tasks/lm_score.html">pororo.tasks.lm_score</a></li>
+<li><a href="pororo/tasks/lm_scoring.html">pororo.tasks.lm_scoring</a></li>
+<li><a href="pororo/tasks/machine_reading_comprehension.html">pororo.tasks.machine_reading_comprehension</a></li>
+<li><a href="pororo/tasks/machine_translation.html">pororo.tasks.machine_translation</a></li>
+<li><a href="pororo/tasks/morph_inflection.html">pororo.tasks.morph_inflection</a></li>
+<li><a href="pororo/tasks/named_entity_recognition.html">pororo.tasks.named_entity_recognition</a></li>
+<li><a href="pororo/tasks/natural_language_inference.html">pororo.tasks.natural_language_inference</a></li>
+<li><a href="pororo/tasks/news_categorization.html">pororo.tasks.news_categorization</a></li>
+<li><a href="pororo/tasks/next_word_prediction.html">pororo.tasks.next_word_prediction</a></li>
+<li><a href="pororo/tasks/nli_generation.html">pororo.tasks.nli_generation</a></li>
+<li><a href="pororo/tasks/optical_character_recognition.html">pororo.tasks.optical_character_recognition</a></li>
+<li><a href="pororo/tasks/paraphrase_generation.html">pororo.tasks.paraphrase_generation</a></li>
+<li><a href="pororo/tasks/paraphrase_identification.html">pororo.tasks.paraphrase_identification</a></li>
+<li><a href="pororo/tasks/phoneme_conversion.html">pororo.tasks.phoneme_conversion</a></li>
+<li><a href="pororo/tasks/pos_tagging.html">pororo.tasks.pos_tagging</a></li>
+<li><a href="pororo/tasks/question_generation.html">pororo.tasks.question_generation</a></li>
+<li><a href="pororo/tasks/quiz_generation.html">pororo.tasks.quiz_generation</a></li>
+<li><a href="pororo/tasks/reading_comprehension.html">pororo.tasks.reading_comprehension</a></li>
+<li><a href="pororo/tasks/review_rating.html">pororo.tasks.review_rating</a></li>
+<li><a href="pororo/tasks/review_score.html">pororo.tasks.review_score</a></li>
+<li><a href="pororo/tasks/review_scoring.html">pororo.tasks.review_scoring</a></li>
+<li><a href="pororo/tasks/semantic_role_labeling.html">pororo.tasks.semantic_role_labeling</a></li>
+<li><a href="pororo/tasks/semantic_segmentation.html">pororo.tasks.semantic_segmentation</a></li>
+<li><a href="pororo/tasks/semantic_textual_similarity.html">pororo.tasks.semantic_textual_similarity</a></li>
+<li><a href="pororo/tasks/sentence_embedding.html">pororo.tasks.sentence_embedding</a></li>
+<li><a href="pororo/tasks/sentiment_analysis.html">pororo.tasks.sentiment_analysis</a></li>
+<li><a href="pororo/tasks/spam_classification.html">pororo.tasks.spam_classification</a></li>
+<li><a href="pororo/tasks/spam_detection.html">pororo.tasks.spam_detection</a></li>
+<li><a href="pororo/tasks/speech_synthesis.html">pororo.tasks.speech_synthesis</a></li>
+<li><a href="pororo/tasks/subword_embedding.html">pororo.tasks.subword_embedding</a></li>
+<li><a href="pororo/tasks/text_summarization.html">pororo.tasks.text_summarization</a></li>
+<li><a href="pororo/tasks/tokenization.html">pororo.tasks.tokenization</a></li>
+<li><a href="pororo/tasks/translation.html">pororo.tasks.translation</a></li>
+<li><a href="pororo/tasks/verse_composition.html">pororo.tasks.verse_composition</a></li>
+<li><a href="pororo/tasks/voice_activity_detection.html">pororo.tasks.voice_activity_detection</a></li>
+<li><a href="pororo/tasks/word_sense_disambiguation.html">pororo.tasks.word_sense_disambiguation</a></li>
+<li><a href="pororo/tasks/word_translation.html">pororo.tasks.word_translation</a></li>
+<li><a href="pororo/tasks/zero_shot_classification.html">pororo.tasks.zero_shot_classification</a></li>
+</ul>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

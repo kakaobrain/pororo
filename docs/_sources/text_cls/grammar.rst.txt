@@ -1,0 +1,8 @@
+Grammaticality
+=====================================================
+
+.. automodule:: pororo.tasks.grammaticality
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

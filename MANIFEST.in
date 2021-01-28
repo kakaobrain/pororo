@@ -1,0 +1,5 @@
+include LICENSE
+include LICENSE.3rd_party_library
+include LICENSE.3rd_party_model
+include README.md
+include INSTALL.md

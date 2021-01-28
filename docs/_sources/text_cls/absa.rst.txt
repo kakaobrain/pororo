@@ -1,0 +1,8 @@
+Aspect-Based Sentiment Analysis
+=====================================================
+
+.. automodule:: pororo.tasks.aspect_based_sentiment_analysis
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

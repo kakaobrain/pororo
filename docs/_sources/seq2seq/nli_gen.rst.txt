@@ -1,0 +1,8 @@
+Natural Language Inference Generation
+=====================================================
+
+.. automodule:: pororo.tasks.nli_generation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

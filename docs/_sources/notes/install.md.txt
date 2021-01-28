@@ -1,0 +1,67 @@
+## Installation
+
+- We highly recommend **conda** environment to prevent dependecy problem
+
+```
+# pororo only supports python >= 3.6
+conda create -n pororo python=3.6
+conda activate pororo
+```
+
+- To install `pororo` run following command:
+
+```
+pip install pororo
+```
+
+- Since `Pororo` sets **English** as a default language option, you should follow [INSTALL](https://github.kakaocorp.com/kakaobrain/pororo/blob/master/INSTALL.md) guide to install other dependency libraries
+
+<br>
+
+## Usage
+
+- To see what's available in `pororo`, run the following command:
+
+```python
+>>> from pororo import Pororo
+>>> Pororo.available_tasks()
+"Available tasks are ['mrc', 'rc', 'machine_reading_comprehension', 'reading_comprehension', 'sentiment', 'sentiment_analysis', 'nli', 'natural_language_inference', 'inference', 'fill', 'fill_in_blank', 'fib', 'para', 'cse', 'contextual_subword_embedding', 'similarity', 'sts', 'semantic_textual_similarity', 'sentence_similarity', 'sentvec', 'sentence_embedding', 'sentence_vector', 'inflection', 'morphological_inflection', 'g2p', 'grapheme_to_phoneme', 'grapheme_to_phoneme_conversion', 'wordvec', 'word_vector', 'word_embedding', 'tokenize', 'tokenise', 'tokenization', 'tokenisation', 'segment', 'segmentation', 'mt', 'machine_translation', 'translation', 'morph', 'morphological_analysis', 'morph_analysis', 'ma', 'pos', 'tag', 'pos_tagging', 'tagging', 'wsd', 'const', 'constituency', 'constituency_parsing', 'sim_sent', 'similar_sentence', 'sim_word', 'similar_word', 'pg', 'collocation', 'collocate', 'col', 'word_translation', 'wt', 'summarization', 'summarisation', 'text_summarization', 'text_summarisation', 'summary', 'verse', 'vc', 'gec', 'news', 'news_categorization', 'review', 'rr', 'hate', 'hate_speech_detection', 'lemmatization', 'lemmatisation', 'lemma']"
+```
+
+- To see which models are available with specific task, run the following command:
+
+```python
+>>> from pororo import Pororo
+>>> Pororo.available_models("collocation")
+'Available models for collocation are ([lang]: ko, [model]: kollocate)'
+>>> Pororo.available_models("sentiment")
+'Available models for sentiment are ([lang]: ko, [model]: brainbert.base.ko.nsmc, brainbert.large.ko.nsmc), ([lang]: ja, [model]: jaberta.base.ja.sentiment)'
+>>> Pororo.available_models("cola")
+'Available models for cola are ([lang]: ko, [model]: brainbert.base.ko.cola, brainbert.large.ko.cola)'
+>>> Pororo.available_models("bullshit")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/data/project/rw/karter/pororo/pororo/pororo.py", line 159, in available_models
+    raise KeyError("Unknown task {} ! Please check available models via `available_tasks()`".format(task))
+KeyError: 'Unknown task bullshit ! Please check available models via `available_tasks()`'
+```
+
+- `pororo` takes the concept of HuggingFace Transformers's [**Pipeline**](https://huggingface.co/transformers/main_classes/pipelines.html)
+- Therefore, we use factory class `Pororo` to load task-specific model from our hub
+
+```python 
+>>> from pororo import Pororo
+>>> mrc = Pororo(task="mrc")  # define task model as PororoBertMrc
+```
+
+<br>
+
+- You can check the information of the task-specific module by printing object
+
+```python
+>>> summary = Pororo(task="summary")
+>>> summary
+[TASK]: summary
+[LANG]: ko
+[MODEL]: transformer.base.ko.summary
+```

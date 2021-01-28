@@ -1,0 +1,27 @@
+Name: `bert-chinese`
+License: Apache License 2.0
+Ref: https://github.com/google-research/bert
+
+Name: `bert-japanese`
+License: Apache License 2.0
+Ref: https://github.com/cl-tohoku/bert-japanese
+
+Name: `KoBART`
+License: MIT License
+Ref: https://github.com/SKT-AI/KoBART
+
+Name: `CRAFT`
+License: MIT License
+Ref: https://github.com/clovaai/CRAFT-pytorch
+
+Name: `Deep Text Recognition`
+License: Apache License 2.0
+Ref: https://github.com/clovaai/deep-text-recognition-benchmark
+
+Name: `Wikipedia2vec`
+License: Apache License 2.0
+Ref: https://github.com/wikipedia2vec/wikipedia2vec
+
+Name: `Voice Activity Detection`
+License: MIT License
+Ref: https://github.com/skgusrb12/voice_activity_detection

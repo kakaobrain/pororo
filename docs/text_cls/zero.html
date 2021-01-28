@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Zero-shot Topic Classification &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Subword Embedding" href="../tagging/subword.html" />
+    <link rel="prev" title="Sentiment Analysis" href="sentiment.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#transformer">Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#huggingface-tokenizers">HuggingFace Tokenizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#others">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/subword.html">Subword Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Zero-shot Topic Classification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text_cls/zero.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.zero_shot_classification">
+<span id="zero-shot-topic-classification"></span><h1>Zero-shot Topic Classification<a class="headerlink" href="#module-pororo.tasks.zero_shot_classification" title="Permalink to this headline">¶</a></h1>
+<p>Zero-shot Classification related modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.zero_shot_classification.PororoZeroShotFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.zero_shot_classification.</code><code class="sig-name descname">PororoZeroShotFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/zero_shot_classification.html#PororoZeroShotFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.zero_shot_classification.PororoZeroShotFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>Zero-shot topic classification</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://joeddav.github.io/blog/2020/05/29/ZSL.html">https://joeddav.github.io/blog/2020/05/29/ZSL.html</a></p>
+</div>
+<p>Korean (<cite>brainbert.base.ko.kornli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: KorNLI (Ham et al. 2020)</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p>English (<cite>roberta.base.en.nli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: MNLI (Adina Williams et al. 2017)</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p>Japanese (<cite>jaberta.base.ja.nli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: XNLI (Alexis Conneau et al. 2018)</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p>Chinese (<cite>zhberta.base.zh.nli</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: XNLI (Alexis Conneau et al. 2018)</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;zero-topic&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span><span class="p">(</span><span class="s2">&quot;Who are you voting for in 2020?&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;business&quot;</span><span class="p">,</span> <span class="s2">&quot;art &amp; culture&quot;</span><span class="p">,</span> <span class="s2">&quot;politics&quot;</span><span class="p">])</span>
+<span class="go">{&#39;business&#39;: 33.23, &#39;art &amp; culture&#39;: 8.33, &#39;politics&#39;: 96.12}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;zero-topic&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;라리가 사무국, 메시 아닌 바르사 지지...&quot;바이 아웃 유효&quot; [공식발표]&#39;&#39;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;스포츠&quot;</span><span class="p">,</span> <span class="s2">&quot;사회&quot;</span><span class="p">,</span> <span class="s2">&quot;정치&quot;</span><span class="p">,</span> <span class="s2">&quot;경제&quot;</span><span class="p">,</span> <span class="s2">&quot;생활/문화&quot;</span><span class="p">,</span> <span class="s2">&quot;IT/과학&quot;</span><span class="p">])</span>
+<span class="go">{&#39;스포츠&#39;: 94.15, &#39;사회&#39;: 37.11, &#39;정치&#39;: 74.26, &#39;경제&#39;: 39.18, &#39;생활/문화&#39;: 71.15, &#39;IT/과학&#39;: 34.71}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;장제원, 김종인 당무감사 추진에 “참 잔인들 하다”···정강정책 개정안은 “졸작”&#39;&#39;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;스포츠&quot;</span><span class="p">,</span> <span class="s2">&quot;사회&quot;</span><span class="p">,</span> <span class="s2">&quot;정치&quot;</span><span class="p">,</span> <span class="s2">&quot;경제&quot;</span><span class="p">,</span> <span class="s2">&quot;생활/문화&quot;</span><span class="p">,</span> <span class="s2">&quot;IT/과학&quot;</span><span class="p">])</span>
+<span class="go">{&#39;스포츠&#39;: 2.18, &#39;사회&#39;: 56.1, &#39;정치&#39;: 88.24, &#39;경제&#39;: 16.17, &#39;생활/문화&#39;: 66.13, &#39;IT/과학&#39;: 11.2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;zero-topic&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span><span class="p">(</span><span class="s2">&quot;香川 真司は、兵庫県神戸市垂水区出身のプロサッカー選手。元日本代表。ポジションはMF、FW。ボルシア・ドルトムント時代の2010-11シーズンでリーグ前半期17試合で8得点を記録し9シーズンぶりのリーグ優勝に貢献。キッカー誌が選定したブンデスリーガの年間ベスト イレブンに名を連ねた。&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;スポーツ&quot;</span><span class="p">,</span> <span class="s2">&quot;政治&quot;</span><span class="p">,</span> <span class="s2">&quot;技術&quot;</span><span class="p">])</span>
+<span class="go">{&#39;スポーツ&#39;: 0.2, &#39;政治&#39;: 99.71, &#39;技術&#39;: 68.9}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;zero-topic&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zsl</span><span class="p">(</span><span class="s2">&quot;商务部14日发布数据显示，今年前10个月，我国累计对外投资904.6亿美元，同比增长5.9%。&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;政治&quot;</span><span class="p">,</span> <span class="s2">&quot;经济&quot;</span><span class="p">,</span> <span class="s2">&quot;国际化&quot;</span><span class="p">])</span>
+<span class="go">{&#39;政治&#39;: 33.72, &#39;经济&#39;: 3.9, &#39;国际化&#39;: 13.67}</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/zero_shot_classification.html#PororoZeroShotFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/zero_shot_classification.html#PororoZeroShotFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.zero_shot_classification.PororoZeroShotFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/zero_shot_classification.html#PororoZeroShotFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.zero_shot_classification.PororoBertZeroShot">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.zero_shot_classification.</code><code class="sig-name descname">PororoBertZeroShot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/zero_shot_classification.html#PororoBertZeroShot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.zero_shot_classification.PororoBertZeroShot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoBiencoderBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.zero_shot_classification.PororoBertZeroShot.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">labels</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">, </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/zero_shot_classification.html#PororoBertZeroShot.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.zero_shot_classification.PororoBertZeroShot.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct zero-shot classification</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – sentence to be classified</p></li>
+<li><p><strong>labels</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>]</em>) – candidate labels</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>confidence scores corresponding to each input label</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Tuple(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a>)]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tagging/subword.html" class="btn btn-neutral float-right" title="Subword Embedding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sentiment.html" class="btn btn-neutral float-left" title="Sentiment Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

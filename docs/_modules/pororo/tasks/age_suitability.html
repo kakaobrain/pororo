@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pororo.tasks.age_suitability &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.age_suitability</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.age_suitability</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Movie scirpt analysis modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">RobertaModel</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoAgeSuitabilityFactory"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoAgeSuitabilityFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoAgeSuitabilityFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conduct Age Suitability task</span>
+
+<span class="sd">    English (`roberta.base.en.movie`)</span>
+
+<span class="sd">        - dataset: Age Suitability Rating (Mahsa Shafaei et al. 2020)</span>
+<span class="sd">        - metric for rating: F1 (82.0)</span>
+<span class="sd">        - metric for emotion: Pearson &amp; Spearman</span>
+
+<span class="sd">            +--------------+---------+----------+</span>
+<span class="sd">            | Emotion Type | Pearson | Spearman |</span>
+<span class="sd">            +==============+=========+==========+</span>
+<span class="sd">            | Nudiy        |  0.41   |   0.41   |</span>
+<span class="sd">            +--------------+---------+----------+</span>
+<span class="sd">            | Violence     |  0.46   |   0.44   |</span>
+<span class="sd">            +--------------+---------+----------+</span>
+<span class="sd">            | Profanity    |  0.52   |   0.53   |</span>
+<span class="sd">            +--------------+---------+----------+</span>
+<span class="sd">            | Alcohol      |  0.43   |   0.39   |</span>
+<span class="sd">            +--------------+---------+----------+</span>
+<span class="sd">            | Frightening  |  0.49   |   0.47   |</span>
+<span class="sd">            +--------------+---------+----------+</span>
+<span class="sd">            | AVERAGE      |  0.44   |   0.43   |</span>
+<span class="sd">            +--------------+---------+----------+</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        script: (str) input script</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: predicted rating and emotion of a given (movie) script</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; age_suitability = Pororo(task=&quot;age_suitability&quot;, lang=&quot;en&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; age_suitability(&quot;When I was a little girl ...&quot;)</span>
+<span class="sd">        {</span>
+<span class="sd">            &#39;rating&#39;: {</span>
+<span class="sd">                &#39;class&#39;:&#39;R&#39;,</span>
+<span class="sd">                &#39;description&#39;:&#39;Restricted. Under 17 requires accompanying parent or adult guardian.&#39;</span>
+<span class="sd">            },</span>
+<span class="sd">            &#39;emotion&#39;: {</span>
+<span class="sd">                &#39;nudity&#39;:&#39;Low&#39;,</span>
+<span class="sd">                &#39;violence&#39;: &#39;Moderate&#39;,</span>
+<span class="sd">                &#39;profanity&#39;: &#39;Moderate&#39;,</span>
+<span class="sd">                &#39;alcohol&#39;: &#39;Mild&#39;,</span>
+<span class="sd">                &#39;frightening&#39;: &#39;Severe&#39;</span>
+<span class="sd">            }</span>
+<span class="sd">        }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoAgeSuitabilityFactory.get_available_langs"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoAgeSuitabilityFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoAgeSuitabilityFactory.get_available_models"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoAgeSuitabilityFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;roberta.base.en.movie&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoAgeSuitabilityFactory.load"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoAgeSuitabilityFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;bert&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">RobertaTokenizer</span>
+            <span class="n">model_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">/config.pt&quot;</span><span class="p">)</span>
+            <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RobertaTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;roberta-base&quot;</span><span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">RobertaEncoder</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                <span class="n">model_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">PororoBertMovie</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoBertMovie"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoBertMovie">[docs]</a><span class="k">class</span> <span class="nc">PororoBertMovie</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rating_fn</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;PG-13&quot;</span><span class="p">,</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;PG&quot;</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;NC-17&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rating_description</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;G&quot;</span><span class="p">:</span>
+                <span class="s2">&quot;General Audiences. All ages admitted.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PG&quot;</span><span class="p">:</span>
+                <span class="s2">&quot;Parental Guidance Suggested. Some material may not be suitable for children.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PG-13&quot;</span><span class="p">:</span>
+                <span class="s2">&quot;Parents Strongly Cautioned. Some material may be inappropriate for children under 13.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;R&quot;</span><span class="p">:</span>
+                <span class="s2">&quot;Restricted. Under 17 requires accompanying parent or adult guardian.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;NC-17&quot;</span><span class="p">:</span>
+                <span class="s2">&quot;NC-17: No Children. No one 17 and under admitted.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_emotion_fn</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;nudity&quot;</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;violence&quot;</span><span class="p">,</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;profanity&quot;</span><span class="p">,</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;alcohol&quot;</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;frightening&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_get_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logit</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rating_fn</span><span class="p">[</span><span class="n">max_val</span><span class="o">.</span><span class="n">item</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">rating</span>
+
+    <span class="k">def</span> <span class="nf">_get_emotion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logit</span><span class="p">,</span> <span class="n">max_score</span><span class="o">=</span><span class="mf">3.0</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">_score_to_label</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Low&quot;</span>
+            <span class="k">elif</span> <span class="mf">1.0</span> <span class="o">&lt;</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mf">2.0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Mild&quot;</span>
+            <span class="k">elif</span> <span class="mf">2.0</span> <span class="o">&lt;</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mf">3.0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Moderate&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Severe&quot;</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">emotion_list</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emotion_fn</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">emotion_list</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">max_score</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">_score_to_label</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="PororoBertMovie.predict"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoBertMovie.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct (movie) script analysis</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            script: (str) input script</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: predict rating and emotion of a given script</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            Description of Movie Rating:</span>
+<span class="sd">                G: General Audiences. All ages admitted.</span>
+<span class="sd">                PG: Parental Guidance Suggested. Some material may not be suitable for children.</span>
+<span class="sd">                PG-13: Parents Strongly Cautioned. Some material may be inappropriate for children under 13.</span>
+<span class="sd">                R: Restricted. Under 17 requires accompanying parent or adult guardian.</span>
+<span class="sd">                NC-17: No Children. No one 17 and under admitted.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">logit_rating</span><span class="p">,</span> <span class="n">logit_emotion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+        <span class="n">rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rating</span><span class="p">(</span><span class="n">logit_rating</span><span class="p">)</span>
+        <span class="n">rating_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rating_description</span><span class="p">[</span><span class="n">rating</span><span class="p">]</span>
+        <span class="n">emotion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_emotion</span><span class="p">(</span><span class="n">logit_emotion</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">rating</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">rating_description</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="n">emotion</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">show_probs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RobertaEncoder"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.RobertaEncoder">[docs]</a><span class="k">class</span> <span class="nc">RobertaEncoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;RoBERTa encoder.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">,</span>
+        <span class="n">model_path</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">,</span>
+        <span class="n">num_genre</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+        <span class="n">num_rating</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">num_emotion</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RobertaEncoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span> <span class="o">=</span> <span class="n">model_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_genre</span> <span class="o">=</span> <span class="n">num_genre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_rating</span> <span class="o">=</span> <span class="n">num_rating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_emotion</span> <span class="o">=</span> <span class="n">num_emotion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_position_embeddings</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">max_position_embeddings</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">roberta</span> <span class="o">=</span> <span class="n">RobertaModel</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear_genre</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_genre</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear_rating</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_rating</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear_emotion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_emotion</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_weight</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_load_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span><span class="si">}</span><span class="s2">/model.pt&quot;</span><span class="p">,</span>
+            <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_num_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">genre_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span><span class="si">}</span><span class="s2">/vocab_genre.pt&quot;</span><span class="p">)</span>
+        <span class="n">rating_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span><span class="si">}</span><span class="s2">/vocab_rating.pt&quot;</span><span class="p">)</span>
+        <span class="n">emotion_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span><span class="si">}</span><span class="s2">/vocab_emotion.pt&quot;</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">genre_dict</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_genre</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">rating_dict</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_rating</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">emotion_dict</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_emotion</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        prepare for inference</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            script (str): input script</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tokenized indexes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">maxlen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_position_embeddings</span>
+        <span class="n">bos_idx</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># self.tokenizer.bos_token_id</span>
+        <span class="n">pad_idx</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># self.tokenizer.pad_token_id</span>
+        <span class="n">eos_idx</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># self.tokenizer.eos_token_id</span>
+
+        <span class="k">def</span> <span class="nf">_filter</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">text</span>
+
+        <span class="n">script</span> <span class="o">=</span> <span class="n">_filter</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="p">(</span><span class="n">script</span><span class="p">)[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">tokenized_idx</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">maxlen</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))):</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="p">([</span><span class="n">bos_idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">maxlen</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span>
+                                        <span class="p">(</span><span class="n">maxlen</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="n">eos_idx</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">maxlen</span><span class="p">:</span>
+                <span class="n">chunk</span> <span class="o">+=</span> <span class="p">[</span><span class="n">pad_idx</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">maxlen</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+
+            <span class="n">tokenized_idx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+        <span class="n">tokenized_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenized_idx</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tokenized_idx</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_attention_mask</span><span class="p">(</span><span class="n">src_tokens</span><span class="p">):</span>
+        <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">src_tokens</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">src_tokens</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">src_tokens</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">src_tokens</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">attention_mask</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">attention_mask</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+<div class="viewcode-block" id="RobertaEncoder.forward"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.RobertaEncoder.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            script (str): input script</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple of three logits</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">src_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_input</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+
+        <span class="n">embed</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">src_tokens</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)):</span>
+
+            <span class="n">src_single</span> <span class="o">=</span> <span class="n">src_tokens</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_attention_mask</span><span class="p">(</span><span class="n">src_single</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">roberta</span><span class="p">(</span>
+                <span class="n">src_single</span><span class="p">,</span>
+                <span class="n">mask</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">pooler_output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">pooler_output</span>
+            <span class="n">pooler_average</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooler_output</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">embed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pooler_average</span><span class="p">)</span>
+
+        <span class="n">embed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">embed</span><span class="p">)</span>  <span class="c1"># (batch, hidden_dim)</span>
+
+        <span class="c1"># Logit for each target</span>
+        <span class="n">logit_genre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_genre</span><span class="p">(</span><span class="n">embed</span><span class="p">)</span>
+        <span class="n">logit_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_rating</span><span class="p">(</span><span class="n">embed</span><span class="p">)</span>
+        <span class="n">logit_emotion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_emotion</span><span class="p">(</span><span class="n">embed</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">logit_genre</span><span class="p">,</span> <span class="n">logit_rating</span><span class="p">,</span> <span class="n">logit_emotion</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RobertaEncoder.from_pretrained"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.RobertaEncoder.from_pretrained">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_pretrained</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

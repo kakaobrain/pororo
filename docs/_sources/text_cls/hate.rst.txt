@@ -1,0 +1,8 @@
+Hate Speech Detection
+=====================================================
+
+.. automodule:: pororo.tasks.hate_speech_detection
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

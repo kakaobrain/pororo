@@ -1,0 +1,8 @@
+News Categorization
+=====================================================
+
+.. automodule:: pororo.tasks.news_categorization
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

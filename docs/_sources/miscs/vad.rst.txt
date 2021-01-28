@@ -1,0 +1,8 @@
+Voice Activity Detection
+=====================================================
+
+.. automodule:: pororo.tasks.voice_activity_detection
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

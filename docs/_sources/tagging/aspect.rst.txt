@@ -1,0 +1,8 @@
+Aspect Extraction
+=====================================================
+
+.. automodule:: pororo.tasks.aspect_extraction
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

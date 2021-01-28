@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pororo.tasks.dependency_parse &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.dependency_parse</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.dependency_parse</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Dependency Parsing related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.pos_tagging</span> <span class="kn">import</span> <span class="n">PororoPosFactory</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+
+
+<div class="viewcode-block" id="PororoDpFactory"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoDpFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoDpFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conduct dependency parsing</span>
+
+<span class="sd">    Korean (`posbert-base`)</span>
+<span class="sd">        UAS : 90.57, LAS : 95.96</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sent: (str) sentence to be parsed dependency</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[Tuple[int, str, int, str]]: token index, token label, token head and its relation</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; dp = Pororo(task=&quot;dep_parse&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; dp(&quot;분위기도 좋고 음식도 맛있었어요. 한 시간 기다렸어요.&quot;)</span>
+<span class="sd">        [(1, &#39;분위기도&#39;, 2, &#39;NP_SBJ&#39;), (2, &#39;좋고&#39;, 4, &#39;VP&#39;), (3, &#39;음식도&#39;, 4, &#39;NP_SBJ&#39;), (4, &#39;맛있었어요.&#39;, 7, &#39;VP&#39;), (5, &#39;한&#39;, 6, &#39;DP&#39;), (6, &#39;시간&#39;, 7, &#39;NP_OBJ&#39;), (7, &#39;기다렸어요.&#39;, -1, &#39;VP&#39;)]</span>
+<span class="sd">        &gt;&gt;&gt; dp(&quot;한시간 기다렸어요.&quot;)</span>
+<span class="sd">        [(1, &#39;한시간&#39;, 2, &#39;NP_OBJ&#39;), (2, &#39;기다렸어요.&#39;, -1, &#39;VP&#39;)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;posbert.base.ko.dp&quot;</span><span class="p">,</span> <span class="s2">&quot;charbert.base.ko.dp&quot;</span><span class="p">]}</span>
+
+<div class="viewcode-block" id="PororoDpFactory.load"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoDpFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;posbert&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">RobertaSegmentModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="p">(</span><span class="n">RobertaSegmentModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+            <span class="n">tagger</span> <span class="o">=</span> <span class="n">PororoPosFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;pos&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;mecab-ko&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">PororoSegmentBertDP</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tagger</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;charbert&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">CharBrainRobertaModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="p">(</span><span class="n">CharBrainRobertaModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+            <span class="n">tagger</span> <span class="o">=</span> <span class="n">PororoPosFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;pos&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;mecab-ko&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">PororoBertDP</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tagger</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoSegmentBertDP"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoSegmentBertDP">[docs]</a><span class="k">class</span> <span class="nc">PororoSegmentBertDP</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">tagger</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span> <span class="o">=</span> <span class="n">tagger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoSegmentBertDP.preprocess"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoSegmentBertDP.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess dependency parsing input</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent (str): input sentence to be preprocessed</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: preprocessed input sentence with pos tag</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">return_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;s&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;▃&quot;</span>
+                 <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span> <span class="k">else</span> <span class="s2">&quot;▃&quot;</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">]</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span> <span class="k">else</span> <span class="n">pairs</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;XX&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">tags</span>
+
+        <span class="n">res_tags</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;+&quot;</span> <span class="ow">in</span> <span class="n">tag</span><span class="p">:</span>
+                <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="p">[:</span><span class="n">tag</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)]</span>
+            <span class="n">res_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">res_tags</span></div>
+
+<div class="viewcode-block" id="PororoSegmentBertDP.postprocess"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoSegmentBertDP.postprocess">[docs]</a>    <span class="k">def</span> <span class="nf">postprocess</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ori</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">heads</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess dependency parsing output</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ori (sent): original sentence</span>
+<span class="sd">            heads (List[str]): dependency heads generated by model</span>
+<span class="sd">            labels (List[str]): tag labels generated by model</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[int, str, int, str]]: token index, token label, token head and its relation</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">eojeols</span> <span class="o">=</span> <span class="n">ori</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;▃&quot;</span><span class="p">]</span>
+        <span class="n">real_heads</span> <span class="o">=</span> <span class="p">[</span><span class="n">head</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">head</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heads</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
+        <span class="n">real_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">label</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span>
+                <span class="n">eojeol</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span>
+                    <span class="n">real_heads</span><span class="p">,</span>
+                    <span class="n">real_labels</span><span class="p">,</span>
+                    <span class="n">eojeols</span><span class="p">,</span>
+                <span class="p">)):</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">head_eojeol</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">head_eojeol</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">head_eojeol</span> <span class="o">==</span> <span class="n">curr</span><span class="p">:</span>
+                <span class="n">head_eojeol</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">curr</span><span class="p">,</span> <span class="n">eojeol</span><span class="p">,</span> <span class="n">head_eojeol</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="PororoSegmentBertDP.predict"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoSegmentBertDP.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct dependency parsing</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent: (str) sentence to be parsed dependency</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[int, str, int, str]]: token index, token label, token head and its relation</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tokens</span><span class="p">,</span> <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="n">heads</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_dependency</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+        <span class="n">heads</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">head</span> <span class="ow">in</span> <span class="n">heads</span><span class="p">]</span>  <span class="c1"># due to default &lt;s&gt; token</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">postprocess</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">heads</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoBertDP"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoBertDP">[docs]</a><span class="k">class</span> <span class="nc">PororoBertDP</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">tagger</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span> <span class="o">=</span> <span class="n">tagger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoBertDP.preprocess"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoBertDP.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess dependency parsing input</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent (str): input sentence to be preprocessed</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: preprocessed input sentence with pos tag</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SPACE&quot;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot; ▁ &quot;</span>
+                <span class="k">continue</span>
+            <span class="n">chars</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">chars</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> + &quot;</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoBertDP.postprocess"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoBertDP.postprocess">[docs]</a>    <span class="k">def</span> <span class="nf">postprocess</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ori</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">dp_labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">tag_labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess dependency parsing output</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ori (sent): original sentence</span>
+<span class="sd">            dp_labels (List[str]): dependency labels generated by model</span>
+<span class="sd">            tag_labels (List[str]): tag labels generated by model</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[int, str, int, str]]: token index, token label, token head and its relation</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">ori</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+        <span class="k">assert</span> <span class="n">dp_labels</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">tag_labels</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+            <span class="s2">&quot;SPACE&quot;</span><span class="p">),</span> <span class="s2">&quot;Cannot use the input sentence&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dp_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">head</span> <span class="o">==</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">tag_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">dp_labels</span> <span class="o">=</span> <span class="n">dp_labels</span><span class="p">[</span><span class="n">dp_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+                <span class="n">tag_labels</span> <span class="o">=</span> <span class="n">tag_labels</span><span class="p">[</span><span class="n">tag_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;SPACE&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="PororoBertDP.predict"><a class="viewcode-back" href="../../../tagging/dp.html#pororo.tasks.dependency_parse.PororoBertDP.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct dependency parsing</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent: (str) sentence to be parsed dependency</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[int, str, int, str]]: token index, token label, token head and its relation</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; dp = Pororo(task=&quot;dep_parse&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; dp(&quot;분위기도 좋고 음식도 맛있었어요. 한 시간 기다렸어요.&quot;)</span>
+<span class="sd">            [(1, &#39;분위기도&#39;, 2, &#39;NP_SBJ&#39;), (2, &#39;좋고&#39;, 4, &#39;VP&#39;), (3, &#39;음식도&#39;, 4, &#39;NP_SBJ&#39;), (4, &#39;맛있었어요.&#39;, 7, &#39;VP&#39;), (5, &#39;한&#39;, 6, &#39;NP&#39;), (6, &#39;시간&#39;, 7, &#39;NP_OBJ&#39;), (7, &#39;기다렸어요.&#39;, -1, &#39;VP&#39;)]</span>
+<span class="sd">            &gt;&gt;&gt; dp(&quot;한시간 기다렸어요.&quot;)</span>
+<span class="sd">            [(1, &#39;한시간&#39;, 2, &#39;NP_AJT&#39;), (2, &#39;기다렸어요.&#39;, -1, &#39;VP&#39;)]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">preprocessed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="n">dp_labels</span><span class="p">,</span> <span class="n">tag_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_dependency</span><span class="p">(</span><span class="n">preprocessed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">postprocess</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">dp_labels</span><span class="p">,</span> <span class="n">tag_labels</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

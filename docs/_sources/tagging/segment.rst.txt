@@ -1,0 +1,8 @@
+Semantic Segmentation
+=====================================================
+
+.. automodule:: pororo.tasks.semantic_segmentation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

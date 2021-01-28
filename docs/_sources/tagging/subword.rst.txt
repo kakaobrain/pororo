@@ -1,0 +1,8 @@
+Subword Embedding
+=====================================================
+
+.. automodule:: pororo.tasks.subword_embedding
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :member-order: bysource

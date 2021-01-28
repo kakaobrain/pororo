@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pororo.tasks.quiz_generation &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.quiz_generation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.quiz_generation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Quiz generation related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoGenerationBase</span>
+
+
+<div class="viewcode-block" id="PororoQuizGenerationFactory"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGenerationFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoQuizGenerationFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Quiz generation module using generative models</span>
+
+<span class="sd">    Korean (`quiz`)</span>
+
+<span class="sd">        - dataset: KorQuAD 1.0 (Lim et al. 2019) + AI hub Reading Comprehension corpus</span>
+<span class="sd">        - metric: N/A</span>
+<span class="sd">        - ref: https://www.aihub.or.kr/aidata/86</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): source article</span>
+<span class="sd">        top_n (int): number of max quiz</span>
+<span class="sd">        style (str): quiz style. one of [&#39;mrc&#39;, &#39;ox&#39;, &#39;all&#39;]</span>
+<span class="sd">        n_wrong (int): number of wrong answers for mrc quiz</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        Pororo support two types of quiz.</span>
+<span class="sd">        - mrc quiz : provide question, answer, wrong answer such as multiple choice problem</span>
+<span class="sd">        - ox quiz : provide question, label=&#39;O&#39; or &#39;X&#39;</span>
+
+<span class="sd">        Currently OX quiz model is beta version. (quality is not very good)</span>
+<span class="sd">        Quiz may be generated that does not fit the correct answer or context.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (style=&#39;mrc&#39;) List[Tuple[str, str, List[str]]]: (&#39;question&#39;, &#39;answer&#39;, [&#39;wrong_answer_1&#39;, &#39;wrong_answer_2&#39;, ..., &#39;wrong_answer_n&#39;])</span>
+<span class="sd">        (style=&#39;ox&#39;)  List[Tuple[str, str]]: (&#39;question&#39;, label=&#39;O&#39; or &#39;X&#39;)</span>
+<span class="sd">        (style=&#39;all&#39;) Dict[str, List[Tuple]]: {&#39;mrc&#39;: result_of_mrc, &#39;ox&#39;: result_of_ox}</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; quiz = Pororo(task=&quot;quiz&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; quiz(</span>
+<span class="sd">        ...     text=&quot;키드밀리(영어: Kid Milli, 본명: 최원재, 1993년 10월 26일 ~ )는 대한민국의 래퍼이다. 소속사는 인디고뮤직이며, 우주비행과 COZYBOYS 크루에 소속되어 있다. 2018년 11월 9일, 《Show Me The Money 777》에서 3위를 차지했으며, 2019년에는 《고등래퍼 3》와《Show Me The Money 8》에서 심사위원 겸 프로듀서로 출연하였다. 또한, 논디스클로즈(nondisclothes)라는 패션 브랜드를 같은 COZYBOYS 소속 박진영과 런칭하였다. 앰비션 뮤직의 김효은, 프리마 뮤직 그룹의 규영과 함께 스윙스의 랩 레슨을 받았으며 EP, 믹스테이프, 싱글, 피처링 단위의 작업물을 내며 활동하다 2017년 4월, 스윙스의 두 번째 레이블 인디고뮤직에 영입되었다. Mnet의 힙합 가수 공개 오디션 프로그램 《Show Me The Money 777》에서 파이널까지 진출하여 1위 나플라, 2위 루피에 이어 3위를 달성하였다. Show Me The Money 8에서는 프로듀서로 출연하였다.&quot;,</span>
+<span class="sd">        ...     top_n=5,</span>
+<span class="sd">        ...     style=&quot;mrc&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [(&#39;2018년 11월 9일 우주비행과 COZYBOYS 크루 소속 가수가 누구야?&#39;, &#39;키드밀리&#39;, [&#39;EK&#39;, &#39;펀치넬로&#39;, &#39;최엘비&#39;]),</span>
+<span class="sd">        (&#39;키드밀리의 소속사는 어디야?&#39;, &#39;인디고뮤직&#39;, [&#39;우주비행&#39;, &#39;올라잇 뮤직&#39;, &#39;마이크로도트&#39;]),</span>
+<span class="sd">        (&#39;2019년에 열린 show me the money 8에서 키드밀리가 맡은 역할은?&#39;, &#39;프로듀서&#39;, [&#39;DJ&#39;, &#39;디렉터&#39;, &#39;코러스&#39;]),</span>
+<span class="sd">        (&#39;키드밀리와 같이 런칭한 COZYBOYS 소속의 사람은?&#39;, &#39;박진영&#39;, [&#39;조권&#39;, &#39;이현승&#39;, &#39;임정희&#39;]),</span>
+<span class="sd">        (&#39;엠비션 뮤직의 김효은, 프리마 뮤직의 규영과 함께 랩 레슨을 받은 그룹은?&#39;, &#39;스윙스&#39;, [&#39;그냥노창&#39;, &#39;도끼&#39;, &#39;남수림&#39;])]</span>
+
+<span class="sd">        &gt;&gt;&gt; # number of wrong answers can be adjusted by argument `n_wrong`.</span>
+<span class="sd">        &gt;&gt;&gt; quiz(</span>
+<span class="sd">        ...     text=&quot;키드밀리(영어: Kid Milli, 본명: 최원재, 1993년 10월 26일 ~ )는 대한민국의 래퍼이다. 소속사는 인디고뮤직이며, 우주비행과 COZYBOYS 크루에 소속되어 있다. 2018년 11월 9일, 《Show Me The Money 777》에서 3위를 차지했으며, 2019년에는 《고등래퍼 3》와《Show Me The Money 8》에서 심사위원 겸 프로듀서로 출연하였다. 또한, 논디스클로즈(nondisclothes)라는 패션 브랜드를 같은 COZYBOYS 소속 박진영과 런칭하였다. 앰비션 뮤직의 김효은, 프리마 뮤직 그룹의 규영과 함께 스윙스의 랩 레슨을 받았으며 EP, 믹스테이프, 싱글, 피처링 단위의 작업물을 내며 활동하다 2017년 4월, 스윙스의 두 번째 레이블 인디고뮤직에 영입되었다. Mnet의 힙합 가수 공개 오디션 프로그램 《Show Me The Money 777》에서 파이널까지 진출하여 1위 나플라, 2위 루피에 이어 3위를 달성하였다. Show Me The Money 8에서는 프로듀서로 출연하였다.&quot;,</span>
+<span class="sd">        ...     top_n=5,</span>
+<span class="sd">        ...     style=&quot;mrc&quot;,</span>
+<span class="sd">        ...     n_wrong=5,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [(&#39;2018년 11월 9일 우주비행과 COZYBOYS 크루 소속 가수가 누구야?&#39;, &#39;키드밀리&#39;, [&#39;EK&#39;, &#39;펀치넬로&#39;, &#39;최엘비&#39;, &#39;PH-1&#39;, &#39;BOYCOLD&#39;]),</span>
+<span class="sd">        (&#39;키드밀리의 소속사는 어디야?&#39;, &#39;인디고뮤직&#39;, [&#39;우주비행&#39;, &#39;올라잇 뮤직&#39;, &#39;마이크로도트&#39;, &#39;다이아몬드 트라이브&#39;, &#39;우디 고차일드&#39;]),</span>
+<span class="sd">        (&#39;키드밀리와 같이 런칭한 COZYBOYS 소속의 사람은?&#39;, &#39;박진영&#39;, [&#39;조권&#39;, &#39;이현승&#39;, &#39;임정희&#39;, &#39;테디&#39;, &#39;이수만&#39;]),</span>
+<span class="sd">        (&#39;엠비션 뮤직의 김효은, 프리마 뮤직의 규영과 함께 랩 레슨을 받은 그룹은?&#39;, &#39;스윙스&#39;, [&#39;그냥노창&#39;, &#39;도끼&#39;, &#39;남수림&#39;, &#39;JJK&#39;, &#39;어글리덕&#39;]),</span>
+<span class="sd">        (&#39;엠넷의 힙합 가수 공개 오디션 프로그램 show me the Money 777의 1위는?&#39;, &#39;나플라&#39;, [&#39;G2&#39;, &#39;데이 데이&#39;, &#39;주노플로&#39;, &#39;인크레더블&#39;, &#39;차 차 말론&#39;])]</span>
+
+<span class="sd">        &gt;&gt;&gt; # currently ox quiz is beta version.</span>
+<span class="sd">        &gt;&gt;&gt; quiz(</span>
+<span class="sd">        ...     text=&quot;키드밀리(영어: Kid Milli, 본명: 최원재, 1993년 10월 26일 ~ )는 대한민국의 래퍼이다. 소속사는 인디고뮤직이며, 우주비행과 COZYBOYS 크루에 소속되어 있다. 2018년 11월 9일, 《Show Me The Money 777》에서 3위를 차지했으며, 2019년에는 《고등래퍼 3》와《Show Me The Money 8》에서 심사위원 겸 프로듀서로 출연하였다. 또한, 논디스클로즈(nondisclothes)라는 패션 브랜드를 같은 COZYBOYS 소속 박진영과 런칭하였다. 앰비션 뮤직의 김효은, 프리마 뮤직 그룹의 규영과 함께 스윙스의 랩 레슨을 받았으며 EP, 믹스테이프, 싱글, 피처링 단위의 작업물을 내며 활동하다 2017년 4월, 스윙스의 두 번째 레이블 인디고뮤직에 영입되었다. Mnet의 힙합 가수 공개 오디션 프로그램 《Show Me The Money 777》에서 파이널까지 진출하여 1위 나플라, 2위 루피에 이어 3위를 달성하였다. Show Me The Money 8에서는 프로듀서로 출연하였다.&quot;,</span>
+<span class="sd">        ...     top_n=5,</span>
+<span class="sd">        ...     style=&quot;ox&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [(&#39;키드밀리는 우주비행사와 COZYBOYS 크루즈의 가수다.&#39;, &#39;O&#39;),</span>
+<span class="sd">        (&#39;키드밀스는 우주비행사와 전혀 관련이 없다.&#39;, &#39;X&#39;),</span>
+<span class="sd">        (&#39;인디고뮤직은 키드밀리의 소속사이다.&#39;, &#39;O&#39;),</span>
+<span class="sd">        (&#39;키드밀리는 2019년 Show Me the money 8에 출연했다.&#39;, &#39;O&#39;),</span>
+<span class="sd">        (&#39;키드밀리는 2019년 Show Me the money 8에 출연하지 않았다.&#39;, &#39;X&#39;)]</span>
+
+<span class="sd">        &gt;&gt;&gt; # style=&#39;all&#39; returns both mrc quiz and ox quiz</span>
+<span class="sd">        &gt;&gt;&gt; quiz(</span>
+<span class="sd">        ...     text=&quot;키드밀리(영어: Kid Milli, 본명: 최원재, 1993년 10월 26일 ~ )는 대한민국의 래퍼이다. 소속사는 인디고뮤직이며, 우주비행과 COZYBOYS 크루에 소속되어 있다. 2018년 11월 9일, 《Show Me The Money 777》에서 3위를 차지했으며, 2019년에는 《고등래퍼 3》와《Show Me The Money 8》에서 심사위원 겸 프로듀서로 출연하였다. 또한, 논디스클로즈(nondisclothes)라는 패션 브랜드를 같은 COZYBOYS 소속 박진영과 런칭하였다. 앰비션 뮤직의 김효은, 프리마 뮤직 그룹의 규영과 함께 스윙스의 랩 레슨을 받았으며 EP, 믹스테이프, 싱글, 피처링 단위의 작업물을 내며 활동하다 2017년 4월, 스윙스의 두 번째 레이블 인디고뮤직에 영입되었다. Mnet의 힙합 가수 공개 오디션 프로그램 《Show Me The Money 777》에서 파이널까지 진출하여 1위 나플라, 2위 루피에 이어 3위를 달성하였다. Show Me The Money 8에서는 프로듀서로 출연하였다.&quot;,</span>
+<span class="sd">        ...     top_n=5,</span>
+<span class="sd">        ...     style=&quot;all&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        {&#39;mrc&#39;: [(&#39;2018년 11월 9일 우주비행과 COZYBOYS 크루 소속 가수가 누구야?&#39;, &#39;키드밀리&#39;, [&#39;EK&#39;, &#39;펀치넬로&#39;, &#39;최엘비&#39;]), (&#39;키드밀리의 소속사는 어디야?&#39;, &#39;인디고뮤직&#39;, [&#39;우주비행&#39;, &#39;올라잇 뮤직&#39;, &#39;마이크로도트&#39;]), (&#39;2019년에 열린 show me the money 8에서 키드밀리가 맡은 역할은?&#39;, &#39;프로듀서&#39;, [&#39;DJ&#39;, &#39;디렉터&#39;, &#39;코러스&#39;]), (&#39;키드밀리와 같이 런칭한 COZYBOYS 소속의 사람은?&#39;, &#39;박진영&#39;, [&#39;조권&#39;, &#39;이현승&#39;, &#39;임정희&#39;]), (&#39;엠비션 뮤직의 김효은, 프리마 뮤직의 규영과 함께 랩 레슨을 받은 그룹은?&#39;, &#39;스윙스&#39;, [&#39;그냥노창&#39;, &#39;도끼&#39;, &#39;남수림&#39;])],</span>
+<span class="sd">        &#39;ox&#39;: [(&#39;키드밀리는 우주비행사와 COZYBOYS 크루즈의 가수다.&#39;, &#39;O&#39;), (&#39;키드밀스는 우주비행사와 전혀 관련이 없다.&#39;, &#39;X&#39;), (&#39;인디고뮤직은 키드밀리의 소속사이다.&#39;, &#39;O&#39;), (&#39;키드밀리는 2019년 Show Me the money 8에 출연했다.&#39;, &#39;O&#39;), (&#39;키드밀리는 2019년 Show Me the money 8에 출연하지 않았다.&#39;, &#39;X&#39;)]}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoQuizGenerationFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGenerationFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoQuizGenerationFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGenerationFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;quiz&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoQuizGenerationFactory.load"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGenerationFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="p">(</span>
+            <span class="n">PororoMrcFactory</span><span class="p">,</span>
+            <span class="n">PororoNerFactory</span><span class="p">,</span>
+            <span class="n">PororoNliFactory</span><span class="p">,</span>
+            <span class="n">PororoNliGenFactory</span><span class="p">,</span>
+            <span class="n">PororoQuestionGenerationFactory</span><span class="p">,</span>
+            <span class="n">PororoTokenizationFactory</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;quiz&quot;</span><span class="p">:</span>
+            <span class="n">ner</span> <span class="o">=</span> <span class="n">PororoNerFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;ner&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;charbert.base.ko.ner&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">qa</span> <span class="o">=</span> <span class="n">PororoMrcFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;mrc&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;brainbert.base.ko.korquad&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">qg</span> <span class="o">=</span> <span class="n">PororoQuestionGenerationFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;qg&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;kobart.base.ko.qg&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">nli</span> <span class="o">=</span> <span class="n">PororoNliFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;nli&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;brainbert.base.ko.kornli&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">nlig</span> <span class="o">=</span> <span class="n">PororoNliGenFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;nli_gen&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;kobart.base.ko.nli&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">sent_tokenizer</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">PororoTokenizationFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;sent_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">PororoQuizGeneration</span><span class="p">(</span>
+                <span class="n">ner</span><span class="o">=</span><span class="n">ner</span><span class="p">,</span>
+                <span class="n">qa</span><span class="o">=</span><span class="n">qa</span><span class="p">,</span>
+                <span class="n">qg</span><span class="o">=</span><span class="n">qg</span><span class="p">,</span>
+                <span class="n">nli</span><span class="o">=</span><span class="n">nli</span><span class="p">,</span>
+                <span class="n">nlig</span><span class="o">=</span><span class="n">nlig</span><span class="p">,</span>
+                <span class="n">sent_tok</span><span class="o">=</span><span class="n">sent_tokenizer</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoQuizGeneration"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration">[docs]</a><span class="k">class</span> <span class="nc">PororoQuizGeneration</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ner</span><span class="p">,</span> <span class="n">qa</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">nli</span><span class="p">,</span> <span class="n">nlig</span><span class="p">,</span> <span class="n">sent_tok</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PororoQuizGeneration</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ner</span> <span class="o">=</span> <span class="n">ner</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qa</span> <span class="o">=</span> <span class="n">qa</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span> <span class="o">=</span> <span class="n">qg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nli</span> <span class="o">=</span> <span class="n">nli</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nlig</span> <span class="o">=</span> <span class="n">nlig</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tok</span> <span class="o">=</span> <span class="n">sent_tok</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_punct</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;,&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prohibited_entity_type</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;O&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;QUANTITY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DATE&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prohibited_keyword</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;기자&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;뉴스&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;앵커&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;기사&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;제보&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;보도&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;백과&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;.com&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_question_marks</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;?</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;요?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;가?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;습니까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;니까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;까요?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;▁?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;죠?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;(?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;있을까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;?”&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;는가?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;나?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;일까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;요?</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;?&#39;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;은?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;십니까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;나요?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;냐?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;▁것인가?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;니까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;▁것일까?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;니까?</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;어요?&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;세요?&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+<div class="viewcode-block" id="PororoQuizGeneration.clean_sentences"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration.clean_sentences">[docs]</a>    <span class="k">def</span> <span class="nf">clean_sentences</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tok</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sentence</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_punct</span><span class="p">:</span>
+                <span class="n">sentence</span> <span class="o">+=</span> <span class="s2">&quot;.&quot;</span>
+
+            <span class="n">is_prohibited</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">prohibited</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prohibited_keyword</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">prohibited</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+                    <span class="n">is_prohibited</span> <span class="o">=</span> <span class="kc">True</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">is_prohibited</span><span class="p">:</span>
+                    <span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">sentences</span></div>
+
+<div class="viewcode-block" id="PororoQuizGeneration.extract_answers"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration.extract_answers">[docs]</a>    <span class="k">def</span> <span class="nf">extract_answers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentences</span><span class="p">,</span> <span class="n">top_n</span><span class="p">,</span> <span class="n">n_wrong</span><span class="p">):</span>
+        <span class="n">entity_list</span><span class="p">,</span> <span class="n">wrong_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="n">already_checked</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entity_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">top_n</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">entities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ner</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+                <span class="n">entity_word</span><span class="p">,</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="n">entity</span>
+                <span class="n">entity_word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">normalize_answer</span><span class="p">(</span><span class="n">entity_word</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">entity_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">entity_word</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span>
+                        <span class="n">entity_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prohibited_entity_type</span> <span class="ow">and</span>
+                        <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d&quot;</span><span class="p">,</span> <span class="n">entity_word</span><span class="p">))):</span>
+
+                    <span class="k">if</span> <span class="n">entity_word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">already_checked</span><span class="p">:</span>
+                        <span class="n">already_checked</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity_word</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">n_wrong</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">wrongs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">extract_wrongs</span><span class="p">(</span>
+                                <span class="n">entity_word</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wrongs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">n_wrong</span><span class="p">:</span>
+                                <span class="n">wrongs</span> <span class="o">=</span> <span class="n">wrongs</span><span class="p">[:</span><span class="n">n_wrong</span><span class="p">]</span>
+                                <span class="n">wrong_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wrongs</span><span class="p">)</span>
+                                <span class="n">entity_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity_word</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entity_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">top_n</span><span class="p">:</span>
+                                <span class="k">break</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">entity_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity_word</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entity_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">top_n</span><span class="p">:</span>
+                                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entity_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">top_n</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">already_checked</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">entity</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">entity_list</span><span class="p">:</span>
+                    <span class="n">entity_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+                    <span class="n">wrong_list</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entity_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">top_n</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">entity_list</span><span class="p">[:</span><span class="n">top_n</span><span class="p">],</span> <span class="n">wrong_list</span><span class="p">[:</span><span class="n">top_n</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoQuizGeneration.qa2premise"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration.qa2premise">[docs]</a>    <span class="k">def</span> <span class="nf">qa2premise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">heuristic</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">heuristic</span><span class="p">:</span>
+            <span class="n">q_</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+            <span class="c1"># 1. 물음표 제거</span>
+            <span class="k">if</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;는&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;은&quot;</span><span class="p">:</span>
+                <span class="c1"># 박명수가 찾아간 곳은? 유재석의 집이다.</span>
+                <span class="c1"># =&gt; 박명수가 찾아간 곳은 유재석의 집이다.</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span>
+
+            <span class="c1"># 2. 마지막 element 제거</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;은&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;는&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;이&quot;</span> <span class="ow">or</span>
+                    <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;가&quot;</span><span class="p">):</span>
+                <span class="c1"># 박명수가 찾아간 사람은 누구야? 유재석이다.</span>
+                <span class="c1"># =&gt; 박명수가 찾아간 사람은 유재석이다.</span>
+                <span class="k">del</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span>
+
+            <span class="c1"># 3. 마지막 한 글자 =&gt; 냐면</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;야&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;냐&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;아&quot;</span> <span class="ow">or</span>
+                    <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;나&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;어&quot;</span> <span class="ow">or</span>
+                    <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;니&quot;</span><span class="p">):</span>
+                <span class="c1"># 박명수가 찾아갔던 집은 몇 평이니? 33.5평이다.</span>
+                <span class="c1"># =&gt; 박명수가 찾아갔던 집은 몇평이냐면 33.5평이다.</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;냐면&quot;</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span>
+
+            <span class="c1"># 4. 마지막 두 글자 =&gt; 냐면</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;인가&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;는가&quot;</span> <span class="ow">or</span>
+                    <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;을까&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;나요&quot;</span><span class="p">):</span>
+                <span class="c1"># 박명수는 몇 평인 집을 찾아갔는가? 33.5평이다.</span>
+                <span class="c1"># =&gt; 박명수가 몇 평인 집을 찾아갔냐면 33.5평이다.</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;냐면&quot;</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span>
+
+            <span class="c1"># 5. 마지막 세 글자 =&gt; 냐면</span>
+            <span class="k">if</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;을까요&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;할까요&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span>
+                    <span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;습니까&quot;</span><span class="p">:</span>
+                <span class="c1"># 박명수는 몇 평인 집을 찾아갔을까요? 33.5평이다.</span>
+                <span class="c1"># =&gt; 박명수가 몇 평인 집을 찾아갔냐면 33.5평이다.</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;냐면&quot;</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span>
+
+            <span class="c1"># 6. 마지막 세 글자 =&gt; 이냐면</span>
+            <span class="k">if</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;일까요&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;인가요&quot;</span><span class="p">:</span>
+                <span class="c1"># 박명수의 집은 몇 평일까요? 33.5평이다.</span>
+                <span class="c1"># =&gt; 박명수의 집은 몇 평이냐면 33.5평이다.</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;이냐면&quot;</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span>
+
+            <span class="c1"># 7. 마지막 세 글자 =&gt; 아니냐면</span>
+            <span class="k">if</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;아닌가&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;아닐까&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span>
+                    <span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;아니냐&quot;</span><span class="p">:</span>
+                <span class="c1"># 박명수가 찾아갔던 집은 누구의 집이 아닌가? 노홍철이다.</span>
+                <span class="c1"># =&gt; 박명수가 찾아갔던 집은 누구의 집이 아니냐면 노홍철이(가) 아니다.</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;아니냐면&quot;</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이(가) 아니다.&quot;</span>
+
+            <span class="c1"># 8. 마지막 네 글자 =&gt; 아니냐면</span>
+            <span class="k">if</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;아닐까요&quot;</span> <span class="ow">or</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;아닌가요&quot;</span><span class="p">:</span>
+                <span class="c1"># 박명수가 찾아갔던 집은 누구의 집이 아닐까요? 노홍철이다.</span>
+                <span class="c1"># =&gt; 박명수가 찾아갔던 집은 누구의 집이 아니냐면 노홍철이(가) 아니다.</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+                <span class="n">q_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;아니냐면&quot;</span>
+                <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이(가) 아니다.&quot;</span>
+
+        <span class="k">return</span> <span class="n">question</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">answer</span> <span class="o">+</span> <span class="s2">&quot;이다.&quot;</span></div>
+
+<div class="viewcode-block" id="PororoQuizGeneration.mrc"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration.mrc">[docs]</a>    <span class="k">def</span> <span class="nf">mrc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="p">,</span> <span class="n">n_wrong</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bert_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">):</span>
+        <span class="n">answers</span><span class="p">,</span> <span class="n">wrongs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_answers</span><span class="p">(</span>
+            <span class="n">sentences</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clean_sentences</span><span class="p">(</span><span class="n">text</span><span class="p">),</span>
+            <span class="n">n_wrong</span><span class="o">=</span><span class="n">n_wrong</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="c1"># collect twice for BERT checking</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">questions</span><span class="p">,</span> <span class="n">contexts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="p">(</span>
+            <span class="n">answers</span><span class="p">,</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">return_context</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">data_for_sort</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_start_token</span><span class="p">,</span>
+                       <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_end_token</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">questions</span><span class="p">,</span> <span class="n">answers</span><span class="p">,</span> <span class="n">wrongs</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="c1"># sort by wrong answers length</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">data_for_sort</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+            <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">return_value</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">top_n</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">answer_check</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qa</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">answer_check</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">normalize_answer</span><span class="p">(</span><span class="n">answer_check</span><span class="p">)</span>
+            <span class="n">answer_by_ner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">normalize_answer</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="n">f1_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qg</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span>
+                <span class="n">answer_check</span><span class="p">,</span>
+                <span class="n">answer_by_ner</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">bert_threshold</span> <span class="o">&lt;</span> <span class="n">f1_score</span><span class="p">:</span>
+                <span class="c1"># BERT checking for valid answer selection</span>
+                <span class="n">return_value</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">return_value</span></div>
+
+    <span class="k">def</span> <span class="nf">_ox</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">,</span>
+        <span class="n">top_n</span><span class="p">,</span>
+        <span class="n">n_wrong</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">bert_threshold</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+        <span class="n">return_mrc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">mrc_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrc</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="p">,</span>
+            <span class="n">n_wrong</span><span class="o">=</span><span class="n">n_wrong</span><span class="p">,</span>
+            <span class="n">bert_threshold</span><span class="o">=</span><span class="n">bert_threshold</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">premises</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">qa2premise</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">mrc_result</span><span class="p">]</span>
+
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nlig</span><span class="p">(</span>
+            <span class="n">premises</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;entail&quot;</span><span class="p">,</span>
+            <span class="n">bad_words_ids</span><span class="o">=</span><span class="p">[[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_nlig</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+            <span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_question_marks</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nlig</span><span class="p">(</span>
+            <span class="n">premises</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;contradict&quot;</span><span class="p">,</span>
+            <span class="n">bad_words_ids</span><span class="o">=</span><span class="p">[[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_nlig</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+            <span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_question_marks</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">ox</span> <span class="o">=</span> <span class="p">((</span><span class="n">o</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">premises</span><span class="p">))</span>
+
+        <span class="n">return_value</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ox</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">top_n</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">is_o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nli</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Entailment&quot;</span>
+            <span class="n">is_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nli</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Contradiction&quot;</span>
+
+            <span class="k">if</span> <span class="n">is_o</span><span class="p">:</span>
+                <span class="n">return_value</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">o</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">is_x</span><span class="p">:</span>
+                <span class="n">return_value</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">return_mrc</span><span class="p">:</span>
+            <span class="n">return_value</span> <span class="o">=</span> <span class="n">return_value</span><span class="p">,</span> <span class="n">mrc_result</span>
+
+        <span class="k">return</span> <span class="n">return_value</span>
+
+<div class="viewcode-block" id="PororoQuizGeneration.ox"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration.ox">[docs]</a>    <span class="k">def</span> <span class="nf">ox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ox</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="p">,</span>
+            <span class="n">n_wrong</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">return_mrc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoQuizGeneration.all"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.quiz_generation.PororoQuizGeneration.all">[docs]</a>    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="p">,</span> <span class="n">n_wrong</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bert_threshold</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ox</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="p">,</span>
+            <span class="n">n_wrong</span><span class="o">=</span><span class="n">n_wrong</span><span class="p">,</span>
+            <span class="n">bert_threshold</span><span class="o">=</span><span class="n">bert_threshold</span><span class="p">,</span>
+            <span class="n">return_mrc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mrc&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;ox&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+        <span class="n">n_wrong</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;input text must be string.&quot;</span>
+        <span class="k">assert</span> <span class="n">style</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;mrc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ox&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+        <span class="p">],</span> <span class="s2">&quot;style must be in [&#39;mrc&#39;, &#39;ox&#39;, &#39;all&#39;]&quot;</span>
+
+        <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;mrc&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrc</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="p">,</span> <span class="n">n_wrong</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;ox&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ox</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="p">,</span> <span class="n">n_wrong</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

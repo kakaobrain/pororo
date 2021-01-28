@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pororo.tasks.sentence_embedding &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.sentence_embedding</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.sentence_embedding</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Sentence Embedding related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">util</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoSentenceFactory"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSentenceFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoSentenceFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sentence embedding based embedding vector</span>
+
+<span class="sd">    English (`stsb-roberta-base`, `stsb-roberta-large`, `stsb-bert-base`, `stsb-bert-large`, `stsb-distllbert-base`)</span>
+<span class="sd">    </span>
+<span class="sd">        - dataset: N/A</span>
+<span class="sd">        - metric : N/A</span>
+
+<span class="sd">    Korean (`brainsbert.base.ko.kornli.korsts`)</span>
+
+<span class="sd">        - dataset: N/A</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Japanese (`jasbert.base.ja.nli.sts`)</span>
+
+<span class="sd">        - dataset: N/A</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Chinese (`zhsbert.base.zh.nli.sts`)</span>
+
+<span class="sd">        - dataset: N/A</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; se = Pororo(task=&quot;sentence_embedding&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; se(&quot;나는 동물을 좋아하는 사람이야&quot;)</span>
+<span class="sd">        [128.78, 200.12, 245.321, ...]  # (1, hidden dim)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoSentenceFactory.get_available_langs"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoSentenceFactory.get_available_models"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;stsb-roberta-base&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;stsb-roberta-large&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;stsb-bert-base&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;stsb-bert-large&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;stsb-distillbert-base&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;brainsbert.base.ko.kornli.korsts&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;jasbert.base.ja.nli.sts&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;zhsbert.base.zh.nli.sts&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoSentenceFactory.load"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSentenceFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+
+        <span class="n">model_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span> <span class="o">!=</span> <span class="s2">&quot;en&quot;</span><span class="p">:</span>
+            <span class="n">model_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;sbert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">PororoSBertSentence</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoSBertSentence"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSBertSentence">[docs]</a><span class="k">class</span> <span class="nc">PororoSBertSentence</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoSBertSentence.find_similar_sentences"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSBertSentence.find_similar_sentences">[docs]</a>    <span class="k">def</span> <span class="nf">find_similar_sentences</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct find similar sentences</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query (str): query sentence to be acted as anchor</span>
+<span class="sd">            cands (List[str]): candidate sentences to be compared</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, List[Tuple[str, float]]]: list of tuple containing candidate sentence and its score</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; se = Pororo(task=&quot;sentence_embedding&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; query = &quot;He is the tallest person in the world&quot;</span>
+<span class="sd">            &gt;&gt;&gt; cands = [</span>
+<span class="sd">            &gt;&gt;&gt;     &quot;I hate this guy.&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;     &quot;You are so lovely!.&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;     &quot;Tom is taller than Jim.&quot;</span>
+<span class="sd">            &gt;&gt;&gt; ]</span>
+<span class="sd">            &gt;&gt;&gt; se.find_similar_sentences(query, cands)</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;query&#39;: &#39;He is the tallest person in the world&#39;,</span>
+<span class="sd">                &#39;ranking&#39;: [(2, &#39;Tom is taller than Jim.&#39;, 0.49), (1, &#39;You are so lovely!.&#39;, 0.47), (0, &#39;I hate this guy.&#39;, 0.22)]</span>
+<span class="sd">            }</span>
+<span class="sd">            &gt;&gt;&gt; se = Pororo(task=&quot;sentence_embedding&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; query = &quot;고양이가 창 밖을 바라본다&quot;</span>
+<span class="sd">            &gt;&gt;&gt; cands = [</span>
+<span class="sd">            &gt;&gt;&gt;    &quot;고양이가 카메라를 켠다&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;    &quot;남자와 여자가 걷고 있다&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;    &quot;고양이가 개를 만지려 하고 있다&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;    &quot;두 마리의 고양이가 창문을 보고 있다&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;    &quot;테이블 위에 앉아 있는 고양이가 창밖을 내다보고 있다&quot;,</span>
+<span class="sd">            &gt;&gt;&gt;    &quot;창밖을 내다보는 고양이&quot;</span>
+<span class="sd">            &gt;&gt;&gt; ]</span>
+<span class="sd">            &gt;&gt;&gt; se.find_similar_sentences(query, cands)</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;query&#39;: &#39;고양이가 창 밖을 바라본다&#39;,</span>
+<span class="sd">                 &#39;ranking&#39;: [(5, &#39;창밖을 내다보는 고양이&#39;, 0.93), (4, &#39;테이블 위에 앉아 있는 고양이가 창밖을 내다보고 있다&#39;, 0.91), (3, &#39;두 마리의 고양이가 창문을 보고 있다&#39;, 0.78), (0, &#39;고양이가 카메라를 켠다&#39;, 0.74), (2, &#39;고양이가 개를 만지려 하고 있다&#39;, 0.41)]</span>
+<span class="sd">            }</span>
+<span class="sd">            &gt;&gt;&gt; se = Pororo(task=&quot;sentence_embedding&quot;, lang=&quot;ja&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; query = &quot;おはようございます&quot;  # Good morning</span>
+<span class="sd">            &gt;&gt;&gt; cands = [&quot;こんにちは&quot;, &quot;失礼します&quot;, &quot;こんばんは&quot;]  # Hello | Please Excuse Me (for Leaving) | Good evening</span>
+<span class="sd">            &gt;&gt;&gt; se.find_similar_sentences(query, cands)</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;query&#39;: &#39;おはようございます&#39;,</span>
+<span class="sd">                &#39;ranking&#39;: [(0, &#39;こんにちは&#39;, 0.58), (2, &#39;こんばんは&#39;, 0.48), (1, &#39;失礼します&#39;, 0.27)]</span>
+<span class="sd">            }</span>
+<span class="sd">            &gt;&gt;&gt; se = Pororo(task=&quot;sentence_embedding&quot;, lang=&quot;zh&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; query = &quot;欢迎光临&quot;  # Welcome</span>
+<span class="sd">            &gt;&gt;&gt; cands = [&quot;你好。&quot;, &quot;你会说英语吗?&quot;, &quot;洗手间在哪里?&quot;]  # Hello | Do you speak English? | Where is the bathroom?</span>
+<span class="sd">            &gt;&gt;&gt; se.find_similar_sentences(query, cands)</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;query&#39;: &#39;欢迎光临&#39;,</span>
+<span class="sd">                &#39;ranking&#39;: [(0, &#39;你好。&#39;, 0.53), (2, &#39;洗手间在哪里?&#39;, 0.2), (1, &#39;你会说英语吗?&#39;, 0.09)]</span>
+<span class="sd">            }</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">convert_to_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">corpus_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">cands</span><span class="p">,</span> <span class="n">convert_to_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">cos_scores</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">pytorch_cos_sim</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">corpus_embeddings</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cos_scores</span> <span class="o">=</span> <span class="n">cos_scores</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cos_scores</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">top_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="o">-</span><span class="n">cos_scores</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">))[</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">top_results</span> <span class="o">=</span> <span class="n">top_results</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">top_results</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">cands</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="nb">round</span><span class="p">(</span><span class="n">cos_scores</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">query</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="s2">&quot;ranking&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoSBertSentence.predict"><a class="viewcode-back" href="../../../text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSBertSentence.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct sentence embedding</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent (str): input sentence to be sentence embedded</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.array: embedded sentence array</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">([</span><span class="n">sent</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">outputs</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1009 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BERT &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration" href="config.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#usage">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BERT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko">brainbert.base.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko">_brainbert.large.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-korquad">brainbert.base.ko.korquad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-korquad">_brainbert.large.ko.korquad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-kornli">brainbert.base.ko.kornli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-kornli">_brainbert.large.ko.kornli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-korsts">_brainbert.base.ko.korsts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-korsts">_brainbert.large.ko.korsts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-paws">brainbert.base.ko.paws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-paws">_brainbert.large.ko.paws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-nsmc">brainbert.base.ko.nsmc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-nsmc">_brainbert.large.ko.nsmc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-news">brainbert.base.ko.news</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-news">_brainbert.large.ko.news</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-base-ko-review">_brainbert.base.ko.review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainbert-large-ko-review">_brainbert.large.ko.review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainsbert-base-ko-kornli-korsts">brainsbert.base.ko.kornli.korsts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brainsbert-large-ko-kornli-korsts">_brainsbert.large.ko.kornli.korsts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#transformer">Transformer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-sejong-syntactic">_transformer.base.sejong.syntactic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-sejong-semantic">transformer.base.ko.sejong.semantic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-en">transformer.base.ko.en</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-en-ko">transformer.base.en.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-zh">transformer.base.ko.zh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-zh-ko">transformer.base.zh.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-ja">transformer.base.ko.ja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ja-ko">transformer.base.ja.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-je">_transformer.base.ko.je</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-je-ko">_transformer.base.je.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-pg">transformer.base.ko.pg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-en-pg">transformer.base.en.pg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ja-pg">transformer.base.ja.pg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-zh-pg">transformer.base.zh.pg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-summary">transformer.base.ko.summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-const">transformer.base.ko.const</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transformer-base-ko-vc">transformer.base.ko.vc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#huggingface-tokenizers">HuggingFace Tokenizers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bpe4k-ko">bpe4k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpe8k-ko">bpe8k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpe16k-ko">bpe16k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpe32k-ko">bpe32k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpe64k-ko">bpe64k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unigram4k-ko">unigram4k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unigram8k-ko">unigram8k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unigram16k-ko">unigram16k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unigram32k-ko">unigram32k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unigram64k-ko">unigram64k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mecab-bpe4k-ko">mecab.bpe4k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mecab-bpe8k-ko">mecab.bpe8k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mecab-bpe16k-ko">mecab.bpe16k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mecab-bpe32k-ko">mecab.bpe32k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mecab-bpe64k-ko">mecab.bpe64k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jamo">jamo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jpe4k-ko">jpe4k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jpe8k-ko">jpe8k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jpe16k-ko">jpe16k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jpe32k-ko">jpe32k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jpe64k-ko">jpe64k.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#char">char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#word">word</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#others">Others</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#g2p-ko">g2p.ko</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#g2p-en">g2p.en</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#g2p-zh">g2p.zh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#koparadigm">KoParadigm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#word2word">word2word</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/absa.html">Aspect-Based Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/grammar.html">Grammaticality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/hate.html">Hate Speech Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/lm_score.html">Language Model Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/news.html">News Categorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review.html">Review Rating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/spam.html">Spam Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/aspect.html">Aspect Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/subword.html">Subword Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/coref.html">Coreference Resolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/segment.html">Semantic Segmentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/nli_gen.html">Natural Language Inference Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/vc.html">Verse Composition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/wsd.html">Word Sense Disambiguation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/speech_synthesis.html">Speech Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/nwp.html">Next Word Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/vad.html">Voice Activity Detection</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>BERT</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/notes/models.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bert">
+<h1>BERT<a class="headerlink" href="#bert" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="brainbert-base-ko">
+<h2>brainbert.base.ko<a class="headerlink" href="#brainbert-base-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> * Fill-in-the-blank</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> * Contextual Subword Embedding</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko">
+<h2>_brainbert.large.ko<a class="headerlink" href="#brainbert-large-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> * Fill-in-the-blank</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> * Contextual Subword Embedding</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-korquad">
+<h2>brainbert.base.ko.korquad<a class="headerlink" href="#brainbert-base-ko-korquad" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Reading Comprehension</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.korquad.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-korquad">
+<h2>_brainbert.large.ko.korquad<a class="headerlink" href="#brainbert-large-ko-korquad" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Reading Comprehension</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.korquad.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-kornli">
+<h2>brainbert.base.ko.kornli<a class="headerlink" href="#brainbert-base-ko-kornli" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Natural Language Inference</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.kornli.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-kornli">
+<h2>_brainbert.large.ko.kornli<a class="headerlink" href="#brainbert-large-ko-kornli" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Natural Language Inference</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.kornli.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-korsts">
+<h2>_brainbert.base.ko.korsts<a class="headerlink" href="#brainbert-base-ko-korsts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Semantic Textual Similarity</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.korsts.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-korsts">
+<h2>_brainbert.large.ko.korsts<a class="headerlink" href="#brainbert-large-ko-korsts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Semantic Textual Similarity</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.korsts.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-paws">
+<h2>brainbert.base.ko.paws<a class="headerlink" href="#brainbert-base-ko-paws" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Paraphrase Identification</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.paws.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-paws">
+<h2>_brainbert.large.ko.paws<a class="headerlink" href="#brainbert-large-ko-paws" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Paraphrase Identification</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.paws.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-nsmc">
+<h2>brainbert.base.ko.nsmc<a class="headerlink" href="#brainbert-base-ko-nsmc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Sentiment Analysis</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.nsmc.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-nsmc">
+<h2>_brainbert.large.ko.nsmc<a class="headerlink" href="#brainbert-large-ko-nsmc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Sentiment Analysis</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.nsmc.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-news">
+<h2>brainbert.base.ko.news<a class="headerlink" href="#brainbert-base-ko-news" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> News Categorization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.news.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-news">
+<h2>_brainbert.large.ko.news<a class="headerlink" href="#brainbert-large-ko-news" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> News Categorization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.news.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-base-ko-review">
+<h2>_brainbert.base.ko.review<a class="headerlink" href="#brainbert-base-ko-review" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Review Rating</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.news.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainbert-large-ko-review">
+<h2>_brainbert.large.ko.review<a class="headerlink" href="#brainbert-large-ko-review" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Review Rating</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.review.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainsbert-base-ko-kornli-korsts">
+<h2>brainsbert.base.ko.kornli.korsts<a class="headerlink" href="#brainsbert-base-ko-kornli-korsts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Find Similar Sentence</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Sentence Embedding</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Semantic Textual Similarity</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/sbert/brainsbert.base.ko.kornli.korsts.zip</p></li>
+</ul>
+</div>
+<div class="section" id="brainsbert-large-ko-kornli-korsts">
+<h2>_brainsbert.large.ko.kornli.korsts<a class="headerlink" href="#brainsbert-large-ko-kornli-korsts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Find Similar Sentence</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Sentence Embedding</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Semantic Textual Similarity</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.brainbert.ko.txt (31,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/sbert/brainsbert.base.ko.kornli.korsts.zip</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="transformer">
+<h1>Transformer<a class="headerlink" href="#transformer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="transformer-base-sejong-syntactic">
+<h2>_transformer.base.sejong.syntactic<a class="headerlink" href="#transformer-base-sejong-syntactic" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> POS Tagging</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: character<br>tgt: custom</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ko.sejong.syntactic (6,756+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/morphological_analysis/ko/data-bin/dict.src.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.sejong.syntactic.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> * morphological_analysis/ko/syntactic/train/ckpt/checkpoint_best.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.sejong.syntactic.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/morphological_analysis/ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-sejong-semantic">
+<h2>transformer.base.ko.sejong.semantic<a class="headerlink" href="#transformer-base-ko-sejong-semantic" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Word Sense Disambiguation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: character<br>tgt: custom</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ko.sejong.semantic (6,868+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/wiki/4.-Dictionary-Files#dicttransformerbasekosejongsemantic</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.sejong.semantic.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> * morphological_analysis/ko/semantic/train/ckpt/checkpoint_best.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.sejong.semantic.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/word_sense_disambiguation/ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-en">
+<h2>transformer.base.ko.en<a class="headerlink" href="#transformer-base-ko-en" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: bpe8k.ko<br>tgt:bpe32k.en</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * src: dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> tgt: dict.transformer.base.en.mt (31,996+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.en.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/en/dicts/dict.transformer.base.en.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.en.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-en</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-en-ko">
+<h2>transformer.base.en.ko<a class="headerlink" href="#transformer-base-en-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: bpe32k.en<br>tgt: bpe8k.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * src: dict.transformer.base.en.mt (31,996+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.en.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/en/dicts/dict.transformer.base.en.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * tgt: dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/en/models/transformer/transformer.base.en.ko.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/en-ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-zh">
+<h2>transformer.base.ko.zh<a class="headerlink" href="#transformer-base-ko-zh" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: bpe8k.ko<br>tgt: character</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * src: dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> tgt: dict.transformer.base.zh.mt (12,644+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-zh/models/transformer.base/dict.zh.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/zh/dicts/dict.transformer.base.zh.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.zh.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-zh</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-zh-ko">
+<h2>transformer.base.zh.ko<a class="headerlink" href="#transformer-base-zh-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src:  character<br>tgt: bpe8k.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> *src: dict.transformer.base.zh.mt (12,644+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-zh/models/transformer.base/dict.zh.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/zh/dicts/dict.transformer.base.zh.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * tgt: dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/zh/models/transformer/transformer.base.zh.ko.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/zh-ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-ja">
+<h2>transformer.base.ko.ja<a class="headerlink" href="#transformer-base-ko-ja" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: bpe8k.ko<br>tgt: bpe8k.ja</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * src: dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> tgt: dict.transformer.base.ja.mt (12,644+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-ja/models/transformer.base/dict.ja.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ja/dicts/dict.transformer.base.ja.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.ja.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-ja</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ja-ko">
+<h2>transformer.base.ja.ko<a class="headerlink" href="#transformer-base-ja-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> src: bpe8k.ja<br>tgt: bpe8k.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * src: dict.transformer.base.ja.mt (12,644+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-ja/models/transformer.base/dict.ja.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ja/dicts/dict.transformer.base.ja.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * tgt: dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ja/models/transformer/transformer.base.ja.ko.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ja-ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-je">
+<h2>_transformer.base.ko.je<a class="headerlink" href="#transformer-base-ko-je" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe4k.je</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.je.mt (3,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-je/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/je/dicts/dict.transformer.base.je.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.je.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-je</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-je-ko">
+<h2>_transformer.base.je.ko<a class="headerlink" href="#transformer-base-je-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Machine Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe4k.je</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.je.mt (3,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-je/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/je/dicts/dict.transformer.base.je.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/je/models/transformer/transformer.base.je.ko.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/je-ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-pg">
+<h2>transformer.base.ko.pg<a class="headerlink" href="#transformer-base-ko-pg" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Parapharse Generation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe8k.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ko.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.pg.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-en-pg">
+<h2>transformer.base.en.pg<a class="headerlink" href="#transformer-base-en-pg" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Parapharse Generation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32k.en</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.en.mt (31,996+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.en.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/en/dicts/dict.transformer.base.en.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/en/models/transformer/transformer.base.en.pg.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/en</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ja-pg">
+<h2>transformer.base.ja.pg<a class="headerlink" href="#transformer-base-ja-pg" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Parapharse Generation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe8k.ja</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ja.mt (7,997+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-ja/models/transformer.base/dict.ja.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ja/dicts/dict.transformer.base.ja.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ja/models/transformer/transformer.base.ja.pg.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/ja</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-zh-pg">
+<h2>transformer.base.zh.pg<a class="headerlink" href="#transformer-base-zh-pg" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Parapharse Generation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> character</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.zh.mt (12,644+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-zh/models/transformer.base/dict.zh.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/zh/dicts/dict.transformer.base.zh.mt.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/zh/models/transformer/transformer.base.zh.pg.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/zh</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-summary">
+<h2>transformer.base.ko.summary<a class="headerlink" href="#transformer-base-ko-summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Text Summarization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> bpe32.ko</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ko.summary (31,996+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/text_summarization/ko/data-bin/dict.src.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.summary.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.summary.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/text_summarization/ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-const">
+<h2>transformer.base.ko.const<a class="headerlink" href="#transformer-base-ko-const" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Constituency Parsing</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> tags</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ko.const (212+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/constituency_parsing/ko/data-bin/dict.src.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.const.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.const.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/constituency_parsing/ko</p></li>
+</ul>
+</div>
+<div class="section" id="transformer-base-ko-vc">
+<h2>transformer.base.ko.vc<a class="headerlink" href="#transformer-base-ko-vc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Verse Composition</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> chars</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * dict.transformer.base.ko.vc (1,996+3)</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/verse_composition/ko/data-bin/dict.src.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.vc.txt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.vc.pt</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">README</span></code></strong></strong> https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/verse_composition/ko</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="huggingface-tokenizers">
+<h1>HuggingFace Tokenizers<a class="headerlink" href="#huggingface-tokenizers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bpe4k-ko">
+<h2>bpe4k.ko<a class="headerlink" href="#bpe4k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe4k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="bpe8k-ko">
+<h2>bpe8k.ko<a class="headerlink" href="#bpe8k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe8k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="bpe16k-ko">
+<h2>bpe16k.ko<a class="headerlink" href="#bpe16k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe16k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="bpe32k-ko">
+<h2>bpe32k.ko<a class="headerlink" href="#bpe32k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe32k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="bpe64k-ko">
+<h2>bpe64k.ko<a class="headerlink" href="#bpe64k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe64k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="unigram4k-ko">
+<h2>unigram4k.ko<a class="headerlink" href="#unigram4k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram4k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="unigram8k-ko">
+<h2>unigram8k.ko<a class="headerlink" href="#unigram8k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram8k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="unigram16k-ko">
+<h2>unigram16k.ko<a class="headerlink" href="#unigram16k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram16k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="unigram32k-ko">
+<h2>unigram32k.ko<a class="headerlink" href="#unigram32k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram32k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="unigram64k-ko">
+<h2>unigram64k.ko<a class="headerlink" href="#unigram64k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram64k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="mecab-bpe4k-ko">
+<h2>mecab.bpe4k.ko<a class="headerlink" href="#mecab-bpe4k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe4k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="mecab-bpe8k-ko">
+<h2>mecab.bpe8k.ko<a class="headerlink" href="#mecab-bpe8k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe8k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="mecab-bpe16k-ko">
+<h2>mecab.bpe16k.ko<a class="headerlink" href="#mecab-bpe16k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe16k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="mecab-bpe32k-ko">
+<h2>mecab.bpe32k.ko<a class="headerlink" href="#mecab-bpe32k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe32k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="mecab-bpe64k-ko">
+<h2>mecab.bpe64k.ko<a class="headerlink" href="#mecab-bpe64k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe64k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="jamo">
+<h2>jamo<a class="headerlink" href="#jamo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> -</p></li>
+</ul>
+</div>
+<div class="section" id="jpe4k-ko">
+<h2>jpe4k.ko<a class="headerlink" href="#jpe4k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe4k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="jpe8k-ko">
+<h2>jpe8k.ko<a class="headerlink" href="#jpe8k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe8k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="jpe16k-ko">
+<h2>jpe16k.ko<a class="headerlink" href="#jpe16k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe16k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="jpe32k-ko">
+<h2>jpe32k.ko<a class="headerlink" href="#jpe32k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe32k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="jpe64k-ko">
+<h2>jpe64k.ko<a class="headerlink" href="#jpe64k-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe64k.ko.model</p></li>
+</ul>
+</div>
+<div class="section" id="char">
+<h2>char<a class="headerlink" href="#char" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> -</p></li>
+</ul>
+</div>
+<div class="section" id="word">
+<h2>word<a class="headerlink" href="#word" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Tokenization</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TOKENIZER</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong> -</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">CKPT</span></code></strong></strong> -</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="others">
+<h1>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="g2p-ko">
+<h2>g2p.ko<a class="headerlink" href="#g2p-ko" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> G2P</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong></p></li>
+</ul>
+</div>
+<div class="section" id="g2p-en">
+<h2>g2p.en<a class="headerlink" href="#g2p-en" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> G2P</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong></p></li>
+</ul>
+</div>
+<div class="section" id="g2p-zh">
+<h2>g2p.zh<a class="headerlink" href="#g2p-zh" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> G2P</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong></p></li>
+</ul>
+</div>
+<div class="section" id="koparadigm">
+<h2>KoParadigm<a class="headerlink" href="#koparadigm" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Morph Inflection</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong></p></li>
+</ul>
+</div>
+<div class="section" id="word2word">
+<h2>word2word<a class="headerlink" href="#word2word" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">TASK</span></code></strong></strong> Word Translation</p></li>
+<li><p><strong><strong><code class="docutils literal notranslate"><span class="pre">DICTIONARY</span></code></strong></strong></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="config.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

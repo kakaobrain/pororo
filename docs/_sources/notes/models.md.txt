@@ -1,0 +1,540 @@
+# BERT
+
+
+
+##  brainbert.base.ko                      
+
+  * ****`TASK`**** * Fill-in-the-blank
+  * ****`TASK`**** * Contextual Subword Embedding
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.zip
+
+##  _brainbert.large.ko                    
+
+  * ****`TASK`**** * Fill-in-the-blank
+  * ****`TASK`**** * Contextual Subword Embedding
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.zip
+
+##  brainbert.base.ko.korquad      
+
+  * ****`TASK`**** Reading Comprehension
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.korquad.zip
+
+##  _brainbert.large.ko.korquad    
+
+  * ****`TASK`**** Reading Comprehension
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.korquad.zip
+
+##  brainbert.base.ko.kornli        
+
+  * ****`TASK`**** Natural Language Inference
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.kornli.zip
+
+##  _brainbert.large.ko.kornli      
+
+  * ****`TASK`**** Natural Language Inference
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.kornli.zip
+
+##  _brainbert.base.ko.korsts        
+
+  * ****`TASK`**** Semantic Textual Similarity
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.korsts.zip
+
+##  _brainbert.large.ko.korsts      
+
+  * ****`TASK`**** Semantic Textual Similarity
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.korsts.zip
+
+##  brainbert.base.ko.paws            
+
+  * ****`TASK`**** Paraphrase Identification
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.paws.zip
+
+##  _brainbert.large.ko.paws          
+
+  * ****`TASK`**** Paraphrase Identification
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.paws.zip
+
+##  brainbert.base.ko.nsmc            
+
+  * ****`TASK`**** Sentiment Analysis
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.nsmc.zip
+
+##  _brainbert.large.ko.nsmc          
+
+  * ****`TASK`**** Sentiment Analysis
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.nsmc.zip
+
+##  brainbert.base.ko.news            
+
+  * ****`TASK`**** News Categorization
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.base.ko.news.zip
+
+##  _brainbert.large.ko.news          
+
+  * ****`TASK`**** News Categorization
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.news.zip
+
+##  _brainbert.base.ko.review        
+
+  * ****`TASK`**** Review Rating
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.news.zip
+
+##  _brainbert.large.ko.review      
+
+  * ****`TASK`**** Review Rating
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/bert/brainbert.large.ko.review.zip
+
+##  brainsbert.base.ko.kornli.korsts 
+
+  * ****`TASK`**** Find Similar Sentence
+  * ****`TASK`**** Sentence Embedding
+  * ****`TASK`**** Semantic Textual Similarity
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/sbert/brainsbert.base.ko.kornli.korsts.zip
+
+##  _brainsbert.large.ko.kornli.korsts 
+
+  * ****`TASK`**** Find Similar Sentence
+  * ****`TASK`**** Sentence Embedding
+  * ****`TASK`**** Semantic Textual Similarity
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.brainbert.ko.txt (31,997+3)
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.brainbert.ko.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/sbert/brainsbert.base.ko.kornli.korsts.zip
+
+# Transformer
+
+
+
+## _transformer.base.sejong.syntactic
+
+  * ****`TASK`**** POS Tagging
+  * ****`TOKENIZER`**** src: character<br>tgt: custom
+  * ****`DICTIONARY`**** * dict.transformer.base.ko.sejong.syntactic (6,756+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/morphological_analysis/ko/data-bin/dict.src.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.sejong.syntactic.txt
+  * ****`CKPT`**** * morphological_analysis/ko/syntactic/train/ckpt/checkpoint_best.pt
+  * ****`CKPT`**** * https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.sejong.syntactic.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/morphological_analysis/ko
+
+##  transformer.base.ko.sejong.semantic
+
+  * ****`TASK`**** Word Sense Disambiguation
+  * ****`TOKENIZER`**** src: character<br>tgt: custom
+  * ****`DICTIONARY`**** * dict.transformer.base.ko.sejong.semantic (6,868+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/wiki/4.-Dictionary-Files#dicttransformerbasekosejongsemantic
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.sejong.semantic.txt
+  * ****`CKPT`**** * morphological_analysis/ko/semantic/train/ckpt/checkpoint_best.pt
+  * ****`CKPT`**** * https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.sejong.semantic.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/word_sense_disambiguation/ko
+
+##  transformer.base.ko.en            
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** src: bpe8k.ko<br>tgt:bpe32k.en
+  * ****`DICTIONARY`**** * src: dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`DICTIONARY`**** tgt: dict.transformer.base.en.mt (31,996+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.en.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/en/dicts/dict.transformer.base.en.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.en.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-en
+
+##  transformer.base.en.ko            
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** src: bpe32k.en<br>tgt: bpe8k.ko
+  * ****`DICTIONARY`**** * src: dict.transformer.base.en.mt (31,996+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.en.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/en/dicts/dict.transformer.base.en.mt.txt
+  * ****`DICTIONARY`**** * tgt: dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/en/models/transformer/transformer.base.en.ko.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/en-ko
+
+##  transformer.base.ko.zh            
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** src: bpe8k.ko<br>tgt: character
+  * ****`DICTIONARY`**** * src: dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`DICTIONARY`**** tgt: dict.transformer.base.zh.mt (12,644+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-zh/models/transformer.base/dict.zh.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/zh/dicts/dict.transformer.base.zh.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.zh.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-zh
+
+##  transformer.base.zh.ko            
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** src:  character<br>tgt: bpe8k.ko
+  * ****`DICTIONARY`**** *src: dict.transformer.base.zh.mt (12,644+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-zh/models/transformer.base/dict.zh.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/zh/dicts/dict.transformer.base.zh.mt.txt
+  * ****`DICTIONARY`**** * tgt: dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/zh/models/transformer/transformer.base.zh.ko.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/zh-ko
+
+##  transformer.base.ko.ja            
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** src: bpe8k.ko<br>tgt: bpe8k.ja
+  * ****`DICTIONARY`**** * src: dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`DICTIONARY`**** tgt: dict.transformer.base.ja.mt (12,644+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-ja/models/transformer.base/dict.ja.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ja/dicts/dict.transformer.base.ja.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.ja.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-ja
+
+##  transformer.base.ja.ko            
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** src: bpe8k.ja<br>tgt: bpe8k.ko
+  * ****`DICTIONARY`**** * src: dict.transformer.base.ja.mt (12,644+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-ja/models/transformer.base/dict.ja.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ja/dicts/dict.transformer.base.ja.mt.txt
+  * ****`DICTIONARY`**** * tgt: dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ja/models/transformer/transformer.base.ja.ko.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ja-ko
+
+## _transformer.base.ko.je
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** bpe4k.je
+  * ****`DICTIONARY`**** * dict.transformer.base.je.mt (3,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-je/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/je/dicts/dict.transformer.base.je.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.je.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/ko-je
+
+##  _transformer.base.je.ko         
+
+  * ****`TASK`**** Machine Translation
+  * ****`TOKENIZER`**** bpe4k.je
+  * ****`DICTIONARY`**** * dict.transformer.base.je.mt (3,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-je/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/je/dicts/dict.transformer.base.je.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/je/models/transformer/transformer.base.je.ko.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/machine_translation/je-ko
+
+## transformer.base.ko.pg
+
+  * ****`TASK`**** Parapharse Generation
+  * ****`TOKENIZER`**** bpe8k.ko
+  * ****`DICTIONARY`**** * dict.transformer.base.ko.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.ko.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.pg.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/ko
+
+## transformer.base.en.pg
+
+  * ****`TASK`**** Parapharse Generation
+  * ****`TOKENIZER`**** bpe32k.en
+  * ****`DICTIONARY`**** * dict.transformer.base.en.mt (31,996+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-en/models/transformer.base/dict.en.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/en/dicts/dict.transformer.base.en.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/en/models/transformer/transformer.base.en.pg.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/en
+
+## transformer.base.ja.pg
+
+  * ****`TASK`**** Parapharse Generation
+  * ****`TOKENIZER`**** bpe8k.ja
+  * ****`DICTIONARY`**** * dict.transformer.base.ja.mt (7,997+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-ja/models/transformer.base/dict.ja.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ja/dicts/dict.transformer.base.ja.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ja/models/transformer/transformer.base.ja.pg.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/ja
+
+## transformer.base.zh.pg
+
+  * ****`TASK`**** Parapharse Generation
+  * ****`TOKENIZER`**** character
+  * ****`DICTIONARY`**** * dict.transformer.base.zh.mt (12,644+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/machine_translation/ko-zh/models/transformer.base/dict.zh.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/zh/dicts/dict.transformer.base.zh.mt.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/zh/models/transformer/transformer.base.zh.pg.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/paraphrase_generation/zh
+
+## transformer.base.ko.summary
+
+  * ****`TASK`**** Text Summarization
+  * ****`TOKENIZER`**** bpe32.ko
+  * ****`DICTIONARY`**** * dict.transformer.base.ko.summary (31,996+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/text_summarization/ko/data-bin/dict.src.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.summary.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.summary.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/text_summarization/ko
+
+## transformer.base.ko.const
+
+  * ****`TASK`**** Constituency Parsing
+  * ****`TOKENIZER`**** tags
+  * ****`DICTIONARY`**** * dict.transformer.base.ko.const (212+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/constituency_parsing/ko/data-bin/dict.src.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.const.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.const.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/constituency_parsing/ko
+
+## transformer.base.ko.vc
+
+  * ****`TASK`**** Verse Composition
+  * ****`TOKENIZER`**** chars
+  * ****`DICTIONARY`**** * dict.transformer.base.ko.vc (1,996+3)
+  * ****`DICTIONARY`**** * https://github.kakaocorp.com/kakaobrain/pororo/blob/ryan/tasks/verse_composition/ko/data-bin/dict.src.txt
+  * ****`DICTIONARY`**** * https://twg.kakaocdn.net/pororo/ko/dicts/dict.transformer.base.ko.vc.txt
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/transformer/transformer.base.ko.vc.pt
+  * ****`README`**** https://github.kakaocorp.com/kakaobrain/pororo/tree/ryan/tasks/verse_composition/ko
+
+# HuggingFace Tokenizers
+
+
+
+##  bpe4k.ko                                        
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe4k.ko.model
+
+##  bpe8k.ko                                        
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe8k.ko.model
+
+##  bpe16k.ko                                      
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe16k.ko.model
+
+##  bpe32k.ko                                      
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe32k.ko.model
+
+##  bpe64k.ko                                      
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/bpe64k.ko.model
+
+##  unigram4k.ko                                
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram4k.ko.model
+
+##  unigram8k.ko                                
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram8k.ko.model
+
+##  unigram16k.ko                              
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram16k.ko.model
+
+##  unigram32k.ko                              
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram32k.ko.model
+
+##  unigram64k.ko                              
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/unigram64k.ko.model
+
+##  mecab.bpe4k.ko                            
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe4k.ko.model
+
+##  mecab.bpe8k.ko                            
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe8k.ko.model
+
+##  mecab.bpe16k.ko                          
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe16k.ko.model
+
+##  mecab.bpe32k.ko                          
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe32k.ko.model
+
+##  mecab.bpe64k.ko                          
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/mecab.bpe64k.ko.model
+
+##  jamo                                                
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** -
+
+##  jpe4k.ko                                        
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe4k.ko.model
+
+##  jpe8k.ko                                        
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe8k.ko.model
+
+##  jpe16k.ko                                      
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe16k.ko.model
+
+##  jpe32k.ko                                      
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe32k.ko.model
+
+##  jpe64k.ko                                      
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** https://twg.kakaocdn.net/pororo/ko/models/tokenizers/jpe64k.ko.model
+
+##  char                                                
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** -
+
+##  word                                                
+
+  * ****`TASK`**** Tokenization
+  * ****`TOKENIZER`**** -
+  * ****`DICTIONARY`**** -
+  * ****`CKPT`**** -
+
+# Others
+
+
+##  g2p.ko                                            
+
+  * ****`TASK`**** G2P
+  * ****`DICTIONARY`**** 
+
+##  g2p.en                                            
+
+  * ****`TASK`**** G2P
+  * ****`DICTIONARY`**** 
+
+##  g2p.zh                                            
+
+  * ****`TASK`**** G2P
+  * ****`DICTIONARY`**** 
+
+##  KoParadigm                               
+
+  * ****`TASK`**** Morph Inflection
+  * ****`DICTIONARY`**** 
+
+##  word2word                                      
+
+  * ****`TASK`**** Word Translation
+  * ****`DICTIONARY`**** 

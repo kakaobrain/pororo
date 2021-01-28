@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pororo.tasks.phoneme_conversion &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.phoneme_conversion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.phoneme_conversion</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Grapheme to Phoneme related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+
+
+<div class="viewcode-block" id="PororoG2pFactory"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2pFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoG2pFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">    English (`g2p.en`)</span>
+
+<span class="sd">        - dataset: g2pE</span>
+<span class="sd">        - metric: N/A</span>
+<span class="sd">        - ref: https://github.com/Kyubyong/g2p</span>
+
+<span class="sd">    Korean (`g2p.ko`)</span>
+
+<span class="sd">        - dataset: g2pK</span>
+<span class="sd">        - metric: N/A</span>
+<span class="sd">        - ref: https://github.com/Kyubyong/g2pK</span>
+
+<span class="sd">    Japanese (`g2p.ja`)</span>
+
+<span class="sd">        - dataset: romkan</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Chinese (`g2p.zh`)</span>
+
+<span class="sd">        - dataset: g2pM (Park et al. 2020)</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sent (str): input sentence to be converted to phoneme</span>
+<span class="sd">        align (bool): whether to align the result (not applied to `english` model)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: converted phoneme sentence</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; g2p = Pororo(task=&quot;g2p&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; g2p(&quot;어제는 날씨가 맑았는데, 오늘은 흐리다.&quot;)</span>
+<span class="sd">        &#39;어제는 날씨가 말간는데, 오느른 흐리다.&#39;</span>
+<span class="sd">        &gt;&gt;&gt; g2p(&quot;어제는 날씨가 맑았는데, 오늘은 흐리다.&quot;, align=True)</span>
+<span class="sd">        [(&#39;어제는&#39;, &#39;어제는&#39;), (&#39;날씨가&#39;, &#39;날씨가&#39;), (&#39;맑았는데,&#39;, &#39;말간는데,&#39;), (&#39;오늘은&#39;, &#39;오느른&#39;), (&#39;흐리다.&#39;, &#39;흐리다.&#39;)]</span>
+<span class="sd">        &gt;&gt;&gt; g2p_en = Pororo(task=&quot;g2p&quot;, lang=&quot;en&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; g2p_en(&quot;I have $250 in my pocket.&quot;)</span>
+<span class="sd">        [&#39;AY1&#39;, &#39; &#39;, &#39;HH&#39;, &#39;AE1&#39;, &#39;V&#39;, &#39; &#39;, &#39;T&#39;, &#39;UW1&#39;, &#39; &#39;, &#39;HH&#39;, &#39;AH1&#39;, &#39;N&#39;, &#39;D&#39;, &#39;R&#39;, &#39;AH0&#39;, &#39;D&#39;, &#39; &#39;, &#39;F&#39;, &#39;IH1&#39;, &#39;F&#39;, &#39;T&#39;, &#39;IY0&#39;, &#39; &#39;, &#39;D&#39;, &#39;AA1&#39;, &#39;L&#39;, &#39;ER0&#39;, &#39;Z&#39;, &#39; &#39;, &#39;IH0&#39;, &#39;N&#39;, &#39; &#39;, &#39;M&#39;, &#39;AY1&#39;, &#39; &#39;, &#39;P&#39;, &#39;AA1&#39;, &#39;K&#39;, &#39;AH0&#39;, &#39;T&#39;, &#39; &#39;, &#39;.&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; g2p_zh = Pororo(task=&quot;g2p&quot;, lang=&quot;zh&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; g2p_zh(&quot;然而，他红了20年以后，他竟退出了大家的视线。&quot;)</span>
+<span class="sd">        &#39;ran2 er2 , ta1 hong2 le5 2 0 nian2 yi3 hou4 , ta1 jing4 tui4 chu1 le5 da4 jia1 de5 shi4 xian4 。&#39;</span>
+<span class="sd">        &gt;&gt;&gt; g2p_zh(&quot;然而，他红了20年以后，他竟退出了大家的视线。&quot;, align=True)</span>
+<span class="sd">        [(&#39;然&#39;, &#39;ran2&#39;), (&#39;而&#39;, &#39;er2&#39;), (&#39;,&#39;, &#39;,&#39;), (&#39;他&#39;, &#39;ta1&#39;), (&#39;红&#39;, &#39;hong2&#39;), (&#39;了&#39;, &#39;le5&#39;), (&#39;2&#39;, &#39;2&#39;), (&#39;0&#39;, &#39;0&#39;), (&#39;年&#39;, &#39;nian2&#39;), ...]</span>
+<span class="sd">        &gt;&gt;&gt; g2p_zh(&quot;然而，他红了20年以后，他竟退出了大家的视线。&quot;, align=True, tone=False)</span>
+<span class="sd">        [(&#39;然&#39;, &#39;ran&#39;), (&#39;而&#39;, &#39;er&#39;), (&#39;,&#39;, &#39;,&#39;), (&#39;他&#39;, &#39;ta&#39;), (&#39;红&#39;, &#39;hong&#39;), (&#39;了&#39;, &#39;le&#39;), (&#39;2&#39;, &#39;2&#39;), (&#39;0&#39;, &#39;0&#39;), (&#39;年&#39;, &#39;nian&#39;), ...]</span>
+<span class="sd">        &gt;&gt;&gt; g2p_ja = Pororo(task=&quot;g2p&quot;, lang=&quot;ja&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; g2p_ja(&quot;pythonが大好きです&quot;)</span>
+<span class="sd">        &#39;python ga daisuki desu&#39;</span>
+<span class="sd">        &gt;&gt;&gt; g2p_ja(&quot;pythonが大好きです&quot;, align=True)</span>
+<span class="sd">        [(&#39;python&#39;, &#39;python&#39;), (&#39;が&#39;, &#39;ga&#39;), (&#39;大好き&#39;, &#39;daisuki&#39;), (&#39;です&#39;, &#39;desu&#39;)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoG2pFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2pFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoG2pFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2pFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;g2p.en&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;g2p.ko&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;g2p.zh&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;g2p.ja&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoG2pFactory.load"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2pFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;g2p.ko&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">g2pk</span> <span class="kn">import</span> <span class="n">G2p</span> <span class="k">as</span> <span class="n">G2pK</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install g2pk with: `pip install g2pk`&quot;</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">G2pK</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">PororoG2PKo</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;g2p.en&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">g2p_en</span> <span class="kn">import</span> <span class="n">G2p</span> <span class="k">as</span> <span class="n">G2pE</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install g2p_en with: `pip install g2p_en`&quot;</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">G2pE</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">PororoG2PEn</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;g2p.zh&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">g2pM</span> <span class="kn">import</span> <span class="n">G2pM</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install g2pM with: `pip install g2pM`&quot;</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">G2pM</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">PororoG2PZh</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;g2p.ja&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">fugashi</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install fugashi with: `pip install fugashi`&quot;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">ipadic</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install ipadic with: `pip install ipadic`&quot;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">romkan</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install ipadic with: `pip install romkan`&quot;</span><span class="p">)</span>
+            <span class="n">dic_dir</span> <span class="o">=</span> <span class="n">ipadic</span><span class="o">.</span><span class="n">DICDIR</span>
+            <span class="n">mecabrc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dic_dir</span><span class="p">,</span> <span class="s2">&quot;mecabrc&quot;</span><span class="p">)</span>
+            <span class="n">mecab_option</span> <span class="o">=</span> <span class="s2">&quot;-d </span><span class="si">{}</span><span class="s2"> -r </span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">dic_dir</span><span class="p">,</span>
+                <span class="n">mecabrc</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">tagger</span> <span class="o">=</span> <span class="n">fugashi</span><span class="o">.</span><span class="n">GenericTagger</span><span class="p">(</span><span class="n">mecab_option</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoG2PJa</span><span class="p">(</span><span class="n">tagger</span><span class="p">,</span> <span class="n">romkan</span><span class="o">.</span><span class="n">to_roma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoG2PKo"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PKo">[docs]</a><span class="k">class</span> <span class="nc">PororoG2PKo</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoG2PKo.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PKo.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence to be converted to phoneme</span>
+<span class="sd">            align (bool): whether to align the result</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: converted phoneme sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[(</span><span class="n">word</span><span class="p">,</span> <span class="n">phoneme</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">phoneme</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">results</span><span class="o">.</span><span class="n">split</span><span class="p">())]</span>
+        <span class="k">return</span> <span class="n">results</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PororoG2PEn"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PEn">[docs]</a><span class="k">class</span> <span class="nc">PororoG2PEn</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoG2PEn.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PEn.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent (str): input sentence to be converted to phoneme</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: converted phoneme sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoG2PZh"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PZh">[docs]</a><span class="k">class</span> <span class="nc">PororoG2PZh</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoG2PZh.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PZh.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">tone</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence to be converted to phoneme</span>
+<span class="sd">            align (bool): whether to align the result</span>
+<span class="sd">            tone (bool): whether to show chinese tone</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: converted phoneme sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">tone</span><span class="o">=</span><span class="n">tone</span><span class="p">,</span> <span class="n">char_split</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">results</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">tone</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence to be converted to phoneme</span>
+<span class="sd">            align (bool): whether to align the result</span>
+<span class="sd">            tone (bool): whether to show chinese tone</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: converted phoneme sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="p">,</span> <span class="n">tone</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PororoG2PJa"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PJa">[docs]</a><span class="k">class</span> <span class="nc">PororoG2PJa</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tagger</span><span class="p">,</span> <span class="n">romanize</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span> <span class="o">=</span> <span class="n">tagger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_romanize</span> <span class="o">=</span> <span class="n">romanize</span>
+
+<div class="viewcode-block" id="PororoG2PJa.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PJa.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence to be converted to phoneme</span>
+<span class="sd">            align (bool): whether to align the result</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: converted phoneme sentence list</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">orig</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">feats</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                <span class="n">reading</span> <span class="o">=</span> <span class="n">feats</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="n">reading</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+                    <span class="n">reading</span> <span class="o">=</span> <span class="n">orig</span>
+
+                <span class="n">romaji</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_romanize</span><span class="p">(</span><span class="n">reading</span><span class="p">)</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">orig</span><span class="p">,</span> <span class="n">romaji</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">results</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grapheme to phoneme conversion</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence to be converted to phoneme</span>
+<span class="sd">            align (bool): whether to align the result</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: converted phoneme sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Question Generation &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Text Summarization" href="summary.html" />
+    <link rel="prev" title="Paraphrase Generation" href="para_gen.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/install.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#transformer">Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#huggingface-tokenizers">HuggingFace Tokenizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/models.html#others">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Question Generation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/seq2seq/qg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.question_generation">
+<span id="question-generation"></span><h1>Question Generation<a class="headerlink" href="#module-pororo.tasks.question_generation" title="Permalink to this headline">¶</a></h1>
+<p>Question generation related modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.question_generation.PororoQuestionGenerationFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.question_generation.</code><code class="sig-name descname">PororoQuestionGenerationFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#PororoQuestionGenerationFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.PororoQuestionGenerationFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>Question generation using BART model</p>
+<p>Korean (<cite>kobart.base.ko.qg</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: KorQuAD 1.0 (Lim et al. 2019) + AI hub Reading Comprehension corpus + AI hub Commonsense corpus</p></li>
+<li><dl class="simple">
+<dt>metric: Model base evaluation using PororoMrc (<cite>brainbert.base</cite>)</dt><dd><ul>
+<li><p>EM (82.59), F1 (94.06)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>ref: <a class="reference external" href="https://www.aihub.or.kr/aidata/86">https://www.aihub.or.kr/aidata/86</a></p></li>
+<li><p>ref: <a class="reference external" href="https://www.aihub.or.kr/aidata/84">https://www.aihub.or.kr/aidata/84</a></p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>answer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – answer text</p></li>
+<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – source article</p></li>
+<li><p><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – beam search size</p></li>
+<li><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – temperature scale</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – top-K sampling vocabulary size</p></li>
+<li><p><strong>top_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – top-p sampling ratio</p></li>
+<li><p><strong>no_repeat_ngram_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – no repeat ngram size</p></li>
+<li><p><strong>len_penalty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – length penalty ratio</p></li>
+<li><p><strong>n_wrong</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – number of wrong answer candidate</p></li>
+<li><p><strong>return_context</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – return context together or not</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>question (if <cite>n_wrong</cite> &lt; 1)
+Tuple[str, List[str]] : question, wrong_answers (if <cite>n_wrong</cite> &gt; 1)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># question generation has argument named `n_wrong` which creates wrong answers together</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qg</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;qg&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qg</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;카카오톡&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;카카오톡은 스마트폰의 데이터 통신 기능을 이용하여, 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 애플리케이션이다. 스마트폰 대중화 이 후 기존 인스턴트 메신저 앱의 번거로운 친구 추가 절차 없이, 스마트폰 주소록의 전 화번호만으로 손쉽게 메시지를 주고받을 수 있는 것이 특징이다.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_wrong</span><span class="o">=</span><span class="mi">3</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">((&#39;스마트폰의 데이터 통신 기능을 이용해서 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 앱을 뭐라고 해?&#39;,</span>
+<span class="go">[&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># question generation task supports batchwise inference (1:N, N:1, N:N)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># answer : context = 1 : N</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qg</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;카카오톡&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;카카오톡은 스마트폰의 데이터 통신 기능을 이용하여, 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 애플리케이션이다. 스마트폰 대중화 이 후 기존 인스턴트 메신저 앱의 번거로운 친구 추가 절차 없이, 스마트폰 주소록의 전화번호만으로 손쉽게 메시지를 주고받을 수 있는 것이 특징이다.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 카카오톡인 것으로 나타났다. 30일 한국언론진흥재단이 최근 공개한 &#39;2017 소셜미디어 이용자 조사&#39; 결과를 보면 소셜미디어로 뉴스를 본 경험이 있는 우리나라 국민 1천747명에게 뉴스 이용 플랫폼을 중복으로 선택하게 한 결과 50.4%가 카카오톡을 사용했다고 답했다. 카카오톡 다음으로는 페이스북(42%) 사용률이 높았으며 유튜브(31.8%)가 뒤를 이었다.&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">n_wrong</span><span class="o">=</span><span class="mi">3</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">[(&#39;스마트폰의 데이터 통신 기능을 이용해서 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 앱을 뭐라고 해?&#39;, [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;]),</span>
+<span class="go">(&#39;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 뭐야?&#39;, [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># answer : context = N : 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qg</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;토트넘&quot;</span><span class="p">,</span> <span class="s2">&quot;손흥민&quot;</span><span class="p">,</span> <span class="s2">&quot;인스타그램&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상한 잉글랜드 프로축구 1부리그 프리미어리 그(EPL) 소속 토트넘 홋스퍼 FC의 손흥민이 기쁜 마음을 드러냈다. 푸스카스는 1년간 전 세계 축구경기에 서 나온 골 중 가장 멋진 골을 뽑는다. 손흥민은 스위스 취리히 소재 FIFA 본부에서 온라인으로 열린 ‘2020년 더 베스트 FIFA 풋볼 어워드’ 시 상식에서 푸스카스를 받았다. 손흥민의 이번 수상은 한국 선수로는  최초이자 아시아에서는 2016년 모하메 드 파이즈 수브리(말레이시아)에 이어 두 번째다. 상을 받은 손흥민은 이날 오전 인스타그램에 “아주 특별한 밤이었다. 저를 지지해주고 제게 투표해 주어서 감사하다”며 셀 프 카메라가 담긴 사진 한 장을 게시했 다. 공개된 사진 속 손흥민은 환한 미소와 엄지를 들어 보이고 있 다. 여기에 손흥민은 이 순간을 절대 잊 지 않겠다고 덧붙였다.  앞서 손흥민은 지난해 12월8일 번리 FC와 가진 EPL 경기에서 환상적인 골을 터뜨 렸다. 당시 손흥민은 토트넘 진영에서 얀 베르통언(벨기에)의 패 스를 받고 공을 잡고 약 70ｍ를 혼자 내달리며 무려 번리 선수 6명을 따돌린 뒤 페널티 지역에서 오른발  슈팅으로 골망을 흔들었다. 이후 이 골은 EPL ‘12월의 골’을 시작으로 영국 공영방송 BBC의 ‘올해의 골’, 영국 스포츠 매체 디 애슬레틱의 ‘올해의  골’에 이어 EPL 사무국이 선정하는 2019∼20시즌 ‘올해의 골’ 등으로 선정되며 최고의 골로 인정받은 바 있다.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_wrong</span><span class="o">=</span><span class="mi">3</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">[(&#39;손흥민은 어느 팀 소속이야?&#39;, [&#39;이즐링턴&#39;, &#39;웸블리&#39;, &#39;첼시&#39;]),</span>
+<span class="go">(&#39;누가 ‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상했어?&#39;, [&#39;지동원&#39;, &#39;구자철&#39;, &#39;이청용&#39;]),</span>
+<span class="go">(&#39;손흥민은 셀프 카메라가 담긴 사진 한 장을 어디에 게시했어?&#39;, [&#39;트위터&#39;, &#39;페이스북&#39;, &#39;사운드클라우드&#39;])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># answer : context = N : N (answers list and contexts list must be same length. not N : M)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qg</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;카카오톡&quot;</span><span class="p">,</span> <span class="s2">&quot;손흥민&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사 람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 카카오톡인 것으로 나타났다. 30일 한국언론진흥재단이 최근 공개한 &#39;2017 소셜미디어 이용자 조사&#39; 결과를 보면 소셜미디어로 뉴스를 본 경험이 있는 우리나라 국민 1천747명에게 뉴스 이용 플랫폼을 중복으로 선택하게 한 결과 50.4%가 카카오톡을 사용했다고 답했다. 카 카오톡 다음으로는 페이스북(42%) 사용률이 높았으며 유튜브(31.8%)가 뒤를 이었다.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상한 잉글랜드 프로축구 1부리그 프리미어리그(EPL) 소속 토트넘 홋스퍼 FC의 손흥민이 기쁜 마음을 드러냈다. 푸스카스는 1년간 전 세계 축구경기에서 나온 골 중 가장 멋진 골을 뽑는다. 손흥민은 스위스 취리히 소 재 FIFA 본부에서 온라인으로 열린 ‘2020년 더 베스트 FIFA 풋볼 어워드’ 시 상식에서 푸스카스를 받았다. 손흥민의 이번 수상은 한국 선수로는 최초이자 아시아에서는 2016년 모하메 드 파이즈 수브리(말레이시아)에 이어 두 번째다. 상을 받은 손흥민은 이날 오전 인스타그램에 “아주 특별한 밤이었다. 저를 지지해주 고 제게 투표해 주어서 감사하다”며 셀프 카메라가 담긴 사진 한 장을 게시했 다. 공개된 사진 속 손흥민 은 환한 미소와 엄지를 들어 보이고 있다. 여기에 손흥민은 이 순간을 절대 잊 지 않겠다고 덧붙였다.  앞서 손흥민은 지난해 12월8일 번리 FC와 가진 EPL 경기에서 환상적인 골을 터뜨 렸다. 당시 손흥민은 토트 넘 진영에서 얀 베르통언(벨기에)의 패스를 받고 공을 잡고 약 70ｍ를 혼자 내달리며 무려 번리 선수 6명 을 따돌린 뒤 페널티 지역에서 오른발 슈팅으로 골망을 흔들었다. 이후 이 골은 EPL ‘12월의 골’을 시작으로 영국 공영방송 BBC의 ‘올해의 골’, 영국 스포츠 매체 디 애슬레틱의 ‘올해의  골’에 이어 EPL 사무국이 선정하는 2019∼20시즌 ‘올해의 골’ 등으로 선정되며 최고의 골로 인정받은 바 있다.&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">n_wrong</span><span class="o">=</span><span class="mi">3</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">[(&#39;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사 람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 뭐야?&#39;, [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;]),</span>
+<span class="go">(&#39;누가 ‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상했어?&#39;, [&#39;지동원&#39;, &#39;구자철&#39;, &#39;이청용&#39;])]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.question_generation.PororoQuestionGenerationFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#PororoQuestionGenerationFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.PororoQuestionGenerationFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.question_generation.PororoQuestionGenerationFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#PororoQuestionGenerationFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.PororoQuestionGenerationFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.question_generation.PororoQuestionGenerationFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#PororoQuestionGenerationFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.PororoQuestionGenerationFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.question_generation.PororoKoBartQuestionGeneration">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.question_generation.</code><code class="sig-name descname">PororoKoBartQuestionGeneration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">sim_words</span></em>, <em class="sig-param"><span class="n">sent_tok</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#PororoKoBartQuestionGeneration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.PororoKoBartQuestionGeneration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoGenerationBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.question_generation.PororoKoBartQuestionGeneration.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">answer</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">, </span>List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">, </span>List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">beam</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">5</span></em>, <em class="sig-param"><span class="n">temperature</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">top_k</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">top_p</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">4</span></em>, <em class="sig-param"><span class="n">len_penalty</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">n_wrong</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#PororoKoBartQuestionGeneration.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.PororoKoBartQuestionGeneration.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conducnt question generation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>]</em><em>]</em>) – input text</p></li>
+<li><p><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – beam search size</p></li>
+<li><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – temperature scale</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – top-K sampling vocabulary size</p></li>
+<li><p><strong>top_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – top-p sampling ratio</p></li>
+<li><p><strong>no_repeat_ngram_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – no repeat ngram size</p></li>
+<li><p><strong>len_penalty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – length penalty ratio</p></li>
+<li><p><strong>n_wrong</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – number of wrong answer candidate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.question_generation.SimilarWords">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.question_generation.</code><code class="sig-name descname">SimilarWords</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">idx</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/question_generation.html#SimilarWords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.question_generation.SimilarWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="summary.html" class="btn btn-neutral float-right" title="Text Summarization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="para_gen.html" class="btn btn-neutral float-left" title="Paraphrase Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, SIGNALS
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
