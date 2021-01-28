@@ -88,8 +88,14 @@ If you apply this library to any project and research, please cite our code:
 
 <br>
 
+## Contributors
+
+[Hoon Heo](https://github.com/huffon), [Kyubyong Park](https://github.com/Kyubyong), [Hyunwoong Ko](https://github.com/hyunwoongko), [Soohwan Kim](https://github.com/sooftware), [Gunsoo Han](https://github.com/robinsongh381) and [Jiwoo Park](https://github.com/bernardscumm)
+
+<br>
+
 ## License
 
-Pororo project is licensed under the terms of the Apache License 2.0.
+`Pororo` project is licensed under the terms of **the Apache License 2.0**.
 
 Copyright 2021 Kakao Brain Corp. <https://www.kakaobrain.com> All Rights Reserved.

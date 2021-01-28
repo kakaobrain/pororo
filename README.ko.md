@@ -6,8 +6,6 @@
 
 자연어 처리 및 음성 분야 내 다양한 서브 태스크들을 태스크명을 입력하는 것만으로 쉽게 해결할 수 있습니다.
 
-#signals-pororo
-
 <br>
 
 ## Installation
@@ -90,8 +88,14 @@ Pororo 라이브러리를 프로젝트 혹은 연구에 활용하신다면 아�
 
 <br>
 
+## Contributors
+
+[허훈](https://github.com/huffon), [박규병](https://github.com/Kyubyong), [고현웅](https://github.com/hyunwoongko), [김수환](https://github.com/sooftware), [한건수](https://github.com/robinsongh381) 그리고 [박지우](https://github.com/bernardscumm)
+
+<br>
+
 ## License
 
-Pororo 프로젝트는 Apache License 2.0 라이센스를 따릅니다.
+`Pororo` 프로젝트는 **Apache License 2.0 라이센스**를 따릅니다.
 
 Copyright 2021 Kakao Brain Corp. <https://www.kakaobrain.com> All Rights Reserved.
