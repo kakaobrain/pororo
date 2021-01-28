@@ -30,10 +30,7 @@ RUN apt-get update && \
     libomp-dev
 
 # 1. install pororo
-RUN pip install \
-    --trusted-host kakaobrain-pypi.dev.9rum.cc \
-    --extra-index-url http://kakaobrain-pypi.dev.9rum.cc/ \
-    pororo==0.2.0
+RUN pip install pororo
 
 # 2. install brainspeech
 RUN pip install soundfile \
@@ -43,13 +40,7 @@ RUN pip install soundfile \
 
 RUN conda install -y -c conda-forge librosa
 
-# 3. install tts libs
-RUN pip install fastdtw \
-    epitran \
-    phonemizer \
-    ko_pron
-
-# 4. install etc modules
+# 3. install etc modules
 RUN pip install librosa \
     kollocate \
     koparadigm \
@@ -60,7 +51,8 @@ RUN pip install librosa \
     g2pM \
     jieba \
     opencv-python \
-    scikit-image
+    scikit-image \
+    python-mecab-ko
 
 WORKDIR /app/external_lib
 
