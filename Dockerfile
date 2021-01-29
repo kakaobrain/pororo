@@ -68,7 +68,3 @@ WORKDIR /app/external_lib/wav2letter/bindings/python
 RUN pip install -e .
 
 WORKDIR /app
-
-ARG ACTIVE_PROFILE
-RUN echo $ACTIVE_PROFILE
-ENV ACTIVE_PROFILE=$ACTIVE_PROFILE
