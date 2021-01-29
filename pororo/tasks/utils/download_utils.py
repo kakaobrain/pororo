@@ -255,56 +255,7 @@ def download_or_load_bart(info: DownloadInfo) -> Union[str, Tuple[str, str]]:
             lang=info.lang,
         )
 
-    if "mbart" not in info.n_model:
-        return model_path
-
-    spm_path = os.path.join(
-        info.root_dir,
-        "sentencepiece/mbart.bpe57k.ecjk.model",
-    )
-
-    if not os.path.exists(spm_path):
-        download_or_load(
-            "sentencepiece/mbart.bpe57k.ecjk",
-            lang="multi",
-        )
-
-    return model_path, spm_path
-
-
-def download_or_load_meena(info: DownloadInfo) -> Tuple[str, str]:
-    """
-    Download Meena model
-
-    Args:
-        info (DownloadInfo): download information
-
-    Returns:
-        Tuple[str, str]: Meena model and corresponding tokenizer path
-
-    """
-    info.n_model += ".pt"
-
-    model_path = os.path.join(info.root_dir, info.n_model)
-    if not os.path.exists(model_path):
-        download_from_url(
-            info.n_model,
-            model_path,
-            key="model",
-            lang=info.lang,
-        )
-
-    tok_path = os.path.join(
-        info.root_dir,
-        f"tokenizers/pingpong.bpe32k.{info.lang}",
-    )
-    if not os.path.exists(tok_path):
-        download_or_load(
-            f"tokenizers/pingpong.bpe32k.{info.lang}.zip",
-            lang=info.lang,
-        )
-
-    return model_path, tok_path
+    return model_path
 
 
 def download_from_url(
@@ -367,7 +318,5 @@ def download_or_load(
         return download_or_load_bert(info)
     if "bart" in n_model and "bpe" not in n_model:
         return download_or_load_bart(info)
-    if "meena" in n_model and "bpe" not in n_model:
-        return download_or_load_meena(info)
 
     return download_or_load_misc(info)
