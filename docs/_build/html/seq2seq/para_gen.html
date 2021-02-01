@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Paraphrase Generation &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Question Generation" href="qg.html" />
+    <link rel="prev" title="Machine Translation" href="mt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mt.html">Machine Translation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Paraphrase Generation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/seq2seq/para_gen.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.paraphrase_generation">
+<span id="paraphrase-generation"></span><h1>Paraphrase Generation<a class="headerlink" href="#module-pororo.tasks.paraphrase_generation" title="Permalink to this headline">¶</a></h1>
+<p>Paraphrase Generation modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.paraphrase_generation.PororoParaphraseFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.paraphrase_generation.</code><code class="sig-name descname">PororoParaphraseFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoParaphraseFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoParaphraseFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>paraphrase generation using Transformer Seq2Seq</p>
+<p>Multi (<cite>transformer.large.multi.mtpg</cite>)</p>
+<blockquote>
+<div><ul>
+<li><p>dataset: Internal data</p></li>
+<li><p>metric: BLEU score</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Language</p></th>
+<th class="head"><p>BLEU score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Average</p></td>
+<td><p>33.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Englosh</p></td>
+<td><p>54</p></td>
+</tr>
+<tr class="row-even"><td><p>Korean</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Japanese</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>Chinese</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>Multi (<cite>transformer.large.multi.fast.mtpg</cite>)</p>
+<blockquote>
+<div><ul>
+<li><p>dataset: Internal data</p></li>
+<li><p>metric: BLEU score</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Language</p></th>
+<th class="head"><p>BLEU score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Average</p></td>
+<td><p>33.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Englosh</p></td>
+<td><p>56</p></td>
+</tr>
+<tr class="row-even"><td><p>Korean</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Japanese</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>Chinese</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – input sentence to be paraphrase generated</p></li>
+<li><p><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – beam search size</p></li>
+<li><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – temperature scale</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – top-K sampling vocabulary size</p></li>
+<li><p><strong>top_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – top-p sampling ratio</p></li>
+<li><p><strong>no_repeat_ngram_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – no repeat ngram size</p></li>
+<li><p><strong>len_penalty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – length penalty ratio</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>generated paraphrase</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;pg&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span><span class="p">(</span><span class="s2">&quot;노는게 제일 좋아. 친구들 모여라. 언제나 즐거워.&quot;</span><span class="p">)</span>
+<span class="go">노는 것이 가장 좋습니다. 친구들끼리 모여 주세요. 언제나 즐거운 시간 되세요.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s2">&quot;pg&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span><span class="p">(</span><span class="s2">&quot;我喜欢足球&quot;</span><span class="p">)</span>  <span class="c1"># 나는 축구를 좋아해</span>
+<span class="go">&#39;我喜欢球球球&#39;  # 나는 공을 좋아해</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;pg&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span><span class="p">(</span><span class="s2">&quot;雨の日を聞く良い音楽をお勧めしてくれ。&quot;</span><span class="p">)</span>  <span class="c1"># 비오는 날 듣기 좋은 음악 가르쳐줘</span>
+<span class="go">&#39;雨の日を聞くいい音楽を教えてください。&#39;          # 비오는 날 듣기 좋은 음악을 가르쳐 주세요</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s2">&quot;pg&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span><span class="p">(</span><span class="s2">&quot;There is someone at the door.&quot;</span><span class="p">)</span>
+<span class="go">&quot;Someone&#39;s at the door.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span><span class="p">(</span><span class="s2">&quot;I&#39;m good, but thanks for the offer.&quot;</span><span class="p">)</span>
+<span class="go">&quot;I&#39;m fine, but thanks for the deal.&quot;</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.paraphrase_generation.PororoParaphraseFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoParaphraseFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoParaphraseFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.paraphrase_generation.PororoParaphraseFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoParaphraseFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoParaphraseFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.paraphrase_generation.PororoParaphraseFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoParaphraseFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoParaphraseFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.paraphrase_generation.PororoTransformerTransMulti">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.paraphrase_generation.</code><code class="sig-name descname">PororoTransformerTransMulti</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">tokenizer</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoTransformerTransMulti"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoTransformerTransMulti" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoGenerationBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.paraphrase_generation.PororoTransformerTransMulti.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">beam</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">5</span></em>, <em class="sig-param"><span class="n">temperature</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">top_k</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">top_p</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">4</span></em>, <em class="sig-param"><span class="n">len_penalty</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoTransformerTransMulti.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoTransformerTransMulti.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct machine translation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – input sentence to be paraphrase generated</p></li>
+<li><p><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – beam search size</p></li>
+<li><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – temperature scale</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – top-K sampling vocabulary size</p></li>
+<li><p><strong>top_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – top-p sampling ratio</p></li>
+<li><p><strong>no_repeat_ngram_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – no repeat ngram size</p></li>
+<li><p><strong>len_penalty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – length penalty ratio</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>machine translated sentence</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.paraphrase_generation.PororoTransformerParaphrase">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.paraphrase_generation.</code><code class="sig-name descname">PororoTransformerParaphrase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">tokenizer</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoTransformerParaphrase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoTransformerParaphrase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoGenerationBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.paraphrase_generation.PororoTransformerParaphrase.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">beam</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">temperature</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">top_k</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">top_p</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span> <span class="o">=</span> <span class="default_value">4</span></em>, <em class="sig-param"><span class="n">len_penalty</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/paraphrase_generation.html#PororoTransformerParaphrase.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.paraphrase_generation.PororoTransformerParaphrase.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct paraphrase generation using Transformer Seq2Seq</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – input sentence to be paraphrase generated</p></li>
+<li><p><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – beam search size</p></li>
+<li><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – temperature scale</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – top-K sampling vocabulary size</p></li>
+<li><p><strong>top_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – top-p sampling ratio</p></li>
+<li><p><strong>no_repeat_ngram_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – no repeat ngram size</p></li>
+<li><p><strong>len_penalty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – length penalty ratio</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>generated paraphrase</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qg.html" class="btn btn-neutral float-right" title="Question Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mt.html" class="btn btn-neutral float-left" title="Machine Translation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

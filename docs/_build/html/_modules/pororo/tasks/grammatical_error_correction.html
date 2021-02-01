@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.grammatical_error_correction &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.grammatical_error_correction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.grammatical_error_correction</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Grammatical Error Correction related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PororoFactoryBase</span><span class="p">,</span>
+    <span class="n">PororoGenerationBase</span><span class="p">,</span>
+    <span class="n">PororoSimpleBase</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoGecFactory"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoGecFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoGecFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Grammatical error correction</span>
+
+<span class="sd">    English (`transformer.base.en.gec`)</span>
+
+<span class="sd">        - dataset: FCE, W&amp;I+LOCNESS</span>
+<span class="sd">        - metric: TBU</span>
+
+<span class="sd">    English (`transformer.base.en.char_gec`)</span>
+
+<span class="sd">        - dataset: xfspell</span>
+<span class="sd">        - metric: TBU</span>
+<span class="sd">        - ref: http://www.realworldnlpbook.com/blog/unreasonable-effectiveness-of-transformer-spell-checker.html</span>
+
+<span class="sd">    Korean (`charbert.base.ko.spacing`)</span>
+
+<span class="sd">        - dataset: Internal data (based on Wikipedia)</span>
+<span class="sd">        - metric: F1 (89.51)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): input sentence to fix grammatical error</span>
+<span class="sd">        beam (int): size of beam search</span>
+<span class="sd">        temperature (float): temperature for sampling</span>
+<span class="sd">        top_k (int): variable for top k sampling</span>
+<span class="sd">        top_p (float): variable for top p sampling</span>
+<span class="sd">        no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">        len_penalty (float): length penalty ratio</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; gec = Pororo(task=&quot;gec&quot;, lang=&quot;en&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; gec(&quot;This apple are so sweet.&quot;)</span>
+<span class="sd">        &quot;This apple is so sweet.&quot;</span>
+<span class="sd">        &gt;&gt;&gt; gec(&quot;&#39;I&#39;ve love you, before I meet her!&#39;&quot;)</span>
+<span class="sd">        &quot;&#39;I&#39;ve loved you, before I met her!&quot;</span>
+<span class="sd">        &gt;&gt;&gt; spacing = Pororo(task=&quot;gec&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; spacing(&quot;카 카오브 레인에서는 무슨 일을 하 나 요?&quot;)</span>
+<span class="sd">        &#39;카카오브레인에서는 무슨 일을 하나요?&#39;</span>
+<span class="sd">        &gt;&gt;&gt; spacing(&quot;아버지가방에들어간다.&quot;)</span>
+<span class="sd">        &#39;아버지가 방에 들어간다.&#39;</span>
+
+
+<span class="sd">    Notes:</span>
+<span class="sd">        Korean error correction is beta version.</span>
+<span class="sd">        It only supports spacing correction currently.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoGecFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoGecFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoGecFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoGecFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;transformer.base.en.gec&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;transformer.base.en.char_gec&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;charbert.base.ko.spacing&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoGecFactory.load"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoGecFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;charbert&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">CharBrainRobertaModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="p">(</span><span class="n">CharBrainRobertaModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;As of now, this beta model tries to correct spacing errors in Korean text.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoBertSpacing</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;transformer&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">fairseq.models.transformer</span> <span class="kn">import</span> <span class="n">TransformerModel</span>
+
+            <span class="kn">from</span> <span class="nn">pororo.tasks.utils.tokenizer</span> <span class="kn">import</span> <span class="n">CustomTokenizer</span>
+
+            <span class="n">load_dict</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;transformer/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">tokenizer</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="p">(</span><span class="n">TransformerModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+                <span class="n">model_name_or_path</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">checkpoint_file</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">,</span>
+                <span class="n">data_name_or_path</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">dict_path</span><span class="p">,</span>
+                <span class="n">source_lang</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_dict</span><span class="p">,</span>
+                <span class="n">target_lang</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">tgt_dict</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="s2">&quot;char&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">PororoTransformerGecChar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">load_dict</span><span class="o">.</span><span class="n">src_tok</span><span class="p">:</span>
+                <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">CustomTokenizer</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span>
+                    <span class="n">vocab_filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_tok</span><span class="si">}</span><span class="s2">/vocab.json&quot;</span><span class="p">,</span>
+                    <span class="n">merges_filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_tok</span><span class="si">}</span><span class="s2">/merges.txt&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">PororoTransformerGec</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoTransformerGecChar"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoTransformerGecChar">[docs]</a><span class="k">class</span> <span class="nc">PororoTransformerGecChar</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_symbols</span> <span class="o">=</span> <span class="s2">&quot;[:.,!?</span><span class="se">\&quot;</span><span class="s2">&#39;]&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+            <span class="s2">&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ .,!?&#39;-&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess input sentence to replace whitespace token with whitespace&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: preprocessed input sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">chars</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">unks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chars</span><span class="p">:</span>
+                <span class="n">chars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">chars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;▮&quot;</span><span class="p">)</span>
+                <span class="n">unks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot; +&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">if</span> <span class="n">ch</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span> <span class="k">else</span> <span class="s2">&quot;▁&quot;</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="mi">1023</span><span class="p">]),</span> <span class="n">unks</span>
+
+    <span class="k">def</span> <span class="nf">_despace_puncts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        desapce punctionation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            desapced sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([</span><span class="se">\&quot;</span><span class="s2">&#39;]) &quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_symbols</span><span class="si">}</span><span class="s2">+)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unks</span><span class="p">:</span> <span class="n">List</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess output sentence to replace whitespace</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output (str): output sentence generated by model</span>
+<span class="sd">            unks (List[str]): pre-replaced unknown token lists</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: postprocessed output sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">unks</span><span class="p">:</span>
+            <span class="n">pointer</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">chars</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chars</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s2">&quot;▮&quot;</span><span class="p">:</span>
+                    <span class="n">chars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">unks</span><span class="p">[</span><span class="n">pointer</span><span class="p">]</span>
+                    <span class="n">pointer</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+<div class="viewcode-block" id="PororoTransformerGecChar.predict"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoTransformerGecChar.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grammar error correction</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: grammartically corrected sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sampling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">text</span><span class="p">,</span> <span class="n">unks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">sampling</span><span class="o">=</span><span class="n">sampling</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">sampling_topk</span><span class="o">=</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">sampling_topp</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">lenpen</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">unks</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span></div></div>
+
+
+<div class="viewcode-block" id="PororoTransformerGec"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoTransformerGec">[docs]</a><span class="k">class</span> <span class="nc">PororoTransformerGec</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_symbols</span> <span class="o">=</span> <span class="s2">&quot;[:.,!?</span><span class="se">\&quot;</span><span class="s2">&#39;]&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clitics</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;n&#39;t&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;ll&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;s&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;m&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;ve&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;d&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;re&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_corrector</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_space_puncts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: processed string</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            noise!He -&gt; noise ! He</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+            <span class="n">detect_clitic</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">clitic</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clitics</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">clitic</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+                    <span class="n">detect_clitic</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_symbols</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">detect_clitic</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># e.g., `U.S.` is correct.</span>
+                    <span class="n">word</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_symbols</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot; \1 &quot;</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_text</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_space_contracts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: processed string</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            haven&#39;t -&gt; have n&#39;t</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">clitic</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clitics</span><span class="p">:</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;([A-Za-z])(</span><span class="si">{</span><span class="n">clitic</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1 \2&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+            <span class="n">_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_text</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_collapse_spaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input string</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: processed string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot; +&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">_despace_puncts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inverse function of _space_puncts(self, text)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: processed string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([</span><span class="se">\&quot;</span><span class="s2">&#39;]) &quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_symbols</span><span class="si">}</span><span class="s2">+)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_despace_contracts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inverse function of _space_contracts(self, text)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: processed string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">clitic</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clitics</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; (</span><span class="si">{</span><span class="n">clitic</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess using simple methods</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: preprocessed string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_space_puncts</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_space_contracts</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collapse_spaces</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">pieces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess output sentence to replace whitespace</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output (str): sentence to postprocess</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: postprocessed string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_despace_puncts</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_despace_contracts</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">_correct_spell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct error correction for spell</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            result of spell error correction</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corrector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_corrector</span> <span class="o">=</span> <span class="n">PororoGecFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;gec&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;transformer.base.en.char_gec&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_corrector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corrector</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grammar_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_corrector</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_grammar_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess output sentence</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): sentence to postprocess</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: postprocessed string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot; &#39;(s|t|ll|m|re|ve|d)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;&#39;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="c1"># pairs</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;()&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;[]&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&quot;&#39;</span><span class="p">):</span>
+            <span class="n">opening</span><span class="p">,</span> <span class="n">closing</span> <span class="o">=</span> <span class="n">pair</span>
+            <span class="n">opening_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">opening</span><span class="p">)</span>
+            <span class="n">closing_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">closing</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">opening_</span><span class="si">}</span><span class="s2"> +([^</span><span class="si">{</span><span class="n">closing_</span><span class="si">}</span><span class="s2">]+) +</span><span class="si">{</span><span class="n">closing_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">opening</span><span class="si">}</span><span class="s2">\1</span><span class="si">{</span><span class="n">closing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">text</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot; ([:.,!?])&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+<div class="viewcode-block" id="PororoTransformerGec.predict"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoTransformerGec.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">correct_spell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grammar error correction</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: grammartically corrected sentence</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; gec = Pororo(task=&quot;gec&quot;, model=&quot;transformer.base.en.gec&quot;, lang=&quot;en&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; gec(&quot;This apple are so sweet.&quot;)</span>
+<span class="sd">            &quot;This apple is so sweet.&quot;</span>
+<span class="sd">            &gt;&gt;&gt; gec(&quot;&#39;I&#39;ve love you, before I meet her!&#39;&quot;)</span>
+<span class="sd">            &quot;&#39;I&#39;ve loved you, before I met her!&quot;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sampling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">correct_spell</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_correct_spell</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">sampling</span><span class="o">=</span><span class="n">sampling</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">sampling_topk</span><span class="o">=</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">sampling_topp</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">lenpen</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grammar_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">if</span> <span class="n">correct_spell</span> <span class="k">else</span> <span class="n">output</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">correct_spell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct grammar error correction</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: grammartically corrected sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="p">,</span>
+            <span class="n">top_p</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">len_penalty</span><span class="p">,</span>
+            <span class="n">correct_spell</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PororoBertSpacing"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoBertSpacing">[docs]</a><span class="k">class</span> <span class="nc">PororoBertSpacing</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess spacing correction result</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tokens (List[str]): list containing character and its predicted label</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: postprocessed and spacing corrected sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+            <span class="n">token</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">pair</span>
+
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">token</span>
+            <span class="k">elif</span> <span class="n">label</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;▁</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="n">label</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;▁&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<div class="viewcode-block" id="PororoBertSpacing.predict"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoBertSpacing.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct spacing correction</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text: (str) sentence to be spacing error corrected</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: spacing error corrected sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_tags</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="n">li_result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">li_result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">li_result</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">li_result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">li_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

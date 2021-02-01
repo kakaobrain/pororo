@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation and Usage &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration" href="config.html" />
+    <link rel="prev" title="Welcome to Pororo’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation and Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Installation and Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/notes/intro.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-and-usage">
+<h1>Installation and Usage<a class="headerlink" href="#installation-and-usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We highly recommend <strong>conda</strong> environment to prevent dependecy problem</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pororo only supports python &gt;= 3.6</span>
+<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">pororo</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.6</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">pororo</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To install <code class="docutils literal notranslate"><span class="pre">pororo</span></code> run following command:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pororo</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Since <code class="docutils literal notranslate"><span class="pre">Pororo</span></code> sets <strong>English</strong> as a default language option, you should follow <a class="reference external" href="https://github.kakaocorp.com/kakaobrain/pororo/blob/master/INSTALL.md">INSTALL</a> guide to install other dependency libraries</p></li>
+</ul>
+<br></div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>To see what’s available in <code class="docutils literal notranslate"><span class="pre">pororo</span></code>, run the following command:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pororo</span> <span class="kn">import</span> <span class="n">Pororo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Pororo</span><span class="o">.</span><span class="n">available_tasks</span><span class="p">()</span>
+<span class="go">&quot;Available tasks are [&#39;mrc&#39;, &#39;rc&#39;, &#39;qa&#39;, &#39;question_answering&#39;, &#39;machine_reading_comprehension&#39;, &#39;reading_comprehension&#39;, &#39;sentiment&#39;, &#39;sentiment_analysis&#39;, &#39;nli&#39;, &#39;natural_language_inference&#39;, &#39;inference&#39;, &#39;fill&#39;, &#39;fill_in_blank&#39;, &#39;fib&#39;, &#39;para&#39;, &#39;pi&#39;, &#39;cse&#39;, &#39;contextual_subword_embedding&#39;, &#39;similarity&#39;, &#39;sts&#39;, &#39;semantic_textual_similarity&#39;, &#39;sentence_similarity&#39;, &#39;sentvec&#39;, &#39;sentence_embedding&#39;, &#39;sentence_vector&#39;, &#39;se&#39;, &#39;inflection&#39;, &#39;morphological_inflection&#39;, &#39;g2p&#39;, &#39;grapheme_to_phoneme&#39;, &#39;grapheme_to_phoneme_conversion&#39;, &#39;w2v&#39;, &#39;wordvec&#39;, &#39;word2vec&#39;, &#39;word_vector&#39;, &#39;word_embedding&#39;, &#39;tokenize&#39;, &#39;tokenise&#39;, &#39;tokenization&#39;, &#39;tokenisation&#39;, &#39;tok&#39;, &#39;segmentation&#39;, &#39;seg&#39;, &#39;mt&#39;, &#39;machine_translation&#39;, &#39;translation&#39;, &#39;pos&#39;, &#39;tag&#39;, &#39;pos_tagging&#39;, &#39;tagging&#39;, &#39;const&#39;, &#39;constituency&#39;, &#39;constituency_parsing&#39;, &#39;cp&#39;, &#39;pg&#39;, &#39;collocation&#39;, &#39;collocate&#39;, &#39;col&#39;, &#39;word_translation&#39;, &#39;wt&#39;, &#39;summarization&#39;, &#39;summarisation&#39;, &#39;text_summarization&#39;, &#39;text_summarisation&#39;, &#39;summary&#39;, &#39;gec&#39;, &#39;review&#39;, &#39;review_scoring&#39;, &#39;lemmatization&#39;, &#39;lemmatisation&#39;, &#39;lemma&#39;, &#39;ner&#39;, &#39;named_entity_recognition&#39;, &#39;entity_recognition&#39;, &#39;zero-topic&#39;, &#39;dp&#39;, &#39;dep_parse&#39;, &#39;caption&#39;, &#39;captioning&#39;, &#39;asr&#39;, &#39;speech_recognition&#39;, &#39;st&#39;, &#39;speech_translation&#39;, &#39;ocr&#39;, &#39;srl&#39;, &#39;semantic_role_labeling&#39;, &#39;p2g&#39;, &#39;aes&#39;, &#39;essay&#39;, &#39;qg&#39;, &#39;question_generation&#39;, &#39;age_suitability&#39;]&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To see which models are available with specific task, run the following command:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pororo</span> <span class="kn">import</span> <span class="n">Pororo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Pororo</span><span class="o">.</span><span class="n">available_models</span><span class="p">(</span><span class="s2">&quot;collocation&quot;</span><span class="p">)</span>
+<span class="go">&#39;Available models for collocation are ([lang]: ko, [model]: kollocate), ([lang]: en, [model]: collocate), ([lang]: ja, [model]: collocate), ([lang]: zh, [model]: collocate)&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pororo</span></code> takes the concept of HuggingFace Transformers’s <a class="reference external" href="https://huggingface.co/transformers/main_classes/pipelines.html"><strong>Pipeline</strong></a></p></li>
+<li><p>Therefore, we use factory class <code class="docutils literal notranslate"><span class="pre">Pororo</span></code> to load task-specific model from our hub</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pororo</span> <span class="kn">import</span> <span class="n">Pororo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mrc</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;mrc&quot;</span><span class="p">)</span>  <span class="c1"># define task model as PororoBertMrc</span>
+</pre></div>
+</div>
+<br><ul class="simple">
+<li><p>You can check the information of the task-specific module by printing object</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">summary</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">summary</span>
+<span class="go">[TASK]: summary</span>
+<span class="go">[LANG]: ko</span>
+<span class="go">[MODEL]: transformer.base.ko.summary</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="config.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pororo’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

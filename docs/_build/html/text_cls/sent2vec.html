@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Sentence Embedding &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sentiment Analysis" href="sentiment.html" />
+    <link rel="prev" title="Semantic Textual Similarity" href="sts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sentence Embedding</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/text_cls/sent2vec.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.sentence_embedding">
+<span id="sentence-embedding"></span><h1>Sentence Embedding<a class="headerlink" href="#module-pororo.tasks.sentence_embedding" title="Permalink to this headline">¶</a></h1>
+<p>Sentence Embedding related modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.sentence_embedding.PororoSentenceFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.sentence_embedding.</code><code class="sig-name descname">PororoSentenceFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSentenceFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSentenceFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>Sentence embedding based embedding vector</p>
+<p>English (<cite>stsb-roberta-base</cite>, <cite>stsb-roberta-large</cite>, <cite>stsb-bert-base</cite>, <cite>stsb-bert-large</cite>, <cite>stsb-distllbert-base</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: N/A</p></li>
+<li><p>metric : N/A</p></li>
+</ul>
+</div></blockquote>
+<p>Korean (<cite>brainsbert.base.ko.kornli.korsts</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: N/A</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p>Japanese (<cite>jasbert.base.ja.nli.sts</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: N/A</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p>Chinese (<cite>zhsbert.base.zh.nli.sts</cite>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dataset: N/A</p></li>
+<li><p>metric: N/A</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">se</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;sentence_embedding&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span><span class="p">(</span><span class="s2">&quot;나는 동물을 좋아하는 사람이야&quot;</span><span class="p">)</span>
+<span class="go">[128.78, 200.12, 245.321, ...]  # (1, hidden dim)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSentenceFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSentenceFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.sentence_embedding.PororoSentenceFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSentenceFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSentenceFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.sentence_embedding.PororoSBertSentence">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.sentence_embedding.</code><code class="sig-name descname">PororoSBertSentence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSBertSentence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSBertSentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoSimpleBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.sentence_embedding.PororoSBertSentence.find_similar_sentences">
+<code class="sig-name descname">find_similar_sentences</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">cands</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSBertSentence.find_similar_sentences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSBertSentence.find_similar_sentences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct find similar sentences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – query sentence to be acted as anchor</p></li>
+<li><p><strong>cands</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>]</em>) – candidate sentences to be compared</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of tuple containing candidate sentence and its score</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, List[Tuple[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a>]]]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">se</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;sentence_embedding&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;He is the tallest person in the world&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cands</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;I hate this guy.&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;You are so lovely!.&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;Tom is taller than Jim.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span><span class="o">.</span><span class="n">find_similar_sentences</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">cands</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">    &#39;query&#39;: &#39;He is the tallest person in the world&#39;,</span>
+<span class="go">    &#39;ranking&#39;: [(2, &#39;Tom is taller than Jim.&#39;, 0.49), (1, &#39;You are so lovely!.&#39;, 0.47), (0, &#39;I hate this guy.&#39;, 0.22)]</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;sentence_embedding&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;고양이가 창 밖을 바라본다&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cands</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s2">&quot;고양이가 카메라를 켠다&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s2">&quot;남자와 여자가 걷고 있다&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s2">&quot;고양이가 개를 만지려 하고 있다&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s2">&quot;두 마리의 고양이가 창문을 보고 있다&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s2">&quot;테이블 위에 앉아 있는 고양이가 창밖을 내다보고 있다&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s2">&quot;창밖을 내다보는 고양이&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span><span class="o">.</span><span class="n">find_similar_sentences</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">cands</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">    &#39;query&#39;: &#39;고양이가 창 밖을 바라본다&#39;,</span>
+<span class="go">     &#39;ranking&#39;: [(5, &#39;창밖을 내다보는 고양이&#39;, 0.93), (4, &#39;테이블 위에 앉아 있는 고양이가 창밖을 내다보고 있다&#39;, 0.91), (3, &#39;두 마리의 고양이가 창문을 보고 있다&#39;, 0.78), (0, &#39;고양이가 카메라를 켠다&#39;, 0.74), (2, &#39;고양이가 개를 만지려 하고 있다&#39;, 0.41)]</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;sentence_embedding&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;おはようございます&quot;</span>  <span class="c1"># Good morning</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cands</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;こんにちは&quot;</span><span class="p">,</span> <span class="s2">&quot;失礼します&quot;</span><span class="p">,</span> <span class="s2">&quot;こんばんは&quot;</span><span class="p">]</span>  <span class="c1"># Hello | Please Excuse Me (for Leaving) | Good evening</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span><span class="o">.</span><span class="n">find_similar_sentences</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">cands</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">    &#39;query&#39;: &#39;おはようございます&#39;,</span>
+<span class="go">    &#39;ranking&#39;: [(0, &#39;こんにちは&#39;, 0.58), (2, &#39;こんばんは&#39;, 0.48), (1, &#39;失礼します&#39;, 0.27)]</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;sentence_embedding&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;欢迎光临&quot;</span>  <span class="c1"># Welcome</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cands</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;你好。&quot;</span><span class="p">,</span> <span class="s2">&quot;你会说英语吗?&quot;</span><span class="p">,</span> <span class="s2">&quot;洗手间在哪里?&quot;</span><span class="p">]</span>  <span class="c1"># Hello | Do you speak English? | Where is the bathroom?</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">se</span><span class="o">.</span><span class="n">find_similar_sentences</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">cands</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">    &#39;query&#39;: &#39;欢迎光临&#39;,</span>
+<span class="go">    &#39;ranking&#39;: [(0, &#39;你好。&#39;, 0.53), (2, &#39;洗手间在哪里?&#39;, 0.2), (1, &#39;你会说英语吗?&#39;, 0.09)]</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.sentence_embedding.PororoSBertSentence.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/sentence_embedding.html#PororoSBertSentence.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentence_embedding.PororoSBertSentence.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct sentence embedding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – input sentence to be sentence embedded</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>embedded sentence array</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sentiment.html" class="btn btn-neutral float-right" title="Sentiment Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sts.html" class="btn btn-neutral float-left" title="Semantic Textual Similarity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

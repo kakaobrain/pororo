@@ -1,0 +1,23 @@
+# project
+__pycache__
+.pytest_cache
+external_lib
+core.*
+.idea
+.empty
+.coverage
+
+# docs
+*.bat
+
+# deploy
+build*
+dist*
+*.egg*
+
+# test
+*.flac
+*.wav
+*.pt
+*.tmp
+tmp*

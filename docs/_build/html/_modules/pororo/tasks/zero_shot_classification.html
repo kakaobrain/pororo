@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.zero_shot_classification &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.zero_shot_classification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.zero_shot_classification</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Zero-shot Classification related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoBiencoderBase</span><span class="p">,</span> <span class="n">PororoFactoryBase</span>
+
+
+<div class="viewcode-block" id="PororoZeroShotFactory"><a class="viewcode-back" href="../../../text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoZeroShotFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Zero-shot topic classification</span>
+
+<span class="sd">    See also:</span>
+<span class="sd">        https://joeddav.github.io/blog/2020/05/29/ZSL.html</span>
+
+<span class="sd">    Korean (`brainbert.base.ko.kornli`)</span>
+
+<span class="sd">        - dataset: KorNLI (Ham et al. 2020)</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    English (`roberta.base.en.nli`)</span>
+
+<span class="sd">        - dataset: MNLI (Adina Williams et al. 2017)</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Japanese (`jaberta.base.ja.nli`)</span>
+
+<span class="sd">        - dataset: XNLI (Alexis Conneau et al. 2018)</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Chinese (`zhberta.base.zh.nli`)</span>
+
+<span class="sd">        - dataset: XNLI (Alexis Conneau et al. 2018)</span>
+<span class="sd">        - metric: N/A</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; zsl = Pororo(task=&quot;zero-topic&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; zsl(&quot;Who are you voting for in 2020?&quot;, [&quot;business&quot;, &quot;art &amp; culture&quot;, &quot;politics&quot;])</span>
+<span class="sd">        {&#39;business&#39;: 33.23, &#39;art &amp; culture&#39;: 8.33, &#39;politics&#39;: 96.12}</span>
+<span class="sd">        &gt;&gt;&gt; zsl = Pororo(task=&quot;zero-topic&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; zsl(&#39;&#39;&#39;라리가 사무국, 메시 아닌 바르사 지지...&quot;바이 아웃 유효&quot; [공식발표]&#39;&#39;&#39;, [&quot;스포츠&quot;, &quot;사회&quot;, &quot;정치&quot;, &quot;경제&quot;, &quot;생활/문화&quot;, &quot;IT/과학&quot;])</span>
+<span class="sd">        {&#39;스포츠&#39;: 94.15, &#39;사회&#39;: 37.11, &#39;정치&#39;: 74.26, &#39;경제&#39;: 39.18, &#39;생활/문화&#39;: 71.15, &#39;IT/과학&#39;: 34.71}</span>
+<span class="sd">        &gt;&gt;&gt; zsl(&#39;&#39;&#39;장제원, 김종인 당무감사 추진에 “참 잔인들 하다”···정강정책 개정안은 “졸작”&#39;&#39;&#39;, [&quot;스포츠&quot;, &quot;사회&quot;, &quot;정치&quot;, &quot;경제&quot;, &quot;생활/문화&quot;, &quot;IT/과학&quot;])</span>
+<span class="sd">        {&#39;스포츠&#39;: 2.18, &#39;사회&#39;: 56.1, &#39;정치&#39;: 88.24, &#39;경제&#39;: 16.17, &#39;생활/문화&#39;: 66.13, &#39;IT/과학&#39;: 11.2}</span>
+<span class="sd">        &gt;&gt;&gt; zsl = Pororo(task=&quot;zero-topic&quot;, lang=&quot;ja&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; zsl(&quot;香川 真司は、兵庫県神戸市垂水区出身のプロサッカー選手。元日本代表。ポジションはMF、FW。ボルシア・ドルトムント時代の2010-11シーズンでリーグ前半期17試合で8得点を記録し9シーズンぶりのリーグ優勝に貢献。キッカー誌が選定したブンデスリーガの年間ベスト イレブンに名を連ねた。&quot;, [&quot;スポーツ&quot;, &quot;政治&quot;, &quot;技術&quot;])</span>
+<span class="sd">        {&#39;スポーツ&#39;: 0.2, &#39;政治&#39;: 99.71, &#39;技術&#39;: 68.9}</span>
+<span class="sd">        &gt;&gt;&gt; zsl = Pororo(task=&quot;zero-topic&quot;, lang=&quot;zh&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; zsl(&quot;商务部14日发布数据显示，今年前10个月，我国累计对外投资904.6亿美元，同比增长5.9%。&quot;, [&quot;政治&quot;, &quot;经济&quot;, &quot;国际化&quot;])</span>
+<span class="sd">        {&#39;政治&#39;: 33.72, &#39;经济&#39;: 3.9, &#39;国际化&#39;: 13.67}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoZeroShotFactory.get_available_langs"><a class="viewcode-back" href="../../../text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoZeroShotFactory.get_available_models"><a class="viewcode-back" href="../../../text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;brainbert.base.ko.kornli&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;jaberta.base.ja.nli&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;zhberta.base.zh.nli&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;roberta.base.en.nli&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoZeroShotFactory.load"><a class="viewcode-back" href="../../../text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;brainbert&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">BrainRobertaModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">BrainRobertaModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoBertZeroShot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;jaberta&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">JabertaModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">JabertaModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoBertZeroShot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;zhberta&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">ZhbertaModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">ZhbertaModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoBertZeroShot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;roberta&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.brainbert</span> <span class="kn">import</span> <span class="n">CustomRobertaModel</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">CustomRobertaModel</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoBertZeroShot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoBertZeroShot"><a class="viewcode-back" href="../../../text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoBertZeroShot">[docs]</a><span class="k">class</span> <span class="nc">PororoBertZeroShot</span><span class="p">(</span><span class="n">PororoBiencoderBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_template</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="s2">&quot;이 문장은 </span><span class="si">{label}</span><span class="s2">에 관한 것이다.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="s2">&quot;この文は、</span><span class="si">{label}</span><span class="s2">に関するものである。&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="s2">&quot;这句话是关于</span><span class="si">{label}</span><span class="s2">的。&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;This sentence is about </span><span class="si">{label}</span><span class="s2">.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="PororoBertZeroShot.predict"><a class="viewcode-back" href="../../../text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoBertZeroShot.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct zero-shot classification</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sent (str): sentence to be classified</span>
+<span class="sd">            labels (List[str]): candidate labels</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple(str, float)]: confidence scores corresponding to each input label</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cands</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_template</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span>
+        <span class="p">]</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">cand</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">cands</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;ko&quot;</span><span class="p">:</span>
+                <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                    <span class="n">sent</span><span class="p">,</span>
+                    <span class="n">cand</span><span class="p">,</span>
+                    <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">no_separator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                    <span class="n">sent</span><span class="p">,</span>
+                    <span class="n">cand</span><span class="p">,</span>
+                    <span class="n">no_separator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="c1"># throw away &quot;neutral&quot; (dim 1) and take the probability of &quot;entail&quot; (2) as the probability of the label being true</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                <span class="s2">&quot;sentence_classification_head&quot;</span><span class="p">,</span>
+                <span class="n">tokens</span><span class="p">,</span>
+                <span class="n">return_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+            <span class="n">prob</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

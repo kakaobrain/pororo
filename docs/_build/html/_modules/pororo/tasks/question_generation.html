@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.question_generation &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.question_generation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.question_generation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Question generation related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">whoosh.qparser</span> <span class="kn">import</span> <span class="n">QueryParser</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoGenerationBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoQuestionGenerationFactory"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.PororoQuestionGenerationFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoQuestionGenerationFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Question generation using BART model</span>
+
+<span class="sd">    Korean (`kobart.base.ko.qg`)</span>
+
+<span class="sd">        - dataset: KorQuAD 1.0 (Lim et al. 2019) + AI hub Reading Comprehension corpus + AI hub Commonsense corpus</span>
+<span class="sd">        - metric: Model base evaluation using PororoMrc (`brainbert.base`)</span>
+<span class="sd">            - EM (82.59), F1 (94.06)</span>
+<span class="sd">        - ref: https://www.aihub.or.kr/aidata/86</span>
+<span class="sd">        - ref: https://www.aihub.or.kr/aidata/84</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        answer (str): answer text</span>
+<span class="sd">        context (str): source article</span>
+<span class="sd">        beam (int): beam search size</span>
+<span class="sd">        temperature (float): temperature scale</span>
+<span class="sd">        top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">        top_p (float): top-p sampling ratio</span>
+<span class="sd">        no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">        len_penalty (float): length penalty ratio</span>
+<span class="sd">        n_wrong (int): number of wrong answer candidate</span>
+<span class="sd">        return_context (bool): return context together or not</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str : question (if `n_wrong` &lt; 1)</span>
+<span class="sd">        Tuple[str, List[str]] : question, wrong_answers (if `n_wrong` &gt; 1)</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; # question generation has argument named `n_wrong` which creates wrong answers together</span>
+<span class="sd">        &gt;&gt;&gt; qg = Pororo(task=&quot;qg&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; qg(</span>
+<span class="sd">        ...     &quot;카카오톡&quot;,</span>
+<span class="sd">        ...     &quot;카카오톡은 스마트폰의 데이터 통신 기능을 이용하여, 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 애플리케이션이다. 스마트폰 대중화 이 후 기존 인스턴트 메신저 앱의 번거로운 친구 추가 절차 없이, 스마트폰 주소록의 전 화번호만으로 손쉽게 메시지를 주고받을 수 있는 것이 특징이다.&quot;,</span>
+<span class="sd">        ...     n_wrong=3</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ((&#39;스마트폰의 데이터 통신 기능을 이용해서 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 앱을 뭐라고 해?&#39;,</span>
+<span class="sd">        [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; # question generation task supports batchwise inference (1:N, N:1, N:N)</span>
+<span class="sd">        &gt;&gt;&gt; # answer : context = 1 : N</span>
+<span class="sd">        &gt;&gt;&gt; qg(</span>
+<span class="sd">        ...     &quot;카카오톡&quot;,</span>
+<span class="sd">        ...     [&quot;카카오톡은 스마트폰의 데이터 통신 기능을 이용하여, 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 애플리케이션이다. 스마트폰 대중화 이 후 기존 인스턴트 메신저 앱의 번거로운 친구 추가 절차 없이, 스마트폰 주소록의 전화번호만으로 손쉽게 메시지를 주고받을 수 있는 것이 특징이다.&quot;,</span>
+<span class="sd">        ...     &quot;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 카카오톡인 것으로 나타났다. 30일 한국언론진흥재단이 최근 공개한 &#39;2017 소셜미디어 이용자 조사&#39; 결과를 보면 소셜미디어로 뉴스를 본 경험이 있는 우리나라 국민 1천747명에게 뉴스 이용 플랫폼을 중복으로 선택하게 한 결과 50.4%가 카카오톡을 사용했다고 답했다. 카카오톡 다음으로는 페이스북(42%) 사용률이 높았으며 유튜브(31.8%)가 뒤를 이었다.&quot;],</span>
+<span class="sd">        ...     n_wrong=3</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [(&#39;스마트폰의 데이터 통신 기능을 이용해서 문자 과금 없이 사람들과 메시지를 주고받을 수 있는 앱을 뭐라고 해?&#39;, [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;]),</span>
+<span class="sd">        (&#39;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 뭐야?&#39;, [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;])]</span>
+<span class="sd">        &gt;&gt;&gt; # answer : context = N : 1</span>
+<span class="sd">        &gt;&gt;&gt; qg(</span>
+<span class="sd">        ...     [&quot;토트넘&quot;, &quot;손흥민&quot;, &quot;인스타그램&quot;],</span>
+<span class="sd">        ...     &quot;‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상한 잉글랜드 프로축구 1부리그 프리미어리 그(EPL) 소속 토트넘 홋스퍼 FC의 손흥민이 기쁜 마음을 드러냈다. 푸스카스는 1년간 전 세계 축구경기에 서 나온 골 중 가장 멋진 골을 뽑는다. 손흥민은 스위스 취리히 소재 FIFA 본부에서 온라인으로 열린 ‘2020년 더 베스트 FIFA 풋볼 어워드’ 시 상식에서 푸스카스를 받았다. 손흥민의 이번 수상은 한국 선수로는  최초이자 아시아에서는 2016년 모하메 드 파이즈 수브리(말레이시아)에 이어 두 번째다. 상을 받은 손흥민은 이날 오전 인스타그램에 “아주 특별한 밤이었다. 저를 지지해주고 제게 투표해 주어서 감사하다”며 셀 프 카메라가 담긴 사진 한 장을 게시했 다. 공개된 사진 속 손흥민은 환한 미소와 엄지를 들어 보이고 있 다. 여기에 손흥민은 이 순간을 절대 잊 지 않겠다고 덧붙였다.  앞서 손흥민은 지난해 12월8일 번리 FC와 가진 EPL 경기에서 환상적인 골을 터뜨 렸다. 당시 손흥민은 토트넘 진영에서 얀 베르통언(벨기에)의 패 스를 받고 공을 잡고 약 70ｍ를 혼자 내달리며 무려 번리 선수 6명을 따돌린 뒤 페널티 지역에서 오른발  슈팅으로 골망을 흔들었다. 이후 이 골은 EPL ‘12월의 골’을 시작으로 영국 공영방송 BBC의 ‘올해의 골’, 영국 스포츠 매체 디 애슬레틱의 ‘올해의  골’에 이어 EPL 사무국이 선정하는 2019∼20시즌 ‘올해의 골’ 등으로 선정되며 최고의 골로 인정받은 바 있다.&quot;,</span>
+<span class="sd">        ...     n_wrong=3</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [(&#39;손흥민은 어느 팀 소속이야?&#39;, [&#39;이즐링턴&#39;, &#39;웸블리&#39;, &#39;첼시&#39;]),</span>
+<span class="sd">        (&#39;누가 ‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상했어?&#39;, [&#39;지동원&#39;, &#39;구자철&#39;, &#39;이청용&#39;]),</span>
+<span class="sd">        (&#39;손흥민은 셀프 카메라가 담긴 사진 한 장을 어디에 게시했어?&#39;, [&#39;트위터&#39;, &#39;페이스북&#39;, &#39;사운드클라우드&#39;])]</span>
+<span class="sd">        &gt;&gt;&gt; # answer : context = N : N (answers list and contexts list must be same length. not N : M)</span>
+<span class="sd">        &gt;&gt;&gt; qg(</span>
+<span class="sd">        ...     [&quot;카카오톡&quot;, &quot;손흥민&quot;],</span>
+<span class="sd">        ...     [&quot;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사 람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 카카오톡인 것으로 나타났다. 30일 한국언론진흥재단이 최근 공개한 &#39;2017 소셜미디어 이용자 조사&#39; 결과를 보면 소셜미디어로 뉴스를 본 경험이 있는 우리나라 국민 1천747명에게 뉴스 이용 플랫폼을 중복으로 선택하게 한 결과 50.4%가 카카오톡을 사용했다고 답했다. 카 카오톡 다음으로는 페이스북(42%) 사용률이 높았으며 유튜브(31.8%)가 뒤를 이었다.&quot;,</span>
+<span class="sd">        ...     &quot;‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상한 잉글랜드 프로축구 1부리그 프리미어리그(EPL) 소속 토트넘 홋스퍼 FC의 손흥민이 기쁜 마음을 드러냈다. 푸스카스는 1년간 전 세계 축구경기에서 나온 골 중 가장 멋진 골을 뽑는다. 손흥민은 스위스 취리히 소 재 FIFA 본부에서 온라인으로 열린 ‘2020년 더 베스트 FIFA 풋볼 어워드’ 시 상식에서 푸스카스를 받았다. 손흥민의 이번 수상은 한국 선수로는 최초이자 아시아에서는 2016년 모하메 드 파이즈 수브리(말레이시아)에 이어 두 번째다. 상을 받은 손흥민은 이날 오전 인스타그램에 “아주 특별한 밤이었다. 저를 지지해주 고 제게 투표해 주어서 감사하다”며 셀프 카메라가 담긴 사진 한 장을 게시했 다. 공개된 사진 속 손흥민 은 환한 미소와 엄지를 들어 보이고 있다. 여기에 손흥민은 이 순간을 절대 잊 지 않겠다고 덧붙였다.  앞서 손흥민은 지난해 12월8일 번리 FC와 가진 EPL 경기에서 환상적인 골을 터뜨 렸다. 당시 손흥민은 토트 넘 진영에서 얀 베르통언(벨기에)의 패스를 받고 공을 잡고 약 70ｍ를 혼자 내달리며 무려 번리 선수 6명 을 따돌린 뒤 페널티 지역에서 오른발 슈팅으로 골망을 흔들었다. 이후 이 골은 EPL ‘12월의 골’을 시작으로 영국 공영방송 BBC의 ‘올해의 골’, 영국 스포츠 매체 디 애슬레틱의 ‘올해의  골’에 이어 EPL 사무국이 선정하는 2019∼20시즌 ‘올해의 골’ 등으로 선정되며 최고의 골로 인정받은 바 있다.&quot;],</span>
+<span class="sd">        ...     n_wrong=3</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [(&#39;메시징 서비스와 사회관계망서비스(SNS) 등 소셜미디어를 사용하는 사 람들이 뉴스를 볼 때 가장 선호하는 플랫폼은 뭐야?&#39;, [&#39;텔레그램&#39;, &#39;챗온&#39;, &#39;디스코드&#39;]),</span>
+<span class="sd">        (&#39;누가 ‘2020년 더 베스트 국제축구연맹(FIFA) 풋볼 어워드’에서 FIFA 푸스카스를 수상했어?&#39;, [&#39;지동원&#39;, &#39;구자철&#39;, &#39;이청용&#39;])]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoQuestionGenerationFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.PororoQuestionGenerationFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoQuestionGenerationFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.PororoQuestionGenerationFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;kobart.base.ko.qg&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoQuestionGenerationFactory.load"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.PororoQuestionGenerationFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;bart&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">whoosh</span> <span class="kn">import</span> <span class="n">index</span>
+
+            <span class="kn">from</span> <span class="nn">pororo.models.bart.KoBART</span> <span class="kn">import</span> <span class="n">KoBartModel</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.wikipedia2vec</span> <span class="kn">import</span> <span class="n">Wikipedia2Vec</span>
+            <span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="n">PororoTokenizationFactory</span>
+
+            <span class="n">vec_map</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="s2">&quot;kowiki_20200720_100d.pkl&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;enwiki_20180420_100d.pkl&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="s2">&quot;jawiki_20180420_100d.pkl&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="s2">&quot;zhwiki_20180420_100d.pkl&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">f_wikipedia2vec</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;misc/</span><span class="si">{</span><span class="n">vec_map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">f_index</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;misc/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">_indexdir.zip&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">Wikipedia2Vec</span><span class="p">(</span><span class="n">model_file</span><span class="o">=</span><span class="n">f_wikipedia2vec</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">open_dir</span><span class="p">(</span><span class="n">f_index</span><span class="p">)</span>
+
+            <span class="n">sim_words</span> <span class="o">=</span> <span class="n">SimilarWords</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+
+            <span class="n">model_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bart/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">KoBartModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                <span class="n">model_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">sent_tok</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">PororoTokenizationFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;sent_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">PororoKoBartQuestionGeneration</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">sim_words</span><span class="p">,</span>
+                <span class="n">sent_tok</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoKoBartQuestionGeneration"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.PororoKoBartQuestionGeneration">[docs]</a><span class="k">class</span> <span class="nc">PororoKoBartQuestionGeneration</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">sim_words</span><span class="p">,</span> <span class="n">sent_tok</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PororoKoBartQuestionGeneration</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_len</span> <span class="o">=</span> <span class="mi">1024</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_token</span> <span class="o">=</span> <span class="s2">&quot;&lt;unused0&gt;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_end_token</span> <span class="o">=</span> <span class="s2">&quot;&lt;unused1&gt;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sim_words</span> <span class="o">=</span> <span class="n">sim_words</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tok</span> <span class="o">=</span> <span class="n">sent_tok</span>
+
+    <span class="k">def</span> <span class="nf">_focus_answer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">truncate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        add answer start and end token</span>
+<span class="sd">        and truncate context text to make inference speed fast</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            context (str): context string</span>
+<span class="sd">            answer (str): answer string</span>
+<span class="sd">            truncate (bool): truncate or not</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            context (str): preprocessed context string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">answer_start_idx</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+        <span class="n">answer_end_idx</span> <span class="o">=</span> <span class="n">answer_start_idx</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_start_token</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert_token</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">answer_start_idx</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">_start_token</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert_token</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">answer_end_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end_token</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_len</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">truncate</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">context</span>
+
+        <span class="n">sentences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tok</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">answer_sentence_idx</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_token</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">answer_sentence_idx</span> <span class="o">=</span> <span class="n">i</span>
+
+        <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">answer_sentence_idx</span><span class="p">,</span> <span class="n">answer_sentence_idx</span>
+        <span class="n">truncated_context</span> <span class="o">=</span> <span class="p">[</span><span class="n">sentences</span><span class="p">[</span><span class="n">answer_sentence_idx</span><span class="p">]]</span>
+
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">truncated_context</span><span class="p">))</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_len</span><span class="p">:</span>
+            <span class="n">prev_context_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">truncated_context</span><span class="p">))</span>
+            <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">truncated_context</span> <span class="o">=</span> <span class="p">[</span><span class="n">sentences</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="n">truncated_context</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+                <span class="n">truncated_context</span> <span class="o">=</span> <span class="n">truncated_context</span> <span class="o">+</span> <span class="p">[</span><span class="n">sentences</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">truncated_context</span><span class="p">))</span> <span class="o">==</span> <span class="n">prev_context_length</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">truncated_context</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_insert_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        insert token to context</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            src (str): source string</span>
+<span class="sd">            index (int): index that you want</span>
+<span class="sd">            token (str): token string</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            token_added_string (str): token added string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">src</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">token</span> <span class="o">+</span> <span class="n">src</span><span class="p">[</span><span class="n">index</span><span class="p">:]</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;?&quot;</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span> <span class="o">+</span> <span class="s2">&quot;?&quot;</span>
+
+        <span class="k">return</span> <span class="n">text</span>
+
+<div class="viewcode-block" id="PororoKoBartQuestionGeneration.predict"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.PororoKoBartQuestionGeneration.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">answer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">n_wrong</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conducnt question generation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (Union[str, List[str]]): input text</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+<span class="sd">            n_wrong (int): number of wrong answer candidate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sampling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">sampling</span><span class="o">=</span><span class="n">sampling</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">sampling_topk</span><span class="o">=</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">sampling_topp</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">length_penalty</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">n_wrong</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">wrong_answers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">_extract_wrongs</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">,</span> <span class="n">wrong_answers</span><span class="p">[:</span><span class="n">n_wrong</span><span class="p">]</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">wrong_answers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">_extract_wrongs</span><span class="p">(</span><span class="n">answer</span><span class="p">)[:</span><span class="n">n_wrong</span><span class="p">]</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">[(</span><span class="n">o</span><span class="p">,</span> <span class="n">wrong_answers</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">wrong_answers</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">_extract_wrongs</span><span class="p">(</span><span class="n">a</span><span class="p">)[:</span><span class="n">n_wrong</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">answer</span>
+                <span class="p">]</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">[(</span><span class="n">output</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">wrong_answers</span><span class="p">]</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wrong_answers</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_sim_words</span><span class="o">.</span><span class="n">_extract_wrongs</span><span class="p">(</span><span class="n">a</span><span class="p">)[:</span><span class="n">n_wrong</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">answer</span>
+                <span class="p">]</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">[(</span><span class="n">o</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">wrong_answers</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="n">output</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">answer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">n_wrong</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">return_context</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conducnt question generation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            answer (str): answer text</span>
+<span class="sd">            context (str): source article</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+<span class="sd">            n_wrong (int): number of wrong answer candidate</span>
+<span class="sd">            return_context (bool): return context together or not</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_focus_answer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_focus_answer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">answer</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_focus_answer</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">context</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span>
+                <span class="n">context</span><span class="p">),</span> <span class="s2">&quot;length of answer list and context list must be same.&quot;</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_focus_answer</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+            <span class="p">]</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">answer</span><span class="p">,</span>
+            <span class="n">context</span><span class="p">,</span>
+            <span class="n">beam</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="p">,</span>
+            <span class="n">top_p</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">len_penalty</span><span class="p">,</span>
+            <span class="n">n_wrong</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">return_context</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="n">context</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="SimilarWords"><a class="viewcode-back" href="../../../seq2seq/qg.html#pororo.tasks.question_generation.SimilarWords">[docs]</a><span class="k">class</span> <span class="nc">SimilarWords</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wikipedia2vec</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ix</span> <span class="o">=</span> <span class="n">idx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_searcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ix</span><span class="o">.</span><span class="n">searcher</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        normalize input string</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            word (str): input string</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            normalized string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_entity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        find entity in entity dictionary</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entity (str): entity string</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            wikipedia2vec entity</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wikipedia2vec</span><span class="o">.</span><span class="n">get_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">entity</span>
+
+    <span class="k">def</span> <span class="nf">_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        find similar word with given entity</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entity (str): answer that user inputted</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: category to entity list</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">entity_hit</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">entity_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="n">headword2relatives</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">entity_</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">headword2relatives</span>
+
+        <span class="n">from_searchterms</span> <span class="o">=</span> <span class="n">QueryParser</span><span class="p">(</span>
+            <span class="s2">&quot;searchterms&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ix</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="n">hits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searcher</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">from_searchterms</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">hits</span><span class="p">:</span>
+            <span class="n">wiki_title</span> <span class="o">=</span> <span class="n">hit</span><span class="p">[</span><span class="s2">&quot;wiki_title&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">wiki_title</span> <span class="o">==</span> <span class="n">entity</span><span class="p">:</span>
+                <span class="n">entity_hit</span> <span class="o">=</span> <span class="n">hit</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">entity_hit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">headword2relatives</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wikipedia2vec</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">entity_</span><span class="p">)</span>
+        <span class="n">categories</span> <span class="o">=</span> <span class="n">entity_hit</span><span class="p">[</span><span class="s2">&quot;categories&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="n">category2entities</span> <span class="o">=</span> <span class="p">{</span><span class="n">category</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">category2entities</span>
+
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;text&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">entity_</span><span class="o">.</span><span class="n">title</span> <span class="ow">or</span> <span class="s2">&quot;분류&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">from_idx</span> <span class="o">=</span> <span class="n">QueryParser</span><span class="p">(</span><span class="s2">&quot;entity_idx&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ix</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span>
+            <span class="n">hits2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_searcher</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">from_idx</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">hits2</span><span class="p">:</span>
+                <span class="n">categories2</span> <span class="o">=</span> <span class="n">hits2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;categories&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">categories2</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">category2entities</span><span class="p">:</span>
+                        <span class="n">category2entities</span><span class="p">[</span><span class="n">each</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">category2entities</span>
+
+    <span class="k">def</span> <span class="nf">_extract_wrongs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        extract wrong answers candidates</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entity: entity string</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            wrong_list (List[str]): wrong answer candidates list</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">entity_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_answer</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="n">sims</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_similar</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+        <span class="n">sims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sims</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sims</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">entity_list</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">sims</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;word&quot;</span><span class="p">:</span>
+                <span class="n">entity_list</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compare_with_answer</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">entity_list</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_compare_with_answer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">entity_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        add wrong answer candidate to list</span>
+<span class="sd">        after compare with answer using n-gram (f1 score)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entity_list (List[str]): wrong answers candidates</span>
+<span class="sd">            answer (str): answer that will be compared wrong answer</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            result_list (List[str]): wrong answer candidates list</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">result_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entity_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;분류&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\([^)]*\)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f1_score</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+                    <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result_list</span>
+
+    <span class="k">def</span> <span class="nf">_normalize_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        normalize answer string</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            s: sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            normalized sentence</span>
+
+<span class="sd">        References:</span>
+<span class="sd">            https://korquad.github.io/</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">remove_</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;《&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;》&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;〈&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;〉&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">(&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;‘&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;’&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">text</span>
+
+        <span class="k">def</span> <span class="nf">white_space_fix</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+        <span class="k">def</span> <span class="nf">remove_punc</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="n">exclude</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ch</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">lower</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">white_space_fix</span><span class="p">(</span><span class="n">remove_punc</span><span class="p">(</span><span class="n">lower</span><span class="p">(</span><span class="n">remove_</span><span class="p">(</span><span class="n">s</span><span class="p">))))</span>
+
+    <span class="k">def</span> <span class="nf">_f1_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        compute F1 score</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            prediction: prediction answer</span>
+<span class="sd">            ground_truth: ground truth answer</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            F1 score between prediction and ground truth</span>
+
+<span class="sd">        References:</span>
+<span class="sd">            https://korquad.github.io/</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">prediction_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_answer</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">ground_truth_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_answer</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+        <span class="c1"># F1 by character</span>
+        <span class="n">prediction_Char</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">prediction_tokens</span><span class="p">:</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">tok</span><span class="p">]</span>
+            <span class="n">prediction_Char</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+
+        <span class="n">ground_truth_Char</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">ground_truth_tokens</span><span class="p">:</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">tok</span><span class="p">]</span>
+            <span class="n">ground_truth_Char</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+
+        <span class="n">common</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">prediction_Char</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Counter</span><span class="p">(</span><span class="n">ground_truth_Char</span><span class="p">)</span>
+        <span class="n">num_same</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">num_same</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">precision</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">num_same</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">prediction_Char</span><span class="p">)</span>
+        <span class="n">recall</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">num_same</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ground_truth_Char</span><span class="p">)</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">precision</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">f1</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.machine_translation &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.machine_translation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.machine_translation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Machine-translation related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoGenerationBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoTranslationFactory"><a class="viewcode-back" href="../../../seq2seq/mt.html#pororo.tasks.machine_translation.PororoTranslationFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoTranslationFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Machine translation using Transformer models</span>
+
+<span class="sd">    Multi (`transformer.large.multi.mtpg`)</span>
+
+<span class="sd">        - dataset: Train (Internal data) / Test (Multilingual TED Talk)</span>
+<span class="sd">        - metric: BLEU score</span>
+
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Source Language | Target Language | BLEU score |</span>
+<span class="sd">            +=================+=================+============+</span>
+<span class="sd">            | Average         |  -              |   10.00    |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | English         |  Korean         |   15       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | English         |  Japanese       |   8        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | English         |  Chinese        |   8        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Korean          |  English        |   15       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Korean          |  Japanese       |   10       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Korean          |  Chinese        |   4        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Japanese        |  English        |   11       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Japanese        |  Korean         |   13       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Japanese        |  Chinese        |   4        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Chinese         |  English        |   16       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Chinese         |  Korean         |   10       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Chinese         |  Japanese       |   6        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+
+<span class="sd">        - ref: http://www.cs.jhu.edu/~kevinduh/a/multitarget-tedtalks/</span>
+<span class="sd">        - note: This result is about out of domain settings,</span>
+<span class="sd">            TED Talk data wasn&#39;t used during model training.</span>
+
+<span class="sd">    Multi (`transformer.large.multi.fast.mtpg`)</span>
+
+<span class="sd">        - dataset: Train (Internal data) / Test (Multilingual TED Talk)</span>
+<span class="sd">        - metric: BLEU score</span>
+
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Source Language | Target Language | BLEU score |</span>
+<span class="sd">            +=================+=================+============+</span>
+<span class="sd">            | Average         |  -              |   8.75     |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | English         |  Korean         |   13       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | English         |  Japanese       |   6        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | English         |  Chinese        |   7        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Korean          |  English        |   15       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Korean          |  Japanese       |   11       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Korean          |  Chinese        |   10       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Japanese        |  English        |   3        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Japanese        |  Korean         |   13       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Japanese        |  Chinese        |   4        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Chinese         |  English        |   15       |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Chinese         |  Korean         |   8        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+<span class="sd">            | Chinese         |  Japanese       |   4        |</span>
+<span class="sd">            +-----------------+-----------------+------------+</span>
+
+<span class="sd">        - ref: http://www.cs.jhu.edu/~kevinduh/a/multitarget-tedtalks/</span>
+<span class="sd">        - note: This result is about out of domain settings,</span>
+<span class="sd">            TED Talk data wasn&#39;t used during model training.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): input text to be translated</span>
+<span class="sd">        beam (int): beam search size</span>
+<span class="sd">        temperature (float): temperature scale</span>
+<span class="sd">        top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">        top_p (float): top-p sampling ratio</span>
+<span class="sd">        no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">        len_penalty (float): length penalty ratio</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: machine translated sentence</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; mt = Pororo(task=&quot;translation&quot;, lang=&quot;multi&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; mt(&quot;케빈은 아직도 일을 하고 있다.&quot;, src=&quot;ko&quot;, tgt=&quot;en&quot;)</span>
+<span class="sd">        &#39;Kevin is still working.&#39;</span>
+<span class="sd">        &gt;&gt;&gt; mt(&quot;死神は りんごしか食べない。&quot;, src=&quot;ja&quot;, tgt=&quot;ko&quot;)</span>
+<span class="sd">        &#39;사신은 사과밖에 먹지 않는다.&#39;</span>
+<span class="sd">        &gt;&gt;&gt; mt(&quot;人生的伟大目标，不是知识而是行动。&quot;, src=&quot;zh&quot;, tgt=&quot;ko&quot;)</span>
+<span class="sd">        &#39;인생의 위대한 목표는 지식이 아니라 행동이다.&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">tgt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_src</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tgt</span> <span class="o">=</span> <span class="n">tgt</span>
+
+<div class="viewcode-block" id="PororoTranslationFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/mt.html#pororo.tasks.machine_translation.PororoTranslationFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;multi&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoTranslationFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/mt.html#pororo.tasks.machine_translation.PororoTranslationFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;multi&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;transformer.large.multi.mtpg&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;transformer.large.multi.fast.mtpg&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoTranslationFactory.load"><a class="viewcode-back" href="../../../seq2seq/mt.html#pororo.tasks.machine_translation.PororoTranslationFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="n">PororoTokenizationFactory</span>
+
+        <span class="n">sent_tokenizer</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="n">PororoTokenizationFactory</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span>
+            <span class="n">lang</span><span class="o">=</span><span class="n">lang</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;sent_</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="s2">&quot;multi&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">fairseq.models.transformer</span> <span class="kn">import</span> <span class="n">TransformerModel</span>
+
+            <span class="kn">from</span> <span class="nn">pororo.tasks.utils.tokenizer</span> <span class="kn">import</span> <span class="n">CustomTokenizer</span>
+
+            <span class="n">load_dict</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;transformer/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="p">(</span><span class="n">TransformerModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+                <span class="n">model_name_or_path</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">checkpoint_file</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">,</span>
+                <span class="n">data_name_or_path</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">dict_path</span><span class="p">,</span>
+                <span class="n">source_lang</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_dict</span><span class="p">,</span>
+                <span class="n">target_lang</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">tgt_dict</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+            <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">CustomTokenizer</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span>
+                <span class="n">vocab_filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_tok</span><span class="si">}</span><span class="s2">/vocab.json&quot;</span><span class="p">,</span>
+                <span class="n">merges_filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_tok</span><span class="si">}</span><span class="s2">/merges.txt&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;mtpg&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+                <span class="n">langtok_style</span> <span class="o">=</span> <span class="s2">&quot;mbart&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;m2m&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+                <span class="n">langtok_style</span> <span class="o">=</span> <span class="s2">&quot;multilingual&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">langtok_style</span> <span class="o">=</span> <span class="s2">&quot;basic&quot;</span>
+
+            <span class="k">return</span> <span class="n">PororoTransformerTransMulti</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="p">,</span>
+                <span class="n">sent_tokenizer</span><span class="p">,</span>
+                <span class="n">langtok_style</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoTransformerTransMulti"><a class="viewcode-back" href="../../../seq2seq/mt.html#pororo.tasks.machine_translation.PororoTransformerTransMulti">[docs]</a><span class="k">class</span> <span class="nc">PororoTransformerTransMulti</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">sent_tokenizer</span><span class="p">,</span> <span class="n">langtok_style</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tokenizer</span> <span class="o">=</span> <span class="n">sent_tokenizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_langtok_style</span> <span class="o">=</span> <span class="n">langtok_style</span>
+
+    <span class="k">def</span> <span class="nf">_langtok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">langtok_style</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            lang (str): language</span>
+<span class="sd">            langtok_style (str): style of language token</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            https://github.com/pytorch/fairseq/blob/master/fairseq/data/multilingual/multilingual_utils.py#L34</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">langtok_style</span> <span class="o">==</span> <span class="s2">&quot;basic&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">lang</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+        <span class="k">elif</span> <span class="n">langtok_style</span> <span class="o">==</span> <span class="s2">&quot;mbart&quot;</span><span class="p">:</span>
+            <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;_XX&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="s2">&quot;_XX&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="s2">&quot;_KR&quot;</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="s2">&quot;_CN&quot;</span><span class="p">}</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">lang</span> <span class="o">+</span> <span class="n">mapping</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+        <span class="k">elif</span> <span class="n">langtok_style</span> <span class="o">==</span> <span class="s2">&quot;multilingual&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;__</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">__&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tgt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess non-chinese input sentence to replace whitespace token with whitespace</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): non-chinese sentence</span>
+<span class="sd">            src (str): source language</span>
+<span class="sd">            tgt (str): target language</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: preprocessed non-chinese sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">src</span> <span class="o">==</span> <span class="s2">&quot;en&quot;</span><span class="p">:</span>
+            <span class="n">pieces</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pieces</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span> <span class="k">else</span> <span class="s2">&quot;▁&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_langtok</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langtok_style</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pieces</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_langtok</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langtok_style</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess output sentence to replace whitespace</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output (str): output sentence generated by model</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: postprocessed output sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<div class="viewcode-block" id="PororoTransformerTransMulti.predict"><a class="viewcode-back" href="../../../seq2seq/mt.html#pororo.tasks.machine_translation.PororoTransformerTransMulti.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">tgt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct machine translation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input text to be translated</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: machine translated sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">tgt</span><span class="p">)</span>
+
+        <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sampling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">sampling</span><span class="o">=</span><span class="n">sampling</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">sampling_topk</span><span class="o">=</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">sampling_topp</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">lenpen</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">tgt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
+
+        <span class="k">assert</span> <span class="n">src</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+        <span class="p">],</span> <span class="s2">&quot;Source language must be one of CJKE !&quot;</span>
+
+        <span class="k">assert</span> <span class="n">tgt</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+        <span class="p">],</span> <span class="s2">&quot;Target language must be one of CJKE !&quot;</span>
+
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                <span class="n">t</span><span class="p">,</span>
+                <span class="n">src</span><span class="p">,</span>
+                <span class="n">tgt</span><span class="p">,</span>
+                <span class="n">beam</span><span class="p">,</span>
+                <span class="n">temperature</span><span class="p">,</span>
+                <span class="n">top_k</span><span class="p">,</span>
+                <span class="n">top_p</span><span class="p">,</span>
+                <span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+                <span class="n">len_penalty</span><span class="p">,</span>
+            <span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+        <span class="p">])</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
