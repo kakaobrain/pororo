@@ -38,7 +38,7 @@ requirements = [
 - `python-mecab-ko`는 **한국어 Tokenization, PoS Tagging, Dependency Parsing** 등 여러 태스크의 수행을 위해 필요한 라이브러리입니다.
 
 ```console
-pip install python-mecab-ko
+pip install python-mecab-ko==1.0.9
 ```
 
 - `kollocate`는 **한국어 Collocation** 태스크의 수행을 위해 필요한 라이브러리입니다.

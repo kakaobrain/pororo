@@ -38,7 +38,7 @@ requirements = [
 - `python-mecab-ko` is a library needed for the **Korean Tokenization, PoS Tagging, Dependency Parsing, etc.**
 
 ```console
-pip install python-mecab-ko
+pip install python-mecab-ko==1.0.9
 ```
 
 - `kollocate` is a library needed for the **Korean Collocation** task.
