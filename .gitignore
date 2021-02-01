@@ -6,6 +6,7 @@ core.*
 .idea
 .empty
 .coverage
+.DS_Store
 
 # docs
 *.bat
