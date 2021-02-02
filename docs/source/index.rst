@@ -64,6 +64,7 @@ Welcome to Pororo's documentation!
    miscs/ocr
    miscs/tokenization
    miscs/wt
+   miscs/w2v
 
 
 Indices and tables

@@ -130,6 +130,7 @@
 <li class="toctree-l1"><a class="reference internal" href="miscs/ocr.html">Optical Character Recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/tokenization.html">Tokenization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/wt.html">Word Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscs/w2v.html">Word Embedding</a></li>
 </ul>
 
             
@@ -284,6 +285,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSBertSentence.find_similar_sentences">find_similar_sentences() (pororo.tasks.sentence_embedding.PororoSBertSentence method)</a>
 </li>
+      <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWikipedia2Vec.find_similar_words">find_similar_words() (pororo.tasks.word_embedding.PororoWikipedia2Vec method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text_cls/age_suitability.html#pororo.tasks.age_suitability.RobertaEncoder.forward">forward() (pororo.tasks.age_suitability.RobertaEncoder method)</a>
@@ -357,6 +360,8 @@
 </li>
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_langs">(pororo.tasks.tokenization.PororoTokenizationFactory static method)</a>
 </li>
+        <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWordFactory.get_available_langs">(pororo.tasks.word_embedding.PororoWordFactory static method)</a>
+</li>
         <li><a href="text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_langs">(pororo.tasks.zero_shot_classification.PororoZeroShotFactory static method)</a>
 </li>
       </ul></li>
@@ -422,6 +427,8 @@
         <li><a href="seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.get_available_models">(pororo.tasks.text_summarization.PororoSummarizationFactory static method)</a>
 </li>
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_models">(pororo.tasks.tokenization.PororoTokenizationFactory static method)</a>
+</li>
+        <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWordFactory.get_available_models">(pororo.tasks.word_embedding.PororoWordFactory static method)</a>
 </li>
         <li><a href="text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.get_available_models">(pororo.tasks.zero_shot_classification.PororoZeroShotFactory static method)</a>
 </li>
@@ -492,6 +499,8 @@
         <li><a href="seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.load">(pororo.tasks.text_summarization.PororoSummarizationFactory method)</a>
 </li>
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.load">(pororo.tasks.tokenization.PororoTokenizationFactory method)</a>
+</li>
+        <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWordFactory.load">(pororo.tasks.word_embedding.PororoWordFactory method)</a>
 </li>
         <li><a href="miscs/wt.html#pororo.tasks.word_translation.PororoWordTranslationFactory.load">(pororo.tasks.word_translation.PororoWordTranslationFactory method)</a>
 </li>
@@ -567,6 +576,8 @@
         <li><a href="seq2seq/summary.html#module-pororo.tasks.text_summarization">pororo.tasks.text_summarization</a>
 </li>
         <li><a href="miscs/tokenization.html#module-pororo.tasks.tokenization">pororo.tasks.tokenization</a>
+</li>
+        <li><a href="miscs/w2v.html#module-pororo.tasks.word_embedding">pororo.tasks.word_embedding</a>
 </li>
         <li><a href="miscs/wt.html#module-pororo.tasks.word_translation">pororo.tasks.word_translation</a>
 </li>
@@ -790,6 +801,13 @@
 </li>
       </ul></li>
       <li>
+    pororo.tasks.word_embedding
+
+      <ul>
+        <li><a href="miscs/w2v.html#module-pororo.tasks.word_embedding">module</a>
+</li>
+      </ul></li>
+      <li>
     pororo.tasks.word_translation
 
       <ul>
@@ -991,7 +1009,11 @@
       </ul></li>
       <li><a href="seq2seq/mt.html#pororo.tasks.machine_translation.PororoTranslationFactory">PororoTranslationFactory (class in pororo.tasks.machine_translation)</a>
 </li>
+      <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWikipedia2Vec">PororoWikipedia2Vec (class in pororo.tasks.word_embedding)</a>
+</li>
       <li><a href="miscs/wt.html#pororo.tasks.word_translation.PororoWord2Word">PororoWord2Word (class in pororo.tasks.word_translation)</a>
+</li>
+      <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWordFactory">PororoWordFactory (class in pororo.tasks.word_embedding)</a>
 </li>
       <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoWordTokenizer">PororoWordTokenizer (class in pororo.tasks.tokenization)</a>
 </li>
@@ -1119,6 +1141,8 @@
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoSPTokenizer.predict">(pororo.tasks.tokenization.PororoSPTokenizer method)</a>
 </li>
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoWordTokenizer.predict">(pororo.tasks.tokenization.PororoWordTokenizer method)</a>
+</li>
+        <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWikipedia2Vec.predict">(pororo.tasks.word_embedding.PororoWikipedia2Vec method)</a>
 </li>
         <li><a href="miscs/wt.html#pororo.tasks.word_translation.PororoWord2Word.predict">(pororo.tasks.word_translation.PororoWord2Word method)</a>
 </li>
