@@ -5,8 +5,8 @@
 - We highly recommend **conda** environment to prevent dependecy problem
 
 ```
-# pororo only supports python >= 3.6
-conda create -n pororo python=3.6
+# pororo only supports python >= 3.7
+conda create -n pororo python=3.7
 conda activate pororo
 ```
 
@@ -14,6 +14,14 @@ conda activate pororo
 
 ```
 pip install pororo
+```
+
+- Or you can install it **locally**:
+
+```console
+git clone https://github.com/kakaobrain/pororo.git
+cd pororo
+pip install -e .
 ```
 
 - Since `Pororo` sets **English** as a default language option, you should follow [INSTALL](https://github.kakaocorp.com/kakaobrain/pororo/blob/master/INSTALL.md) guide to install other dependency libraries

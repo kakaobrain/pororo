@@ -232,7 +232,7 @@ Currently English, Korean and Chinese supports.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>audio_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – audio path for asr or youtube link (Supports WAV, FLAC and MP3 format)</p></li>
+<li><p><strong>audio_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – audio path for asr (Supports WAV, FLAC, MP3, and PCM format)</p></li>
 <li><p><strong>top_db</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – the threshold (in decibels) below reference to consider as silence</p></li>
 <li><p><strong>vad</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – flag indication whether to use voice activity detection or not, If it is False, it is split into
 dB criteria and then speech recognition is made. Applies only when audio length is more than 50 seconds.</p></li>
@@ -247,7 +247,7 @@ dB criteria and then speech recognition is made. Applies only when audio length 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s1">&#39;asr&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;ko&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;asr&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;ko&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span><span class="p">(</span><span class="s1">&#39;korean_speech.wav&#39;</span><span class="p">)</span>
 <span class="go">{</span>
 <span class="go">    &#39;audio&#39;: &#39;example.wav&#39;,</span>
@@ -260,7 +260,7 @@ dB criteria and then speech recognition is made. Applies only when audio length 
 <span class="go">        }</span>
 <span class="go">    ]</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s1">&#39;asr&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s1">&#39;asr&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span><span class="p">(</span><span class="s1">&#39;english_speech.wav&#39;</span><span class="p">)</span>
 <span class="go">{</span>
 <span class="go">    &#39;audio&#39;: &#39;english_speech.flac&#39;,</span>
@@ -271,19 +271,6 @@ dB criteria and then speech recognition is made. Applies only when audio length 
 <span class="go">            &#39;length_ms&#39;: 12200.0,</span>
 <span class="go">            &#39;speech&#39;: &#39;WELL TOO IF HE LIKE LOVE WOULD FILCH OUR HOARD WITH PLEASURE TO OURSELVES SLUICING</span>
 <span class="go">                       OUR VEIN AND VIGOUR TO PERPETUATE THE STRAIN OF LIFE BY SPILTH OF LIFE WITHIN US STORED&#39;</span>
-<span class="go">        }</span>
-<span class="go">    ]</span>
-<span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s1">&#39;asr&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;ko&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">asr</span><span class="p">(</span><span class="s1">&#39;https://www.youtube.com/watch?v=5q9zIgylu1E&#39;</span><span class="p">)</span>
-<span class="go">{</span>
-<span class="go">    &#39;audio&#39;: &#39;5q9zIgylu1E.wav&#39;,</span>
-<span class="go">    &#39;duration&#39;: &#39;0:18:38.058687&#39;,</span>
-<span class="go">    &#39;results&#39;: [</span>
-<span class="go">        {</span>
-<span class="go">            ...</span>
-<span class="go">            ...</span>
-<span class="go">            ...</span>
 <span class="go">        }</span>
 <span class="go">    ]</span>
 <span class="go">}</span>

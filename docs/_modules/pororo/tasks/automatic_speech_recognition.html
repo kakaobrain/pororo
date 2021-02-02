@@ -229,7 +229,7 @@
 <span class="sd">        - metric: CER (6.9)</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        audio_path (str): audio path for asr or youtube link (Supports WAV, FLAC and MP3 format)</span>
+<span class="sd">        audio_path (str): audio path for asr (Supports WAV, FLAC, MP3, and PCM format)</span>
 <span class="sd">        top_db (int): the threshold (in decibels) below reference to consider as silence</span>
 <span class="sd">        vad (bool): flag indication whether to use voice activity detection or not, If it is False, it is split into</span>
 <span class="sd">             dB criteria and then speech recognition is made. Applies only when audio length is more than 50 seconds.</span>
@@ -239,7 +239,7 @@
 <span class="sd">        dict: result of speech recognition</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; asr = Pororo(&#39;asr&#39;, lang=&#39;ko&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; asr = Pororo(task=&#39;asr&#39;, lang=&#39;ko&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; asr(&#39;korean_speech.wav&#39;)</span>
 <span class="sd">        {</span>
 <span class="sd">            &#39;audio&#39;: &#39;example.wav&#39;,</span>
@@ -252,7 +252,7 @@
 <span class="sd">                }</span>
 <span class="sd">            ]</span>
 <span class="sd">        }</span>
-<span class="sd">        &gt;&gt;&gt; asr = Pororo(&#39;asr&#39;, lang=&#39;en&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; asr = Pororo(task=&#39;asr&#39;, lang=&#39;en&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; asr(&#39;english_speech.wav&#39;)</span>
 <span class="sd">        {</span>
 <span class="sd">            &#39;audio&#39;: &#39;english_speech.flac&#39;,</span>
@@ -263,19 +263,6 @@
 <span class="sd">                    &#39;length_ms&#39;: 12200.0,</span>
 <span class="sd">                    &#39;speech&#39;: &#39;WELL TOO IF HE LIKE LOVE WOULD FILCH OUR HOARD WITH PLEASURE TO OURSELVES SLUICING</span>
 <span class="sd">                               OUR VEIN AND VIGOUR TO PERPETUATE THE STRAIN OF LIFE BY SPILTH OF LIFE WITHIN US STORED&#39;</span>
-<span class="sd">                }</span>
-<span class="sd">            ]</span>
-<span class="sd">        }</span>
-<span class="sd">        &gt;&gt;&gt; asr = Pororo(&#39;asr&#39;, lang=&#39;ko&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; asr(&#39;https://www.youtube.com/watch?v=5q9zIgylu1E&#39;)</span>
-<span class="sd">        {</span>
-<span class="sd">            &#39;audio&#39;: &#39;5q9zIgylu1E.wav&#39;,</span>
-<span class="sd">            &#39;duration&#39;: &#39;0:18:38.058687&#39;,</span>
-<span class="sd">            &#39;results&#39;: [</span>
-<span class="sd">                {</span>
-<span class="sd">                    ...</span>
-<span class="sd">                    ...</span>
-<span class="sd">                    ...</span>
 <span class="sd">                }</span>
 <span class="sd">            ]</span>
 <span class="sd">        }</span>
@@ -360,105 +347,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">SAMPLE_RATE</span> <span class="o">=</span> <span class="mi">16000</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">MAX_VALUE</span> <span class="o">=</span> <span class="mi">32767</span>
 
-    <span class="k">def</span> <span class="nf">_download_audio_from_youtube</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Download audio file from youtube link</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            url: youtube link</span>
-<span class="sd">            filename: save audio file name</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: return success or failure.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">youtube_dl</span>
-        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-                <span class="s2">&quot;Please install youtube_dl: https://github.com/ytdl-org/youtube-dl&quot;</span>
-            <span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
-        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install soundfile: pip install soundfile&quot;</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">librosa</span>
-        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install librosa: pip install librosa&quot;</span><span class="p">)</span>
-
-        <span class="n">ydl_opts</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;format&quot;</span><span class="p">:</span>
-                <span class="s2">&quot;bestaudio/best&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;outtmpl&quot;</span><span class="p">:</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;noplaylist&quot;</span><span class="p">:</span>
-                <span class="kc">True</span><span class="p">,</span>
-            <span class="s2">&quot;continue_dl&quot;</span><span class="p">:</span>
-                <span class="kc">True</span><span class="p">,</span>
-            <span class="s2">&quot;postprocessors&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;FFmpegExtractAudio&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;preferredcodec&quot;</span><span class="p">:</span> <span class="s2">&quot;wav&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;preferredquality&quot;</span><span class="p">:</span> <span class="s2">&quot;192&quot;</span><span class="p">,</span>
-            <span class="p">}],</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">):</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">youtube_dl</span><span class="o">.</span><span class="n">YoutubeDL</span><span class="p">(</span><span class="n">ydl_opts</span><span class="p">)</span> <span class="k">as</span> <span class="n">ydl</span><span class="p">:</span>
-                <span class="n">ydl</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-                <span class="n">info_dict</span> <span class="o">=</span> <span class="n">ydl</span><span class="o">.</span><span class="n">extract_info</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                <span class="n">ydl</span><span class="o">.</span><span class="n">prepare_filename</span><span class="p">(</span><span class="n">info_dict</span><span class="p">)</span>
-                <span class="n">ydl</span><span class="o">.</span><span class="n">download</span><span class="p">([</span><span class="n">url</span><span class="p">])</span>
-
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Audio download from youtube failed&quot;</span><span class="p">)</span>
-
-        <span class="c1"># Re-write to match the format required by Pydub</span>
-        <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">get_samplerate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
-        <span class="n">signal</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span>
-        <span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="k">def</span> <span class="nf">_youtube_link_predict</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">vad</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-        <span class="n">video_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">top_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Conduct speech recognition for audio from youtube link.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            audio_path (str): the wav file path</span>
-<span class="sd">            top_db (int): the threshold (in decibels) below reference to consider as silence</span>
-<span class="sd">            batch_size (int): inference batch size</span>
-<span class="sd">            vad (bool): flag indication whether to use voice activity detection or not, If it is False, it is split into</span>
-<span class="sd">             dB criteria and then speech recognition is made. Applies only when audio length is more than 50 seconds.</span>
-<span class="sd">            video_id (str): video unique ID value</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: result of speech recognition</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_audio_from_youtube</span><span class="p">(</span>
-            <span class="n">audio_path</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">video_id</span><span class="p">),</span> <span class="s2">&quot;download from youtube failed&quot;</span>
-        <span class="n">signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_audio</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-            <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
-            <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span>
-            <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
-            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-            <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
-        <span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">_preprocess_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">librosa</span>
@@ -520,19 +408,6 @@
 <span class="sd">            dict: result of speech recognition</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s2">&quot;youtu.be/&quot;</span> <span class="ow">in</span> <span class="n">audio_path</span><span class="p">:</span>
-            <span class="n">video_id</span> <span class="o">=</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;outu.be/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">11</span><span class="p">]</span>
-            <span class="n">audio_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://www.youtube.com/watch?v=</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">&quot;</span>
-
-        <span class="k">if</span> <span class="s2">&quot;youtube.com/watch?v=&quot;</span> <span class="ow">in</span> <span class="n">audio_path</span><span class="p">:</span>
-            <span class="n">video_id</span> <span class="o">=</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;outube.com/watch?v=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">11</span><span class="p">]</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_youtube_link_predict</span><span class="p">(</span>
-                <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
-                <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
-                <span class="n">video_id</span><span class="o">=</span><span class="n">video_id</span><span class="p">,</span>
-                <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
-                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-            <span class="p">)</span>
 
         <span class="n">signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_audio</span><span class="p">(</span><span class="n">audio_path</span><span class="p">)</span>
 
