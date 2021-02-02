@@ -19,6 +19,7 @@ requirements = [
     "whoosh",
     "marisa-trie",
     "kss",
+    'dataclasses; python_version<"3.7"',
 ]
 
 VERSION = {}  # type: ignore
@@ -45,7 +46,7 @@ setup(
     license="Apache-2.0",
     packages=find_packages(include=["pororo", "pororo.*"]),
     install_requires=requirements,
-    python_requires=">=3.7.0",
+    python_requires=">=3.6.0",
     setup_requires=["pytest-runner"],
     tests_require=["pytest"],
     package_data={},

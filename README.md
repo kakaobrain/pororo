@@ -18,7 +18,7 @@ It is easy to solve various subtasks in the natural language and speech processi
 
 ## Installation
 
-- `Pororo` is based on `torch=1.6(cuda 10.1)` and `python>=3.7`
+- `Pororo` is based on `torch=1.6(cuda 10.1)` and `python>=3.6`
 
 - You can install a package through the command below:
 
