@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.text_summarization &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.text_summarization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.text_summarization</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Text Summarization related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">fairseq</span> <span class="kn">import</span> <span class="n">hub_utils</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+<span class="kn">from</span> <span class="nn">pororo.models.brainbert.BrainRoBERTa</span> <span class="kn">import</span> <span class="n">BrainRobertaHubInterface</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PororoFactoryBase</span><span class="p">,</span>
+    <span class="n">PororoGenerationBase</span><span class="p">,</span>
+    <span class="n">PororoSimpleBase</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="PororoSummarizationFactory"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoSummarizationFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Text summarization using various pretrained models</span>
+
+<span class="sd">    Korean (`kobart.base.ko.summary`)</span>
+
+<span class="sd">        - dataset: Dacon summarization corpus + AI Hub summarization corpus (1st release)</span>
+<span class="sd">        - metric: Rouge-1 (52.03), Rouge-2 (45.18), Rouge-L (49.48)</span>
+<span class="sd">        - ref: https://dacon.io/competitions/official/235671/data/</span>
+<span class="sd">        - ref: https://www.aihub.or.kr/node/9176</span>
+
+<span class="sd">    Korean (`kobart.base.ko.bullet`)</span>
+
+<span class="sd">        - dataset: Internal Corpus</span>
+<span class="sd">        - metric: Rouge-1 (8.03), Rouge-2 (2.38), Rouge-L (7.23)</span>
+
+<span class="sd">    Korean (`brainbert.base.ko.summary`)</span>
+
+<span class="sd">        - dataset: Dacon summarization corpus + AI Hub summarization corpus (1st release)</span>
+<span class="sd">        - metric: Rouge-1 (42.67), Rouge-2 (31.80), Rouge-L (43.12)</span>
+<span class="sd">        - ref: https://dacon.io/competitions/official/235671/data/</span>
+<span class="sd">        - ref: https://www.aihub.or.kr/node/9176</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        Pororo supports 3 different types of summarization like below.</span>
+
+<span class="sd">        1. Abtractive summarization : Model generate a summary in the form of a complete sentence.</span>
+<span class="sd">        2. Bullet-point summarization : Model generate multiple summaries in the form of a short phrase.</span>
+<span class="sd">        3. Extractive summarization : Model extract 3 important sentences from article.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (Union[str, List[str]]): input text to be extracted</span>
+<span class="sd">        beam (int): beam search size</span>
+<span class="sd">        temperature (float): temperature scale</span>
+<span class="sd">        top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">        top_p (float): top-p sampling ratio</span>
+<span class="sd">        no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">        len_penalty (float): length penalty ratio</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (str) summarized text</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; # text summarization task has 3 difference models</span>
+<span class="sd">        &gt;&gt;&gt; summ = Pororo(task=&quot;summarization&quot;, model=&quot;abstractive&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; summ(&quot;20년 4월 8일 자로 아카이브에 올라온 뜨끈뜨끈한 논문을 찾았다. 카카오 브레인에서 한국어 자연어 처리를 위한 새로운 데이터셋을 공개했다는 내용이다. 자연어 추론(NLI)와 텍스트의 의미적 유사성(STS)는 자연어 이해(NLU)에서 핵심 과제. 영어나 다른 언어들은 데이터셋이 몇 개 있는데, 한국어로 된 NLI나 STS 공개 데이터셋이 없다. 이에 동기를 얻어 새로운 한국어 NLI와 STS 데이터 셋을 공개한다. 이전 의 접근 방식에 따라 기존의 영어 훈련 세트를 기계 번역(machine-translate)하고 develop set과 test set을 수동으로 한국어로 번역한다. 한국어 NLU에 대한 연구가 더 활성화되길 바라며, KorNLI와 KorSTS에 baseline을 설정하며, Github에 공개한다. NLI와 STS는 자연어 이해의 중심 과제들로 많이 이야기가 된다. 이에 따라 몇몇 벤치마크 데이터셋은 영어로 된 NLI와 STS를 공개했었다. 그러나 한국어 NLI와 STS 벤치마크  데이터셋은 존재하지 않았다. 대부분의 자연어 처리 연구가 사람들이 많이 쓰는 언어들을 바탕으로 연구  가 되기 때문. 유명한 한국어 NLU 데이터 셋이 전형적으로 QA나 감정 분석은 포함은 되어있는데 NLI나 STS는 아니다. 한국어로 된 공개 NLI나 STS 벤치마크 데이터셋이 없어서 이런 핵심과제에 적합한 한국어 NLU 모델 구축에 대한 관심이 부족했다고 생각한다. 이에 동기를 얻어 KorNLI와 KorSTS를 만들었다.&quot;)</span>
+<span class="sd">        &#39;카카오 브레인에서 자연어 이해의 중심 과제들로 많이 이야기되는 한국어 자연어 처리를 위한 새로운 데이터셋인 KorNLI와 KorSTS 데이터셋을 공개했다.&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; summ = Pororo(task=&quot;summarization&quot;, model=&quot;bullet&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; summ(&quot;20년 4월 8일 자로 아카이브에 올라온 뜨끈뜨끈한 논문을 찾았다. 카카오 브레인에서 한국어 자연어 처리를 위한 새로운 데이터셋을 공개했다는 내용이다. 자연어 추론(NLI)와 텍스트의 의미적 유사성(STS)는 자연어 이해(NLU)에서 핵심 과제. 영어나 다른 언어들은 데이터셋이 몇 개 있는데, 한국어로 된 NLI나 STS 공개 데이터셋이 없다. 이에 동기를 얻어 새로운 한국어 NLI와 STS 데이터 셋을 공개한다. 이전 의 접근 방식에 따라 기존의 영어 훈련 세트를 기계 번역(machine-translate)하고 develop set과 test set을 수동으로 한국어로 번역한다. 한국어 NLU에 대한 연구가 더 활성화되길 바라며, KorNLI와 KorSTS에 baseline을 설정하며, Github에 공개한다. NLI와 STS는 자연어 이해의 중심 과제들로 많이 이야기가 된다. 이에 따라 몇몇 벤치마크 데이터셋은 영어로 된 NLI와 STS를 공개했었다. 그러나 한국어 NLI와 STS 벤치마크  데이터셋은 존재하지 않았다. 대부분의 자연어 처리 연구가 사람들이 많이 쓰는 언어들을 바탕으로 연구  가 되기 때문. 유명한 한국어 NLU 데이터 셋이 전형적으로 QA나 감정 분석은 포함은 되어있는데 NLI나 STS는 아니다. 한국어로 된 공개 NLI나 STS 벤치마크 데이터셋이 없어서 이런 핵심과제에 적합한 한국어 NLU 모델 구축에 대한 관심이 부족했다고 생각한다. 이에 동기를 얻어 KorNLI와 KorSTS를 만들었다.&quot;)</span>
+<span class="sd">        [&#39;KorNLI와 KorSTS에 baseline 설정&#39;, &#39; 새로운 NLI와 STS 데이터 셋 공개&#39;]</span>
+
+<span class="sd">        &gt;&gt;&gt; summ = Pororo(task=&quot;summarization&quot;, model=&quot;extractive&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; summ(&quot;20년 4월 8일 자로 아카이브에 올라온 뜨끈뜨끈한 논문을 찾았다. 카카오 브레인에서 한국어 자연어 처리를 위한 새로운 데이터셋을 공개했다는 내용이다. 자연어 추론(NLI)와 텍스트의 의미적 유사성(STS)는 자연어 이해(NLU)에서 핵심 과제. 영어나 다른 언어들은 데이터셋이 몇 개 있는데, 한국어로 된 NLI나 STS 공개 데이터셋이 없다. 이에 동기를 얻어 새로운 한국어 NLI와 STS 데이터 셋을 공개한다. 이전 의 접근 방식에 따라 기존의 영어 훈련 세트를 기계 번역(machine-translate)하고 develop set과 test set을 수동으로 한국어로 번역한다. 한국어 NLU에 대한 연구가 더 활성화되길 바라며, KorNLI와 KorSTS에 baseline을 설정하며, Github에 공개한다. NLI와 STS는 자연어 이해의 중심 과제들로 많이 이야기가 된다. 이에 따라 몇몇 벤치마크 데이터셋은 영어로 된 NLI와 STS를 공개했었다. 그러나 한국어 NLI와 STS 벤치마크  데이터셋은 존재하지 않았다. 대부분의 자연어 처리 연구가 사람들이 많이 쓰는 언어들을 바탕으로 연구  가 되기 때문. 유명한 한국어 NLU 데이터 셋이 전형적으로 QA나 감정 분석은 포함은 되어있는데 NLI나 STS는 아니다. 한국어로 된 공개 NLI나 STS 벤치마크 데이터셋이 없어서 이런 핵심과제에 적합한 한국어 NLU 모델 구축에 대한 관심이 부족했다고 생각한다. 이에 동기를 얻어 KorNLI와 KorSTS를 만들었다.&quot;)</span>
+<span class="sd">        &#39;카카오 브레인에서 한국어 자연어 처리를 위한 새로운 데이터셋을 공개했다는 내용이다. 이에 동기를 얻어 새로운 한국어 NLI와 STS 데이터 셋을 공개한다. 한국어 NLU에 대한 연구가 더 활성화되길 바라며, KorNLI와 KorSTS에 baseline을 설정하며, Github에 공개한다.&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; # text summarization task supports batchwise inference</span>
+<span class="sd">        &gt;&gt;&gt; summ = Pororo(task=&quot;summarization&quot;, model=&quot;abstractive&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; summ([</span>
+<span class="sd">        ... &quot;목성과 토성이 약 400년 만에 가장 가까이 만났습니다. 국립과천과학관 등 천문학계에 따르면 21일 저녁 목성과 토성은 1623년 이후 397년 만에 가장 가까워졌는데요. 크리스마스 즈음까지 남서쪽 하늘을 올려다보면 목성과 토성이 가까워지는 현상을 관측할 수 있습니다. 목성의 공전주기는 11.9년, 토성의 공전주기는 29.5년인데요. 공전주기의 차이로 두 행성은 약 19.9년에 한 번 가까워집니다. 이번 근접 때  목성과 토성 사이 거리는 보름달 지름의 5분의 1 정도로 가까워졌습니다. 맨눈으로 보면 두 행성이 겹쳐져 하나의 별처럼 보이는데요. 지난 21일 이후 목성과 토성의 대근접은 2080년 3월 15일로 예측됩니다. 과천과학관 측은 우리가 대근접을 볼 수 있는 기회는 이번이 처음이자 마지막이 될 가능성이 크다라고 설명했 습니다.&quot;,</span>
+<span class="sd">        ... &quot;가수 김태연은 걸 그룹 소녀시대, 소녀시대-태티서 및 소녀시대-Oh!GG의 리더이자 메인보컬이다. 2004년 SM에서 주최한 청소년 베스트 선발 대회에서 노래짱 대상을 수상하며 SM 엔터테인먼트에 캐스팅되었다. 이후 3년간의 연습생을 거쳐 2007년 소녀시대의 멤버로 데뷔했다. 태연은 1989년 3월 9일 대한민국 전라북도 전주시 완산구에서 아버지 김종구, 어머니 김희자 사이의 1남 2녀 중 둘째로 태어났다. 가족으로는 오빠 김지웅, 여동생 김하연이 있다. 어릴 적부터 춤을 좋아했고 특히 명절 때는 친척들이 춤을 시키면 곧잘 추었다던 태연은 TV에서 보아를 보고 가수의 꿈을 갖게 되었다고 한다. 전주양지초등학교를 졸업하였고 전주양지중학교 2학년이던 2003년 SM아카데미 스타라이트 메인지방보컬과 4기에 들어가게 되면서 아버지와 함께 주말마다 전주에서 서울로 이동하며 가수의 꿈을 키웠다. 2004년에 당시 보컬 트레이너였던 더 원의 정규 2집 수록곡 〈You Bring Me Joy (Part 2)〉에 피처링으로 참여했다. 당시 만 15세였던 태연은 현재 활동하는 소속사 SM 엔터테인먼트에 들어가기 전이었다. 이후 태연은 2004년 8월에 열린 제8회 SM 청소년 베스트 선발 대회에서 노래짱 부문에 출전해 1위(대상)를 수상하였고 SM 엔터테인먼트에 정식 캐스팅되어 연습생 생활을 시작하게 되었다. 2005년 청담고등학교에 입학하였으나, 학교 측에서 연예계 활동을 용인하지 않아 전주예술고등학교 방송문화예술과로 전학하였고 2008년 졸업하면서 학교를 빛낸 공로로 공로상을 수상했다. 태연은 연습생 생활이 힘들어 숙소에서 몰래 뛰쳐나갔다가 하루 만에 다시 돌아오기도 했다고 이야기하기도 했다. 이후 SM엔터테인먼트에서 3년여의 연습생 기간을 거쳐 걸 그룹 소녀시대의 멤버로 정식 데뷔하게 되었다.&quot;</span>
+<span class="sd">        ... ])</span>
+<span class="sd">        [&#39;국립과천과학관 등 천문학계에 따르면 21일 저녁 목성과 토성은 1623년 이후 397년 만에 가장 가까워졌는데 크리스마스 즈음까지 남서쪽 하늘을 올려다보면 목성과 토성이 가까워지는 현상을 관측할 수 있다.&#39;,</span>
+<span class="sd">        &#39;가수 태연은 2004년 SM 청소년 베스트 선발 대회에서 노래짱 대상을 수상하고 SM 엔터테인먼트에 캐스팅되어 3년간의 연습생 기간을 거쳐 2007년 소녀시대의 멤버로 데뷔했다.&#39;]</span>
+
+<span class="sd">        &gt;&gt;&gt; summ = Pororo(task=&quot;summarization&quot;, model=&quot;bullet&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; summ([</span>
+<span class="sd">        ... &quot;목성과 토성이 약 400년 만에 가장 가까이 만났습니다. 국립과천과학관 등 천문학계에 따르면 21일 저녁 목성과 토성은 1623년 이후 397년 만에 가장 가까워졌는데요. 크리스마스 즈음까지 남서쪽 하늘을 올려다보면 목성과 토성이 가까워지는 현상을 관측할 수 있습니다. 목성의 공전주기는 11.9년, 토성의 공전주기는 29.5년인데요. 공전주기의 차이로 두 행성은 약 19.9년에 한 번 가까워집니다. 이번 근접 때  목성과 토성 사이 거리는 보름달 지름의 5분의 1 정도로 가까워졌습니다. 맨눈으로 보면 두 행성이 겹쳐져 하나의 별처럼 보이는데요. 지난 21일 이후 목성과 토성의 대근접은 2080년 3월 15일로 예측됩니다. 과천과학관 측은 우리가 대근접을 볼 수 있는 기회는 이번이 처음이자 마지막이 될 가능성이 크다라고 설명했 습니다.&quot;,</span>
+<span class="sd">        ... &quot;가수 김태연은 걸 그룹 소녀시대, 소녀시대-태티서 및 소녀시대-Oh!GG의 리더이자 메인보컬이다. 2004년 SM에서 주최한 청소년 베스트 선발 대회에서 노래짱 대상을 수상하며 SM 엔터테인먼트에 캐스팅되었다. 이후 3년간의 연습생을 거쳐 2007년 소녀시대의 멤버로 데뷔했다. 태연은 1989년 3월 9일 대한민국 전라북도 전주시 완산구에서 아버지 김종구, 어머니 김희자 사이의 1남 2녀 중 둘째로 태어났다. 가족으로는 오빠 김지웅, 여동생 김하연이 있다. 어릴 적부터 춤을 좋아했고 특히 명절 때는 친척들이 춤을 시키면 곧잘 추었다던 태연은 TV에서 보아를 보고 가수의 꿈을 갖게 되었다고 한다. 전주양지초등학교를 졸업하였고 전주양지중학교 2학년이던 2003년 SM아카데미 스타라이트 메인지방보컬과 4기에 들어가게 되면서 아버지와 함께 주말마다 전주에서 서울로 이동하며 가수의 꿈을 키웠다. 2004년에 당시 보컬 트레이너였던 더 원의 정규 2집 수록곡 〈You Bring Me Joy (Part 2)〉에 피처링으로 참여했다. 당시 만 15세였던 태연은 현재 활동하는 소속사 SM 엔터테인먼트에 들어가기 전이었다. 이후 태연은 2004년 8월에 열린 제8회 SM 청소년 베스트 선발 대회에서 노래짱 부문에 출전해 1위(대상)를 수상하였고 SM 엔터테인먼트에 정식 캐스팅되어 연습생 생활을 시작하게 되었다. 2005년 청담고등학교에 입학하였으나, 학교 측에서 연예계 활동을 용인하지 않아 전주예술고등학교 방송문화예술과로 전학하였고 2008년 졸업하면서 학교를 빛낸 공로로 공로상을 수상했다. 태연은 연습생 생활이 힘들어 숙소에서 몰래 뛰쳐나갔다가 하루 만에 다시 돌아오기도 했다고 이야기하기도 했다. 이후 SM엔터테인먼트에서 3년여의 연습생 기간을 거쳐 걸 그룹 소녀시대의 멤버로 정식 데뷔하게 되었다.&quot;</span>
+<span class="sd">        ... ])</span>
+<span class="sd">        [[&#39;21일 저녁 목성과 토성 1623년 이후 397년 만에 가까워져&#39;, &#39; 2080년 3월 15일 대근접 예측&#39;, &#39; 크리스마스 즈음 남서쪽 하늘 올려보면 관측 가능&#39;],</span>
+<span class="sd">        [&#39;태연, 2004년 청소년 베스트 선발 대회에서 노래짱 대상 수상&#39;, &#39; 태연, SM엔터테인먼트에서 3년여의 연습생 기간 거쳐 걸 그룹 소녀시대의 멤버로 정식 데뷔&#39;]]</span>
+
+<span class="sd">        &gt;&gt;&gt; summ = Pororo(task=&quot;summarization&quot;, model=&quot;extractive&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; summ([</span>
+<span class="sd">        ... &quot;목성과 토성이 약 400년 만에 가장 가까이 만났습니다. 국립과천과학관 등 천문학계에 따르면 21일 저녁 목성과 토성은 1623년 이후 397년 만에 가장 가까워졌는데요. 크리스마스 즈음까지 남서쪽 하늘을 올려다보면 목성과 토성이 가까워지는 현상을 관측할 수 있습니다. 목성의 공전주기는 11.9년, 토성의 공전주기는 29.5년인데요. 공전주기의 차이로 두 행성은 약 19.9년에 한 번 가까워집니다. 이번 근접 때  목성과 토성 사이 거리는 보름달 지름의 5분의 1 정도로 가까워졌습니다. 맨눈으로 보면 두 행성이 겹쳐져 하나의 별처럼 보이는데요. 지난 21일 이후 목성과 토성의 대근접은 2080년 3월 15일로 예측됩니다. 과천과학관 측은 우리가 대근접을 볼 수 있는 기회는 이번이 처음이자 마지막이 될 가능성이 크다라고 설명했 습니다.&quot;,</span>
+<span class="sd">        ... &quot;가수 김태연은 걸 그룹 소녀시대, 소녀시대-태티서 및 소녀시대-Oh!GG의 리더이자 메인보컬이다. 2004년 SM에서 주최한 청소년 베스트 선발 대회에서 노래짱 대상을 수상하며 SM 엔터테인먼트에 캐스팅되었다. 이후 3년간의 연습생을 거쳐 2007년 소녀시대의 멤버로 데뷔했다. 태연은 1989년 3월 9일 대한민국 전라북도 전주시 완산구에서 아버지 김종구, 어머니 김희자 사이의 1남 2녀 중 둘째로 태어났다. 가족으로는 오빠 김지웅, 여동생 김하연이 있다. 어릴 적부터 춤을 좋아했고 특히 명절 때는 친척들이 춤을 시키면 곧잘 추었다던 태연은 TV에서 보아를 보고 가수의 꿈을 갖게 되었다고 한다. 전주양지초등학교를 졸업하였고 전주양지중학교 2학년이던 2003년 SM아카데미 스타라이트 메인지방보컬과 4기에 들어가게 되면서 아버지와 함께 주말마다 전주에서 서울로 이동하며 가수의 꿈을 키웠다. 2004년에 당시 보컬 트레이너였던 더 원의 정규 2집 수록곡 〈You Bring Me Joy (Part 2)〉에 피처링으로 참여했다. 당시 만 15세였던 태연은 현재 활동하는 소속사 SM 엔터테인먼트에 들어가기 전이었다. 이후 태연은 2004년 8월에 열린 제8회 SM 청소년 베스트 선발 대회에서 노래짱 부문에 출전해 1위(대상)를 수상하였고 SM 엔터테인먼트에 정식 캐스팅되어 연습생 생활을 시작하게 되었다. 2005년 청담고등학교에 입학하였으나, 학교 측에서 연예계 활동을 용인하지 않아 전주예술고등학교 방송문화예술과로 전학하였고 2008년 졸업하면서 학교를 빛낸 공로로 공로상을 수상했다. 태연은 연습생 생활이 힘들어 숙소에서 몰래 뛰쳐나갔다가 하루 만에 다시 돌아오기도 했다고 이야기하기도 했다. 이후 SM엔터테인먼트에서 3년여의 연습생 기간을 거쳐 걸 그룹 소녀시대의 멤버로 정식 데뷔하게 되었다.&quot;</span>
+<span class="sd">        ... ])</span>
+<span class="sd">        [&#39;국립과천과학관 등 천문학계에 따르면 21일 저녁 목성과 토성은 1623년 이후 397년 만에 가장 가까워졌는데요. 크리스마스 즈음까지 남서쪽 하늘을 올려다보면 목성과 토성이 가까워지는 현상을 관측할 수 있습니다. 지난 21일 이후 목성과 토성의 대근접은 2080년 3월 15일로 예측됩니다.&#39;,</span>
+<span class="sd">        &#39;2004년 SM에서 주최한 청소년 베스트 선발 대회에서 노래짱 대상을 수상하며 SM 엔터테인먼트에 캐스팅되었다. 이후 태연은 2004년 8월에 열린 제8회 SM 청소년 베스트 선발 대회에서 노래짱 부문에 출전해 1위(대상)를 수상하였고 SM 엔터테인먼트에 정식 캐스팅되어 연습생 생활을 시작하게 되었다. 이후 SM엔터테인먼트에서 3년여의 연습생 기간을 거쳐 걸 그룹 소녀시대의 멤버로 정식 데뷔하게 되었다.&#39;]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoSummarizationFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoSummarizationFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;abstractive&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bullet&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;extractive&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;kobart.base.ko.summary&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;kobart.base.ko.bullet&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;brainbert.base.ko.summary&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoSummarizationFactory.load"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">pororo.tasks.tokenization</span> <span class="kn">import</span> <span class="n">PororoTokenizationFactory</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;abstractive&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">=</span> <span class="s2">&quot;kobart.base.ko.summary&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;bullet&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">=</span> <span class="s2">&quot;kobart.base.ko.bullet&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;extractive&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">=</span> <span class="s2">&quot;brainbert.base.ko.summary&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;kobart&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.bart.KoBART</span> <span class="kn">import</span> <span class="n">KoBartModel</span>
+            <span class="n">model_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;bart/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">KoBartModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                <span class="n">model_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;bullet&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+                <span class="n">sent_tokenizer</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">PororoTokenizationFactory</span><span class="p">(</span>
+                    <span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span>
+                    <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                    <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;sent_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+                <span class="n">ext_model_name</span> <span class="o">=</span> <span class="s2">&quot;brainbert.base.ko.summary&quot;</span>
+                <span class="n">ext_summary</span> <span class="o">=</span> <span class="n">PororoRobertaSummary</span><span class="p">(</span>
+                    <span class="n">sent_tokenizer</span><span class="p">,</span>
+                    <span class="n">device</span><span class="p">,</span>
+                    <span class="n">ext_model_name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="k">return</span> <span class="n">PororoKoBartBulletSummary</span><span class="p">(</span>
+                    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                    <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+                    <span class="n">ext_summary</span><span class="o">=</span><span class="n">ext_summary</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">PororoKoBartSummary</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;brainbert&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="n">sent_tokenizer</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">PororoTokenizationFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;sent_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">PororoRobertaSummary</span><span class="p">(</span>
+                <span class="n">sent_tokenizer</span><span class="p">,</span>
+                <span class="n">device</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoKoBartSummary"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoKoBartSummary">[docs]</a><span class="k">class</span> <span class="nc">PororoKoBartSummary</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PororoKoBartSummary</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoKoBartSummary.predict"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoKoBartSummary.predict">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct abstractive summarization</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (Union[str, List[str]]): input text to be extracted</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (str) summarized text</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sampling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">sampling</span><span class="o">=</span><span class="n">sampling</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">sampling_topk</span><span class="o">=</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">sampling_topp</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">length_penalty</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="p">,</span>
+            <span class="n">top_p</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PororoKoBartBulletSummary"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoKoBartBulletSummary">[docs]</a><span class="k">class</span> <span class="nc">PororoKoBartBulletSummary</span><span class="p">(</span><span class="n">PororoGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">ext_summary</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PororoKoBartBulletSummary</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ext_summary</span> <span class="o">=</span> <span class="n">ext_summary</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Postprocess output sentence</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output (Union[str, List[str]]): output sentence generated by model</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: postprocessed output sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&lt;s&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;/s&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;pad&gt;&quot;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&lt;unused0&gt;&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoKoBartBulletSummary.predict"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoKoBartBulletSummary.predict">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct bullet-point summarization</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (Union[str, List[str]]): input text to be extracted</span>
+<span class="sd">            beam (int): beam search size</span>
+<span class="sd">            temperature (float): temperature scale</span>
+<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
+<span class="sd">            top_p (float): top-p sampling ratio</span>
+<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
+<span class="sd">            len_penalty (float): length penalty ratio</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (str) summarized text</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sampling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">texts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ext_summary</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ext_summary</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">text</span><span class="p">]</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">texts</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">sampling</span><span class="o">=</span><span class="n">sampling</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">sampling_topk</span><span class="o">=</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">sampling_topp</span><span class="o">=</span><span class="n">top_p</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">length_penalty</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
+            <span class="n">return_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">bad_words_ids</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">)],</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">)],</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;▁[&quot;</span><span class="p">)],</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;▁]&quot;</span><span class="p">)],</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;】&quot;</span><span class="p">)],</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;【&quot;</span><span class="p">)],</span>
+            <span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">,</span>
+        <span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="p">,</span>
+            <span class="n">top_p</span><span class="p">,</span>
+            <span class="n">no_repeat_ngram_size</span><span class="p">,</span>
+            <span class="n">len_penalty</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PororoRobertaSummary"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoRobertaSummary">[docs]</a><span class="k">class</span> <span class="nc">PororoRobertaSummary</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sent_tokenizer</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">ext_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">ckpt_dir</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bert/</span><span class="si">{</span><span class="n">ext_model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+        <span class="n">tok_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;tokenizers/bpe32k.</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="p">,</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">hub_utils</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+            <span class="n">ckpt_dir</span><span class="p">,</span>
+            <span class="s2">&quot;model.pt&quot;</span><span class="p">,</span>
+            <span class="n">load_checkpoint_heads</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">wrapper</span> <span class="o">=</span> <span class="n">BrainRobertaHubInterface</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">[</span><span class="s2">&quot;args&quot;</span><span class="p">],</span>
+            <span class="n">x</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">],</span>
+            <span class="n">x</span><span class="p">[</span><span class="s2">&quot;models&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">tok_path</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">clf_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ckpt_dir</span><span class="si">}</span><span class="s2">/classifier.pt&quot;</span><span class="p">,</span>
+            <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">classifier_size</span> <span class="o">=</span> <span class="mi">768</span> <span class="k">if</span> <span class="s2">&quot;base&quot;</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="k">else</span> <span class="mi">1024</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">classifier_size</span><span class="p">,</span>
+                                     <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">half</span><span class="p">()</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">clf_dict</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">sentence_encoder</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">half</span><span class="p">()</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span> <span class="o">=</span> <span class="n">BertSumTokenizer</span><span class="p">(</span>
+            <span class="n">bpe</span><span class="o">=</span><span class="n">wrapper</span><span class="o">.</span><span class="n">bpe</span><span class="p">,</span>
+            <span class="n">dictionary</span><span class="o">=</span><span class="n">wrapper</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_dictionary</span><span class="p">,</span>
+            <span class="n">sent_tokenizer</span><span class="o">=</span><span class="n">sent_tokenizer</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="PororoRobertaSummary.predict"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.PororoRobertaSummary.predict">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct extractive summarization</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input text</span>
+<span class="sd">            return_list (bool): whether to return as list</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (str) summarized text</span>
+<span class="sd">            (List[str]) list of text if return_list is True</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">encode_batch</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+        <span class="n">input_ids</span> <span class="o">=</span> <span class="n">encoded</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="n">segment_ids</span> <span class="o">=</span> <span class="n">encoded</span><span class="p">[</span><span class="s2">&quot;segment_ids&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="n">sentences</span> <span class="o">=</span> <span class="n">encoded</span><span class="p">[</span><span class="s2">&quot;sentences&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># list of str</span>
+        <span class="n">cls_ids</span><span class="p">,</span> <span class="n">mask_cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_class_ids</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span>
+            <span class="n">input_ids</span><span class="p">,</span>
+            <span class="n">segment_labels</span><span class="o">=</span><span class="n">segment_ids</span><span class="p">,</span>
+            <span class="n">last_state_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">bert_representation</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">batch_arange</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+            <span class="n">bert_representation</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">))</span>
+        <span class="n">sentence_vector</span> <span class="o">=</span> <span class="n">bert_representation</span><span class="p">[</span><span class="n">batch_arange</span><span class="p">,</span> <span class="n">cls_ids</span><span class="p">]</span>
+        <span class="n">sentence_vector</span> <span class="o">*=</span> <span class="n">mask_cls</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+
+        <span class="n">final_logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span><span class="p">(</span><span class="n">sentence_vector</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="n">final_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">final_logits</span><span class="p">)</span>
+        <span class="n">final_logits</span> <span class="o">=</span> <span class="n">final_logits</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="o">*</span> <span class="n">mask_cls</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+        <span class="n">prediction</span> <span class="o">=</span> <span class="n">final_logits</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">prediction</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="p">[</span><span class="n">sentences</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prediction</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">return_list</span><span class="p">:</span>
+            <span class="n">prediction</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">prediction</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_class_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        make [CLS] token index tensor from source tokens</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_ids (torch.Tensor): input token ids</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            [CLS] token ids,</span>
+<span class="sd">            masking of [CLS] token ids for padding</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls_ids</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">batch_tokens</span> <span class="ow">in</span> <span class="n">input_ids</span><span class="p">:</span>
+            <span class="n">cls_id</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch_tokens</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">_bos_index</span><span class="p">:</span>
+                    <span class="n">cls_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">cls_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cls_id</span><span class="p">)</span>
+
+        <span class="n">padded_cls</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">cls_ids</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="n">mask_cls</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">padded_cls</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">padded_cls</span><span class="p">,</span> <span class="n">mask_cls</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">return_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">return_list</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">return_list</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="BertSumTokenizer"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.BertSumTokenizer">[docs]</a><span class="k">class</span> <span class="nc">BertSumTokenizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bpe</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">sent_tokenizer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bpe</span> <span class="o">=</span> <span class="n">bpe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dictionary</span> <span class="o">=</span> <span class="n">dictionary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pad_index</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">pad_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bos_index</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">bos_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tokenizer</span> <span class="o">=</span> <span class="n">sent_tokenizer</span>
+
+<div class="viewcode-block" id="BertSumTokenizer.encode_line"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.BertSumTokenizer.encode_line">[docs]</a>    <span class="k">def</span> <span class="nf">encode_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        encode sentence to token ids and segment ids</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str or List[str]): input article</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            token ids, segment ids, splitted sentences</span>
+
+<span class="sd">        References:</span>
+<span class="sd">            you can find implementation details in here:</span>
+<span class="sd">            https://arxiv.org/abs/1903.10318</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">sentences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sent_tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sentences</span> <span class="o">=</span> <span class="n">text</span>
+
+        <span class="n">token_ids</span><span class="p">,</span> <span class="n">segment_ids</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+            <span class="n">bpe_sentence</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bpe</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+            <span class="n">bpe_sentence</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;s&gt; </span><span class="si">{</span><span class="n">bpe_sentence</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="c1"># &lt;s&gt; is equivalent with [CLS]</span>
+
+            <span class="n">sent_token_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dictionary</span><span class="o">.</span><span class="n">encode_line</span><span class="p">(</span>
+                <span class="n">bpe_sentence</span><span class="p">,</span>
+                <span class="n">append_eos</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">add_if_not_exist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">sent_segment_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">sent_token_ids</span><span class="o">.</span><span class="n">size</span><span class="p">())</span><span class="o">.</span><span class="n">int</span><span class="p">()</span>
+            <span class="n">sent_segment_ids</span> <span class="o">*=</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span>  <span class="c1"># to make 0 and 1 alternately.</span>
+
+            <span class="n">token_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sent_token_ids</span><span class="p">)</span>
+            <span class="n">segment_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sent_segment_ids</span><span class="p">)</span>
+
+        <span class="n">token_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">token_ids</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">segment_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">segment_ids</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">token_ids</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">,</span> <span class="n">sentences</span></div>
+
+<div class="viewcode-block" id="BertSumTokenizer.encode_batch"><a class="viewcode-back" href="../../../seq2seq/summary.html#pororo.tasks.text_summarization.BertSumTokenizer.encode_batch">[docs]</a>    <span class="k">def</span> <span class="nf">encode_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">max_length</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        encode text to token ids batchwise</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts (List[str]): list of input articles</span>
+<span class="sd">            max_length (int): max token length (for truncation)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: token ids, segment ids, splitted sentences</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result_tokenization</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_segmentation</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_split_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">max_len</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">texts</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">:</span>
+            <span class="n">token_ids</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode_line</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">token_ids</span> <span class="o">=</span> <span class="n">token_ids</span><span class="p">[:</span><span class="n">max_length</span><span class="p">]</span>
+            <span class="n">segment_ids</span> <span class="o">=</span> <span class="n">segment_ids</span><span class="p">[:</span><span class="n">max_length</span><span class="p">]</span>
+
+            <span class="n">result_tokenization</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token_ids</span><span class="p">)</span>
+            <span class="n">result_segmentation</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment_ids</span><span class="p">)</span>
+            <span class="n">result_split_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token_ids</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+                <span class="n">max_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">token_ids</span><span class="p">)</span>
+
+        <span class="n">padded_tokens</span><span class="p">,</span> <span class="n">padded_segments</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">token_ids</span><span class="p">,</span> <span class="n">segment_ids</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="n">result_tokenization</span><span class="p">,</span>
+                <span class="n">result_segmentation</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">padding_token</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">max_len</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pad_index</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+            <span class="n">padding_token</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">token_ids</span><span class="p">)]</span> <span class="o">=</span> <span class="n">token_ids</span>
+            <span class="n">padded_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">padding_token</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+            <span class="n">padding_segment</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">max_len</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pad_index</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+            <span class="n">padding_segment</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">segment_ids</span><span class="p">)]</span> <span class="o">=</span> <span class="n">segment_ids</span>
+            <span class="n">padded_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">padding_segment</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="n">padded_tokens</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">padded_tokens</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+        <span class="n">padded_segments</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">padded_segments</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;input_ids&quot;</span><span class="p">:</span> <span class="n">padded_tokens</span><span class="p">,</span>
+            <span class="s2">&quot;segment_ids&quot;</span><span class="p">:</span> <span class="n">padded_segments</span><span class="p">,</span>
+            <span class="s2">&quot;sentences&quot;</span><span class="p">:</span> <span class="n">result_split_sentences</span><span class="p">,</span>
+        <span class="p">}</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

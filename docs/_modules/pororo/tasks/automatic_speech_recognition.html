@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.automatic_speech_recognition &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.automatic_speech_recognition</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.automatic_speech_recognition</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Automatic Speech Recognition related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoAsrFactory"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoAsrFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoAsrFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Recognized speech sentence using trained model.</span>
+<span class="sd">    Currently English, Korean and Chinese supports.</span>
+
+<span class="sd">    English (`wav2vec.en`)</span>
+
+<span class="sd">        - dataset: LibriSpeech</span>
+<span class="sd">        - metric: WER (clean: 1.9 / other: 4.3)</span>
+
+<span class="sd">    Korean (`wav2vec.ko`)</span>
+
+<span class="sd">        - dataset: KsponSpeech</span>
+<span class="sd">        - metric: CER (clean: 4.9 / other: 5.4)</span>
+
+<span class="sd">    Chinese (`wav2vec.zh`)</span>
+
+<span class="sd">        - dataset: AISHELL-1</span>
+<span class="sd">        - metric: CER (6.9)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        audio_path (str): audio path for asr or youtube link (Supports WAV, FLAC and MP3 format)</span>
+<span class="sd">        top_db (int): the threshold (in decibels) below reference to consider as silence</span>
+<span class="sd">        vad (bool): flag indication whether to use voice activity detection or not, If it is False, it is split into</span>
+<span class="sd">             dB criteria and then speech recognition is made. Applies only when audio length is more than 50 seconds.</span>
+<span class="sd">        batch_size (int): inference batch size</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: result of speech recognition</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; asr = Pororo(&#39;asr&#39;, lang=&#39;ko&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; asr(&#39;korean_speech.wav&#39;)</span>
+<span class="sd">        {</span>
+<span class="sd">            &#39;audio&#39;: &#39;example.wav&#39;,</span>
+<span class="sd">            &#39;duration&#39;: &#39;0:00:03.297250&#39;,</span>
+<span class="sd">            &#39;results&#39;: [</span>
+<span class="sd">                {</span>
+<span class="sd">                    &#39;speech_section&#39;: &#39;0:00:00 ~ 0:00:03&#39;,</span>
+<span class="sd">                    &#39;length_ms&#39;: 3300.0,</span>
+<span class="sd">                     speech&#39;: &#39;이 책은 살 만한 가치가 없어&#39;</span>
+<span class="sd">                }</span>
+<span class="sd">            ]</span>
+<span class="sd">        }</span>
+<span class="sd">        &gt;&gt;&gt; asr = Pororo(&#39;asr&#39;, lang=&#39;en&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; asr(&#39;english_speech.wav&#39;)</span>
+<span class="sd">        {</span>
+<span class="sd">            &#39;audio&#39;: &#39;english_speech.flac&#39;,</span>
+<span class="sd">            &#39;duration&#39;: &#39;0:00:12.195000&#39;,</span>
+<span class="sd">            &#39;results&#39;: [</span>
+<span class="sd">                {</span>
+<span class="sd">                    &#39;speech_section&#39;: &#39;0:00:00 ~ 0:00:12&#39;,</span>
+<span class="sd">                    &#39;length_ms&#39;: 12200.0,</span>
+<span class="sd">                    &#39;speech&#39;: &#39;WELL TOO IF HE LIKE LOVE WOULD FILCH OUR HOARD WITH PLEASURE TO OURSELVES SLUICING</span>
+<span class="sd">                               OUR VEIN AND VIGOUR TO PERPETUATE THE STRAIN OF LIFE BY SPILTH OF LIFE WITHIN US STORED&#39;</span>
+<span class="sd">                }</span>
+<span class="sd">            ]</span>
+<span class="sd">        }</span>
+<span class="sd">        &gt;&gt;&gt; asr = Pororo(&#39;asr&#39;, lang=&#39;ko&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; asr(&#39;https://www.youtube.com/watch?v=5q9zIgylu1E&#39;)</span>
+<span class="sd">        {</span>
+<span class="sd">            &#39;audio&#39;: &#39;5q9zIgylu1E.wav&#39;,</span>
+<span class="sd">            &#39;duration&#39;: &#39;0:18:38.058687&#39;,</span>
+<span class="sd">            &#39;results&#39;: [</span>
+<span class="sd">                {</span>
+<span class="sd">                    ...</span>
+<span class="sd">                    ...</span>
+<span class="sd">                    ...</span>
+<span class="sd">                }</span>
+<span class="sd">            ]</span>
+<span class="sd">        }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoAsrFactory.get_available_langs"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoAsrFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoAsrFactory.get_available_models"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoAsrFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wav2vec.en&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wav2vec.ko&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;wav2vec.zh&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoAsrFactory.load"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoAsrFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_available_langs</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Unsupported Language : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s1">&#39;Support Languages : [&quot;ko&quot;, &quot;en&quot;, &quot;zh&quot;]&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">pororo.models.wav2vec2.recognizer</span> <span class="kn">import</span> <span class="n">BrainWav2Vec2Recognizer</span>
+
+        <span class="n">model_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;misc/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">dict_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;misc/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">.ltr.txt&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">vad_model_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+            <span class="s2">&quot;misc/vad.pt&quot;</span><span class="p">,</span>
+            <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">librosa</span>  <span class="c1"># noqa</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;librosa&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARN</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                <span class="s2">&quot;Please install librosa with: `pip install librosa`&quot;</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">pororo.models.vad</span> <span class="kn">import</span> <span class="n">VoiceActivityDetection</span>
+
+        <span class="n">vad_model</span> <span class="o">=</span> <span class="n">VoiceActivityDetection</span><span class="p">(</span>
+            <span class="n">model_path</span><span class="o">=</span><span class="n">vad_model_path</span><span class="p">,</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">BrainWav2Vec2Recognizer</span><span class="p">(</span>
+            <span class="n">model_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span>
+            <span class="n">dict_path</span><span class="o">=</span><span class="n">dict_path</span><span class="p">,</span>
+            <span class="n">vad_model</span><span class="o">=</span><span class="n">vad_model</span><span class="p">,</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+            <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">PororoASR</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoASR"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoASR">[docs]</a><span class="k">class</span> <span class="nc">PororoASR</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SAMPLE_RATE</span> <span class="o">=</span> <span class="mi">16000</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MAX_VALUE</span> <span class="o">=</span> <span class="mi">32767</span>
+
+    <span class="k">def</span> <span class="nf">_download_audio_from_youtube</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Download audio file from youtube link</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url: youtube link</span>
+<span class="sd">            filename: save audio file name</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: return success or failure.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">youtube_dl</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+                <span class="s2">&quot;Please install youtube_dl: https://github.com/ytdl-org/youtube-dl&quot;</span>
+            <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install soundfile: pip install soundfile&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">librosa</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install librosa: pip install librosa&quot;</span><span class="p">)</span>
+
+        <span class="n">ydl_opts</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;format&quot;</span><span class="p">:</span>
+                <span class="s2">&quot;bestaudio/best&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;outtmpl&quot;</span><span class="p">:</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;noplaylist&quot;</span><span class="p">:</span>
+                <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;continue_dl&quot;</span><span class="p">:</span>
+                <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;postprocessors&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;FFmpegExtractAudio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;preferredcodec&quot;</span><span class="p">:</span> <span class="s2">&quot;wav&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;preferredquality&quot;</span><span class="p">:</span> <span class="s2">&quot;192&quot;</span><span class="p">,</span>
+            <span class="p">}],</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">youtube_dl</span><span class="o">.</span><span class="n">YoutubeDL</span><span class="p">(</span><span class="n">ydl_opts</span><span class="p">)</span> <span class="k">as</span> <span class="n">ydl</span><span class="p">:</span>
+                <span class="n">ydl</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+                <span class="n">info_dict</span> <span class="o">=</span> <span class="n">ydl</span><span class="o">.</span><span class="n">extract_info</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">ydl</span><span class="o">.</span><span class="n">prepare_filename</span><span class="p">(</span><span class="n">info_dict</span><span class="p">)</span>
+                <span class="n">ydl</span><span class="o">.</span><span class="n">download</span><span class="p">([</span><span class="n">url</span><span class="p">])</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Audio download from youtube failed&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Re-write to match the format required by Pydub</span>
+        <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">get_samplerate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
+        <span class="n">signal</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span>
+        <span class="n">sf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_youtube_link_predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">vad</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">video_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">top_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct speech recognition for audio from youtube link.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            audio_path (str): the wav file path</span>
+<span class="sd">            top_db (int): the threshold (in decibels) below reference to consider as silence</span>
+<span class="sd">            batch_size (int): inference batch size</span>
+<span class="sd">            vad (bool): flag indication whether to use voice activity detection or not, If it is False, it is split into</span>
+<span class="sd">             dB criteria and then speech recognition is made. Applies only when audio length is more than 50 seconds.</span>
+<span class="sd">            video_id (str): video unique ID value</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: result of speech recognition</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_audio_from_youtube</span><span class="p">(</span>
+            <span class="n">audio_path</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">video_id</span><span class="p">),</span> <span class="s2">&quot;download from youtube failed&quot;</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_audio</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
+            <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span>
+            <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_preprocess_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">librosa</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install librosa: pip install librosa&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Using the pydub because the speed of the resample is the fastest.</span>
+            <span class="kn">from</span> <span class="nn">pydub</span> <span class="kn">import</span> <span class="n">AudioSegment</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Please install pydub: pip install pydub&quot;</span><span class="p">)</span>
+
+        <span class="n">audio_extension</span> <span class="o">=</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">audio_extension</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="s1">&#39;wav&#39;</span><span class="p">,</span> <span class="s1">&#39;mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;flac&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pcm&#39;</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Unsupported format: </span><span class="si">{</span><span class="n">audio_extension</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="n">audio_extension</span> <span class="o">==</span> <span class="s1">&#39;pcm&#39;</span><span class="p">:</span>
+            <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span>
+                <span class="n">audio_path</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">get_samplerate</span><span class="p">(</span><span class="n">audio_path</span><span class="p">)</span>
+            <span class="n">signal</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span>
+                <span class="n">audio_path</span><span class="p">,</span>
+                <span class="nb">format</span><span class="o">=</span><span class="n">audio_extension</span><span class="p">,</span>
+                <span class="n">frame_rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">sample_rate</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SAMPLE_RATE</span><span class="p">:</span>
+                <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">set_frame_rate</span><span class="p">(</span><span class="n">frame_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">SAMPLE_RATE</span><span class="p">)</span>
+
+            <span class="n">channel_sounds</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">split_to_mono</span><span class="p">()</span>
+            <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">get_array_of_samples</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">channel_sounds</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">signal</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_VALUE</span>
+
+<div class="viewcode-block" id="PororoASR.predict"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoASR.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">top_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">vad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct speech recognition for audio in a given path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            audio_path (str): the wav file path</span>
+<span class="sd">            top_db (int): the threshold (in decibels) below reference to consider as silence (default: 48)</span>
+<span class="sd">            batch_size (int): inference batch size (default: 1)</span>
+<span class="sd">            vad (bool): flag indication whether to use voice activity detection or not, If it is False, it is split into</span>
+<span class="sd">             dB criteria and then speech recognition is made. Applies only when audio length is more than 50 seconds.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: result of speech recognition</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;youtu.be/&quot;</span> <span class="ow">in</span> <span class="n">audio_path</span><span class="p">:</span>
+            <span class="n">video_id</span> <span class="o">=</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;outu.be/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">11</span><span class="p">]</span>
+            <span class="n">audio_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://www.youtube.com/watch?v=</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;youtube.com/watch?v=&quot;</span> <span class="ow">in</span> <span class="n">audio_path</span><span class="p">:</span>
+            <span class="n">video_id</span> <span class="o">=</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;outube.com/watch?v=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">11</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_youtube_link_predict</span><span class="p">(</span>
+                <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
+                <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
+                <span class="n">video_id</span><span class="o">=</span><span class="n">video_id</span><span class="p">,</span>
+                <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_audio</span><span class="p">(</span><span class="n">audio_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
+            <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span>
+            <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
+            <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">top_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+        <span class="n">vad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
+            <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

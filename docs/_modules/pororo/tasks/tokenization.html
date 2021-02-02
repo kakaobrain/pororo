@@ -1,0 +1,704 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.tokenization &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.tokenization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.tokenization</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Tokenization related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">unicodedata</span> <span class="kn">import</span> <span class="n">normalize</span>
+
+<span class="kn">from</span> <span class="nn">kss</span> <span class="kn">import</span> <span class="n">split_sentences</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoTokenizationFactory"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoTokenizationFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use the dictionary you want to use to tokenize about the sentence.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sent: (str) sentence to be tokenized</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[str]: tokenized token list</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; tk = Pororo(task=&quot;tokenization&quot;, lang=&quot;ko&quot;, model=&quot;bpe32k.ko&quot;, )</span>
+<span class="sd">        &gt;&gt;&gt; tk(&quot;하늘을 나는 새를 보았다&quot;)</span>
+<span class="sd">        [&quot;_하늘&quot;, &quot;을&quot;, &quot;_나는&quot;, &quot;_새&quot;, &quot;를&quot;, &quot;_보&quot;, &quot;았다&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; tk = Pororo(task=&quot;tokenization&quot;, lang=&quot;en&quot;, model=&quot;roberta&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; tk(&quot;I love you&quot;)</span>
+<span class="sd">        [&#39;I&#39;, &#39;Ġlove&#39;, &#39;Ġyou&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; tk(&#39;&#39;&#39;If the values aren’t unique, there is no unique inversion of the dictionary anyway or, with other words, inverting does not make sense.&#39;&#39;&#39;)</span>
+<span class="sd">        [&#39;If&#39;, &#39;Ġthe&#39;, &#39;Ġvalues&#39;, &#39;Ġaren&#39;, &#39;âĢ&#39;, &#39;Ļ&#39;, &#39;t&#39;, &#39;Ġunique&#39;, &#39;,&#39;, &#39;Ġthere&#39;, &#39;Ġis&#39;, &#39;Ġno&#39;, &#39;Ġunique&#39;, &#39;Ġin&#39;, &#39;version&#39;, &#39;Ġof&#39;, &#39;Ġthe&#39;, &#39;Ġdictionary&#39;, &#39;Ġanyway&#39;, &#39;Ġor&#39;, &#39;,&#39;, &#39;Ġwith&#39;, &#39;Ġother&#39;, &#39;Ġwords&#39;, &#39;,&#39;, &#39;Ġinver&#39;, &#39;ting&#39;, &#39;Ġdoes&#39;, &#39;Ġnot&#39;, &#39;Ġmake&#39;, &#39;Ġsense&#39;, &#39;.&#39;]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoTokenizationFactory.get_available_langs"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoTokenizationFactory.get_available_models"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;moses&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bpe32k.en&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;roberta&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sent_en&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;bpe4k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bpe8k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bpe16k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bpe32k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bpe64k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;unigram4k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;unigram8k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;unigram16k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;unigram32k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;unigram64k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;jpe4k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;jpe8k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;jpe16k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;jpe32k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;jpe64k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mecab.bpe4k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mecab.bpe8k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mecab.bpe16k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mecab.bpe32k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mecab.bpe64k.ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;char&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;jamo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;word&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mecab_ko&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sent_ko&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;mecab&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bpe8k.ja&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sent_ja&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;jieba&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sent_zh&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoTokenizationFactory.load"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;sent&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">nltk</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;tokenizers/punkt&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+                <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt&quot;</span><span class="p">)</span>
+
+            <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+
+            <span class="k">return</span> <span class="n">PororoSentTokenizer</span><span class="p">(</span><span class="n">sent_tokenize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;mecab_ko&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">mecab</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install python-mecab-ko with: `pip install python-mecab-ko`&quot;</span>
+                <span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">mecab</span><span class="o">.</span><span class="n">MeCab</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">PororoMecabKoTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;char&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PororoCharTokenizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;jamo&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PororoJamoTokenizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;word&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PororoWordTokenizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;roberta&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">fairseq.data.encoders.gpt2_bpe</span> <span class="kn">import</span> <span class="n">get_encoder</span>
+
+            <span class="n">encoder</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/encoder.json&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+            <span class="n">vocab</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/vocab.bpe&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">get_encoder</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_vocab</span><span class="p">:</span>
+                <span class="n">vocab</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f_vocab</span><span class="p">)</span>
+                <span class="n">inv_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vocab</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+            <span class="k">return</span> <span class="n">PororoRoBERTaTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">inv_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;moses&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">sacremoses</span> <span class="kn">import</span> <span class="n">MosesDetokenizer</span><span class="p">,</span> <span class="n">MosesTokenizer</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install sacremoses with: `pip install sacremoses`&quot;</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">MosesTokenizer</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+            <span class="n">detok</span> <span class="o">=</span> <span class="n">MosesDetokenizer</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoMosesTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">detok</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;jieba&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">jieba</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install jieba with: `pip install jieba`&quot;</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span>
+            <span class="k">return</span> <span class="n">PororoJiebaTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;mecab&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">fugashi</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install fugashi with: `pip install fugashi`&quot;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">ipadic</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="s2">&quot;Please install ipadic with: `pip install ipadic`&quot;</span><span class="p">)</span>
+
+            <span class="n">dic_dir</span> <span class="o">=</span> <span class="n">ipadic</span><span class="o">.</span><span class="n">DICDIR</span>
+            <span class="n">mecabrc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dic_dir</span><span class="p">,</span> <span class="s2">&quot;mecabrc&quot;</span><span class="p">)</span>
+            <span class="n">mecab_option</span> <span class="o">=</span> <span class="s2">&quot;-d </span><span class="si">{}</span><span class="s2"> -r </span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">dic_dir</span><span class="p">,</span>
+                <span class="n">mecabrc</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">fugashi</span><span class="o">.</span><span class="n">GenericTagger</span><span class="p">(</span><span class="n">mecab_option</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoMecabTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.tasks.utils.tokenizer</span> <span class="kn">import</span> <span class="n">CustomTokenizer</span>
+
+            <span class="n">path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;tokenizers/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;json&quot;</span> <span class="k">if</span> <span class="s2">&quot;unigram&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="k">else</span> <span class="s2">&quot;txt&quot;</span>
+            <span class="n">merges_filename</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/merges.txt&quot;</span> <span class="k">if</span> <span class="s2">&quot;unigram&quot;</span>
+                               <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">CustomTokenizer</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span>
+                <span class="n">vocab_filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/vocab.</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">merges_filename</span><span class="o">=</span><span class="n">merges_filename</span><span class="p">,</span>
+                <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span> <span class="k">if</span> <span class="s2">&quot;jpe&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="k">else</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;jpe&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">PororoJamoPairTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;mecab.bpe&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">PororoMecabSPTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoSPTokenizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoTokenizerBase"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizerBase">[docs]</a><span class="k">class</span> <span class="nc">PororoTokenizerBase</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PororoTokenizerBase.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizerBase.detokenize">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;`detokenize()` is not implemented&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoTokenizerBase.convert_tokens_to_ids"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizerBase.convert_tokens_to_ids">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">convert_tokens_to_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;`convert_tokens_to_ids()` is not implemented&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoSentTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoSentTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoSentTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoSentTokenizer.cj_tokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoSentTokenizer.cj_tokenize">[docs]</a>    <span class="k">def</span> <span class="nf">cj_tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;。&quot;</span><span class="p">,</span> <span class="s2">&quot;。[SEP]&quot;</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;！&quot;</span><span class="p">,</span> <span class="s2">&quot;！[SEP]&quot;</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;？&quot;</span><span class="p">,</span> <span class="s2">&quot;？[SEP]&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;[SEP]&quot;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="n">sents</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[SEP]&quot;</span><span class="p">)</span>
+            <span class="n">sents</span> <span class="o">=</span> <span class="n">sents</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sents</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">sents</span></div>
+
+<div class="viewcode-block" id="PororoSentTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoSentTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;zh&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cj_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;ko&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">split_sentences</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoMecabKoTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabKoTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoMecabKoTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoMecabKoTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabKoTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▃&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">text</span></div>
+
+<div class="viewcode-block" id="PororoMecabKoTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabKoTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preserve_whitespace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">text_ptr</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="n">token</span> <span class="o">=</span> <span class="n">unit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">preserve_whitespace</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="n">text_ptr</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+                    <span class="c1"># Move text pointer to whitespace token to reserve whitespace</span>
+                    <span class="c1"># cf. to prevent double white-space, we move pointer to next eojeol</span>
+                    <span class="k">while</span> <span class="n">text</span><span class="p">[</span><span class="n">text_ptr</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+                        <span class="n">text_ptr</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+            <span class="n">text_ptr</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preserve_whitespace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">tokenized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">preserve_whitespace</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tokenized</span></div>
+
+
+<div class="viewcode-block" id="PororoMosesTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMosesTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoMosesTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">detok</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_detok</span> <span class="o">=</span> <span class="n">detok</span>
+
+<div class="viewcode-block" id="PororoMosesTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMosesTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detok</span><span class="o">.</span><span class="n">detokenize</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoMosesTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMosesTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoJiebaTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJiebaTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoJiebaTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoJiebaTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJiebaTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoJiebaTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJiebaTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="PororoMecabTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoMecabTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoMecabTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoMecabTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">parsed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s2">&quot;EOS&quot;</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">toks</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">toks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">res</span></div></div>
+
+
+<div class="viewcode-block" id="PororoWordTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoWordTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoWordTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoWordTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoWordTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Untokenizing a text undoes the tokenizing operation, restoring</span>
+<span class="sd">        punctuation and spaces to the places that people expect them to be.</span>
+<span class="sd">        Ideally, `untokenize(tokenize(text))` should be identical to `text`,</span>
+<span class="sd">        except for line breaks.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+        <span class="n">step1</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;`` &quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &#39;&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+        <span class="n">step1</span> <span class="o">=</span> <span class="n">step1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;. . .&quot;</span><span class="p">,</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span>
+
+        <span class="n">step2</span> <span class="o">=</span> <span class="n">step1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; ( &quot;</span><span class="p">,</span> <span class="s2">&quot; (&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; ) &quot;</span><span class="p">,</span> <span class="s2">&quot;) &quot;</span><span class="p">)</span>
+
+        <span class="n">step3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; ([.,:;?!%]+)([ </span><span class="se">\&#39;</span><span class="s1">&quot;`])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1\2&quot;</span><span class="p">,</span> <span class="n">step2</span><span class="p">)</span>
+
+        <span class="n">step4</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot; ([.,:;?!%]+)$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">step3</span><span class="p">)</span>
+
+        <span class="n">step5</span> <span class="o">=</span> <span class="n">step4</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; n&#39;t&quot;</span><span class="p">,</span> <span class="s2">&quot;n&#39;t&quot;</span><span class="p">)</span>
+        <span class="n">step5</span> <span class="o">=</span> <span class="n">step5</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;can not&quot;</span><span class="p">,</span> <span class="s2">&quot;cannot&quot;</span><span class="p">)</span>
+
+        <span class="n">step6</span> <span class="o">=</span> <span class="n">step5</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; ` &quot;</span><span class="p">,</span> <span class="s2">&quot; &#39;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">step6</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="PororoWordTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoWordTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+|[^\w\s]&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">UNICODE</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoCharTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoCharTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoCharTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoCharTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoCharTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">text</span></div>
+
+<div class="viewcode-block" id="PororoCharTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoCharTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;▁&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoJamoTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJamoTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoJamoTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoJamoTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJamoTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFKC&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoJamoTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJamoTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFKD&quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)]))</span></div></div>
+
+
+<div class="viewcode-block" id="PororoJamoPairTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJamoPairTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoJamoPairTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoJamoPairTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJamoPairTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFKC&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoJamoPairTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoJamoPairTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;▁&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFKD&quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)])</span>
+        <span class="n">tokenized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">tokenized</span></div></div>
+
+
+<div class="viewcode-block" id="PororoSPTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoSPTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoSPTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoSPTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoSPTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">text</span></div>
+
+<div class="viewcode-block" id="PororoSPTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoSPTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">tokenized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">tokenized</span></div></div>
+
+
+<div class="viewcode-block" id="PororoMecabSPTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabSPTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoMecabSPTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="PororoMecabSPTokenizer.detokenize"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabSPTokenizer.detokenize">[docs]</a>    <span class="k">def</span> <span class="nf">detokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">text</span></div>
+
+<div class="viewcode-block" id="PororoMecabSPTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoMecabSPTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">tokenized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tokenized</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+        <span class="n">tokenized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tokenized</span></div>
+
+
+<div class="viewcode-block" id="PororoRoBERTaTokenizer"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoRoBERTaTokenizer">[docs]</a><span class="k">class</span> <span class="nc">PororoRoBERTaTokenizer</span><span class="p">(</span><span class="n">PororoTokenizerBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">inv_dict</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vocab</span> <span class="o">=</span> <span class="n">vocab</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inv_dict</span> <span class="o">=</span> <span class="n">inv_dict</span>
+
+<div class="viewcode-block" id="PororoRoBERTaTokenizer.convert_tokens_to_ids"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoRoBERTaTokenizer.convert_tokens_to_ids">[docs]</a>    <span class="k">def</span> <span class="nf">convert_tokens_to_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_vocab</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoRoBERTaTokenizer.predict"><a class="viewcode-back" href="../../../miscs/tokenization.html#pororo.tasks.tokenization.PororoRoBERTaTokenizer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_inv_dict</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">tokens</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

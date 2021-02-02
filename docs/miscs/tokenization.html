@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tokenization &mdash; Pororo 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Word Translation" href="wt.html" />
+    <link rel="prev" title="Optical Character Recognition" href="ocr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pororo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wt.html">Word Translation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pororo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tokenization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/miscs/tokenization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pororo.tasks.tokenization">
+<span id="tokenization"></span><h1>Tokenization<a class="headerlink" href="#module-pororo.tasks.tokenization" title="Permalink to this headline">¶</a></h1>
+<p>Tokenization related modeling class</p>
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoTokenizationFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoTokenizationFactory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">lang</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">model</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizationFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizationFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoFactoryBase</span></code></p>
+<p>Use the dictionary you want to use to tokenize about the sentence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sent</strong> – (str) sentence to be tokenized</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tokenized token list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tk</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;bpe32k.ko&quot;</span><span class="p">,</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tk</span><span class="p">(</span><span class="s2">&quot;하늘을 나는 새를 보았다&quot;</span><span class="p">)</span>
+<span class="go">[&quot;_하늘&quot;, &quot;을&quot;, &quot;_나는&quot;, &quot;_새&quot;, &quot;를&quot;, &quot;_보&quot;, &quot;았다&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tk</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;tokenization&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;roberta&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tk</span><span class="p">(</span><span class="s2">&quot;I love you&quot;</span><span class="p">)</span>
+<span class="go">[&#39;I&#39;, &#39;Ġlove&#39;, &#39;Ġyou&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tk</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;If the values aren’t unique, there is no unique inversion of the dictionary anyway or, with other words, inverting does not make sense.&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="go">[&#39;If&#39;, &#39;Ġthe&#39;, &#39;Ġvalues&#39;, &#39;Ġaren&#39;, &#39;âĢ&#39;, &#39;Ļ&#39;, &#39;t&#39;, &#39;Ġunique&#39;, &#39;,&#39;, &#39;Ġthere&#39;, &#39;Ġis&#39;, &#39;Ġno&#39;, &#39;Ġunique&#39;, &#39;Ġin&#39;, &#39;version&#39;, &#39;Ġof&#39;, &#39;Ġthe&#39;, &#39;Ġdictionary&#39;, &#39;Ġanyway&#39;, &#39;Ġor&#39;, &#39;,&#39;, &#39;Ġwith&#39;, &#39;Ġother&#39;, &#39;Ġwords&#39;, &#39;,&#39;, &#39;Ġinver&#39;, &#39;ting&#39;, &#39;Ġdoes&#39;, &#39;Ġnot&#39;, &#39;Ġmake&#39;, &#39;Ġsense&#39;, &#39;.&#39;]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoTokenizationFactory.get_available_langs">
+<em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizationFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoTokenizationFactory.get_available_models">
+<em class="property">static </em><code class="sig-name descname">get_available_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizationFactory.get_available_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoTokenizationFactory.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizationFactory.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizationFactory.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load user-selected task-specific model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – device information</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User-selected task-specific model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoTokenizerBase">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoTokenizerBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="p">:</span> <span class="n">pororo.tasks.utils.base.TaskConfig</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizerBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoSimpleBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoTokenizerBase.detokenize">
+<em class="property">abstract </em><code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizerBase.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizerBase.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoTokenizerBase.convert_tokens_to_ids">
+<em class="property">abstract </em><code class="sig-name descname">convert_tokens_to_ids</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoTokenizerBase.convert_tokens_to_ids"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoTokenizerBase.convert_tokens_to_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoSentTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoSentTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoSentTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoSentTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoSentTokenizer.cj_tokenize">
+<code class="sig-name descname">cj_tokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoSentTokenizer.cj_tokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoSentTokenizer.cj_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoSentTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoSentTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoSentTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoMecabKoTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoMecabKoTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabKoTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabKoTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMecabKoTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabKoTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabKoTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMecabKoTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">preserve_whitespace</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabKoTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabKoTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoMosesTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoMosesTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">detok</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMosesTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMosesTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMosesTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMosesTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMosesTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMosesTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMosesTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMosesTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoJiebaTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoJiebaTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJiebaTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJiebaTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoJiebaTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJiebaTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJiebaTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoJiebaTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJiebaTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJiebaTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoMecabTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoMecabTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMecabTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMecabTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoWordTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoWordTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoWordTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoWordTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoWordTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoWordTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoWordTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Untokenizing a text undoes the tokenizing operation, restoring
+punctuation and spaces to the places that people expect them to be.
+Ideally, <cite>untokenize(tokenize(text))</cite> should be identical to <cite>text</cite>,
+except for line breaks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoWordTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoWordTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoWordTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoCharTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoCharTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoCharTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoCharTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoCharTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoCharTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoCharTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoCharTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoCharTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoCharTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoJamoTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoJamoTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJamoTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJamoTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoJamoTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJamoTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJamoTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoJamoTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJamoTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJamoTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoJamoPairTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoJamoPairTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJamoPairTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJamoPairTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoJamoPairTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJamoPairTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJamoPairTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoJamoPairTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoJamoPairTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoJamoPairTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoSPTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoSPTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoSPTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoSPTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoSPTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoSPTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoSPTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoSPTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoSPTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoSPTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoMecabSPTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoMecabSPTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabSPTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabSPTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMecabSPTokenizer.detokenize">
+<code class="sig-name descname">detokenize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabSPTokenizer.detokenize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabSPTokenizer.detokenize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoMecabSPTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoMecabSPTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoMecabSPTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pororo.tasks.tokenization.PororoRoBERTaTokenizer">
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.tokenization.</code><code class="sig-name descname">PororoRoBERTaTokenizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">vocab</span></em>, <em class="sig-param"><span class="n">inv_dict</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoRoBERTaTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoRoBERTaTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pororo.tasks.tokenization.PororoTokenizerBase" title="pororo.tasks.tokenization.PororoTokenizerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.tokenization.PororoTokenizerBase</span></code></a></p>
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoRoBERTaTokenizer.convert_tokens_to_ids">
+<code class="sig-name descname">convert_tokens_to_ids</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tokens</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoRoBERTaTokenizer.convert_tokens_to_ids"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoRoBERTaTokenizer.convert_tokens_to_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pororo.tasks.tokenization.PororoRoBERTaTokenizer.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/tokenization.html#PororoRoBERTaTokenizer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.tokenization.PororoRoBERTaTokenizer.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="wt.html" class="btn btn-neutral float-right" title="Word Translation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ocr.html" class="btn btn-neutral float-left" title="Optical Character Recognition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, SIGNALS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
