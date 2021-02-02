@@ -72,7 +72,7 @@ bash asr-install.sh
 
 ```python
 >>> from pororo import Pororo
->>> ner = Pororo(task="ner", lang="ko")
+>>> ner = Pororo(task="ner", lang="en")
 ```
 
 - 객체 생성 이후에는, 다음과 같이 입력 값을 넘겨주는 방식으로 사용이 가능합니다.

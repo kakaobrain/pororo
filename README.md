@@ -72,7 +72,7 @@ bash asr-install.sh
 
 ```python
 >>> from pororo import Pororo
->>> ner = Pororo(task="ner", lang="ko")
+>>> ner = Pororo(task="ner", lang="en")
 ```
 
 - After object construction, it can be used in a way that passes the input value as follows:
