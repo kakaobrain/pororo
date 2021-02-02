@@ -15,16 +15,14 @@ import sys
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(1, os.path.abspath('..'))
 
-
 # -- Project information -----------------------------------------------------
 
 project = 'Pororo'
-copyright = '2020, SIGNALS'
-author = 'SIGNALS'
+copyright = '2021, Kakao Brain Corp.'
+author = 'Kakao Brain Corp.'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.2'
-
+release = '0.3.1'
 
 # -- General configuration ---------------------------------------------------
 
@@ -32,21 +30,11 @@ release = '0.1.2'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autosummary',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.napoleon',
-    "sphinx_rtd_theme",
-    'sphinx.ext.autodoc',
-    'sphinx.ext.imgmath',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
-    'recommonmark'
+    'sphinx.ext.autosummary', 'sphinx.ext.doctest', 'sphinx.ext.intersphinx',
+    'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.mathjax',
+    'sphinx.ext.ifconfig', 'sphinx.ext.napoleon', "sphinx_rtd_theme",
+    'sphinx.ext.autodoc', 'sphinx.ext.imgmath', 'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode', 'sphinx.ext.githubpages', 'recommonmark'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -58,7 +46,6 @@ master_doc = 'index'
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 
