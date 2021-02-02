@@ -5,8 +5,8 @@
 - We highly recommend **conda** environment to prevent dependecy problem
 
 ```
-# pororo only supports python >= 3.7
-conda create -n pororo python=3.7
+# pororo only supports python >= 3.6
+conda create -n pororo python=3.6
 conda activate pororo
 ```
 
