@@ -93,9 +93,11 @@ opencv-python
     MIT License
 
 pillow
+    https://github.com/python-pillow/Pillow
     Copyright © 1997-2011 by Secret Labs AB
     Copyright © 1995-2011 by Fredrik Lundh
     Copyright © 2010-2021 by Alex Clark and contributors
+    HPND License
 
 pydub
     https://github.com/jiaaro/pydub
