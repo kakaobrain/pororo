@@ -118,8 +118,8 @@ Pororo 라이브러리를 프로젝트 혹은 연구에 활용하신다면 아�
 
 ```
 @misc{pororo,
-  author       = {Heo, Hoon and Park, Kyubyong and Ko, Hyunwoong and
-                  Kim, Soohwan and Han, Gunsoo and Park, Jiwoo},
+  author       = {Heo, Hoon and Ko, Hyunwoong and Kim, Soohwan and
+                  Han, Gunsoo and Park, Jiwoo and Park, Kyubyong},
   title        = {Pororo: A Deep Learning based Multilingual Natural Language Processing Library},
   howpublished = {\url{https://github.com/kakaobrain/pororo}},
   year         = {2021},
@@ -130,7 +130,7 @@ Pororo 라이브러리를 프로젝트 혹은 연구에 활용하신다면 아�
 
 ## Contributors
 
-[허훈](https://github.com/huffon), [박규병](https://github.com/Kyubyong), [고현웅](https://github.com/hyunwoongko), [김수환](https://github.com/sooftware), [한건수](https://github.com/robinsongh381) 그리고 [박지우](https://github.com/bernardscumm)
+[허훈](https://github.com/huffon), [고현웅](https://github.com/hyunwoongko), [김수환](https://github.com/sooftware), [한건수](https://github.com/robinsongh381), [박지우](https://github.com/bernardscumm) 그리고 [박규병](https://github.com/Kyubyong)
 
 <br>
 
