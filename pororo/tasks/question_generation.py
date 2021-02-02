@@ -2,8 +2,8 @@
 
 import re
 import string
-from collections import Counter
-from typing import List, Optional, OrderedDict, Union
+from collections import Counter, OrderedDict
+from typing import List, Optional, Union
 
 from whoosh.qparser import QueryParser
 
