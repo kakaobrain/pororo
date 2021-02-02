@@ -18,8 +18,8 @@ sys.path.insert(1, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'Pororo'
-copyright = '2021, Kakao Brain Corp.'
-author = 'Kakao Brain Corp.'
+copyright = '2021, Kakao Brain Corp'
+author = 'Kakao Brain Corp'
 
 # The full version, including alpha/beta/rc tags
 release = '0.3.1'
