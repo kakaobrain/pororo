@@ -108,7 +108,7 @@ bash asr-install.sh
 
 ## Documentation
 
-보다 자세한 정보는 [full documentation]()을 참조하세요.
+보다 자세한 정보는 [full documentation](https://kakaobrain.github.io/pororo/)을 참조하세요.
 
 <br>
 

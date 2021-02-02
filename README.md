@@ -108,7 +108,7 @@ bash asr-install.sh
 
 ## Documentation
 
-For more detailed information, see [full documentation]()
+For more detailed information, see [full documentation](https://kakaobrain.github.io/pororo/)
 
 <br>
 
