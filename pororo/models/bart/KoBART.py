@@ -17,7 +17,7 @@ class KoBartModel(object):
         config = BartConfig.from_pretrained("hyunwoongko/kobart")
         self.model = BartForConditionalGeneration(config).eval().to(device)
 
-        if "cuda" in device:
+        if "cuda" in device.type:
             self.model = self.model.half()
 
         self.model.model.load_state_dict(torch.load(
