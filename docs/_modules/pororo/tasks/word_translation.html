@@ -224,6 +224,12 @@
 <span class="sd">        List[str]: word translation candidates</span>
 
 <span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; wt = Pororo(task=&quot;word_translation&quot;, lang=&quot;en&quot;, tgt=&quot;fr&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wt(&quot;apple&quot;)</span>
+<span class="sd">        [&#39;pomme&#39;, &#39;pommier&#39;, &#39;pommes&#39;, &#39;tombe&#39;, &#39;yeux&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; wt = Pororo(task=&quot;word_translation&quot;, lang=&quot;ja&quot;, tgt=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wt(&quot;リンゴ&quot;)</span>
+<span class="sd">        [&#39;선악과&#39;, &#39;사과&#39;, &#39;에덴&#39;, &#39;링고&#39;, &#39;귀하&#39;]</span>
 <span class="sd">        &gt;&gt;&gt; wt = Pororo(task=&quot;word_translation&quot;, lang=&quot;ko&quot;, tgt=&quot;en&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; wt(&quot;사과&quot;)</span>
 <span class="sd">        [&#39;apologize&#39;, &#39;apology&#39;, &#39;apple&#39;, &#39;apologies&#39;, &#39;apologizing&#39;]</span>

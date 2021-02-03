@@ -25,6 +25,12 @@ class PororoWordTranslationFactory(PororoFactoryBase):
         List[str]: word translation candidates
 
     Examples:
+        >>> wt = Pororo(task="word_translation", lang="en", tgt="fr")
+        >>> wt("apple")
+        ['pomme', 'pommier', 'pommes', 'tombe', 'yeux']
+        >>> wt = Pororo(task="word_translation", lang="ja", tgt="ko")
+        >>> wt("リンゴ")
+        ['선악과', '사과', '에덴', '링고', '귀하']
         >>> wt = Pororo(task="word_translation", lang="ko", tgt="en")
         >>> wt("사과")
         ['apologize', 'apology', 'apple', 'apologies', 'apologizing']

@@ -18,7 +18,7 @@ class PororoTranslationFactory(PororoFactoryBase):
             +-----------------+-----------------+------------+
             | Source Language | Target Language | BLEU score |
             +=================+=================+============+
-            | Average         |  -              |   10.00    |
+            | Average         |  X              |   10.00    |
             +-----------------+-----------------+------------+
             | English         |  Korean         |   15       |
             +-----------------+-----------------+------------+
@@ -56,7 +56,7 @@ class PororoTranslationFactory(PororoFactoryBase):
             +-----------------+-----------------+------------+
             | Source Language | Target Language | BLEU score |
             +=================+=================+============+
-            | Average         |  -              |   8.75     |
+            | Average         |  X              |   8.75     |
             +-----------------+-----------------+------------+
             | English         |  Korean         |   13       |
             +-----------------+-----------------+------------+
