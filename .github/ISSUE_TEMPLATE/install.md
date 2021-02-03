@@ -6,4 +6,6 @@ labels: 'install'
 
 ## Environment
 
--
+- OS :
+- Python version :
+- Misc. :

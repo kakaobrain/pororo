@@ -6,8 +6,11 @@ labels: 'bug'
 
 ## How to reproduce
 
--
+```python
+```
 
 ## Environment
 
--
+- OS :
+- Python version :
+- Misc. :
