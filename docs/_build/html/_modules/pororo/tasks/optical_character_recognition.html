@@ -358,7 +358,7 @@
 
         <span class="k">return</span> <span class="n">result_dict</span>
 
-<div class="viewcode-block" id="PororoOCR.predict"><a class="viewcode-back" href="../../../miscs/ocr.html#pororo.tasks.optical_character_recognition.PororoOCR.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">detail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoOCR.predict"><a class="viewcode-back" href="../../../miscs/ocr.html#pororo.tasks.optical_character_recognition.PororoOCR.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct Optical Character Recognition (OCR)</span>
 
@@ -367,6 +367,8 @@
 <span class="sd">            detail (bool): if True, returned to include details. (bounding poly, vertices, etc)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">detail</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;detail&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span>
                 <span class="n">image_path</span><span class="p">,</span>
@@ -375,10 +377,7 @@
                 <span class="n">paragraph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">detail</span><span class="p">,</span>
-        <span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">detail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">detail</span><span class="p">)</span></div>
+        <span class="p">)</span></div></div>
 </pre></div>
 
            </div>

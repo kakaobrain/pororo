@@ -30,7 +30,6 @@ class PororoTaskBase:
     def predict(
         self,
         text: Union[str, List[str]],
-        *addl_text: Union[str, List[str]],
         **kwargs,
     ):
         raise NotImplementedError(
@@ -110,8 +109,8 @@ class PororoFactoryBase(object):
 class PororoSimpleBase(PororoTaskBase):
     r"""Simple task base wrapper class"""
 
-    def __call__(self, text: str):
-        return self.predict(text)
+    def __call__(self, text: str, **kwargs):
+        return self.predict(text, **kwargs)
 
 
 class PororoBiencoderBase(PororoTaskBase):
@@ -121,6 +120,7 @@ class PororoBiencoderBase(PororoTaskBase):
         self,
         sent_a: str,
         sent_b: Union[str, List[str]],
+        **kwargs,
     ):
         assert isinstance(sent_a, str), "sent_a should be string type"
         assert isinstance(sent_b, str) or isinstance(
@@ -134,7 +134,7 @@ class PororoBiencoderBase(PororoTaskBase):
         else:
             sent_b = self._normalize(sent_b)
 
-        return self.predict(sent_a, sent_b)
+        return self.predict(sent_a, sent_b, **kwargs)
 
 
 class PororoGenerationBase(PororoTaskBase):
@@ -149,6 +149,7 @@ class PororoGenerationBase(PororoTaskBase):
         top_p: float = -1,
         no_repeat_ngram_size: int = 4,
         len_penalty: float = 1.0,
+        **kwargs,
     ):
         assert isinstance(text, str), "Input text should be string type"
 
@@ -160,15 +161,16 @@ class PororoGenerationBase(PororoTaskBase):
             top_p=top_p,
             no_repeat_ngram_size=no_repeat_ngram_size,
             len_penalty=len_penalty,
+            **kwargs,
         )
 
 
 class PororoTaskGenerationBase(PororoTaskBase):
     r"""Generation task wrapper class using only beam search"""
 
-    def __call__(self, text: str, beam: int = 1):
+    def __call__(self, text: str, beam: int = 1, **kwargs):
         assert isinstance(text, str), "Input text should be string type"
 
         text = self._normalize(text)
 
-        return self.predict(text, beam=beam)
+        return self.predict(text, beam=beam, **kwargs)

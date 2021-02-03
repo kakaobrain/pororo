@@ -143,7 +143,7 @@ class PororoBertBlank(PororoSimpleBase):
             '"',
         ]
 
-    def predict(self, sent: str) -> List[str]:
+    def predict(self, sent: str, **kwargs) -> List[str]:
         """
         Conduct fill-in-the-blank with one __ token
 

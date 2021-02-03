@@ -158,7 +158,7 @@ class PororoSBertSts(PororoBiencoderBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent_a: str, sent_b: str) -> float:
+    def predict(self, sent_a: str, sent_b: str, **kwargs) -> float:
         """
         Conduct semantic textual similariry task with S-BERT
 

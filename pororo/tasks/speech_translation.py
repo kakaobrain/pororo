@@ -107,9 +107,7 @@ class PororoSpeechTranslation(PororoSimpleBase):
         self,
         audio_path: str,
         tgt: str,
-        top_db: int = 48,
-        batch_size: int = 1,
-        vad: bool = False,
+        **kwargs,
     ) -> dict:
         """
         Conduct speech translation on given audio.
@@ -122,6 +120,10 @@ class PororoSpeechTranslation(PororoSimpleBase):
              dict: dictionary contains speech recognition outputs and translation outputs.
 
         """
+        top_db = kwargs.get("top_db", 48)
+        batch_size = kwargs.get("batch_size", 1)
+        vad = kwargs.get("batch_size", False)
+
         asr_outputs = self.asr(
             audio_path,
             top_db=top_db,
@@ -146,14 +148,10 @@ class PororoSpeechTranslation(PororoSimpleBase):
         self,
         audio_path: str,
         tgt: str,
-        top_db: int = 48,
-        batch_size: int = 1,
-        vad: bool = False,
+        **kwargs,
     ) -> dict:
         return self.predict(
             audio_path,
             tgt,
-            top_db,
-            batch_size,
-            vad,
+            **kwargs,
         )

@@ -237,6 +237,7 @@ class PororoTransformerTransMulti(PororoGenerationBase):
         top_p: float = -1,
         no_repeat_ngram_size: int = 4,
         len_penalty: float = 1.0,
+        **kwargs,
     ) -> str:
         """
         Conduct machine translation
@@ -275,28 +276,6 @@ class PororoTransformerTransMulti(PororoGenerationBase):
         )
         output = self._postprocess(output)
         return output
-
-    def __call__(
-        self,
-        text: str,
-        beam: int = 5,
-        temperature: float = 1.0,
-        top_k: int = -1,
-        top_p: float = -1,
-        no_repeat_ngram_size: int = 4,
-        len_penalty: float = 1.0,
-    ):
-        assert isinstance(text, str), "Input text should be string type"
-
-        return self.predict(
-            text,
-            beam,
-            temperature,
-            top_k,
-            top_p,
-            no_repeat_ngram_size,
-            len_penalty,
-        )
 
 
 class PororoTransformerParaphrase(PororoGenerationBase):
@@ -355,6 +334,7 @@ class PororoTransformerParaphrase(PororoGenerationBase):
         top_p: float = -1,
         no_repeat_ngram_size: int = 4,
         len_penalty: float = 1.0,
+        **kwargs,
     ):
         """
         Conduct paraphrase generation using Transformer Seq2Seq

@@ -192,9 +192,7 @@ class PororoASR(PororoSimpleBase):
     def predict(
         self,
         audio_path: str,
-        top_db: int = 48,
-        batch_size: int = 1,
-        vad: bool = False,
+        **kwargs,
     ) -> dict:
         """
         Conduct speech recognition for audio in a given path
@@ -210,6 +208,9 @@ class PororoASR(PororoSimpleBase):
             dict: result of speech recognition
 
         """
+        top_db = kwargs.get("top_db", 48)
+        batch_size = kwargs.get("batch_size", 1)
+        vad = kwargs.get("batch_size", False)
 
         signal = self._preprocess_audio(audio_path)
 
@@ -219,18 +220,4 @@ class PororoASR(PororoSimpleBase):
             top_db=top_db,
             vad=vad,
             batch_size=batch_size,
-        )
-
-    def __call__(
-        self,
-        audio_path: str,
-        top_db: int = 48,
-        batch_size: int = 16,
-        vad: bool = False,
-    ) -> dict:
-        return self.predict(
-            audio_path=audio_path,
-            top_db=top_db,
-            batch_size=batch_size,
-            vad=vad,
         )

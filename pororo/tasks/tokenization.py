@@ -239,7 +239,7 @@ class PororoSentTokenizer(PororoTokenizerBase):
 
         return sents
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         if self.lang in ["zh", "ja"]:
             return self.cj_tokenize(text)
         elif self.lang == "ko":
@@ -257,7 +257,12 @@ class PororoMecabKoTokenizer(PororoTokenizerBase):
         text = "".join(tokens).replace("▃", " ").strip()
         return text
 
-    def predict(self, text: str, preserve_whitespace: bool = True) -> List[str]:
+    def predict(
+        self,
+        text: str,
+        **kwargs,
+    ) -> List[str]:
+        preserve_whitespace = kwargs.get("preserve_whitespace", True)
         text = text.strip()
         text_ptr = 0
         results = list()
@@ -276,12 +281,6 @@ class PororoMecabKoTokenizer(PororoTokenizerBase):
 
         return results
 
-    def __call__(self, text: str, preserve_whitespace: bool = True):
-        assert isinstance(text, str)
-        text = self._normalize(text)
-        tokenized = self.predict(text, preserve_whitespace)
-        return tokenized
-
 
 class PororoMosesTokenizer(PororoTokenizerBase):
 
@@ -293,7 +292,7 @@ class PororoMosesTokenizer(PororoTokenizerBase):
     def detokenize(self, tokens: List[str]):
         return self._detok.detokenize(tokens)
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         return self._model.tokenize(text)
 
 
@@ -306,7 +305,7 @@ class PororoJiebaTokenizer(PororoTokenizerBase):
     def detokenize(self, tokens: List[str]):
         return "".join(tokens)
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         return list(self._model(text))
 
 
@@ -319,7 +318,7 @@ class PororoMecabTokenizer(PororoTokenizerBase):
     def detokenize(self, tokens: List[str]):
         return "".join(tokens)
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         parsed = self._model.parse(text)
 
         res = []
@@ -360,7 +359,7 @@ class PororoWordTokenizer(PororoTokenizerBase):
         step6 = step5.replace(" ` ", " '")
         return step6.strip()
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         return re.findall(r"\w+|[^\w\s]", text, re.UNICODE)
 
 
@@ -373,7 +372,7 @@ class PororoCharTokenizer(PororoTokenizerBase):
         text = "".join(tokens).replace("▁", " ").strip()
         return text
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         text = text.strip().replace(" ", "▁")
         return list(text)
 
@@ -386,7 +385,7 @@ class PororoJamoTokenizer(PororoTokenizerBase):
     def detokenize(self, tokens: List[str]):
         return normalize("NFKC", "".join(tokens)).replace("▁", " ")
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         return list("▁".join(
             [normalize("NFKD", token) for token in text.strip().split(" ")]))
 
@@ -401,7 +400,7 @@ class PororoJamoPairTokenizer(PororoTokenizerBase):
         tokens = list("".join(tokens).replace("▁", " ").strip())
         return normalize("NFKC", "".join(tokens)).replace("▁", " ")
 
-    def predict(self, text: str) -> List[str]:
+    def predict(self, text: str, **kwargs) -> List[str]:
         text = "▁".join(
             [normalize("NFKD", token) for token in text.strip().split(" ")])
         tokenized = self._model.segment(text.strip())
@@ -418,7 +417,7 @@ class PororoSPTokenizer(PororoTokenizerBase):
         text = "".join(tokens).replace("▁", " ").strip()
         return text
 
-    def predict(self, text: str):
+    def predict(self, text: str, **kwargs):
         tokenized = self._model.segment(text.strip())
         return tokenized
 
@@ -433,13 +432,8 @@ class PororoMecabSPTokenizer(PororoTokenizerBase):
         text = "".join(tokens).replace("▁", " ").strip()
         return text
 
-    def predict(self, text: str):
+    def predict(self, text: str, **kwargs):
         tokenized = self._model.segment(text)
-        return tokenized
-
-    def __call__(self, text: str):
-        assert isinstance(text, str)
-        tokenized = self.predict(text)
         return tokenized
 
 
@@ -454,7 +448,7 @@ class PororoRoBERTaTokenizer(PororoTokenizerBase):
     def convert_tokens_to_ids(self, tokens: List[str]):
         return [self._vocab[token] for token in tokens]
 
-    def predict(self, text: str):
+    def predict(self, text: str, **kwargs):
         tokens = self._model.encode(text)
         tokens = [self._inv_dict[token] for token in tokens]
         return tokens

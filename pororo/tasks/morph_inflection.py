@@ -116,7 +116,7 @@ class PororoParadigm(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, text: str):
+    def predict(self, text: str, **kwargs):
         """
         Conduct morphological inflection
 

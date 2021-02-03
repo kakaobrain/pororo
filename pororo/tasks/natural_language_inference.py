@@ -116,7 +116,12 @@ class PororoBertNli(PororoBiencoderBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent_a: str, sent_b: str):
+    def predict(
+        self,
+        sent_a: str,
+        sent_b: str,
+        **kwargs,
+    ):
         """
         Conduct Natural Language Inference
 

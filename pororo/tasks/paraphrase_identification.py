@@ -72,7 +72,7 @@ class PororoBertParaId(PororoBiencoderBase):
             "1": "Paraphrase",
         }
 
-    def predict(self, sent_a: str, sent_b: str):
+    def predict(self, sent_a: str, sent_b: str, **kwargs):
         """
         Conduct paraphrase identification
 

@@ -391,9 +391,7 @@
 <div class="viewcode-block" id="PororoASR.predict"><a class="viewcode-back" href="../../../miscs/asr.html#pororo.tasks.automatic_speech_recognition.PororoASR.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">top_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">vad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct speech recognition for audio in a given path</span>
@@ -409,6 +407,9 @@
 <span class="sd">            dict: result of speech recognition</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">top_db</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;top_db&quot;</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;batch_size&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">vad</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;batch_size&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
         <span class="n">signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_audio</span><span class="p">(</span><span class="n">audio_path</span><span class="p">)</span>
 
@@ -418,21 +419,7 @@
             <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
             <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
             <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-        <span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">audio_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">top_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
-        <span class="n">vad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-            <span class="n">audio_path</span><span class="o">=</span><span class="n">audio_path</span><span class="p">,</span>
-            <span class="n">top_db</span><span class="o">=</span><span class="n">top_db</span><span class="p">,</span>
-            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-            <span class="n">vad</span><span class="o">=</span><span class="n">vad</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span></div></div>
 </pre></div>
 
            </div>

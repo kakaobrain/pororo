@@ -151,7 +151,7 @@ class PororoSegmentBertDP(PororoSimpleBase):
             result.append((curr, eojeol, head_eojeol, label))
         return result
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct dependency parsing
 

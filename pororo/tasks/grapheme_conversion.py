@@ -102,7 +102,7 @@ class PororoP2GZh(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent: str) -> str:
+    def predict(self, sent: str, **kwargs) -> str:
         """
         Conduct grapheme to phoneme conversion
 
@@ -160,6 +160,7 @@ class PororoP2GJa(PororoGenerationBase):
         top_p: float = -1,
         no_repeat_ngram_size: int = 4,
         len_penalty: float = 1.0,
+        **kwargs,
     ) -> str:
         """
         Conduct paraphrase generation using Transformer Seq2Seq

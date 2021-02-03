@@ -8,6 +8,10 @@ from pororo import Pororo
 class PororoBlankTester(unittest.TestCase):
 
     def test_modules(self):
+        fill = Pororo(task="fib", lang="en")
+        fill_res = fill("David Beckham is a famous __ player.")
+        self.assertIsInstance(fill_res, list)
+
         fill = Pororo(task="fib", lang="ko")
         fill_res = fill("아 그거 __으로 보내줘 ㅋㅋ")
         self.assertIsInstance(fill_res, list)

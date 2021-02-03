@@ -173,7 +173,7 @@ class PororoSBertSentence(PororoSimpleBase):
             "ranking": result,
         }
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct sentence embedding
 

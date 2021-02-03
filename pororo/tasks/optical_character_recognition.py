@@ -159,7 +159,7 @@ class PororoOCR(PororoSimpleBase):
 
         return result_dict
 
-    def predict(self, image_path: str, detail: bool = False):
+    def predict(self, image_path: str, **kwargs):
         """
         Conduct Optical Character Recognition (OCR)
 
@@ -168,6 +168,8 @@ class PororoOCR(PororoSimpleBase):
             detail (bool): if True, returned to include details. (bounding poly, vertices, etc)
 
         """
+        detail = kwargs.get("detail", False)
+
         return self._postprocess(
             self._model(
                 image_path,
@@ -177,6 +179,3 @@ class PororoOCR(PororoSimpleBase):
             ),
             detail,
         )
-
-    def __call__(self, text: str, detail: bool = False):
-        return self.predict(text, detail)

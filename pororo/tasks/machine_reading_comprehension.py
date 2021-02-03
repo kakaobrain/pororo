@@ -81,7 +81,12 @@ class PororoBertMrc(PororoBiencoderBase):
         self._tagger = tagger
         self._callback = callback
 
-    def predict(self, query: str, context: str) -> Tuple[str, Tuple[int, int]]:
+    def predict(
+        self,
+        query: str,
+        context: str,
+        **kwargs,
+    ) -> Tuple[str, Tuple[int, int]]:
         """
         Conduct machine reading comprehesion with query and its corresponding context
 

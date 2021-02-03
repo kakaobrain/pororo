@@ -168,7 +168,7 @@ class PororoBertMovie(PororoSimpleBase):
 
         return result
 
-    def predict(self, script: str) -> dict:
+    def predict(self, script: str, **kwargs) -> dict:
         """
         Conduct (movie) script analysis
 
@@ -201,10 +201,6 @@ class PororoBertMovie(PororoSimpleBase):
         }
 
         return result
-
-    def __call__(self, text: str, show_probs=False):
-        assert isinstance(text, str), "Input text should be string type"
-        return self.predict(text)
 
 
 class RobertaEncoder(nn.Module):

@@ -98,7 +98,7 @@ class PororoNLTKLemmatize(PororoSimpleBase):
         tag = tag if tag in "anvr" else "n"
         return tag
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct lemmatization with NLTK module
 

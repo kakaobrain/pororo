@@ -303,17 +303,20 @@
             <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span>
         <span class="p">}</span>
 
-<div class="viewcode-block" id="PororoBertSentiment.predict"><a class="viewcode-back" href="../../../text_cls/sentiment.html#pororo.tasks.sentiment_analysis.PororoBertSentiment.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">show_probs</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="PororoBertSentiment.predict"><a class="viewcode-back" href="../../../text_cls/sentiment.html#pororo.tasks.sentiment_analysis.PororoBertSentiment.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct sentiment analysis</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            sent: (str) sentence to be sentiment analyzed</span>
+<span class="sd">            show_probs: (bool) whether to show probability score</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: predicted sentence label - `negative` or `positive`</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">show_probs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;show_probs&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
         <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_output</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">show_probs</span><span class="o">=</span><span class="n">show_probs</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">show_probs</span><span class="p">:</span>
             <span class="n">probs</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_fn</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span> <span class="n">res</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span><span class="p">}</span>
@@ -321,14 +324,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;ko&quot;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_fn</span><span class="p">[</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">title</span><span class="p">()</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">show_probs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
-
-        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">show_probs</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">title</span><span class="p">()</span></div></div>
 </pre></div>
 
            </div>

@@ -5,7 +5,7 @@ from typing import List, Optional, Tuple
 
 from lxml import etree
 
-from pororo.tasks.utils.base import PororoFactoryBase, PororoTaskGenerationBase
+from pororo.tasks.utils.base import PororoFactoryBase, PororoTaskBase
 from pororo.tasks.utils.download_utils import download_or_load
 
 
@@ -146,7 +146,7 @@ class PororoConstFactory(PororoFactoryBase):
                 return PororoTransConstZh(model, tagger, self.config)
 
 
-class PororoConstBase(PororoTaskGenerationBase):
+class PororoConstBase(PororoTaskBase):
     """Constituency Parsing base class containinig various methods related to Const. Parsing"""
 
     def _fix_tree(self, output: str):
@@ -212,7 +212,13 @@ class PororoConstBase(PororoTaskGenerationBase):
         pretty = pretty.replace("<temp>", "").replace("</temp>", "")
         return pretty.replace("  ", "\t")
 
-    def __call__(self, text: str, beam: int = 5, pos: bool = False):
+    def __call__(
+        self,
+        text: str,
+        beam: int = 5,
+        pos: bool = False,
+        **kwargs,
+    ):
         """
         Conduct constituency parsing
 
@@ -229,7 +235,7 @@ class PororoConstBase(PororoTaskGenerationBase):
 
         text = self._normalize(text)
 
-        return self.predict(text, beam, pos)
+        return self.predict(text, beam, pos, **kwargs)
 
 
 class PororoTransConstKo(PororoConstBase):
@@ -313,7 +319,13 @@ class PororoTransConstKo(PororoConstBase):
                 continue
         return False
 
-    def predict(self, text: str, beam: int = 5, pos: bool = False):
+    def predict(
+        self,
+        text: str,
+        beam: int = 5,
+        pos: bool = False,
+        **kwargs,
+    ):
         """
         Conduct constituency parsing
 
@@ -440,7 +452,13 @@ class PororoTransConstEn(PororoConstBase):
 
         return " ".join(result)
 
-    def predict(self, text: str, beam: int = 5, pos: bool = False):
+    def predict(
+        self,
+        text: str,
+        beam: int = 5,
+        pos: bool = False,
+        **kwargs,
+    ):
         """
         Conduct constituency parsing
 
@@ -559,7 +577,7 @@ class PororoTransConstZh(PororoConstBase):
 
         return n_out == n_words
 
-    def _preprocess(self, tagged: List[Tuple]) -> str:
+    def _preprocess(self, tagged: List[Tuple]) -> Tuple:
         """
         Preprocess input sentence to replace whitespace token with whitespace
 
@@ -609,7 +627,13 @@ class PororoTransConstZh(PororoConstBase):
 
         return " ".join(result)
 
-    def predict(self, text: str, beam: int = 5, pos: bool = False):
+    def predict(
+        self,
+        text: str,
+        beam: int = 5,
+        pos: bool = False,
+        **kwargs,
+    ):
         """
         Conduct constituency parsing
 

@@ -127,7 +127,7 @@ class PororoBertContextualized(PororoSimpleBase):
         self._model = model
         self._device = device
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct contextualized embedding
 
