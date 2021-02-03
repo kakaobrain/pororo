@@ -256,10 +256,11 @@ class PororoKoBartQuestionGeneration(PororoGenerationBase):
         n_wrong: int = 0,
     ):
         """
-        Conducnt question generation
+        Conduct question generation
 
         Args:
-            text (Union[str, List[str]]): input text
+            answer (str): answer text
+            context (str): source article
             beam (int): beam search size
             temperature (float): temperature scale
             top_k (int): top-K sampling vocabulary size
@@ -267,6 +268,7 @@ class PororoKoBartQuestionGeneration(PororoGenerationBase):
             no_repeat_ngram_size (int): no repeat ngram size
             len_penalty (float): length penalty ratio
             n_wrong (int): number of wrong answer candidate
+
         """
 
         sampling = False
