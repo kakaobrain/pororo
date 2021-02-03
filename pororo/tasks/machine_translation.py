@@ -263,6 +263,7 @@ class PororoTransformerTransMulti(PororoGenerationBase):
         top_p: float = -1,
         no_repeat_ngram_size: int = 4,
         len_penalty: float = 1.0,
+        **kwargs,
     ) -> str:
         """
         Conduct machine translation

@@ -444,7 +444,7 @@ class PororoTransformerGec(PororoGenerationBase):
         top_p: float = -1,
         no_repeat_ngram_size: int = 4,
         len_penalty: float = 1.0,
-        correct_spell: bool = False,
+        **kwargs,
     ):
         """
         Conduct grammar error correction
@@ -469,6 +469,8 @@ class PororoTransformerGec(PororoGenerationBase):
             "'I've loved you, before I met her!"
 
         """
+        correct_spell = kwargs.get("correct_spell", False)
+
         sampling = False
 
         if top_k != -1 or top_p != -1:
@@ -492,46 +494,6 @@ class PororoTransformerGec(PororoGenerationBase):
         )
         output = self._postprocess(output)
         return self._grammar_postprocess(output) if correct_spell else output
-
-    def __call__(
-        self,
-        text: str,
-        beam: int = 5,
-        temperature: float = 1.0,
-        top_k: int = -1,
-        top_p: float = -1,
-        no_repeat_ngram_size: int = 4,
-        len_penalty: float = 1.0,
-        correct_spell: bool = False,
-    ):
-        """
-        Conduct grammar error correction
-
-        Args:
-            text (str): input sentence
-            beam (int): beam search size
-            temperature (float): temperature scale
-            top_k (int): top-K sampling vocabulary size
-            top_p (float): top-p sampling ratio
-            no_repeat_ngram_size (int): no repeat ngram size
-            len_penalty (float): length penalty ratio
-
-        Returns:
-            str: grammartically corrected sentence
-
-        """
-        assert isinstance(text, str), "Input text should be string type"
-
-        return self.predict(
-            text,
-            beam,
-            temperature,
-            top_k,
-            top_p,
-            no_repeat_ngram_size,
-            len_penalty,
-            correct_spell,
-        )
 
 
 class PororoBertSpacing(PororoSimpleBase):
@@ -565,7 +527,7 @@ class PororoBertSpacing(PororoSimpleBase):
 
         return result.replace("▁", " ").strip()
 
-    def predict(self, text: str) -> Union[List[str], str]:
+    def predict(self, text: str, **kwargs) -> Union[List[str], str]:
         """
         Conduct spacing correction
 

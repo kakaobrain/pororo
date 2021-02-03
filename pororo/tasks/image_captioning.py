@@ -179,7 +179,7 @@ class PororoCaptionBrainCaption(PororoSimpleBase):
 
         return caption
 
-    def predict(self, image: str):
+    def predict(self, image: str, **kwargs):
         """
         Predict caption using image features
 

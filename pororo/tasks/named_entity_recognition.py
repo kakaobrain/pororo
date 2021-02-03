@@ -179,7 +179,7 @@ class PororoBertNerEn(PororoSimpleBase):
             result.append((word, _remove_tail(tag)))
         return [pair for pair in result if pair[0] != ""]
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct named entity recognition with english RoBERTa
 
@@ -279,7 +279,7 @@ class PororoBertCharNer(PororoSimpleBase):
     def predict(
         self,
         text: str,
-        ignore_labels: List[str] = [],
+        **kwargs,
     ):
         """
         Conduct named entity recognition with character BERT
@@ -291,6 +291,8 @@ class PororoBertCharNer(PororoSimpleBase):
             List[Tuple[str, str]]: token and its predicted tag tuple list
 
         """
+        ignore_labels = kwargs.get("ignore_labels", [])
+
         texts = text.strip().split("\n")
         result = []
         for text in texts:
@@ -307,13 +309,6 @@ class PororoBertCharNer(PororoSimpleBase):
                 result.extend(res)
                 result.extend([(" ", "O")])
         return result[:-1]
-
-    def __call__(
-        self,
-        text: str,
-        ignore_labels: List[str] = [],
-    ):
-        return self.predict(text, ignore_labels)
 
 
 class PororoBertNerZh(PororoSimpleBase):
@@ -360,7 +355,7 @@ class PororoBertNerZh(PororoSimpleBase):
         result.append((word, _remove_tail(tag)))
         return result
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct named entity recognition with Chinese RoBERTa
 
@@ -419,7 +414,7 @@ class PororoBertNerJa(PororoSimpleBase):
         result.append((word.replace("##", ""), _remove_tail(tag)))
         return result
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct named entity recognition with Japanese RoBERTa
 

@@ -127,7 +127,7 @@ class PororoBertReviewScore(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent: str) -> float:
+    def predict(self, sent: str, **kwargs) -> float:
         """
         Conduct review rating scaled from 1.0 to 5.0
 

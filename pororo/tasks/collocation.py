@@ -114,7 +114,7 @@ class PororoCollocate(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, text: str) -> str:
+    def predict(self, text: str, **kwargs) -> str:
         """
         Conduct collocation search using index file
 

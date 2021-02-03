@@ -2,7 +2,7 @@
 
 import os
 import re
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Union
 
 from pororo.tasks.utils.base import PororoFactoryBase, PororoSimpleBase
 
@@ -182,17 +182,36 @@ class PororoMecabPos(PororoSimpleBase):
 
         return morph, token
 
-    def predict(self, sent: str, return_surface: bool) -> List[Tuple[str, str]]:
+    def stringfy(self, result: List[Tuple[str, str]]) -> str:
+        res_str = ""
+        for pair in result:
+            if pair[1] == "SPACE":
+                res_str = res_str[:-1]
+                res_str += " "
+            else:
+                res_str += f"{pair[0]}/{pair[1]}+"
+        return res_str[:-1]
+
+    def predict(
+        self,
+        sent: str,
+        **kwargs,
+    ) -> Union[Tuple[str, str], str]:
         """
         Conduct Part-of-Speech tagging using mecab-ko
 
         Args:
             sent (str): input sentence to be tagged
+            return_surface (bool): whether to return surface
+            return_string (bool): whether to return value as a string
 
         Returns:
             List[Tuple[str, str]]: list of token and its corresponding pos tag tuple
 
         """
+        return_surface = kwargs.get("return_surface", False)
+        return_string = kwargs.get("return_string", False)
+
         sent = sent.strip()
         sent_ptr = 0
         results = []
@@ -220,29 +239,10 @@ class PororoMecabPos(PororoSimpleBase):
                 results.extend(token)
             sent_ptr += len(morph)
 
-        return results
-
-    def __call__(
-        self,
-        sent: str,
-        return_string: bool = False,
-        return_surface: bool = False,
-    ):
-        assert isinstance(sent, str), "Input sent should be string type"
-
-        sent = self._normalize(sent)
-        res = self.predict(sent, return_surface)
-
         if return_string:
-            res_str = ""
-            for pair in res:
-                if pair[1] == "SPACE":
-                    res_str = res_str[:-1]
-                    res_str += " "
-                else:
-                    res_str += f"{pair[0]}/{pair[1]}+"
-            return res_str[:-1]
-        return res
+            return self.stringfy(results)
+
+        return results
 
 
 class PororoMecabJap(PororoSimpleBase):
@@ -251,7 +251,7 @@ class PororoMecabJap(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct Part-of-Speech tagging using mecab and ipadic modules
 
@@ -280,7 +280,7 @@ class PororoJieba(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct Part-of-Speech tagging using jieba modules
 
@@ -366,7 +366,7 @@ class PororoNLTKPosTagger(PororoSimpleBase):
                 break
         return result
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct Part-of-Speech tagging using NLTK modules
 

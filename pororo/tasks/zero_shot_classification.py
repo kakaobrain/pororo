@@ -126,7 +126,12 @@ class PororoBertZeroShot(PororoBiencoderBase):
             "en": "This sentence is about {label}.",
         }
 
-    def predict(self, sent: str, labels: List[str]) -> Dict[str, float]:
+    def predict(
+        self,
+        sent: str,
+        labels: List[str],
+        **kwargs,
+    ) -> Dict[str, float]:
         """
         Conduct zero-shot classification
 

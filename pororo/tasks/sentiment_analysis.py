@@ -104,17 +104,20 @@ class PororoBertSentiment(PororoSimpleBase):
             "1": "positive",
         }
 
-    def predict(self, sent: str, show_probs: bool) -> str:
+    def predict(self, sent: str, **kwargs) -> str:
         """
         Conduct sentiment analysis
 
         Args:
             sent: (str) sentence to be sentiment analyzed
+            show_probs: (bool) whether to show probability score
 
         Returns:
             str: predicted sentence label - `negative` or `positive`
 
         """
+        show_probs = kwargs.get("show_probs", False)
+
         res = self._model.predict_output(sent, show_probs=show_probs)
         if show_probs:
             probs = {self._label_fn[r]: res[r] for r in res}
@@ -123,10 +126,3 @@ class PororoBertSentiment(PororoSimpleBase):
             if self.config.lang == "ko":
                 return self._label_fn[res].title()
             return res.title()
-
-    def __call__(self, text: str, show_probs=False):
-        assert isinstance(text, str), "Input text should be string type"
-
-        text = self._normalize(text)
-
-        return self.predict(text, show_probs)

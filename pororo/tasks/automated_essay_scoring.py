@@ -64,7 +64,7 @@ class PororoBertAes(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct Automated Essay Scoring
 

@@ -173,7 +173,7 @@ class PororoBertSRL(PororoSimpleBase):
             fin.append(tmp)
         return fin
 
-    def predict(self, sent: str):
+    def predict(self, sent: str, **kwargs):
         """
         Conduct semantic role labeling
 

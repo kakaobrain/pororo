@@ -72,7 +72,7 @@ class PororoWord2Word(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, word: str):
+    def predict(self, word: str, **kwargs):
         """
         Conduct word-to-word translation
 

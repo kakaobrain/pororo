@@ -1,7 +1,7 @@
 """Grapheme to Phoneme related modeling class"""
 
 import os
-from typing import Optional
+from typing import Optional, Union, List
 
 from pororo.tasks.utils.base import PororoFactoryBase, PororoSimpleBase
 
@@ -153,7 +153,7 @@ class PororoG2PKo(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, text: str, align: bool) -> str:
+    def predict(self, text: str, **kwargs) -> Union[List, str]:
         """
         Conduct grapheme to phoneme conversion
 
@@ -165,19 +165,14 @@ class PororoG2PKo(PororoSimpleBase):
             str: converted phoneme sentence
 
         """
+        align = kwargs.get("align", False)
+
         results = self._model(text)
 
         if align:
             return [(word, phoneme)
                     for word, phoneme in zip(text.split(), results.split())]
         return results
-
-    def __call__(self, text: str, align: bool = False):
-        assert isinstance(text, str), "Input text should be string type"
-
-        text = self._normalize(text)
-
-        return self.predict(text, align)
 
 
 class PororoG2PEn(PororoSimpleBase):
@@ -186,7 +181,7 @@ class PororoG2PEn(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, text: str) -> str:
+    def predict(self, text: str, **kwargs) -> str:
         """
         Conduct grapheme to phoneme conversion
 
@@ -206,7 +201,7 @@ class PororoG2PZh(PororoSimpleBase):
         super().__init__(config)
         self._model = model
 
-    def predict(self, text: str, align: bool, tone: bool) -> str:
+    def predict(self, text: str, **kwargs) -> Union[List, str]:
         """
         Conduct grapheme to phoneme conversion
 
@@ -219,30 +214,13 @@ class PororoG2PZh(PororoSimpleBase):
             str: converted phoneme sentence
 
         """
+        align = kwargs.get("align", False)
+        tone = kwargs.get("tone", True)
         results = self._model(text, tone=tone, char_split=True)
 
         if align:
             return [(c, t) for c, t in zip(text, results)]
         return " ".join(results)
-
-    def __call__(self, text: str, align: bool = False, tone: bool = True):
-        """
-        Conduct grapheme to phoneme conversion
-
-        Args:
-            text (str): input sentence to be converted to phoneme
-            align (bool): whether to align the result
-            tone (bool): whether to show chinese tone
-
-        Returns:
-            str: converted phoneme sentence
-
-        """
-        assert isinstance(text, str), "Input text should be string type"
-
-        text = self._normalize(text)
-
-        return self.predict(text, align, tone)
 
 
 class PororoG2PJa(PororoSimpleBase):
@@ -252,7 +230,7 @@ class PororoG2PJa(PororoSimpleBase):
         self._tagger = tagger
         self._romanize = romanize
 
-    def predict(self, text: str, align: bool):
+    def predict(self, text: str, **kwargs):
         """
         Conduct grapheme to phoneme conversion
 
@@ -264,6 +242,8 @@ class PororoG2PJa(PororoSimpleBase):
             List[str]: converted phoneme sentence list
 
         """
+        align = kwargs.get("align", False)
+
         output = self._tagger.parse(text.strip())
         results = list()
 
@@ -283,22 +263,5 @@ class PororoG2PJa(PororoSimpleBase):
 
         if align:
             return results
+
         return " ".join([result[1] for result in results])
-
-    def __call__(self, text: str, align: bool = False):
-        """
-        Conduct grapheme to phoneme conversion
-
-        Args:
-            text (str): input sentence to be converted to phoneme
-            align (bool): whether to align the result
-
-        Returns:
-            str: converted phoneme sentence
-
-        """
-        assert isinstance(text, str), "Input text should be string type"
-
-        text = self._normalize(text)
-
-        return self.predict(text, align)

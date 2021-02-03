@@ -477,10 +477,7 @@ class PororoWikipedia2Vec(PororoSimpleBase):
         return self._postprocess(
             headword2relatives) if group else headword2relatives
 
-    def predict(
-        self,
-        query: str,
-    ):
+    def predict(self, query: str, **kwargs):
         """
         predict to find similar words or entities
 
