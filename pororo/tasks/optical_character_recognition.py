@@ -81,7 +81,7 @@ class PororoOcrFactory(PororoFactoryBase):
             if self.config.lang not in self.get_available_langs():
                 raise ValueError(
                     f"Unsupported Language : {self.config.lang}",
-                    'Support Languages : ["ko"]',
+                    'Support Languages : ["en", "ko"]',
                 )
 
             det_model_path = download_or_load(
