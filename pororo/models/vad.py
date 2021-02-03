@@ -39,8 +39,7 @@ class VoiceActivityDetection(object):
         self.model = ConvVADModel()
         self.model.load_state_dict(torch.load(model_path, map_location=device))
 
-        self.model.to(device)
-        self.model.eval()
+        self.model.to(device).eval()
 
     def extract_features(
         self,
@@ -142,7 +141,7 @@ class VoiceActivityDetection(object):
             else:
                 n += 1
 
-        for idx in range(len(label) - len(smoothed_label)):
+        for _ in range(len(label) - len(smoothed_label)):
             smoothed_label.append(smoothed_label[-1])
 
         return smoothed_label
@@ -218,7 +217,12 @@ class ResnetBlock(nn.Module):
         super(ResnetBlock, self).__init__()
 
         padding = same_padding(num_kernels1[0])
-        self.zero_pad = nn.ZeroPad2d((0, 0, padding[0], padding[1]))
+        self.zero_pad = nn.ZeroPad2d((
+            0,
+            0,
+            padding[0],
+            padding[1],
+        ))
         self.conv1 = nn.Conv2d(
             in_channels,
             out_channels,

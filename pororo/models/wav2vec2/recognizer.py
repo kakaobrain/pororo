@@ -58,8 +58,11 @@ class BrainWav2Vec2Recognizer(object):
 
     def _load_model(self, model_path: str, device: str, target_dict) -> list:
         w2v = torch.load(model_path, map_location=device)
-        model = BrainWav2VecCtc.build_model(w2v["args"], target_dict,
-                                            w2v["pretrain_args"])
+        model = BrainWav2VecCtc.build_model(
+            w2v["args"],
+            target_dict,
+            w2v["pretrain_args"],
+        )
         model.load_state_dict(w2v["model"], strict=True)
         model.eval().to(self.device)
         return [model]
@@ -71,8 +74,10 @@ class BrainWav2Vec2Recognizer(object):
         assert feats.dim() == 1, feats.dim()
         return F.layer_norm(feats, feats.shape)
 
-    def _parse_audio(self,
-                     signal: np.ndarray) -> Tuple[torch.FloatTensor, float]:
+    def _parse_audio(
+        self,
+        signal: np.ndarray,
+    ) -> Tuple[torch.FloatTensor, float]:
         duration = round(librosa.get_duration(signal, sr=self.SAMPLE_RATE), 2)
         feature = torch.from_numpy(signal).float().to(self.device)
         feature = self._audio_postprocess(feature)
@@ -143,7 +148,9 @@ class BrainWav2Vec2Recognizer(object):
                 speech_intervals = self._split_audio(signal, top_db)
 
             batches, total_speech_sections, total_durations = self._create_batches(
-                speech_intervals, batch_size)
+                speech_intervals,
+                batch_size,
+            )
 
             for batch_idx, batch in enumerate(batches):
                 net_input, sample = dict(), dict()
@@ -155,9 +162,10 @@ class BrainWav2Vec2Recognizer(object):
                 net_input["source"] = batch["inputs"].to(self.device)
                 sample["net_input"] = net_input
 
-                if sample["net_input"]["source"].size(
-                        1) < self.MINIMUM_INPUT_LENGTH:
+                # yapf: disable
+                if sample["net_input"]["source"].size(1) < self.MINIMUM_INPUT_LENGTH:
                     continue
+                # yapf: enable
 
                 hypos = self.generator.generate(
                     self.model,
@@ -173,16 +181,22 @@ class BrainWav2Vec2Recognizer(object):
 
                     speech_start_time = str(
                         datetime.timedelta(
-                            seconds=int(round(speech_section["start"], 0))))
+                            seconds=int(round(
+                                speech_section["start"],
+                                0,
+                            ))))
                     speech_end_time = str(
                         datetime.timedelta(
-                            seconds=int(round(speech_section["end"], 0))))
+                            seconds=int(round(
+                                speech_section["end"],
+                                0,
+                            ))))
 
-                    hypo_dict[
-                        "speech_section"] = f"{speech_start_time} ~ {speech_end_time}"
-                    hypo_dict["length_ms"] = total_durations[batch_idx][
-                        hypo_idx] * 1000
+                    # yapf: disable
+                    hypo_dict["speech_section"] = f"{speech_start_time} ~ {speech_end_time}"
+                    hypo_dict["length_ms"] = total_durations[batch_idx][hypo_idx] * 1000
                     hypo_dict["speech"] = self._text_postprocess(hyp_pieces)
+                    # yapf: enable
 
                     if hypo_dict["speech"]:
                         result_dict["results"].append(hypo_dict)
@@ -202,9 +216,11 @@ class BrainWav2Vec2Recognizer(object):
 
             sample["net_input"] = net_input
 
-            hypo = self.generator.generate(self.model,
-                                           sample,
-                                           prefix_tokens=None)
+            hypo = self.generator.generate(
+                self.model,
+                sample,
+                prefix_tokens=None,
+            )
             hyp_pieces = self.target_dict.string(
                 hypo[0][0]["tokens"].int().cpu())
 
@@ -222,9 +238,11 @@ class BrainWav2Vec2Recognizer(object):
 
         return result_dict
 
-    def _create_batches(self,
-                        speech_intervals: list,
-                        batch_size: int = 1) -> Tuple[list, list, list]:
+    def _create_batches(
+        self,
+        speech_intervals: list,
+        batch_size: int = 1,
+    ) -> Tuple[list, list, list]:
         batches = list()
         total_speech_sections = list()
         total_durations = list()

@@ -10,9 +10,7 @@ from marisa_trie import RecordTrie, Trie
 
 
 class Wikipedia2VecItem(object):
-    """
-    Python wrapper class for wikipedia2vec item class
-    """
+    r"""Python wrapper class for wikipedia2vec item class"""
 
     def __init__(self, index, count, doc_count):
         self.index = index
@@ -21,9 +19,7 @@ class Wikipedia2VecItem(object):
 
 
 class Wikipedia2VecWord(Wikipedia2VecItem):
-    """
-    Python wrapper class for wikipedia2vec word class
-    """
+    r"""Python wrapper class for wikipedia2vec word class"""
 
     def __init__(self, text, index, count, doc_count):
         super().__init__(index, count, doc_count)
@@ -42,9 +38,7 @@ class Wikipedia2VecWord(Wikipedia2VecItem):
 
 
 class Wikipedia2VecEntity(Wikipedia2VecItem):
-    """
-    Python wrapper class for wikipedia2vec entity class
-    """
+    r"""Python wrapper class for wikipedia2vec entity class"""
 
     def __init__(self, title, index, count, doc_count):
         super().__init__(index, count, doc_count)
@@ -63,9 +57,7 @@ class Wikipedia2VecEntity(Wikipedia2VecItem):
 
 
 class Wikipedia2VecDict(object):
-    """
-    Python wrapper class for wikipedia2vec dictionary class
-    """
+    r"""Python wrapper class for wikipedia2vec dictionary class"""
 
     def __init__(
         self,
@@ -130,22 +122,21 @@ class Wikipedia2VecDict(object):
 
         if index == -1:
             return default
-        else:
-            return Wikipedia2VecWord(word, index, *self._word_stats[index])
+        return Wikipedia2VecWord(word, index, *self._word_stats[index])
 
     def get_entity(self, title, resolve_redirect=True, default=None):
         index = self.get_entity_index(title, resolve_redirect=resolve_redirect)
 
         if index == -1:
             return default
-        else:
-            dict_index = index - self._entity_offset
-            title = self._entity_dict.restore_key(dict_index)
-            return Wikipedia2VecEntity(
-                title,
-                index,
-                *self._entity_stats[dict_index],
-            )
+
+        dict_index = index - self._entity_offset
+        title = self._entity_dict.restore_key(dict_index)
+        return Wikipedia2VecEntity(
+            title,
+            index,
+            *self._entity_stats[dict_index],
+        )
 
     def get_word_index(self, word):
         try:
@@ -169,18 +160,24 @@ class Wikipedia2VecDict(object):
     def get_item_by_index(self, index):
         if index < self._entity_offset:
             return self.get_word_by_index(index)
-        else:
-            return self.get_entity_by_index(index)
+        return self.get_entity_by_index(index)
 
     def get_word_by_index(self, index):
         word = self._word_dict.restore_key(index)
-        return Wikipedia2VecWord(word, index, *self._word_stats[index])
+        return Wikipedia2VecWord(
+            word,
+            index,
+            *self._word_stats[index],
+        )
 
     def get_entity_by_index(self, index):
         dict_index = index - self._entity_offset
         title = self._entity_dict.restore_key(dict_index)
-        return Wikipedia2VecEntity(title, index,
-                                   *self._entity_stats[dict_index])
+        return Wikipedia2VecEntity(
+            title,
+            index,
+            *self._entity_stats[dict_index],
+        )
 
     @staticmethod
     def load(target, device, mmap=True):

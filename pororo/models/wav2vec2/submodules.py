@@ -158,8 +158,10 @@ class W2lDecoder(object):
         """Run encoder and normalize emissions"""
         encoder_out = models[0](**encoder_input)
         if self.criterion_type == CriterionType.CTC:
-            emissions = models[0].get_normalized_probs(encoder_out,
-                                                       log_probs=True)
+            emissions = models[0].get_normalized_probs(
+                encoder_out,
+                log_probs=True,
+            )
 
         return emissions.transpose(0, 1).float().cpu().contiguous()
 
@@ -180,15 +182,23 @@ class W2lViterbiDecoder(W2lDecoder):
         batch_size, time_length, num_classes = emissions.size()
 
         if self.asg_transitions is None:
-            transitions = torch.FloatTensor(num_classes, num_classes).zero_()
+            transitions = torch.FloatTensor(
+                num_classes,
+                num_classes,
+            ).zero_()
         else:
             transitions = torch.FloatTensor(self.asg_transitions).view(
-                num_classes, num_classes)
+                num_classes,
+                num_classes,
+            )
 
         viterbi_path = torch.IntTensor(batch_size, time_length)
         workspace = torch.ByteTensor(
-            CpuViterbiPath.get_workspace_size(batch_size, time_length,
-                                              num_classes))
+            CpuViterbiPath.get_workspace_size(
+                batch_size,
+                time_length,
+                num_classes,
+            ))
         CpuViterbiPath.compute(
             batch_size,
             time_length,
