@@ -82,7 +82,7 @@ class PororoWordFactory(PororoFactoryBase):
                 OrderedDict([('Wikimedia category', ['분류:카카오']), ('business', ['카카오 (2006~2014년 기업)', '네이버 (기업)']), ('', ['줌인터넷']), ('website', ['줌 (포털 사이트)']), ('enterprise', ['네이버 (기업)'])]))
         ])
         >>> word2vec = Pororo("word2vec", lang="en")
-        >>> word2vec("apple")  # vector search
+        >>> word2vec("apple")
         OrderedDict([
             ('apple (word)',
                 tensor([-1.8115e-01,  1.1258e+00, -3.3197e-01,  1.6572e-01,  ..., -6.4689e-01,  6.3094e-02, -8.8036e-02, -2.1675e-01], device='cuda:0')),
