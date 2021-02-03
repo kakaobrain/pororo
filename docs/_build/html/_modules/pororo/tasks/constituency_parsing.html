@@ -236,6 +236,28 @@
 <span class="sd">        result: result of constituency parsing</span>
 
 <span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; const = Pororo(task=&quot;const&quot;, lang=&quot;en&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; const(&quot;I love this place&quot;)</span>
+<span class="sd">        &lt;TOP&gt;</span>
+<span class="sd">            &lt;S&gt;</span>
+<span class="sd">                &lt;NP&gt;I&lt;/NP&gt;</span>
+<span class="sd">                &lt;VP&gt;</span>
+<span class="sd">                    love</span>
+<span class="sd">                    &lt;NP&gt;this place&lt;/NP&gt;</span>
+<span class="sd">                &lt;/VP&gt;</span>
+<span class="sd">            &lt;/S&gt;</span>
+<span class="sd">        &lt;/TOP&gt;</span>
+<span class="sd">        &gt;&gt;&gt; const = Pororo(task=&quot;const&quot;, lang=&quot;zh&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; const(&quot;我喜欢饼干&quot;)</span>
+<span class="sd">        &lt;TOP&gt;</span>
+<span class="sd">            &lt;IP&gt;</span>
+<span class="sd">                &lt;NP&gt;我&lt;/NP&gt;</span>
+<span class="sd">                &lt;VP&gt;</span>
+<span class="sd">                    喜欢</span>
+<span class="sd">                    &lt;NP&gt;饼干&lt;/NP&gt;</span>
+<span class="sd">                &lt;/VP&gt;</span>
+<span class="sd">            &lt;/IP&gt;</span>
+<span class="sd">        &lt;/TOP&gt;</span>
 <span class="sd">        &gt;&gt;&gt; const = Pororo(task=&quot;const&quot;, lang=&quot;ko&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; const(&quot;미국에서도 같은 우려가 나오고 있다.&quot;)</span>
 <span class="sd">        &lt;S&gt;</span>

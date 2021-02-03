@@ -37,6 +37,28 @@ class PororoConstFactory(PororoFactoryBase):
         result: result of constituency parsing
 
     Examples:
+        >>> const = Pororo(task="const", lang="en")
+        >>> const("I love this place")
+        <TOP>
+            <S>
+                <NP>I</NP>
+                <VP>
+                    love
+                    <NP>this place</NP>
+                </VP>
+            </S>
+        </TOP>
+        >>> const = Pororo(task="const", lang="zh")
+        >>> const("我喜欢饼干")
+        <TOP>
+            <IP>
+                <NP>我</NP>
+                <VP>
+                    喜欢
+                    <NP>饼干</NP>
+                </VP>
+            </IP>
+        </TOP>
         >>> const = Pororo(task="const", lang="ko")
         >>> const("미국에서도 같은 우려가 나오고 있다.")
         <S>

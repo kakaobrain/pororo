@@ -245,7 +245,29 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">const</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;const&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">const</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;const&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">const</span><span class="p">(</span><span class="s2">&quot;I love this place&quot;</span><span class="p">)</span>
+<span class="go">&lt;TOP&gt;</span>
+<span class="go">    &lt;S&gt;</span>
+<span class="go">        &lt;NP&gt;I&lt;/NP&gt;</span>
+<span class="go">        &lt;VP&gt;</span>
+<span class="go">            love</span>
+<span class="go">            &lt;NP&gt;this place&lt;/NP&gt;</span>
+<span class="go">        &lt;/VP&gt;</span>
+<span class="go">    &lt;/S&gt;</span>
+<span class="go">&lt;/TOP&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">const</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;const&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">const</span><span class="p">(</span><span class="s2">&quot;我喜欢饼干&quot;</span><span class="p">)</span>
+<span class="go">&lt;TOP&gt;</span>
+<span class="go">    &lt;IP&gt;</span>
+<span class="go">        &lt;NP&gt;我&lt;/NP&gt;</span>
+<span class="go">        &lt;VP&gt;</span>
+<span class="go">            喜欢</span>
+<span class="go">            &lt;NP&gt;饼干&lt;/NP&gt;</span>
+<span class="go">        &lt;/VP&gt;</span>
+<span class="go">    &lt;/IP&gt;</span>
+<span class="go">&lt;/TOP&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">const</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;const&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">const</span><span class="p">(</span><span class="s2">&quot;미국에서도 같은 우려가 나오고 있다.&quot;</span><span class="p">)</span>
 <span class="go">&lt;S&gt;</span>
 <span class="go">  &lt;NP_AJT&gt;미국/NNP+에서/JKB+도/JX&lt;/NP_AJT&gt;</span>
