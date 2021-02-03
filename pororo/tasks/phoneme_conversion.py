@@ -1,7 +1,7 @@
 """Grapheme to Phoneme related modeling class"""
 
 import os
-from typing import Optional, Union, List
+from typing import List, Optional, Union
 
 from pororo.tasks.utils.base import PororoFactoryBase, PororoSimpleBase
 

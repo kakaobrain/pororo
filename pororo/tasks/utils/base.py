@@ -30,7 +30,6 @@ class PororoTaskBase:
     def predict(
         self,
         text: Union[str, List[str]],
-        *addl_text: Union[str, List[str]],
         **kwargs,
     ):
         raise NotImplementedError(

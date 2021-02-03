@@ -5,7 +5,7 @@ from typing import List, Optional, Tuple
 
 from lxml import etree
 
-from pororo.tasks.utils.base import PororoFactoryBase, PororoTaskGenerationBase
+from pororo.tasks.utils.base import PororoFactoryBase, PororoTaskBase
 from pororo.tasks.utils.download_utils import download_or_load
 
 
@@ -146,7 +146,7 @@ class PororoConstFactory(PororoFactoryBase):
                 return PororoTransConstZh(model, tagger, self.config)
 
 
-class PororoConstBase(PororoTaskGenerationBase):
+class PororoConstBase(PororoTaskBase):
     """Constituency Parsing base class containinig various methods related to Const. Parsing"""
 
     def _fix_tree(self, output: str):
