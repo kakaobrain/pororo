@@ -46,6 +46,13 @@ class PororoGecFactory(PororoFactoryBase):
         "This apple is so sweet."
         >>> gec("'I've love you, before I meet her!'")
         "'I've loved you, before I met her!"
+        >>> from pororo import Pororo
+        >>> # It works better if I use two modules in succession with `correct_spell` option
+        >>> # Of course, it requires more computation and time.
+        >>> gec("Travel by bus is exspensive , bored and annoying .") # bad result
+        'Travel by bus is exspensive, boring and annoying.'
+        >>> gec("Travel by bus is exspensive , bored and annoying .", correct_spell=True) # better result
+        'Travelling by bus is expensive, boring, and annoying.'
         >>> spacing = Pororo(task="gec", lang="ko")
         >>> spacing("카 카오브 레인에서는 무슨 일을 하 나 요?")
         '카카오브레인에서는 무슨 일을 하나요?'

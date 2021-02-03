@@ -245,6 +245,13 @@
 <span class="sd">        &quot;This apple is so sweet.&quot;</span>
 <span class="sd">        &gt;&gt;&gt; gec(&quot;&#39;I&#39;ve love you, before I meet her!&#39;&quot;)</span>
 <span class="sd">        &quot;&#39;I&#39;ve loved you, before I met her!&quot;</span>
+<span class="sd">        &gt;&gt;&gt; from pororo import Pororo</span>
+<span class="sd">        &gt;&gt;&gt; # It works better if I use two modules in succession with `correct_spell` option</span>
+<span class="sd">        &gt;&gt;&gt; # Of course, it requires more computation and time.</span>
+<span class="sd">        &gt;&gt;&gt; gec(&quot;Travel by bus is exspensive , bored and annoying .&quot;) # bad result</span>
+<span class="sd">        &#39;Travel by bus is exspensive, boring and annoying.&#39;</span>
+<span class="sd">        &gt;&gt;&gt; gec(&quot;Travel by bus is exspensive , bored and annoying .&quot;, correct_spell=True) # better result</span>
+<span class="sd">        &#39;Travelling by bus is expensive, boring, and annoying.&#39;</span>
 <span class="sd">        &gt;&gt;&gt; spacing = Pororo(task=&quot;gec&quot;, lang=&quot;ko&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; spacing(&quot;카 카오브 레인에서는 무슨 일을 하 나 요?&quot;)</span>
 <span class="sd">        &#39;카카오브레인에서는 무슨 일을 하나요?&#39;</span>

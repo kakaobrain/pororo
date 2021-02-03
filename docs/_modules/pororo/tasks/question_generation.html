@@ -455,10 +455,11 @@
         <span class="n">n_wrong</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Conducnt question generation</span>
+<span class="sd">        Conduct question generation</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            text (Union[str, List[str]]): input text</span>
+<span class="sd">            answer (str): answer text</span>
+<span class="sd">            context (str): source article</span>
 <span class="sd">            beam (int): beam search size</span>
 <span class="sd">            temperature (float): temperature scale</span>
 <span class="sd">            top_k (int): top-K sampling vocabulary size</span>
@@ -466,6 +467,7 @@
 <span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
 <span class="sd">            len_penalty (float): length penalty ratio</span>
 <span class="sd">            n_wrong (int): number of wrong answer candidate</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>

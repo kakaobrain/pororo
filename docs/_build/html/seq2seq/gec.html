@@ -249,6 +249,13 @@
 <span class="go">&quot;This apple is so sweet.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gec</span><span class="p">(</span><span class="s2">&quot;&#39;I&#39;ve love you, before I meet her!&#39;&quot;</span><span class="p">)</span>
 <span class="go">&quot;&#39;I&#39;ve loved you, before I met her!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pororo</span> <span class="kn">import</span> <span class="n">Pororo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># It works better if I use two modules in succession with `correct_spell` option</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Of course, it requires more computation and time.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gec</span><span class="p">(</span><span class="s2">&quot;Travel by bus is exspensive , bored and annoying .&quot;</span><span class="p">)</span> <span class="c1"># bad result</span>
+<span class="go">&#39;Travel by bus is exspensive, boring and annoying.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gec</span><span class="p">(</span><span class="s2">&quot;Travel by bus is exspensive , bored and annoying .&quot;</span><span class="p">,</span> <span class="n">correct_spell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># better result</span>
+<span class="go">&#39;Travelling by bus is expensive, boring, and annoying.&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spacing</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;gec&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spacing</span><span class="p">(</span><span class="s2">&quot;카 카오브 레인에서는 무슨 일을 하 나 요?&quot;</span><span class="p">)</span>
 <span class="go">&#39;카카오브레인에서는 무슨 일을 하나요?&#39;</span>
