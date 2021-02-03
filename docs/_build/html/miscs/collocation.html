@@ -256,21 +256,21 @@
 <span class="go">adverb 많이(10), 주로(7), 다(5), 같이(4), 잘(4), ...</span>
 <span class="go">determiner 다른(5), 그(2), 여러(1), 세(1), 몇몇(1), 새(1)</span>
 <span class="go">adjective 싶(5), 어리(1), 편하(1), 작(1), 좋(1), 손쉽(1), 못하(1)</span>
+<span class="go">먹 as noun</span>
+<span class="go">noun 붓(3), 종이(2), 묘선(1), 청자(1), 은장도(1), 제조(1), ..</span>
+<span class="go">verb 의하(1), 그리(1), 찍(1), 차(1), 늘어놓(1)</span>
+<span class="go">adverb 하지만(1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;collocation&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;東京&quot;</span><span class="p">)</span>
+<span class="go">{&#39;noun&#39;: {&#39;noun&#39;: [(&#39;都&#39;, 137), (&#39;家&#39;, 21), (&#39;年&#39;, 18), (&#39;府&#39;, 17), (&#39;市&#39;, 12), (&#39;式&#39;, 12), (&#39;デザイナー&#39;, 10), (&#39;日&#39;, 10), (&#39;都立&#39;, 9), (&#39;県&#39;, 9), (&#39;出身&#39;, 8), (&#39;証券&#39;, 8), (&#39;後&#39;, 6)]}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;col&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;george&quot;</span><span class="p">)</span>
+<span class="go">{&#39;noun&#39;: {&#39;noun&#39;: [(&#39;washington&#39;, 13), (&#39;gen.&#39;, 7)]}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;col&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;世界杯&quot;</span><span class="p">)</span>
+<span class="go">{&#39;noun&#39;: {&#39;noun&#39;: [(&#39;2002年&#39;, 72), (&#39;足球赛&#39;, 71), (&#39;冠军&#39;, 53), (&#39;2006年&#39;, 39), (&#39;決賽&#39;, 35), (&#39;决赛&#39;, 30), (&#39;1998年&#39;, 26), (&#39;外圍賽&#39;, 25), (&#39;2010年&#39;, 23), (&#39;2018年&#39;, 22), (&#39;冠軍&#39;, 21), ...}}</span>
 </pre></div>
 </div>
-<p>먹 as noun
-noun 붓(3), 종이(2), 묘선(1), 청자(1), 은장도(1), 제조(1), ..
-verb 의하(1), 그리(1), 찍(1), 차(1), 늘어놓(1)
-adverb 하지만(1)
-&gt;&gt;&gt; col = Pororo(task=”collocation”, lang=”ja”)
-&gt;&gt;&gt; col(“東京”)
-{‘noun’: {‘noun’: [(‘都’, 137), (‘家’, 21), (‘年’, 18), (‘府’, 17), (‘市’, 12), (‘式’, 12), (‘デザイナー’, 10), (‘日’, 10), (‘都立’, 9), (‘県’, 9), (‘出身’, 8), (‘証券’, 8), (‘後’, 6)]}}
-&gt;&gt;&gt; col = Pororo(task=”col”, lang=”en”)
-&gt;&gt;&gt; col(“george”)
-{‘noun’: {‘noun’: [(‘washington’, 13), (‘gen.’, 7)]}}
-&gt;&gt;&gt; col = Pororo(task=”col”, lang=”zh”)
-&gt;&gt;&gt; col(“世界杯”)
-{‘noun’: {‘noun’: [(‘2002年’, 72), (‘足球赛’, 71), (‘冠军’, 53), (‘2006年’, 39), (‘決賽’, 35), (‘决赛’, 30), (‘1998年’, 26), (‘外圍賽’, 25), (‘2010年’, 23), (‘2018年’, 22), (‘冠軍’, 21), …}}</p>
 <dl class="py method">
 <dt id="pororo.tasks.collocation.PororoCollocationFactory.get_available_langs">
 <em class="property">static </em><code class="sig-name descname">get_available_langs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/collocation.html#PororoCollocationFactory.get_available_langs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.collocation.PororoCollocationFactory.get_available_langs" title="Permalink to this definition">¶</a></dt>

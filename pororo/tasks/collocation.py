@@ -45,7 +45,6 @@ class PororoCollocationFactory(PororoFactoryBase):
         adverb 많이(10), 주로(7), 다(5), 같이(4), 잘(4), ...
         determiner 다른(5), 그(2), 여러(1), 세(1), 몇몇(1), 새(1)
         adjective 싶(5), 어리(1), 편하(1), 작(1), 좋(1), 손쉽(1), 못하(1)
-
         먹 as noun
         noun 붓(3), 종이(2), 묘선(1), 청자(1), 은장도(1), 제조(1), ..
         verb 의하(1), 그리(1), 찍(1), 차(1), 늘어놓(1)
