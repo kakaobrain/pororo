@@ -46,7 +46,6 @@ class PororoGecFactory(PororoFactoryBase):
         "This apple is so sweet."
         >>> gec("'I've love you, before I meet her!'")
         "'I've loved you, before I met her!"
-        >>> from pororo import Pororo
         >>> # It works better if I use two modules in succession with `correct_spell` option
         >>> # Of course, it requires more computation and time.
         >>> gec("Travel by bus is exspensive , bored and annoying .") # bad result
