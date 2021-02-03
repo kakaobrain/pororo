@@ -287,6 +287,119 @@
 <span class="go">    (&#39;카카오 (기업) (enterprise;business)&#39;,</span>
 <span class="go">        OrderedDict([(&#39;Wikimedia category&#39;, [&#39;분류:카카오&#39;]), (&#39;business&#39;, [&#39;카카오 (2006~2014년 기업)&#39;, &#39;네이버 (기업)&#39;]), (&#39;&#39;, [&#39;줌인터넷&#39;]), (&#39;website&#39;, [&#39;줌 (포털 사이트)&#39;]), (&#39;enterprise&#39;, [&#39;네이버 (기업)&#39;])]))</span>
 <span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s2">&quot;word2vec&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span>  <span class="c1"># vector search</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;apple (word)&#39;,</span>
+<span class="go">        tensor([-1.8115e-01,  1.1258e+00, -3.3197e-01,  1.6572e-01,  ..., -6.4689e-01,  6.3094e-02, -8.8036e-02, -2.1675e-01], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Apple (fruit;pome;fruit of Maloideae)&#39;,</span>
+<span class="go">        tensor([-3.2076e-02,  1.5557e+00,  7.0766e-01, -7.8812e-01, ..., -4.7607e-02,  3.4023e-01,  5.3378e-01, -2.7254e-01], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Muggsy Bogues (human)&#39;,</span>
+<span class="go">        tensor([-1.0721,  0.9283,  1.2894,  0.4695, ..., 0.1366,  0.5774,  0.0939,  0.9778], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Ariane Passenger Payload Experiment (communications satellite)&#39;,</span>
+<span class="go">        tensor([ 7.5558e-02, -6.4360e-01,  2.9888e-01,  1.8166e-02,  ..., -7.9919e-01,  2.8561e-01, -4.6676e-01,  2.1841e-01], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Apple Inc. (business;enterprise;NASDAQ-100;giants of the web;Dow Jones Industrial Average)&#39;,</span>
+<span class="go">        tensor([-0.6466,  1.1077, -0.5390,  0.5268, ..., 0.0375,  0.3269,  1.4260, -0.0849], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Apple Records (record label)&#39;,</span>
+<span class="go">        tensor([-0.2443,  1.3124,  0.4259,  0.8220,  ..., -0.0310,  0.6967, -1.7474,  0.4733], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Apple (album) (studio album)&#39;,</span>
+<span class="go">        tensor([ 0.9694,  0.7516,  0.9456, -0.2018, ..., -0.0952, -0.3208, -1.1855,  0.1000], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Apple (automobile) (motor car)&#39;,</span>
+<span class="go">        tensor([ 0.0273, -0.0827,  0.3302,  0.0199, ..., 0.1942,  0.2985, -0.6952, -0.2728], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;Apple River (Illinois) (river)&#39;,</span>
+<span class="go">        tensor([-0.2683,  1.0154,  0.3947, -0.4488,  ..., 0.3037,  0.0535, -0.4189,  1.3587], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;The Apple (Star Trek: The Original Series) (Star Trek episode;television series episode)&#39;,</span>
+<span class="go">        tensor([ 2.9253e-01,  6.0142e-01,  5.8198e-01,  1.5138e-01, ..., -4.2186e-01,  9.4759e-01, -6.0089e-02,  1.0352e+00], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;The Apple (1980 film) (film)&#39;,</span>
+<span class="go">        tensor([ 1.0943,  0.3313,  1.5675, -1.4343,  ..., -0.2276,  0.5506, -1.5071,  1.0106], device=&#39;cuda:0&#39;))</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="o">.</span><span class="n">find_similar_words</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span>
+<span class="go">    OrderedDict([</span>
+<span class="go">        (&#39;apple (word)&#39;, [&#39;blackberry (word)&#39;, &#39;silentype (word)&#39;, &#39;Apple Inc. (business;enterprise;NASDAQ-100;giants of the web;Dow Jones Industrial Average)&#39;, &#39;paulared (word)&#39;, &#39;trueimage (word)&#39;]),</span>
+<span class="go">        (&#39;Apple (fruit;pome;fruit of Maloideae)&#39;, [&#39;Pear (taxon)&#39;, &#39;Apricot (fruit)&#39;, &#39;Plum (taxon)&#39;, &#39;Peach (taxon)&#39;, &#39;Cherry (fruit;drupe)&#39;]),</span>
+<span class="go">        (&#39;Muggsy Bogues (human)&#39;, [&#39;Tom Gugliotta (human)&#39;, &#39;Billy Owens (human)&#39;, &#39;David Wingate (basketball) (human)&#39;, &#39;1995–96 Cleveland Cavaliers season (basketball team season)&#39;, &#39;:1989–90 Denver Nuggets season (misc)&#39;]),</span>
+<span class="go">        (&#39;Ariane Passenger Payload Experiment (communications satellite)&#39;, [&#39;INSAT-3E (communications satellite)&#39;, &#39;INSAT-3B (communications satellite)&#39;, &#39;INSAT-4E (communications satellite)&#39;, &#39;Rohini (satellite) (artificial satellite)&#39;, &#39;Bhaskara (satellite) (Earth observation satellite)&#39;]),</span>
+<span class="go">        (&#39;Apple Inc. (business;enterprise;NASDAQ-100;giants of the web;Dow Jones Industrial Average)&#39;, [&#39;Steve Jobs (human)&#39;, &#39;IPhone (model series;smartphone)&#39;, &#39;apple (word)&#39;, &#39;IPad (model series;tablet computer)&#39;, &#39;IOS 7 (mobile operating system;iOS;version, edition, or translation)&#39;]),</span>
+<span class="go">        (&#39;Apple Records (record label)&#39;, [&#39;Apple Corps (business;enterprise)&#39;, &#39;Come and Get It: The Best of Apple Records (compilation album;Apple Records Box Set)&#39;, &#39;beatles (word)&#39;, &#39;Maybe Tomorrow (The Iveys album) (album)&#39;, &#39;Maybe Tomorrow (The Iveys song) (Maybe Tomorrow;single)&#39;]),</span>
+<span class="go">        (&#39;Apple (album) (studio album)&#39;, [&#39;Shine (Mother Love Bone EP) (extended play)&#39;, &#39;Mother Love Bone (musical group)&#39;, &#39;The Rockfords (album) (album)&#39;, &#39;Temple of the Dog (album) (album)&#39;, &#39;Chloe Dancer/Crown of Thorns (Shine;song;single)&#39;]),</span>
+<span class="go">        (&#39;Apple (automobile) (motor car)&#39;, [&#39;Dayton Electric (automobile manufacturer)&#39;, &#39;Courier Car Co (automobile manufacturer)&#39;, &#39;Binghamton Electric (automobile manufacturer)&#39;, &#39;Century (automobile) (automobile manufacturer)&#39;, &#39;Babcock Electric Carriage Company (business)&#39;]),</span>
+<span class="go">        (&#39;Apple River (Illinois) (river)&#39;, [&#39;Little Menominee River (stream;river)&#39;, &#39;Plum River (river)&#39;, &#39;Nl:Lijst van rivieren in Illinois (misc)&#39;, &quot;Fr:Liste des fleuves de l&#39;Illinois (misc)&quot;, &#39;Sinsinawa River (river)&#39;]),</span>
+<span class="go">        (&#39;The Apple (Star Trek: The Original Series) (Star Trek episode;television series episode)&#39;, [&quot;Mudd&#39;s Women (television film;Star Trek episode;television series episode)&quot;, &#39;That Which Survives (Star Trek episode;television series episode)&#39;, &#39;Return to Tomorrow (Star Trek episode;television series episode)&#39;, &#39;The Deadly Years (Star Trek episode;television series episode)&#39;, &#39;By Any Other Name (Star Trek episode;television series episode)&#39;]),</span>
+<span class="go">        (&#39;The Apple (1980 film) (film)&#39;, [&#39;EST and The Forum in popular culture (cultural depiction)&#39;, &quot;The Devil&#39;s Rain (Wikimedia disambiguation page)&quot;, &#39;Jesus Christ Superstar (film) (film)&#39;, &#39;Shock Treatment (film)&#39;, &#39;Xanadu (film) (film)&#39;])</span>
+<span class="go">    ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="o">.</span><span class="n">find_similar_words</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;apple (word)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;word&#39;, [&#39;blackberry&#39;, &#39;silentype&#39;]), (&#39;business&#39;, [&#39;Apple Inc.&#39;]), (&#39;enterprise&#39;, [&#39;Apple Inc.&#39;]), (&#39;NASDAQ-100&#39;, [&#39;Apple Inc.&#39;]), (&#39;giants of the web&#39;, [&#39;Apple Inc.&#39;]), (&#39;Dow Jones Industrial Average&#39;, [&#39;Apple Inc.&#39;])])),</span>
+<span class="go">    (&#39;Apple (fruit;pome;fruit of Maloideae)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;taxon&#39;, [&#39;Pear&#39;, &#39;Plum&#39;]), (&#39;fruit&#39;, [&#39;Apricot&#39;])])),</span>
+<span class="go">    (&#39;Muggsy Bogues (human)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;human&#39;, [&#39;Tom Gugliotta&#39;, &#39;Billy Owens&#39;, &#39;David Wingate (basketball)&#39;])])),</span>
+<span class="go">    (&#39;Ariane Passenger Payload Experiment (communications satellite)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;communications satellite&#39;, [&#39;INSAT-3E&#39;, &#39;INSAT-3B&#39;, &#39;INSAT-4E&#39;])])),</span>
+<span class="go">    (&#39;Apple Inc. (business;enterprise;NASDAQ-100;giants of the web;Dow Jones Industrial Average)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;human&#39;, [&#39;Steve Jobs&#39;]), (&#39;model series&#39;, [&#39;IPhone&#39;]), (&#39;smartphone&#39;, [&#39;IPhone&#39;]), (&#39;word&#39;, [&#39;apple&#39;])])),</span>
+<span class="go">    (&#39;Apple Records (record label)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;business&#39;, [&#39;Apple Corps&#39;]), (&#39;enterprise&#39;, [&#39;Apple Corps&#39;]), (&#39;compilation album&#39;, [&#39;Come and Get It: The Best of Apple Records&#39;]), (&#39;Apple Records Box Set&#39;, [&#39;Come and Get It: The Best of Apple Records&#39;]), (&#39;word&#39;, [&#39;beatles&#39;])])),</span>
+<span class="go">    (&#39;Apple (album) (studio album)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;extended play&#39;, [&#39;Shine (Mother Love Bone EP)&#39;]), (&#39;musical group&#39;, [&#39;Mother Love Bone&#39;]), (&#39;album&#39;, [&#39;The Rockfords (album)&#39;])])),</span>
+<span class="go">    (&#39;Apple (automobile) (motor car)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;automobile manufacturer&#39;, [&#39;Dayton Electric&#39;, &#39;Courier Car Co&#39;, &#39;Binghamton Electric&#39;])])),</span>
+<span class="go">    (&#39;Apple River (Illinois) (river)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;stream&#39;, [&#39;Little Menominee River&#39;]), (&#39;river&#39;, [&#39;Little Menominee River&#39;, &#39;Plum River&#39;]), (&#39;misc&#39;, [&#39;Nl:Lijst van rivieren in Illinois&#39;])])),</span>
+<span class="go">    (&#39;The Apple (Star Trek: The Original Series) (Star Trek episode;television series episode)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;television film&#39;, [&quot;Mudd&#39;s Women&quot;]), (&#39;Star Trek episode&#39;, [&quot;Mudd&#39;s Women&quot;, &#39;That Which Survives&#39;, &#39;Return to Tomorrow&#39;]), (&#39;television series episode&#39;, [&quot;Mudd&#39;s Women&quot;, &#39;That Which Survives&#39;, &#39;Return to Tomorrow&#39;])])),</span>
+<span class="go">    (&#39;The Apple (1980 film) (film)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;cultural depiction&#39;, [&#39;EST and The Forum in popular culture&#39;]), (&#39;Wikimedia disambiguation page&#39;, [&quot;The Devil&#39;s Rain&quot;]), (&#39;film&#39;, [&#39;Jesus Christ Superstar (film)&#39;])]))</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s2">&quot;word2vec&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="p">(</span><span class="s2">&quot;リンゴ&quot;</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;リンゴ (word)&#39;, tensor([ 0.1310, -0.1558,  0.8368,  0.3689,  ..., 0.0253, -0.0910,  0.1332,  0.0920], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;リンゴ (fruit;fruit of Maloideae;pome)&#39;, tensor([ 0.4617, -0.3032,  1.5106,  0.7717,  ..., -0.2006,  0.2382, -0.1939,  0.2378], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;リンゴ (アルバム) (album)&#39;, tensor([-0.7952,  0.3122, -0.1794,  0.5237,  ...,  -0.4918, -0.1221, -0.0287,  0.6898], device=&#39;cuda:0&#39;))</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="o">.</span><span class="n">find_similar_words</span><span class="p">(</span><span class="s2">&quot;リンゴ&quot;</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;リンゴ (word)&#39;, [&#39;サクランボ (word)&#39;, &#39;イチゴ (word)&#39;, &#39;スターキングデリシャス (word)&#39;, &#39;ジュース (word)&#39;, &#39;アスパラガス (word)&#39;]),</span>
+<span class="go">    (&#39;リンゴ (fruit;fruit of Maloideae;pome)&#39;, [&#39;イチゴ (taxon)&#39;, &#39;モモ (taxon)&#39;, &#39;ブドウ (grape juice;berry)&#39;, &#39;ナシ (taxon)&#39;, &#39;サクランボ (drupe;fruit)&#39;]),</span>
+<span class="go">    (&#39;リンゴ (アルバム) (album)&#39;, [&#39;グッドナイト・ウィーン (album;studio album)&#39;, &#39;想い出のフォトグラフ (Ringo;single;song)&#39;, &#39;明日への願い (single)&#39;, &quot;オール・シングス・マスト・パス (George Harrison&#39;s albums in chronological order;triple album;studio album)&quot;, &#39;バック・オフ・ブーガルー (Stop and Smell the Roses;single;song)&#39;])</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="o">.</span><span class="n">find_similar_words</span><span class="p">(</span><span class="s2">&quot;リンゴ&quot;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;リンゴ (word)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;word&#39;, [&#39;サクランボ&#39;, &#39;イチゴ&#39;, &#39;スターキングデリシャス&#39;])])),</span>
+<span class="go">    (&#39;リンゴ (fruit;fruit of Maloideae;pome)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;taxon&#39;, [&#39;イチゴ&#39;, &#39;モモ&#39;]), (&#39;grape juice&#39;, [&#39;ブドウ&#39;]), (&#39;berry&#39;, [&#39;ブドウ&#39;])])),</span>
+<span class="go">    (&#39;リンゴ (アルバム) (album)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;album&#39;, [&#39;グッドナイト・ウィーン&#39;]), (&#39;studio album&#39;, [&#39;グッドナイト・ウィーン&#39;]), (&#39;Ringo&#39;, [&#39;想い出のフォトグラフ&#39;]), (&#39;single&#39;, [&#39;想い出のフォトグラフ&#39;, &#39;明日への願い&#39;]), (&#39;song&#39;, [&#39;想い出のフォトグラフ&#39;])]))</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="s2">&quot;word2vec&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="p">(</span><span class="s2">&quot;苹果&quot;</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;苹果 (word)&#39;, tensor([-0.1839,  0.5122, -0.1008,  0.0722, ..., 0.3404, -0.2146,  0.3418, -0.3336], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;苹果 (fruit;fruit of Maloideae;pome)&#39;, tensor([-0.5241,  0.2368, -1.1965, -0.5834,  ..., 0.3141, -0.7297,  0.5291, -0.2308], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;苹果 (电影) (film)&#39;, tensor([-0.7060,  0.0215,  0.6849,  0.4374, ..., -0.1802,  0.3402, -0.9224, -0.1029], device=&#39;cuda:0&#39;)),</span>
+<span class="go">    (&#39;蘋果公司 (NASDAQ-100;giants of the web;business;enterprise;Dow Jones Industrial Average)&#39;, tensor([-0.8581,  0.2706,  0.0931,  0.1566,  ..., -0.3404, -0.6099,  0.3207, -1.0029], device=&#39;cuda:0&#39;))</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="o">.</span><span class="n">find_similar_words</span><span class="p">(</span><span class="s2">&quot;苹果&quot;</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;苹果 (word)&#39;, [&#39;苹果公司 (word)&#39;, &#39;黑莓 (word)&#39;, &#39;苹果皮 (word)&#39;, &#39;树莓 (word)&#39;, &#39;ibookstore (word)&#39;]),</span>
+<span class="go">    (&#39;苹果 (fruit;fruit of Maloideae;pome)&#39;, [&#39;杏仁 (apricot;stone;culinary nuts)&#39;, &#39;梨 (taxon)&#39;, &#39;無花果 (taxon)&#39;, &#39;葡萄 (grape juice;berry)&#39;, &#39;桃 (taxon)&#39;]),</span>
+<span class="go">    (&#39;苹果 (电影) (film)&#39;, [&#39;盲山 (film)&#39;, &#39;我的父親母親 (misc)&#39;, &#39;闯关东 (电视剧) (television program)&#39;, &#39;摇摆de婚约 (misc)&#39;, &#39;北京遇上西雅圖 (misc)&#39;]),</span>
+<span class="go">    (&#39;蘋果公司 (NASDAQ-100;giants of the web;business;enterprise;Dow Jones Industrial Average)&#39;, [&#39;苹果公司 (word)&#39;, &#39;IOS 9 (iOS;operating system;mobile operating system)&#39;, &#39;苹果公司 (misc)&#39;, &#39;MacBook Air (Ultrabook;computer model;MacBook;Apple Macintosh)&#39;, &#39;WWDC (misc)&#39;])</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word2vec</span><span class="o">.</span><span class="n">find_similar_words</span><span class="p">(</span><span class="s2">&quot;苹果&quot;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">OrderedDict([</span>
+<span class="go">    (&#39;苹果 (word)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;word&#39;, [&#39;苹果公司&#39;, &#39;黑莓&#39;, &#39;苹果皮&#39;])])),</span>
+<span class="go">    (&#39;苹果 (fruit;fruit of Maloideae;pome)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;apricot&#39;, [&#39;杏仁&#39;]), (&#39;stone&#39;, [&#39;杏仁&#39;]), (&#39;culinary nuts&#39;, [&#39;杏仁&#39;]), (&#39;taxon&#39;, [&#39;梨&#39;, &#39;無花果&#39;])])),</span>
+<span class="go">    (&#39;苹果 (电影) (film)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;film&#39;, [&#39;盲山&#39;]), (&#39;misc&#39;, [&#39;我的父親母親&#39;]), (&#39;television program&#39;, [&#39;闯关东 (电视剧)&#39;])])),</span>
+<span class="go">    (&#39;蘋果公司 (NASDAQ-100;giants of the web;business;enterprise;Dow Jones Industrial Average)&#39;,</span>
+<span class="go">        OrderedDict([(&#39;word&#39;, [&#39;苹果公司&#39;]), (&#39;iOS&#39;, [&#39;IOS 9&#39;]), (&#39;operating system&#39;, [&#39;IOS 9&#39;]), (&#39;mobile operating system&#39;, [&#39;IOS 9&#39;]), (&#39;misc&#39;, [&#39;苹果公司&#39;])]))</span>
+<span class="go">])</span>
 </pre></div>
 </div>
 <dl class="py method">
