@@ -43,11 +43,9 @@ def postprocess_span(tagger, text: str) -> str:
     i = 0
     for i, token in enumerate(last_eojeol[::-1]):
         _, pos = token
-        # The loop breaks when you meet a noun
-        if pos[0] in ("N", "S"):
-            break
-        # The loop also breaks when you meet a XSN (e.g. 8/SN+일/NNB LG/SL 전/XSN)
-        elif pos.startswith("XSN"):
+        # 1. The loop breaks when you meet a noun
+        # 2. The loop also breaks when you meet a XSN (e.g. 8/SN+일/NNB LG/SL 전/XSN)
+        if (pos[0] in ("N", "S")) or pos.startswith("XSN"):
             break
     idx = len(last_eojeol) - i
 
@@ -66,8 +64,9 @@ def control_temp(file_path: str):
         file_path (str): web file path
 
     """
-    assert file_path.startswith(
-        "http"), "File path should contain `http` prefix !"
+    # yapf: disable
+    assert file_path.startswith("http"), "File path should contain `http` prefix !"
+    # yapf: enable
 
     ext = file_path[file_path.rfind("."):]
 

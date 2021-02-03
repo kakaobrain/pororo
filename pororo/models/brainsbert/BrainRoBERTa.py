@@ -57,9 +57,8 @@ class BrainRoBERTa(nn.Module):
 
         if self.roberta.config.output_hidden_states:
             all_layer_idx = 2
-            if (
-                    len(output_states) < 3
-            ):  # Some models only output last_hidden_states and all_hidden_states
+            # Some models only output last_hidden_states and all_hidden_states
+            if (len(output_states) < 3):
                 all_layer_idx = 1
 
             hidden_states = output_states[all_layer_idx]
@@ -108,14 +107,16 @@ class BrainRoBERTa(nn.Module):
 
         with open(
                 os.path.join(output_path, "sentence_brain_roberta_config.json"),
-                "w") as fout:
+                "w",
+        ) as fout:
             json.dump(self.get_config_dict(), fout, indent=2)
 
     @staticmethod
     def load(input_path: str):
         with open(
                 os.path.join(input_path, "sentence_brain_roberta_config.json"),
-                "r") as fin:
+                "r",
+        ) as fin:
             config = json.load(fin)
         return BrainRoBERTa(input_path, **config)
 
