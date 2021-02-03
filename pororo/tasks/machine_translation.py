@@ -85,8 +85,7 @@ class PororoTranslationFactory(PororoFactoryBase):
             +-----------------+-----------------+------------+
 
         - ref: http://www.cs.jhu.edu/~kevinduh/a/multitarget-tedtalks/
-        - note: This result is about out of domain settings,
-            TED Talk data wasn't used during model training.
+        - note: This result is about out of domain settings, TED Talk data wasn't used during model training.
 
     Args:
         text (str): input text to be translated

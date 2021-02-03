@@ -14,10 +14,10 @@ requirements = [
     "torch==1.6.0",
     "torchvision==0.7.0",
     "pillow>=4.1.1",
-    "fairseq==0.10.2",
+    "fairseq>=0.10.2",
     "transformers>=4.0.0",
-    "sentence_transformers==0.4.1.2",
-    "nltk==3.5",
+    "sentence_transformers>=0.4.1.2",
+    "nltk>=3.5",
     "word2word",
     "wget",
     "joblib",
@@ -26,6 +26,7 @@ requirements = [
     "whoosh",
     "marisa-trie",
     "kss",
+    'dataclasses; python_version<"3.7"',
 ]
 ```
 

@@ -14,7 +14,7 @@ class PororoP2gFactory(PororoFactoryBase):
     """
     Conduct phoneme to grapheme conversion
 
-    Japanses (`p2g.ja`)
+    Japanese (`p2g.ja`)
 
         - dataset: jawiki-20180420 + romkan
         - metric: TBU
