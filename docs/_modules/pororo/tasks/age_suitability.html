@@ -367,7 +367,7 @@
 
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="PororoBertMovie.predict"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoBertMovie.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<div class="viewcode-block" id="PororoBertMovie.predict"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.PororoBertMovie.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct (movie) script analysis</span>
 
@@ -399,11 +399,7 @@
             <span class="s2">&quot;emotion&quot;</span><span class="p">:</span> <span class="n">emotion</span><span class="p">,</span>
         <span class="p">}</span>
 
-        <span class="k">return</span> <span class="n">result</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">show_probs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">result</span></div></div>
 
 
 <div class="viewcode-block" id="RobertaEncoder"><a class="viewcode-back" href="../../../text_cls/age_suitability.html#pororo.tasks.age_suitability.RobertaEncoder">[docs]</a><span class="k">class</span> <span class="nc">RobertaEncoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>

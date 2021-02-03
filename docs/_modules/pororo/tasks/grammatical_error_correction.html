@@ -643,7 +643,7 @@
         <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
         <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">correct_spell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct grammar error correction</span>
@@ -668,6 +668,8 @@
 <span class="sd">            &quot;&#39;I&#39;ve loved you, before I met her!&quot;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">correct_spell</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;correct_spell&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
         <span class="n">sampling</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="k">if</span> <span class="n">top_k</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">top_p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -690,47 +692,7 @@
             <span class="n">lenpen</span><span class="o">=</span><span class="n">len_penalty</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grammar_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">if</span> <span class="n">correct_spell</span> <span class="k">else</span> <span class="n">output</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">top_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">no_repeat_ngram_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="n">len_penalty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">correct_spell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Conduct grammar error correction</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            text (str): input sentence</span>
-<span class="sd">            beam (int): beam search size</span>
-<span class="sd">            temperature (float): temperature scale</span>
-<span class="sd">            top_k (int): top-K sampling vocabulary size</span>
-<span class="sd">            top_p (float): top-p sampling ratio</span>
-<span class="sd">            no_repeat_ngram_size (int): no repeat ngram size</span>
-<span class="sd">            len_penalty (float): length penalty ratio</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            str: grammartically corrected sentence</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-            <span class="n">text</span><span class="p">,</span>
-            <span class="n">beam</span><span class="p">,</span>
-            <span class="n">temperature</span><span class="p">,</span>
-            <span class="n">top_k</span><span class="p">,</span>
-            <span class="n">top_p</span><span class="p">,</span>
-            <span class="n">no_repeat_ngram_size</span><span class="p">,</span>
-            <span class="n">len_penalty</span><span class="p">,</span>
-            <span class="n">correct_spell</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grammar_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">if</span> <span class="n">correct_spell</span> <span class="k">else</span> <span class="n">output</span></div></div>
 
 
 <div class="viewcode-block" id="PororoBertSpacing"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoBertSpacing">[docs]</a><span class="k">class</span> <span class="nc">PororoBertSpacing</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
@@ -764,7 +726,7 @@
 
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-<div class="viewcode-block" id="PororoBertSpacing.predict"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoBertSpacing.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<div class="viewcode-block" id="PororoBertSpacing.predict"><a class="viewcode-back" href="../../../seq2seq/gec.html#pororo.tasks.grammatical_error_correction.PororoBertSpacing.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct spacing correction</span>
 

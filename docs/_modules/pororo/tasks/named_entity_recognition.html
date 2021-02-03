@@ -378,7 +378,7 @@
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">word</span><span class="p">,</span> <span class="n">_remove_tail</span><span class="p">(</span><span class="n">tag</span><span class="p">)))</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">pair</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">result</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="PororoBertNerEn.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerEn.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoBertNerEn.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerEn.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct named entity recognition with english RoBERTa</span>
 
@@ -478,7 +478,7 @@
 <div class="viewcode-block" id="PororoBertCharNer.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertCharNer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">ignore_labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct named entity recognition with character BERT</span>
@@ -490,6 +490,8 @@
 <span class="sd">            List[Tuple[str, str]]: token and its predicted tag tuple list</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ignore_labels</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_labels&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
         <span class="n">texts</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">:</span>
@@ -505,14 +507,7 @@
                 <span class="p">)</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="k">else</span> <span class="n">pair</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">)])</span>
-        <span class="k">return</span> <span class="n">result</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">ignore_labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-    <span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ignore_labels</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div></div>
 
 
 <div class="viewcode-block" id="PororoBertNerZh"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerZh">[docs]</a><span class="k">class</span> <span class="nc">PororoBertNerZh</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
@@ -559,7 +554,7 @@
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">word</span><span class="p">,</span> <span class="n">_remove_tail</span><span class="p">(</span><span class="n">tag</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="PororoBertNerZh.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerZh.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoBertNerZh.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerZh.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct named entity recognition with Chinese RoBERTa</span>
 
@@ -618,7 +613,7 @@
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">word</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="n">_remove_tail</span><span class="p">(</span><span class="n">tag</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="PororoBertNerJa.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerJa.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoBertNerJa.predict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertNerJa.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct named entity recognition with Japanese RoBERTa</span>
 

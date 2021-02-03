@@ -200,7 +200,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;Grapheme to Phoneme related modeling class&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
 
@@ -352,7 +352,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
 
-<div class="viewcode-block" id="PororoG2PKo.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PKo.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="PororoG2PKo.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PKo.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct grapheme to phoneme conversion</span>
 
@@ -364,19 +364,14 @@
 <span class="sd">            str: converted phoneme sentence</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">align</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;align&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[(</span><span class="n">word</span><span class="p">,</span> <span class="n">phoneme</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">phoneme</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">results</span><span class="o">.</span><span class="n">split</span><span class="p">())]</span>
-        <span class="k">return</span> <span class="n">results</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
-
-        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">results</span></div></div>
 
 
 <div class="viewcode-block" id="PororoG2PEn"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PEn">[docs]</a><span class="k">class</span> <span class="nc">PororoG2PEn</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
@@ -385,7 +380,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
 
-<div class="viewcode-block" id="PororoG2PEn.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PEn.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="PororoG2PEn.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PEn.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct grapheme to phoneme conversion</span>
 
@@ -405,7 +400,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
 
-<div class="viewcode-block" id="PororoG2PZh.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PZh.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">tone</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="PororoG2PZh.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PZh.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct grapheme to phoneme conversion</span>
 
@@ -418,30 +413,13 @@
 <span class="sd">            str: converted phoneme sentence</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">align</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;align&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">tone</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tone&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">tone</span><span class="o">=</span><span class="n">tone</span><span class="p">,</span> <span class="n">char_split</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">results</span><span class="p">)]</span>
-        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results</span><span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">tone</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Conduct grapheme to phoneme conversion</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            text (str): input sentence to be converted to phoneme</span>
-<span class="sd">            align (bool): whether to align the result</span>
-<span class="sd">            tone (bool): whether to show chinese tone</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            str: converted phoneme sentence</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
-
-        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="p">,</span> <span class="n">tone</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="PororoG2PJa"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PJa">[docs]</a><span class="k">class</span> <span class="nc">PororoG2PJa</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
@@ -451,7 +429,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span> <span class="o">=</span> <span class="n">tagger</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_romanize</span> <span class="o">=</span> <span class="n">romanize</span>
 
-<div class="viewcode-block" id="PororoG2PJa.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PJa.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoG2PJa.predict"><a class="viewcode-back" href="../../../seq2seq/g2p.html#pororo.tasks.phoneme_conversion.PororoG2PJa.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct grapheme to phoneme conversion</span>
 
@@ -463,6 +441,8 @@
 <span class="sd">            List[str]: converted phoneme sentence list</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">align</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;align&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
         <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
@@ -482,25 +462,8 @@
 
         <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">results</span>
-        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span></div>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Conduct grapheme to phoneme conversion</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            text (str): input sentence to be converted to phoneme</span>
-<span class="sd">            align (bool): whether to align the result</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            str: converted phoneme sentence</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input text should be string type&quot;</span>
-
-        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">align</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span></div></div>
 </pre></div>
 
            </div>

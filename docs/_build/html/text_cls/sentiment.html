@@ -286,11 +286,14 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoSimpleBase</span></code></p>
 <dl class="py method">
 <dt id="pororo.tasks.sentiment_analysis.PororoBertSentiment.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">show_probs</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><a class="reference internal" href="../_modules/pororo/tasks/sentiment_analysis.html#PororoBertSentiment.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentiment_analysis.PororoBertSentiment.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><a class="reference internal" href="../_modules/pororo/tasks/sentiment_analysis.html#PororoBertSentiment.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.sentiment_analysis.PororoBertSentiment.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct sentiment analysis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sent</strong> – (str) sentence to be sentiment analyzed</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sent</strong> – (str) sentence to be sentiment analyzed</p></li>
+<li><p><strong>show_probs</strong> – (bool) whether to show probability score</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>predicted sentence label - <cite>negative</cite> or <cite>positive</cite></p>

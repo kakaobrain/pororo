@@ -201,7 +201,7 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
 
@@ -381,17 +381,36 @@
 
         <span class="k">return</span> <span class="n">morph</span><span class="p">,</span> <span class="n">token</span>
 
-<div class="viewcode-block" id="PororoMecabPos.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoMecabPos.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_surface</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<div class="viewcode-block" id="PororoMecabPos.stringfy"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoMecabPos.stringfy">[docs]</a>    <span class="k">def</span> <span class="nf">stringfy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">res_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SPACE&quot;</span><span class="p">:</span>
+                <span class="n">res_str</span> <span class="o">=</span> <span class="n">res_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">res_str</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">+&quot;</span>
+        <span class="k">return</span> <span class="n">res_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoMecabPos.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoMecabPos.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct Part-of-Speech tagging using mecab-ko</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            sent (str): input sentence to be tagged</span>
+<span class="sd">            return_surface (bool): whether to return surface</span>
+<span class="sd">            return_string (bool): whether to return value as a string</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[Tuple[str, str]]: list of token and its corresponding pos tag tuple</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">return_surface</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;return_surface&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">return_string</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;return_string&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
         <span class="n">sent</span> <span class="o">=</span> <span class="n">sent</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">sent_ptr</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -419,29 +438,10 @@
                 <span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
             <span class="n">sent_ptr</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">morph</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">results</span></div>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">return_string</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">return_surface</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Input sent should be string type&quot;</span>
-
-        <span class="n">sent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">return_surface</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="n">return_string</span><span class="p">:</span>
-            <span class="n">res_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SPACE&quot;</span><span class="p">:</span>
-                    <span class="n">res_str</span> <span class="o">=</span> <span class="n">res_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="n">res_str</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">res_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">+&quot;</span>
-            <span class="k">return</span> <span class="n">res_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">res</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stringfy</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span></div></div>
 
 
 <div class="viewcode-block" id="PororoMecabJap"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoMecabJap">[docs]</a><span class="k">class</span> <span class="nc">PororoMecabJap</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
@@ -450,7 +450,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
 
-<div class="viewcode-block" id="PororoMecabJap.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoMecabJap.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoMecabJap.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoMecabJap.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct Part-of-Speech tagging using mecab and ipadic modules</span>
 
@@ -479,7 +479,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
 
-<div class="viewcode-block" id="PororoJieba.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoJieba.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoJieba.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoJieba.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct Part-of-Speech tagging using jieba modules</span>
 
@@ -565,7 +565,7 @@
                 <span class="k">break</span>
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="PororoNLTKPosTagger.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoNLTKPosTagger.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoNLTKPosTagger.predict"><a class="viewcode-back" href="../../../tagging/pos.html#pororo.tasks.pos_tagging.PororoNLTKPosTagger.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct Part-of-Speech tagging using NLTK modules</span>
 

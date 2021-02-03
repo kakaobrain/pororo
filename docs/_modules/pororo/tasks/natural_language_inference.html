@@ -315,7 +315,12 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
 
-<div class="viewcode-block" id="PororoBertNli.predict"><a class="viewcode-back" href="../../../text_cls/nli.html#pororo.tasks.natural_language_inference.PororoBertNli.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent_a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sent_b</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PororoBertNli.predict"><a class="viewcode-back" href="../../../text_cls/nli.html#pororo.tasks.natural_language_inference.PororoBertNli.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sent_a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">sent_b</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Conduct Natural Language Inference</span>
 
