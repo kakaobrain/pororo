@@ -4,6 +4,7 @@
   <a href="https://github.com/kakaobrain/pororo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/kakaobrain/pororo.svg" /></a>
   <a href="https://github.com/kakaobrain/pororo/blob/master/LICENSE"><img alt="Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" /></a>
   <a href="https://kakaobrain.github.io/pororo/"><img alt="Docs" src="https://img.shields.io/badge/docs-passing-success.svg" /></a>
+  <a href="https://github.com/kakaobrain/pororo/issues"><img alt="Issues" src="https://img.shields.io/github/issues/kakaobrain/pororo" /></a>
 </p>
 
 <br>
@@ -110,6 +111,8 @@ bash asr-install.sh
 ## Documentation
 
 For more detailed information, see [full documentation](https://kakaobrain.github.io/pororo/)
+
+If you have any questions or requests, please report [the issue](https://github.com/kakaobrain/pororo/issues).
 
 <br>
 
