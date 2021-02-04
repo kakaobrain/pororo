@@ -1,4 +1,4 @@
-# Pororo: A Deep Learning based Multilingual Natural Language Processing Library
+# PORORO: Platform Of neuRal mOdels for natuRal language prOcessing
 
 <p align="center">
   <a href="https://github.com/kakaobrain/pororo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/kakaobrain/pororo.svg" /></a>
@@ -118,13 +118,13 @@ bash asr-install.sh
 
 ## Citation
 
-Pororo 라이브러리를 프로젝트 혹은 연구에 활용하신다면 아래 정보를 통해 인용을 해주시기 바랍니다:
+PORORO 라이브러리를 프로젝트 혹은 연구에 활용하신다면 아래 정보를 통해 인용을 해주시기 바랍니다:
 
 ```
 @misc{pororo,
   author       = {Heo, Hoon and Ko, Hyunwoong and Kim, Soohwan and
                   Han, Gunsoo and Park, Jiwoo and Park, Kyubyong},
-  title        = {Pororo: A Deep Learning based Multilingual Natural Language Processing Library},
+  title        = {PORORO: Platform Of neuRal mOdels for natuRal language prOcessing},
   howpublished = {\url{https://github.com/kakaobrain/pororo}},
   year         = {2021},
 }
@@ -140,6 +140,6 @@ Pororo 라이브러리를 프로젝트 혹은 연구에 활용하신다면 아�
 
 ## License
 
-`Pororo` 프로젝트는 **Apache License 2.0 라이센스**를 따릅니다.
+`PORORO` 프로젝트는 **Apache License 2.0 라이센스**를 따릅니다.
 
 Copyright 2021 Kakao Brain Corp. <https://www.kakaobrain.com> All Rights Reserved.

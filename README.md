@@ -1,4 +1,4 @@
-# Pororo: A Deep Learning based Multilingual Natural Language Processing Library
+# PORORO: Platform Of neuRal mOdels for natuRal language prOcessing
 
 <p align="center">
   <a href="https://github.com/kakaobrain/pororo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/kakaobrain/pororo.svg" /></a>
@@ -11,7 +11,7 @@
 
 ![](assets/usage.gif)
 
-`Pororo` performs Natural Language Processing and Speech-related tasks.
+`pororo` performs Natural Language Processing and Speech-related tasks.
 
 It is easy to solve various subtasks in the natural language and speech processing field by simply passing the task name.
 
@@ -19,7 +19,7 @@ It is easy to solve various subtasks in the natural language and speech processi
 
 ## Installation
 
-- `Pororo` is based on `torch=1.6(cuda 10.1)` and `python>=3.6`
+- `pororo` is based on `torch=1.6(cuda 10.1)` and `python>=3.6`
 
 - You can install a package through the command below:
 
@@ -47,14 +47,14 @@ bash asr-install.sh
 
 ## Usage
 
-- `Pororo` can be used as follows:
-- First, in order to import `Pororo`, you must execute the following snippet
+- `pororo` can be used as follows:
+- First, in order to import `pororo`, you must execute the following snippet
 
 ```python
 >>> from pororo import Pororo
 ```
 
-- After the import, you can check the tasks currently supported by the `Pororo` through the following commands
+- After the import, you can check the tasks currently supported by the `pororo` through the following commands
 
 ```python
 >>> from pororo import Pororo
@@ -124,7 +124,7 @@ If you apply this library to any project and research, please cite our code:
 @misc{pororo,
   author       = {Heo, Hoon and Ko, Hyunwoong and Kim, Soohwan and
                   Han, Gunsoo and Park, Jiwoo and Park, Kyubyong},
-  title        = {Pororo: A Deep Learning based Multilingual Natural Language Processing Library},
+  title        = {PORORO: Platform Of neuRal mOdels for natuRal language prOcessing},
   howpublished = {\url{https://github.com/kakaobrain/pororo}},
   year         = {2021},
 }
@@ -140,6 +140,6 @@ If you apply this library to any project and research, please cite our code:
 
 ## License
 
-`Pororo` project is licensed under the terms of **the Apache License 2.0**.
+`PORORO` project is licensed under the terms of **the Apache License 2.0**.
 
 Copyright 2021 Kakao Brain Corp. <https://www.kakaobrain.com> All Rights Reserved.
