@@ -223,10 +223,13 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; mrc = Pororo(task=&quot;mrc&quot;, lang=&quot;ko&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; mrc(</span>
-<span class="sd">        ...    &quot;카카오브레인이 공개한 것은?&quot;,</span>
-<span class="sd">        ...    &quot;카카오 인공지능(AI) 연구개발 자회사 카카오브레인이 AI 솔루션을 첫 상품화했다. 카카오는 카카오브레인 &#39;포즈(pose·자세분석) API&#39;를 유료 공개한다고 24일 밝혔다. 카카오브레인이 AI 기술을 유료 API를 공개하는 것은 처음이다. 공개하자마자 외부 문의가 쇄도한다. 포즈는 AI 비전(VISION, 영상·화면분석) 분야 중 하나다. 카카오브레인 포즈 API는 이미지나 영상을 분석해 사람 자세를 추출하는 기능을 제공한다.&quot;</span>
-<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt;    &quot;카카오브레인이 공개한 것은?&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;    &quot;카카오 인공지능(AI) 연구개발 자회사 카카오브레인이 AI 솔루션을 첫 상품화했다. 카카오는 카카오브레인 &#39;포즈(pose·자세분석) API&#39;를 유료 공개한다고 24일 밝혔다. 카카오브레인이 AI 기술을 유료 API를 공개하는 것은 처음이다. 공개하자마자 외부 문의가 쇄도한다. 포즈는 AI 비전(VISION, 영상·화면분석) 분야 중 하나다. 카카오브레인 포즈 API는 이미지나 영상을 분석해 사람 자세를 추출하는 기능을 제공한다.&quot;</span>
+<span class="sd">        &gt;&gt;&gt; )</span>
 <span class="sd">        (&#39;포즈(pose·자세분석) API&#39;, (33, 44))</span>
+<span class="sd">        &gt;&gt;&gt; # when mecab doesn&#39;t work well for postprocess, you can set `postprocess` option as `False`</span>
+<span class="sd">        &gt;&gt;&gt; mrc(&quot;카카오브레인이 공개한 라이브러리 이름은?&quot;, &quot;카카오브레인은 자연어 처리와 음성 관련 태스크를 쉽게 수행할 수 있도록 도와 주는 라이브러리 pororo를 공개하였습니다.&quot;, postprocess=False)</span>
+<span class="sd">        (&#39;pororo&#39;, (30, 34))</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -292,14 +295,22 @@
 <span class="sd">        Args:</span>
 <span class="sd">            query: (str) query string used as query</span>
 <span class="sd">            context: (str) context string used as context</span>
+<span class="sd">            postprocess: (bool) whether to apply mecab based postprocess</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Tuple[str, Tuple[int, int]]: predicted answer span and its indices</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">postprocess</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;postprocess&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
         <span class="n">pair_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_span</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="n">span</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callback</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span><span class="p">,</span>
+            <span class="n">pair_result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="p">)</span> <span class="k">if</span> <span class="n">postprocess</span> <span class="k">else</span> <span class="n">pair_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
         <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tagger</span><span class="p">,</span> <span class="n">pair_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="n">span</span><span class="p">,</span>
             <span class="n">pair_result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
         <span class="p">)</span></div></div>
 </pre></div>
