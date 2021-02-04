@@ -93,13 +93,21 @@ class PororoBertMrc(PororoBiencoderBase):
         Args:
             query: (str) query string used as query
             context: (str) context string used as context
+            postprocess: (bool) whether to apply mecab based postprocess
 
         Returns:
             Tuple[str, Tuple[int, int]]: predicted answer span and its indices
 
         """
+        postprocess = kwargs.get("postprocess", True)
+
         pair_result = self._model.predict_span(query, context)
+        span = self._callback(
+            self._tagger,
+            pair_result[0],
+        ) if postprocess else pair_result[0]
+
         return (
-            self._callback(self._tagger, pair_result[0]),
+            span,
             pair_result[1],
         )

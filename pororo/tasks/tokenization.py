@@ -263,6 +263,7 @@ class PororoMecabKoTokenizer(PororoTokenizerBase):
         **kwargs,
     ) -> List[str]:
         preserve_whitespace = kwargs.get("preserve_whitespace", True)
+
         text = text.strip()
         text_ptr = 0
         results = list()
