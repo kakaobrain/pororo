@@ -112,6 +112,7 @@ pip install jieba
 ### Automatic Speech Recognition
   
 - 음성인식 모듈을 활용하기 위해서는 [wav2letter](https://github.com/facebookresearch/wav2letter) 설치가 필요합니다. 레포지토리의 `asr-install.sh`를 실행함으로써 `wav2letter` 설치가 가능합니다.
+- Wav2letter를 정상적으로 설치하기 위해서는 CUDA 설치가 선행되어야 합니다.
 
 ```console
 bash asr-install.sh
