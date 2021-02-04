@@ -415,11 +415,13 @@ class PororoRobertaSummary(PororoSimpleBase):
         classifier_size = 768 if "base" in config.n_model else 1024
 
         self._device = device
-        self._classifier = nn.Linear(classifier_size,
-                                     1).to(device).half().eval()
+        self._classifier = nn.Linear(classifier_size, 1).to(device).eval()
         self._classifier.load_state_dict(clf_dict)
-        self._model = wrapper.model.encoder.sentence_encoder.to(
-            device).half().eval()
+        self._model = wrapper.model.encoder.sentence_encoder.to(device).eval()
+
+        if "cuda" in device.type:
+            self._model = self._model.half()
+            self._classifier = self._classifier.half()
 
         self._tokenizer = BertSumTokenizer(
             bpe=wrapper.bpe,
