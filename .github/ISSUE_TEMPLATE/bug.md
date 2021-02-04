@@ -13,4 +13,5 @@ labels: 'bug'
 
 - OS :
 - Python version :
+- CPU/GPU :
 - Misc. :
