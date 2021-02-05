@@ -457,6 +457,8 @@ class PororoBertCharNer(PororoSimpleBase):
 
         Args:
             text: (str) sentence to be sequence labeled
+            apply_wsd: (bool) whether to apply wsd to get more specific label information
+            ignore_labels: (list) labels to be ignored
 
         Returns:
             List[Tuple[str, str]]: token and its predicted tag tuple list

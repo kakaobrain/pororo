@@ -346,7 +346,11 @@
 <dd><p>Conduct named entity recognition with character BERT</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> – (str) sentence to be sequence labeled</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – (str) sentence to be sequence labeled</p></li>
+<li><p><strong>apply_wsd</strong> – (bool) whether to apply wsd to get more specific label information</p></li>
+<li><p><strong>ignore_labels</strong> – (list) labels to be ignored</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>token and its predicted tag tuple list</p>
