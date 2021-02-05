@@ -139,42 +139,6 @@ class CustomRobertaHubInterface(RobertaHubInterface):
         return topk_filled_outputs
 
     @torch.no_grad()
-    def predict_segments(self, sentence: str, no_separator: bool = False):
-        label_fn = lambda label: self.task.label_dictionary.string([label])
-        tokens = self.encode(sentence, no_separator=no_separator)
-        preds = self.predict("sequence_tagging_head", tokens)[0, 1:-1, :]
-        probs = self.softmax(preds).cpu().numpy()
-
-        res_prob = list()
-        for prob in probs:
-            prob = {
-                label_fn(i + self.task.label_dictionary.nspecial):
-                round(p * 100, 2) for i, p in enumerate(prob.tolist())
-            }
-            res_prob.append(prob)
-
-        preds = preds.argmax(dim=1).cpu().numpy()
-        labels = [
-            label_fn(int(pred) + self.task.label_dictionary.nspecial)
-            for pred in preds
-        ]
-
-        # Set first subword's prediction as a token prediction
-        n_tokens = 0
-        token_preds = [0]
-        for idx, token in enumerate(sentence.split()):
-            if idx != 0:
-                token_preds.append(n_tokens)
-                token = f" {token}"
-            n_tokens += len(self.bpe.encode(token).split())
-
-        return [(
-            token,
-            labels[lab],
-            res_prob[lab],
-        ) for token, lab in zip(sentence.split(), token_preds)]
-
-    @torch.no_grad()
     def predict_tags(self, sentence: str, no_separator: bool = False):
         label_fn = lambda label: self.task.label_dictionary.string([label])
 
