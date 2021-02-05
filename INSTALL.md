@@ -112,7 +112,8 @@ pip install jieba
 ### Automatic Speech Recognition
   
 - To utilize the **Automatic Speech Recognition** module, [wav2letter](https://github.com/facebookresearch/wav2letter) is required. `asr-install.sh` can be used for installation of th `wav2letter`
-
+- Note! CUDA must be pre-installed for installation of the wav2letter.
+  
 ```console
 bash asr-install.sh
 ```
