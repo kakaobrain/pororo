@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc., its affiliates and Kakao Brain. All Rights Reserved
 
-from typing import List, Union
+from typing import Dict, List, Union
 
 import numpy as np
 import torch
@@ -18,10 +18,13 @@ class CharBrainRobertaModel(RobertaModel):
     -------
     load_model(log_name: str)
         Load RobertaModel. Supported names are on README.md
+
     load_hub_model(log_name: str)
         Load RobertaHubInterface.
+
     available_models
         return list of available models
+
     Examples::
         >>> model = BrainRobertaModel.load_hub_model('brainbert.base')
         >>> tokens = model.encode('안녕하세요.')
@@ -31,6 +34,7 @@ class CharBrainRobertaModel(RobertaModel):
           [ 0.4918, -1.9358, -2.0424,  ..., -4.7024, -1.7995, -1.3725],
           [ 0.7734, -1.9318, -1.3917,  ..., -0.7167, -0.4305,  3.3848],
           [ 1.9992, -1.8058, -1.7588,  ..., -1.7262, -0.7903,  0.7955]]]
+
     """
 
     @classmethod
@@ -106,7 +110,7 @@ class CharBrainRobertaHubInterface(RobertaHubInterface):
         tokens: torch.LongTensor,
         skip_special_tokens: bool = True,
         remove_bpe: bool = True,
-    ) -> str:
+    ) -> Union[str, List]:
         assert tokens.dim() == 1
         tokens = tokens.numpy()
 
@@ -146,7 +150,7 @@ class CharBrainRobertaHubInterface(RobertaHubInterface):
         add_special_tokens: bool = True,
         no_separator: bool = False,
         show_probs: bool = False,
-    ) -> Union[str, float]:
+    ) -> Union[str, Dict]:
         """Predict output, either a classification label or regression target,
          using a fine-tuned sentence prediction model.
         :returns output
@@ -164,15 +168,8 @@ class CharBrainRobertaHubInterface(RobertaHubInterface):
             ...    'BrainBert는 한국어 모델이다.',
             ...    )
             0.8374465107917786
-        """
-        assert self.args.task == "sentence_prediction", (
-            "predict_output() only works for sentence prediction tasks.\n"
-            "Use predict() to obtain model outputs; "
-            "use predict_span() for span prediction tasks.")
-        assert (
-            "sentence_classification_head" in self.model.classification_heads
-        ), "need pre-trained sentence_classification_head to make predictions"
 
+        """
         tokens = self.encode(
             sentence,
             *addl_sentences,
@@ -234,17 +231,21 @@ class CharBrainRobertaHubInterface(RobertaHubInterface):
                 "sequence_tagging_head",
                 li_sentence,
             )[:, 1:-1, :].argmax(dim=-1).cpu().numpy())
-            labels = [[
-                label_fn(int(pred) + self.task.label_dictionary.nspecial)
-                for pred in preds
+            # yapf: disable
+            labels = [
+                [
+                    label_fn(int(pred) + self.task.label_dictionary.nspecial)
+                    for pred in preds
+                ] for preds in results
             ]
-                      for preds in results]
 
-            return [[
-                (token, label)
-                for token, label in zip(self.tokenize(sent).split(), label)
+            return [
+                [
+                    (token, label)
+                    for token, label in zip(self.tokenize(sent).split(), label)
+                ] for sent, label in zip(sentence, labels)
             ]
-                    for sent, label in zip(sentence, labels)]
+            # yapf: enable
 
         tokens = self.encode(
             sentence,

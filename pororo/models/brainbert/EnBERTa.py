@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc., its affiliates and Kakao Brain. All Rights Reserved
 
-from typing import Union
+from typing import Dict, Union
 
 import torch
 import torch.nn as nn
@@ -49,7 +49,7 @@ class CustomRobertaHubInterface(RobertaHubInterface):
         *addl_sentences,
         no_separator: bool = False,
         show_probs: bool = False,
-    ) -> Union[str, float]:
+    ) -> Union[str, Dict]:
         assert self.args.task == "sentence_prediction", (
             "predict_output() only works for sentence prediction tasks.\n"
             "Use predict() to obtain model outputs; "
@@ -168,8 +168,11 @@ class CustomRobertaHubInterface(RobertaHubInterface):
                 token = f" {token}"
             n_tokens += len(self.bpe.encode(token).split())
 
-        return [(token, labels[lab], res_prob[lab])
-                for token, lab in zip(sentence.split(), token_preds)]
+        return [(
+            token,
+            labels[lab],
+            res_prob[lab],
+        ) for token, lab in zip(sentence.split(), token_preds)]
 
     @torch.no_grad()
     def predict_tags(self, sentence: str, no_separator: bool = False):
@@ -187,5 +190,7 @@ class CustomRobertaHubInterface(RobertaHubInterface):
             for pred in preds
         ]
 
-        return [(self.decode(token.unsqueeze(0)), label)
-                for token, label in zip(tokens[1:-1], labels)]
+        return [(
+            self.decode(token.unsqueeze(0)),
+            label,
+        ) for token, label in zip(tokens[1:-1], labels)]
