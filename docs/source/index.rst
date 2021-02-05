@@ -51,6 +51,7 @@ Welcome to PORORO's documentation!
    seq2seq/para_gen
    seq2seq/qg
    seq2seq/summary
+   seq2seq/wsd
 
 .. toctree::
    :maxdepth: 1
