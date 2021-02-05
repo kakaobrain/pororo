@@ -246,7 +246,7 @@
 <span class="sd">        &gt;&gt;&gt; ner = Pororo(task=&quot;ner&quot;, lang=&quot;ko&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; ner(&quot;손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.&quot;)</span>
 <span class="sd">        [(&#39;손흥민&#39;, &#39;PERSON&#39;), (&#39;은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;28세&#39;, &#39;QUANTITY&#39;), (&#39;의&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;183 센티미터&#39;, &#39;QUANTITY&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;77 킬로그램&#39;, &#39;QUANTITY&#39;), (&#39;이며,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;현재&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;주급은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;약 3억 원&#39;, &#39;QUANTITY&#39;), (&#39;이다.&#39;, &#39;O&#39;)]</span>
-<span class="sd">        &gt;&gt;&gt; # `apply_wsd` : for korean, you can use Word Sense Disambiguation module to get specific tag</span>
+<span class="sd">        &gt;&gt;&gt; # `apply_wsd` : for korean, you can use Word Sense Disambiguation module to get more specific tag</span>
 <span class="sd">        &gt;&gt;&gt; ner(&quot;손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.&quot;, apply_wsd=True)</span>
 <span class="sd">        [(&#39;손흥민&#39;, &#39;PERSON&#39;), (&#39;은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;28세&#39;, &#39;AGE&#39;), (&#39;의&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;183 센티미터&#39;, &#39;LENGTH/DISTANCE&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;77 킬로그램&#39;, &#39;WEIGHT&#39;), (&#39;이며,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;현재&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;주급은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;약 3억 원&#39;, &#39;MONEY&#39;), (&#39;이다.&#39;, &#39;O&#39;)]</span>
 <span class="sd">        &gt;&gt;&gt; ner = Pororo(task=&quot;ner&quot;, lang=&quot;zh&quot;)</span>
@@ -453,11 +453,14 @@
     <span class="k">def</span> <span class="nf">_template_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">expression2category</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Apply template match using regular expression</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            text (str): text to be searched</span>
 <span class="sd">            expression2category (dict): regular expression dict</span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            str: regex matched category</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">expression</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">expression2category</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -483,7 +486,7 @@
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
-    <span class="k">def</span> <span class="nf">_apply_wsd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+    <span class="k">def</span> <span class="nf">_apply_wsd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Apply Word Sense Disambiguation to get detail tag info</span>
 
@@ -625,7 +628,6 @@
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">))</span>
 
                 <span class="n">tmp_word</span> <span class="o">=</span> <span class="n">char</span>
-                <span class="n">prev_ori_tag</span> <span class="o">=</span> <span class="n">ori_tag</span>
                 <span class="n">prev_tag</span> <span class="o">=</span> <span class="n">tag</span>
                 <span class="k">continue</span>
 
@@ -636,7 +638,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tmp_word</span><span class="p">,</span> <span class="n">prev_tag</span><span class="p">))</span>
                 <span class="n">tmp_word</span> <span class="o">=</span> <span class="n">char</span>
-            <span class="n">prev_ori_tag</span> <span class="o">=</span> <span class="n">ori_tag</span>
+
             <span class="n">prev_tag</span> <span class="o">=</span> <span class="n">tag</span>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tmp_word</span><span class="p">,</span> <span class="n">prev_tag</span><span class="p">))</span>
 
@@ -672,10 +674,11 @@
                     <span class="n">pair</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore_labels</span>
                 <span class="p">]</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="k">else</span> <span class="n">pair</span>
-                       <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">apply_wsd</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_wsd</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="p">[(</span>
+                    <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                <span class="p">)</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="k">else</span> <span class="n">pair</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">apply_wsd</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_wsd</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">apply_dict</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">)])</span>
         <span class="k">return</span> <span class="n">result</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div></div>

@@ -46,7 +46,7 @@ class PororoNerFactory(PororoFactoryBase):
         >>> ner = Pororo(task="ner", lang="ko")
         >>> ner("손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.")
         [('손흥민', 'PERSON'), ('은', 'O'), (' ', 'O'), ('28세', 'QUANTITY'), ('의', 'O'), (' ', 'O'), ('183 센티미터', 'QUANTITY'), (',', 'O'), (' ', 'O'), ('77 킬로그램', 'QUANTITY'), ('이며,', 'O'), (' ', 'O'), ('현재', 'O'), (' ', 'O'), ('주급은', 'O'), (' ', 'O'), ('약 3억 원', 'QUANTITY'), ('이다.', 'O')]
-        >>> # `apply_wsd` : for korean, you can use Word Sense Disambiguation module to get specific tag
+        >>> # `apply_wsd` : for korean, you can use Word Sense Disambiguation module to get more specific tag
         >>> ner("손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.", apply_wsd=True)
         [('손흥민', 'PERSON'), ('은', 'O'), (' ', 'O'), ('28세', 'AGE'), ('의', 'O'), (' ', 'O'), ('183 센티미터', 'LENGTH/DISTANCE'), (',', 'O'), (' ', 'O'), ('77 킬로그램', 'WEIGHT'), ('이며,', 'O'), (' ', 'O'), ('현재', 'O'), (' ', 'O'), ('주급은', 'O'), (' ', 'O'), ('약 3억 원', 'MONEY'), ('이다.', 'O')]
         >>> ner = Pororo(task="ner", lang="zh")
@@ -253,11 +253,14 @@ class PororoBertCharNer(PororoSimpleBase):
     def _template_match(self, text, expression2category):
         """
         Apply template match using regular expression
+
         Args:
             text (str): text to be searched
             expression2category (dict): regular expression dict
+
         Returns:
             str: regex matched category
+
         """
         for expression, category in expression2category.items():
             if re.search(expression, text) is not None:
@@ -283,7 +286,7 @@ class PororoBertCharNer(PororoSimpleBase):
                 result.append(pair)
         return result
 
-    def _apply_wsd(self, origin: str, tags: List[Tuple[str, str]]):
+    def _apply_wsd(self, tags: List[Tuple[str, str]]):
         """
         Apply Word Sense Disambiguation to get detail tag info
 
@@ -425,7 +428,6 @@ class PororoBertCharNer(PororoSimpleBase):
                 result.append((" ", "O"))
 
                 tmp_word = char
-                prev_ori_tag = ori_tag
                 prev_tag = tag
                 continue
 
@@ -436,7 +438,7 @@ class PororoBertCharNer(PororoSimpleBase):
             else:
                 result.append((tmp_word, prev_tag))
                 tmp_word = char
-            prev_ori_tag = ori_tag
+
             prev_tag = tag
         result.append((tmp_word, prev_tag))
 
@@ -472,10 +474,11 @@ class PororoBertCharNer(PororoSimpleBase):
                     pair for pair in self._postprocess(res)
                     if pair[1] not in ignore_labels
                 ]
-                res = [(pair[0],
-                        self._tag[pair[1]]) if pair[1] in self._tag else pair
-                       for pair in res]
-                res = res if not apply_wsd else self._apply_wsd(sent, res)
+                res = [(
+                    pair[0],
+                    self._tag[pair[1]],
+                ) if pair[1] in self._tag else pair for pair in res]
+                res = res if not apply_wsd else self._apply_wsd(res)
                 result.extend(self.apply_dict(res))
                 result.extend([(" ", "O")])
         return result[:-1]
