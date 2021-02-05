@@ -4,10 +4,7 @@ import pickle
 from collections import namedtuple
 from typing import List, Optional, Tuple, Union
 
-from pororo.tasks.utils.base import (
-    PororoFactoryBase,
-    PororoTaskGenerationBase,
-)
+from pororo.tasks.utils.base import PororoFactoryBase, PororoTaskGenerationBase
 from pororo.tasks.utils.download_utils import download_or_load
 
 

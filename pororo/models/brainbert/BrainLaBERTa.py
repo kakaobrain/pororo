@@ -1,5 +1,7 @@
 # Copyright (c) Facebook, Inc., its affiliates and Kakao Brain. All Rights Reserved
 
+from typing import List, Union
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -58,7 +60,7 @@ class CharBrainLabertaHubInterface(RobertaHubInterface):
         tokens: torch.LongTensor,
         segments: torch.LongTensor,
         return_all_hiddens: bool = False,
-    ) -> torch.Tensor:
+    ) -> Union[List, torch.Tensor]:
         if tokens.dim() == 1:
             tokens = tokens.unsqueeze(0)
         if tokens.size(-1) > self.model.max_positions():
@@ -125,8 +127,10 @@ class CharBrainLabertaHubInterface(RobertaHubInterface):
             label_fn(int(pred) + self.task.label_dictionary.nspecial)
             for pred in preds
         ]
-        return [(token, label) for token, label in zip(sentence.split(), labels)
-               ]
+        return [(
+            token,
+            label,
+        ) for token, label in zip(sentence.split(), labels)]
 
 
 @register_model("roberta_label")
