@@ -42,6 +42,21 @@ jieba
     Copyright (C) 2013 Sun Junyi
     MIT License
 
+fastdtw
+    https://github.com/slaypni/fastdtw
+    Copyright (C) 2015 slaypni
+    MIT License
+
+epitran
+    https://github.com/dmort27/epitran
+    Copyright (c) 2016 David Mortensen
+    MIT License
+
+ko_pron
+    https://github.com/kord123/ko_pron
+    Copyright (c) 2018 Koretskyy Andriy
+    MIT License
+
 joblib
     https://github.com/joblib/joblib
     Copyright (C) 2008-2016, The joblib developers.
