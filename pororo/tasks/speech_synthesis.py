@@ -14,8 +14,8 @@ from pororo.tasks import (
 
 class PororoTtsFactory(PororoFactoryBase):
     """
-    Synthesis text to speech using trained model.
-    Output audio's sample rate is 22050.
+    Synthesis text to speech using trained model
+    Output audio's sample rate is 22050
 
     Multi (`tacotron`)
 
@@ -33,12 +33,12 @@ class PororoTtsFactory(PororoFactoryBase):
     Examples:
         >>> import IPython
         >>> from IPython.display import Audio
-        >>> model = Pororo('tts', lang='multi')
-        >>> wave = model('how are you?', lang='en', speaker='en')
+        >>> model = Pororo(task="tts", lang="multi")
+        >>> wave = model("how are you?", lang="en", speaker="en")
         >>> IPython.display.display(IPython.display.Audio(data=wave, rate=22050))
 
-        >>> model = Pororo('tts', lang='multi')
-        >>> wave = model('저는 미국 사람이에요.', lang='ko', speaker='en')
+        >>> model = Pororo(task="tts", lang="multi")
+        >>> wave = model("저는 미국 사람이에요.", lang="ko", speaker="en")
         >>> IPython.display.display(IPython.display.Audio(data=wave, rate=22050))
 
     Notes:
@@ -79,11 +79,9 @@ class PororoTtsFactory(PororoFactoryBase):
         """
         if self.config.n_model == "tacotron":
             from pororo.models.tts.synthesizer import (
-                MultilingualSpeechSynthesizer,
-            )
+                MultilingualSpeechSynthesizer,)
             from pororo.models.tts.utils.numerical_pinyin_converter import (
-                convert_from_numerical_pinyin,
-            )
+                convert_from_numerical_pinyin,)
             from pororo.models.tts.utils.text import jejueo_romanize, romanize
 
             tacotron_path = download_or_load("misc/tacotron2", self.config.lang)

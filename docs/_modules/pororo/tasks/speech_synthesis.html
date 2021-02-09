@@ -215,8 +215,8 @@
 
 <div class="viewcode-block" id="PororoTtsFactory"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoTtsFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Synthesis text to speech using trained model.</span>
-<span class="sd">    Output audio&#39;s sample rate is 22050.</span>
+<span class="sd">    Synthesis text to speech using trained model</span>
+<span class="sd">    Output audio&#39;s sample rate is 22050</span>
 
 <span class="sd">    Multi (`tacotron`)</span>
 
@@ -234,12 +234,12 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; import IPython</span>
 <span class="sd">        &gt;&gt;&gt; from IPython.display import Audio</span>
-<span class="sd">        &gt;&gt;&gt; model = Pororo(&#39;tts&#39;, lang=&#39;multi&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; wave = model(&#39;how are you?&#39;, lang=&#39;en&#39;, speaker=&#39;en&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; model = Pororo(task=&quot;tts&quot;, lang=&quot;multi&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wave = model(&quot;how are you?&quot;, lang=&quot;en&quot;, speaker=&quot;en&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; IPython.display.display(IPython.display.Audio(data=wave, rate=22050))</span>
 
-<span class="sd">        &gt;&gt;&gt; model = Pororo(&#39;tts&#39;, lang=&#39;multi&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; wave = model(&#39;저는 미국 사람이에요.&#39;, lang=&#39;ko&#39;, speaker=&#39;en&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; model = Pororo(task=&quot;tts&quot;, lang=&quot;multi&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wave = model(&quot;저는 미국 사람이에요.&quot;, lang=&quot;ko&quot;, speaker=&quot;en&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; IPython.display.display(IPython.display.Audio(data=wave, rate=22050))</span>
 
 <span class="sd">    Notes:</span>
@@ -280,11 +280,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;tacotron&quot;</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">pororo.models.tts.synthesizer</span> <span class="kn">import</span> <span class="p">(</span>
-                <span class="n">MultilingualSpeechSynthesizer</span><span class="p">,</span>
-            <span class="p">)</span>
+                <span class="n">MultilingualSpeechSynthesizer</span><span class="p">,)</span>
             <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.numerical_pinyin_converter</span> <span class="kn">import</span> <span class="p">(</span>
-                <span class="n">convert_from_numerical_pinyin</span><span class="p">,</span>
-            <span class="p">)</span>
+                <span class="n">convert_from_numerical_pinyin</span><span class="p">,)</span>
             <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.text</span> <span class="kn">import</span> <span class="n">jejueo_romanize</span><span class="p">,</span> <span class="n">romanize</span>
 
             <span class="n">tacotron_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/tacotron2&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
