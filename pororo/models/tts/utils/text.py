@@ -58,9 +58,14 @@ def remove_punctuation(text):
 def to_sequence(text, use_phonemes=False):
     """Converts a string of text to a sequence of IDs corresponding to the symbols in the text."""
     transform_dict = {
-        s: i for i, s in enumerate(_other_symbols() + list(hp.phonemes if use_phonemes else hp.characters))
+        s: i for i, s in
+        enumerate(_other_symbols() +
+                  list(hp.phonemes if use_phonemes else hp.characters))
     }
-    sequence = [transform_dict[_unk] if c not in transform_dict else transform_dict[c] for c in text]
+    sequence = [
+        transform_dict[_unk] if c not in transform_dict else transform_dict[c]
+        for c in text
+    ]
     sequence.append(transform_dict[_eos])
     return sequence
 

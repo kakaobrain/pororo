@@ -1,6 +1,7 @@
 """Speech Synthesis related modeling class"""
 
 from typing import Optional, Tuple
+
 from numpy import ndarray
 
 from pororo.tasks import (
@@ -47,7 +48,12 @@ class PororoTtsFactory(PororoFactoryBase):
 
     """
 
-    def __init__(self, task: str, lang: str = "multi", model: Optional[str] = None):
+    def __init__(
+        self,
+        task: str,
+        lang: str = "multi",
+        model: Optional[str] = None,
+    ):
         super().__init__(task, lang, model)
 
     @staticmethod
@@ -81,11 +87,24 @@ class PororoTtsFactory(PororoFactoryBase):
             from pororo.models.tts.utils.text import jejueo_romanize, romanize
 
             tacotron_path = download_or_load("misc/tacotron2", self.config.lang)
-            english_vocoder_path = download_or_load("misc/hifigan_en", self.config.lang)
-            korean_vocoder_path = download_or_load("misc/hifigan_ko", self.config.lang)
-            english_vocoder_config = download_or_load("misc/hifigan_en_config.json", self.config.lang)
-            korean_vocoder_config = download_or_load("misc/hifigan_ko_config.json", self.config.lang)
-            wavernn_path = download_or_load("misc/wavernn.pyt", self.config.lang)
+            english_vocoder_path = download_or_load(
+                "misc/hifigan_en",
+                self.config.lang,
+            )
+            korean_vocoder_path = download_or_load(
+                "misc/hifigan_ko",
+                self.config.lang,
+            )
+            english_vocoder_config = download_or_load(
+                "misc/hifigan_en_config.json",
+                self.config.lang,
+            )
+            korean_vocoder_config = download_or_load(
+                "misc/hifigan_ko_config.json",
+                self.config.lang,
+            )
+            wavernn_path = download_or_load("misc/wavernn.pyt",
+                                            self.config.lang)
             synthesizer = MultilingualSpeechSynthesizer(
                 tacotron_path,
                 english_vocoder_path,
