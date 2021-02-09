@@ -129,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="miscs/lemma.html">Lemmatization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/inflection.html">Morphological Inflection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscs/tts.html">Speech Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/tokenization.html">Tokenization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/wt.html">Word Translation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscs/w2v.html">Word Embedding</a></li>
@@ -366,6 +367,8 @@
 </li>
         <li><a href="text_cls/sentiment.html#pororo.tasks.sentiment_analysis.PororoSentimentFactory.get_available_langs">(pororo.tasks.sentiment_analysis.PororoSentimentFactory static method)</a>
 </li>
+        <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory.get_available_langs">(pororo.tasks.speech_synthesis.PororoTtsFactory static method)</a>
+</li>
         <li><a href="seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.get_available_langs">(pororo.tasks.text_summarization.PororoSummarizationFactory static method)</a>
 </li>
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.get_available_langs">(pororo.tasks.tokenization.PororoTokenizationFactory static method)</a>
@@ -435,6 +438,8 @@
         <li><a href="text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSentenceFactory.get_available_models">(pororo.tasks.sentence_embedding.PororoSentenceFactory static method)</a>
 </li>
         <li><a href="text_cls/sentiment.html#pororo.tasks.sentiment_analysis.PororoSentimentFactory.get_available_models">(pororo.tasks.sentiment_analysis.PororoSentimentFactory static method)</a>
+</li>
+        <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory.get_available_models">(pororo.tasks.speech_synthesis.PororoTtsFactory static method)</a>
 </li>
         <li><a href="seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.get_available_models">(pororo.tasks.text_summarization.PororoSummarizationFactory static method)</a>
 </li>
@@ -510,6 +515,8 @@
 </li>
         <li><a href="text_cls/sentiment.html#pororo.tasks.sentiment_analysis.PororoSentimentFactory.load">(pororo.tasks.sentiment_analysis.PororoSentimentFactory method)</a>
 </li>
+        <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory.load">(pororo.tasks.speech_synthesis.PororoTtsFactory method)</a>
+</li>
         <li><a href="seq2seq/summary.html#pororo.tasks.text_summarization.PororoSummarizationFactory.load">(pororo.tasks.text_summarization.PororoSummarizationFactory method)</a>
 </li>
         <li><a href="miscs/tokenization.html#pororo.tasks.tokenization.PororoTokenizationFactory.load">(pororo.tasks.tokenization.PororoTokenizationFactory method)</a>
@@ -523,6 +530,12 @@
         <li><a href="text_cls/zero.html#pororo.tasks.zero_shot_classification.PororoZeroShotFactory.load">(pororo.tasks.zero_shot_classification.PororoZeroShotFactory method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS.load_g2p_ja">load_g2p_ja() (pororo.tasks.speech_synthesis.PororoTTS method)</a>
+</li>
+      <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS.load_g2p_zh">load_g2p_zh() (pororo.tasks.speech_synthesis.PororoTTS method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -588,6 +601,8 @@
         <li><a href="text_cls/sent2vec.html#module-pororo.tasks.sentence_embedding">pororo.tasks.sentence_embedding</a>
 </li>
         <li><a href="text_cls/sentiment.html#module-pororo.tasks.sentiment_analysis">pororo.tasks.sentiment_analysis</a>
+</li>
+        <li><a href="miscs/tts.html#module-pororo.tasks.speech_synthesis">pororo.tasks.speech_synthesis</a>
 </li>
         <li><a href="seq2seq/summary.html#module-pororo.tasks.text_summarization">pororo.tasks.text_summarization</a>
 </li>
@@ -802,6 +817,13 @@
 
       <ul>
         <li><a href="text_cls/sentiment.html#module-pororo.tasks.sentiment_analysis">module</a>
+</li>
+      </ul></li>
+      <li>
+    pororo.tasks.speech_synthesis
+
+      <ul>
+        <li><a href="miscs/tts.html#module-pororo.tasks.speech_synthesis">module</a>
 </li>
       </ul></li>
       <li>
@@ -1036,6 +1058,10 @@
 </li>
       <li><a href="seq2seq/mt.html#pororo.tasks.machine_translation.PororoTranslationFactory">PororoTranslationFactory (class in pororo.tasks.machine_translation)</a>
 </li>
+      <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS">PororoTTS (class in pororo.tasks.speech_synthesis)</a>
+</li>
+      <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory">PororoTtsFactory (class in pororo.tasks.speech_synthesis)</a>
+</li>
       <li><a href="miscs/w2v.html#pororo.tasks.word_embedding.PororoWikipedia2Vec">PororoWikipedia2Vec (class in pororo.tasks.word_embedding)</a>
 </li>
       <li><a href="miscs/wt.html#pororo.tasks.word_translation.PororoWord2Word">PororoWord2Word (class in pororo.tasks.word_translation)</a>
@@ -1140,6 +1166,8 @@
         <li><a href="text_cls/sent2vec.html#pororo.tasks.sentence_embedding.PororoSBertSentence.predict">(pororo.tasks.sentence_embedding.PororoSBertSentence method)</a>
 </li>
         <li><a href="text_cls/sentiment.html#pororo.tasks.sentiment_analysis.PororoBertSentiment.predict">(pororo.tasks.sentiment_analysis.PororoBertSentiment method)</a>
+</li>
+        <li><a href="miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS.predict">(pororo.tasks.speech_synthesis.PororoTTS method)</a>
 </li>
         <li><a href="seq2seq/summary.html#pororo.tasks.text_summarization.PororoKoBartBulletSummary.predict">(pororo.tasks.text_summarization.PororoKoBartBulletSummary method)</a>
 </li>

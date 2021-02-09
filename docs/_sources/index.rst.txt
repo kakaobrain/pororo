@@ -63,6 +63,7 @@ Welcome to PORORO's documentation!
    miscs/lemma
    miscs/inflection
    miscs/ocr
+   miscs/tts
    miscs/tokenization
    miscs/wt
    miscs/w2v
