@@ -1,3 +1,5 @@
+# Copyright (c) Kakao Enterprise, its affiliates. All Rights Reserved
+
 import glob
 import os
 
