@@ -22,6 +22,18 @@ Name: `Wikipedia2vec`
 License: Apache License 2.0
 Ref: https://github.com/wikipedia2vec/wikipedia2vec
 
+Name: `Multilingual Text-To-Speech`
+License: MIT License
+Ref: https://github.com/Tomiinek/Multilingual_Text_to_Speech
+
+Name: `Hifi-GAN`
+License: MIT License
+Ref: https://github.com/jik876/hifi-gan
+
+Name: `WaveRNN`
+License: MIT License
+Ref: https://github.com/fatchord/WaveRNN
+
 Name: `Voice Activity Detection`
 License: MIT License
 Ref: https://github.com/skgusrb12/voice_activity_detection
