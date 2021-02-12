@@ -83,8 +83,12 @@ class PororoTtsFactory(PororoFactoryBase):
 
         """
         if self.config.n_model == "tacotron":
-            from pororo.models.tts.synthesizer import MultilingualSpeechSynthesizer
-            from pororo.models.tts.utils.numerical_pinyin_converter import convert_from_numerical_pinyin
+            from pororo.models.tts.synthesizer import (
+                MultilingualSpeechSynthesizer,
+            )
+            from pororo.models.tts.utils.numerical_pinyin_converter import (
+                convert_from_numerical_pinyin,
+            )
             from pororo.models.tts.utils.text import jejueo_romanize, romanize
 
             tacotron_path = download_or_load("misc/tacotron2", self.config.lang)

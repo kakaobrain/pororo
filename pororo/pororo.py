@@ -147,7 +147,6 @@ SUPPORTED_TASKS = {
     "question_generation": PororoQuestionGenerationFactory,
     "age_suitability": PororoAgeSuitabilityFactory,
     "wsd": PororoWsdFactory,
-    "tts": PororoTtsFactory,
 }
 
 LANG_ALIASES = {
@@ -178,6 +177,7 @@ class Pororo:
     r"""
     This is a generic class that will return one of the task-specific model classes of the library
     when created with the `__new__()` method
+
     """
 
     def __new__(
