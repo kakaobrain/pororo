@@ -104,8 +104,10 @@ class PororoTtsFactory(PororoFactoryBase):
                 "misc/hifigan_ko_config.json",
                 self.config.lang,
             )
-            wavernn_path = download_or_load("misc/wavernn.pyt",
-                                            self.config.lang)
+            wavernn_path = download_or_load(
+                "misc/wavernn.pyt",
+                self.config.lang,
+            )
             synthesizer = MultilingualSpeechSynthesizer(
                 tacotron_path,
                 english_vocoder_path,
