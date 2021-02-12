@@ -119,6 +119,31 @@ bash asr-install.sh
 ```
 
 <br>
+  
+### Speech Synthesis
+
+- **음성합성** 모듈을 활용하기 위해서는 아래 모듈들을 추가로 설치해주셔야 합니다.
+
+```
+requirements = [
+    "editdistance==0.5.3",
+    "epitran==1.2",
+    "fastdtw==0.3.4",
+    "future",
+    "jieba==0.42.1",
+    "librosa==0.7.0",
+    "phonemizer==2.1",
+    "Pillow==7.1.0",
+    "pinyin==0.4.0",
+    "scipy",
+    "SoundFile==0.10.2",
+    "numba==0.48",
+    "ko_pron",
+]
+```
+  
+<br>
+  
 
 ### Optical Character Recognition
 

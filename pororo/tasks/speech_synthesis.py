@@ -34,16 +34,21 @@ class PororoTtsFactory(PororoFactoryBase):
         >>> import IPython
         >>> from IPython.display import Audio
         >>> model = Pororo(task="tts", lang="multi")
-        >>> wave = model("how are you?", lang="en", speaker="en")
+        >>> # Typical TTS
+        >>> wave = model("how are you?", lang="en")
         >>> IPython.display.display(IPython.display.Audio(data=wave, rate=22050))
-
+        >>> # Voice Style Transfer
         >>> model = Pororo(task="tts", lang="multi")
         >>> wave = model("저는 미국 사람이에요.", lang="ko", speaker="en")
         >>> IPython.display.display(IPython.display.Audio(data=wave, rate=22050))
+        >>> # Code-Switching
+        >>> wave = model("저는 미국 사람이에요.", lang="ko", speaker="en-15,ko")
+        >>> IPython.display.Audio(data=wave, rate=22050)
+
 
     Notes:
-        Currently 10 languages supports.
-        Supported Languages: English, Korean, Japanese, Chinese, Jejueo, Dutch, German, Spanish, French, Russian
+        Currently 11 languages supports.
+        Supported Languages: English, Korean, Japanese, Chinese, Jejueo, Dutch, German, Spanish, French, Russian, Finnish
         This task can designate a speaker such as ko, en, zh etc.
 
     """
@@ -78,10 +83,8 @@ class PororoTtsFactory(PororoFactoryBase):
 
         """
         if self.config.n_model == "tacotron":
-            from pororo.models.tts.synthesizer import (
-                MultilingualSpeechSynthesizer,)
-            from pororo.models.tts.utils.numerical_pinyin_converter import (
-                convert_from_numerical_pinyin,)
+            from pororo.models.tts.synthesizer import MultilingualSpeechSynthesizer
+            from pororo.models.tts.utils.numerical_pinyin_converter import convert_from_numerical_pinyin
             from pororo.models.tts.utils.text import jejueo_romanize, romanize
 
             tacotron_path = download_or_load("misc/tacotron2", self.config.lang)
@@ -159,7 +162,7 @@ class PororoTTS(PororoSimpleBase):
         self.jejueo_romanize = jejueo_romanize
         self.convert_from_numerical_pinyin = convert_from_numerical_pinyin
 
-    def load_g2p_ja(self):
+    def _load_g2p_ja(self):
         """ load g2p module for Japanese """
         self.g2p_ja = PororoG2pFactory(
             task="g2p",
@@ -168,7 +171,7 @@ class PororoTTS(PororoSimpleBase):
         )
         self.g2p_ja = self.g2p_ja.load(self.device)
 
-    def load_g2p_zh(self):
+    def _load_g2p_zh(self):
         """ load g2p module for Chinese """
         self.g2p_zh = PororoG2pFactory(
             task="g2p",
@@ -199,11 +202,11 @@ class PororoTTS(PororoSimpleBase):
             text = self.romanize(text)
         elif lang == "ja":
             if self.g2p_ja is None:
-                self.load_g2p_ja()
+                self._load_g2p_ja()
             text = self.g2p_ja(text)
         elif lang == "zh":
             if self.g2p_zh is None:
-                self.load_g2p_zh()
+                self._load_g2p_zh()
             text = self.g2p_zh(text).replace("   ", " ")
             text = self.convert_from_numerical_pinyin(text)
         elif lang == "je":
@@ -228,11 +231,5 @@ class PororoTTS(PororoSimpleBase):
         if speaker is None:
             speaker = lang
 
-        if speaker == "ja":
-            speaker = "jp"
-
-        assert (
-            speaker in self.lang_dict.values()
-        ), f"Unsupported speaker: {speaker}\nSupported speaker: {self.lang_dict.keys()}"
         text, speaker = self._preprocess(text, lang, speaker)
         return self.predict(text, speaker)
