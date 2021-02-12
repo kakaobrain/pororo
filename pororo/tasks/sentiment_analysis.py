@@ -102,6 +102,8 @@ class PororoBertSentiment(PororoSimpleBase):
         self._label_fn = {
             "0": "negative",
             "1": "positive",
+            "negative": "negative",
+            "positive": "positive",
         }
 
     def predict(self, sent: str, **kwargs) -> str:

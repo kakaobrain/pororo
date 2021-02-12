@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc., its affiliates and Kakao Brain. All Rights Reserved
 
-from typing import Union
+from typing import Dict, Union
 
 import torch
 from fairseq.models.roberta import RobertaModel
@@ -131,7 +131,7 @@ class JabertaHubInterface(RobertaHubInterface):
         add_special_tokens: bool = True,
         no_separator: bool = False,
         show_probs: bool = False,
-    ) -> Union[str, float]:
+    ) -> Union[str, Dict]:
         assert (
             "sentence_classification_head" in self.model.classification_heads
         ), "need pre-trained sentence_classification_head to make predictions"

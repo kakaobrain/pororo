@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Named Entity Recognition &mdash; Pororo 0.3.1 documentation</title>
+  <title>Named Entity Recognition &mdash; PORORO: Platform Of neuRal mOdels for natuRal language prOcessing 0.3.1 documentation</title>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Pororo
+            <a href="../index.html" class="icon icon-home"> PORORO: Platform Of neuRal mOdels for natuRal language prOcessing
           
 
           
@@ -121,6 +121,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../seq2seq/para_gen.html">Paraphrase Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seq2seq/qg.html">Question Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seq2seq/summary.html">Text Summarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seq2seq/wsd.html">Word Sense Disambiguation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Misc.</span></p>
 <ul>
@@ -148,7 +149,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Pororo</a>
+          <a href="../index.html">PORORO: Platform Of neuRal mOdels for natuRal language prOcessing</a>
         
       </nav>
 
@@ -249,12 +250,15 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;ner&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span><span class="p">(</span><span class="s2">&quot;It was in midfield where Arsenal took control of the game, and that was mainly down to Thomas Partey and Mohamed Elneny.&quot;</span><span class="p">)</span>
 <span class="go">[(&#39;It&#39;, &#39;O&#39;), (&#39;was&#39;, &#39;O&#39;), (&#39;in&#39;, &#39;O&#39;), (&#39;midfield&#39;, &#39;O&#39;), (&#39;where&#39;, &#39;O&#39;), (&#39;Arsenal&#39;, &#39;ORG&#39;), (&#39;took&#39;, &#39;O&#39;), (&#39;control&#39;, &#39;O&#39;), (&#39;of&#39;, &#39;O&#39;), (&#39;the&#39;, &#39;O&#39;), (&#39;game&#39;, &#39;O&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39;and&#39;, &#39;O&#39;), (&#39;that&#39;, &#39;O&#39;), (&#39;was&#39;, &#39;O&#39;), (&#39;mainly&#39;, &#39;O&#39;), (&#39;down&#39;, &#39;O&#39;), (&#39;to&#39;, &#39;O&#39;), (&#39;Thomas Partey&#39;, &#39;PERSON&#39;), (&#39;and&#39;, &#39;O&#39;), (&#39;Mohamed Elneny&#39;, &#39;PERSON&#39;), (&#39;.&#39;, &#39;O&#39;)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;ner&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span><span class="p">(</span><span class="s2">&quot;안녕하세요. 제 이름은 카터입니다.&quot;</span><span class="p">)</span>
-<span class="go">[(&quot;안녕하세요.&quot;, &quot;O&quot;), (&quot; &quot;, &quot;O&quot;), (&quot;제&quot;, &quot;O&quot;), (&quot;이름은&quot;, &quot;O&quot;), (&quot;카터&quot;, &quot;PS&quot;), (&quot;입니다.&quot;, &quot;O&quot;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span><span class="p">(</span><span class="s2">&quot;손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.&quot;</span><span class="p">)</span>
+<span class="go">[(&#39;손흥민&#39;, &#39;PERSON&#39;), (&#39;은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;28세&#39;, &#39;QUANTITY&#39;), (&#39;의&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;183 센티미터&#39;, &#39;QUANTITY&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;77 킬로그램&#39;, &#39;QUANTITY&#39;), (&#39;이며,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;현재&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;주급은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;약 3억 원&#39;, &#39;QUANTITY&#39;), (&#39;이다.&#39;, &#39;O&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># `apply_wsd` : for korean, you can use Word Sense Disambiguation module to get more specific tag</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span><span class="p">(</span><span class="s2">&quot;손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.&quot;</span><span class="p">,</span> <span class="n">apply_wsd</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[(&#39;손흥민&#39;, &#39;PERSON&#39;), (&#39;은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;28세&#39;, &#39;AGE&#39;), (&#39;의&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;183 센티미터&#39;, &#39;LENGTH/DISTANCE&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;77 킬로그램&#39;, &#39;WEIGHT&#39;), (&#39;이며,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;현재&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;주급은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;약 3억 원&#39;, &#39;MONEY&#39;), (&#39;이다.&#39;, &#39;O&#39;)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;ner&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ner</span><span class="p">(</span><span class="s2">&quot;毛泽东（1893年12月26日－1976年9月9日），字润之，湖南湘潭人。中华民国大陆时期、中国共产党和中华人民共和国的重要政治家、经济家、军事家、战略家、外交家和诗人。&quot;</span><span class="p">)</span>
 <span class="go">[(&#39;毛泽东&#39;, &#39;PERSON&#39;), (&#39;（&#39;, &#39;O&#39;), (&#39;1893年12月26日－1976年9月9日&#39;, &#39;DATE&#39;), (&#39;）&#39;, &#39;O&#39;), (&#39;，&#39;, &#39;O&#39;), (&#39;字润之&#39;, &#39;O&#39;), (&#39;，&#39;, &#39;O&#39;), (&#39;湖南&#39;, &#39;GPE&#39;), (&#39;湘潭&#39;, &#39;GPE&#39;), (&#39;人&#39;, &#39;O&#39;), (&#39;。&#39;, &#39;O&#39;), (&#39;中华民国大陆时期&#39;, &#39;GPE&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;中国共产党&#39;, &#39;ORG&#39;), (&#39;和&#39;, &#39;O&#39;), (&#39;中华人民共和国&#39;, &#39;GPE&#39;), (&#39;的&#39;, &#39;O&#39;), (&#39;重&#39;, &#39;O&#39;), (&#39;要&#39;, &#39;O&#39;), (&#39;政&#39;, &#39;O&#39;), (&#39;治&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;经&#39;, &#39;O&#39;), (&#39;济&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;军&#39;, &#39;O&#39;), (&#39;事&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;战&#39;, &#39;O&#39;), (&#39;略&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;外&#39;, &#39;O&#39;), (&#39;交&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;和&#39;, &#39;O&#39;), (&#39;诗&#39;, &#39;O&#39;), (&#39;人&#39;, &#39;O&#39;), (&#39;。&#39;, &#39;O&#39;)]</span>
@@ -317,15 +321,36 @@
 
 <dl class="py class">
 <dt id="pororo.tasks.named_entity_recognition.PororoBertCharNer">
-<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.named_entity_recognition.</code><code class="sig-name descname">PororoBertCharNer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">sent_tokenizer</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/named_entity_recognition.html#PororoBertCharNer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.named_entity_recognition.PororoBertCharNer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.named_entity_recognition.</code><code class="sig-name descname">PororoBertCharNer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">sent_tokenizer</span></em>, <em class="sig-param"><span class="n">wsd_dict</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/named_entity_recognition.html#PororoBertCharNer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.named_entity_recognition.PororoBertCharNer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoSimpleBase</span></code></p>
+<dl class="py method">
+<dt id="pororo.tasks.named_entity_recognition.PororoBertCharNer.apply_dict">
+<code class="sig-name descname">apply_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tags</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">, </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/named_entity_recognition.html#PororoBertCharNer.apply_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.named_entity_recognition.PororoBertCharNer.apply_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply pre-defined dictionary to get detail tag info</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tags</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>]</em><em>]</em>) – inference word-tag pair result</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict-applied result</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Tuple[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="pororo.tasks.named_entity_recognition.PororoBertCharNer.predict">
 <code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/named_entity_recognition.html#PororoBertCharNer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.named_entity_recognition.PororoBertCharNer.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct named entity recognition with character BERT</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> – (str) sentence to be sequence labeled</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – (str) sentence to be sequence labeled</p></li>
+<li><p><strong>apply_wsd</strong> – (bool) whether to apply wsd to get more specific label information</p></li>
+<li><p><strong>ignore_labels</strong> – (list) labels to be ignored</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>token and its predicted tag tuple list</p>

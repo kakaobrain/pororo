@@ -1,9 +1,9 @@
-.. Pororo documentation master file, created by
+.. PORORO documentation master file, created by
    sphinx-quickstart on Thu Oct 22 09:41:31 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Pororo's documentation!
+Welcome to PORORO's documentation!
 ==================================
 
 .. toctree::
@@ -51,6 +51,7 @@ Welcome to Pororo's documentation!
    seq2seq/para_gen
    seq2seq/qg
    seq2seq/summary
+   seq2seq/wsd
 
 .. toctree::
    :maxdepth: 1
@@ -62,6 +63,7 @@ Welcome to Pororo's documentation!
    miscs/lemma
    miscs/inflection
    miscs/ocr
+   miscs/tts
    miscs/tokenization
    miscs/wt
    miscs/w2v

@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.speech_synthesis &mdash; PORORO: Platform Of neuRal mOdels for natuRal language prOcessing 0.3.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PORORO: Platform Of neuRal mOdels for natuRal language prOcessing
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/wsd.html">Word Sense Disambiguation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tts.html">Speech Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/w2v.html">Word Embedding</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PORORO: Platform Of neuRal mOdels for natuRal language prOcessing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.speech_synthesis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.speech_synthesis</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Speech Synthesis related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PororoFactoryBase</span><span class="p">,</span>
+    <span class="n">PororoG2pFactory</span><span class="p">,</span>
+    <span class="n">PororoSimpleBase</span><span class="p">,</span>
+    <span class="n">download_or_load</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="PororoTtsFactory"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoTtsFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Synthesis text to speech using trained model</span>
+<span class="sd">    Output audio&#39;s sample rate is 22050</span>
+
+<span class="sd">    Multi (`tacotron`)</span>
+
+<span class="sd">        - dataset: TBU</span>
+<span class="sd">        - metric: TBU</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): text for speech synthesis</span>
+<span class="sd">        lang (str): text&#39;s language Ex) how are you?: en, 안녕하세요.: ko</span>
+<span class="sd">        speaker (str): designate a speaker such as ko, en, zh etc.. (default: lang)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ndarray: waveform of speech signal</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import IPython</span>
+<span class="sd">        &gt;&gt;&gt; from IPython.display import Audio</span>
+<span class="sd">        &gt;&gt;&gt; model = Pororo(task=&quot;tts&quot;, lang=&quot;multi&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wave = model(&quot;how are you?&quot;, lang=&quot;en&quot;, speaker=&quot;en&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; IPython.display.display(IPython.display.Audio(data=wave, rate=22050))</span>
+
+<span class="sd">        &gt;&gt;&gt; model = Pororo(task=&quot;tts&quot;, lang=&quot;multi&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wave = model(&quot;저는 미국 사람이에요.&quot;, lang=&quot;ko&quot;, speaker=&quot;en&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; IPython.display.display(IPython.display.Audio(data=wave, rate=22050))</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        Currently 10 languages supports.</span>
+<span class="sd">        Supported Languages: English, Korean, Japanese, Chinese, Jejueo, Dutch, German, Spanish, French, Russian</span>
+<span class="sd">        This task can designate a speaker such as ko, en, zh etc.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;multi&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoTtsFactory.get_available_langs"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;multi&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoTtsFactory.get_available_models"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;multi&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;tacotron&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoTtsFactory.load"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTtsFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;tacotron&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.tts.synthesizer</span> <span class="kn">import</span> <span class="p">(</span>
+                <span class="n">MultilingualSpeechSynthesizer</span><span class="p">,)</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.numerical_pinyin_converter</span> <span class="kn">import</span> <span class="p">(</span>
+                <span class="n">convert_from_numerical_pinyin</span><span class="p">,)</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.text</span> <span class="kn">import</span> <span class="n">jejueo_romanize</span><span class="p">,</span> <span class="n">romanize</span>
+
+            <span class="n">tacotron_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/tacotron2&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+            <span class="n">english_vocoder_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="s2">&quot;misc/hifigan_en&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">korean_vocoder_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="s2">&quot;misc/hifigan_ko&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">english_vocoder_config</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="s2">&quot;misc/hifigan_en_config.json&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">korean_vocoder_config</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="s2">&quot;misc/hifigan_ko_config.json&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">wavernn_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/wavernn.pyt&quot;</span><span class="p">,</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+            <span class="n">synthesizer</span> <span class="o">=</span> <span class="n">MultilingualSpeechSynthesizer</span><span class="p">(</span>
+                <span class="n">tacotron_path</span><span class="p">,</span>
+                <span class="n">english_vocoder_path</span><span class="p">,</span>
+                <span class="n">english_vocoder_config</span><span class="p">,</span>
+                <span class="n">korean_vocoder_path</span><span class="p">,</span>
+                <span class="n">korean_vocoder_config</span><span class="p">,</span>
+                <span class="n">wavernn_path</span><span class="p">,</span>
+                <span class="n">device</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">PororoTTS</span><span class="p">(</span>
+                <span class="n">synthesizer</span><span class="p">,</span>
+                <span class="n">device</span><span class="p">,</span>
+                <span class="n">romanize</span><span class="p">,</span>
+                <span class="n">jejueo_romanize</span><span class="p">,</span>
+                <span class="n">convert_from_numerical_pinyin</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoTTS"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS">[docs]</a><span class="k">class</span> <span class="nc">PororoTTS</span><span class="p">(</span><span class="n">PororoSimpleBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">synthesizer</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">,</span>
+        <span class="n">romanize</span><span class="p">,</span>
+        <span class="n">jejueo_romanize</span><span class="p">,</span>
+        <span class="n">convert_from_numerical_pinyin</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_synthesizer</span> <span class="o">=</span> <span class="n">synthesizer</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lang_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ja&quot;</span><span class="p">:</span> <span class="s2">&quot;jp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;de&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nl&quot;</span><span class="p">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;ru&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;es&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="s2">&quot;fr&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;zh&quot;</span><span class="p">:</span> <span class="s2">&quot;zh&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fi&quot;</span><span class="p">:</span> <span class="s2">&quot;fi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;je&quot;</span><span class="p">:</span> <span class="s2">&quot;je&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">romanize</span> <span class="o">=</span> <span class="n">romanize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jejueo_romanize</span> <span class="o">=</span> <span class="n">jejueo_romanize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">convert_from_numerical_pinyin</span> <span class="o">=</span> <span class="n">convert_from_numerical_pinyin</span>
+
+<div class="viewcode-block" id="PororoTTS.load_g2p_ja"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS.load_g2p_ja">[docs]</a>    <span class="k">def</span> <span class="nf">load_g2p_ja</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; load g2p module for Japanese &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span> <span class="o">=</span> <span class="n">PororoG2pFactory</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="s2">&quot;g2p&quot;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;g2p.ja&quot;</span><span class="p">,</span>
+            <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PororoTTS.load_g2p_zh"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS.load_g2p_zh">[docs]</a>    <span class="k">def</span> <span class="nf">load_g2p_zh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; load g2p module for Chinese &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span> <span class="o">=</span> <span class="n">PororoG2pFactory</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="s2">&quot;g2p&quot;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;g2p.zh&quot;</span><span class="p">,</span>
+            <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+        <span class="n">speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pre-process text for TTS format</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): text for tts</span>
+<span class="sd">            lang (str): text language</span>
+<span class="sd">            speaker (speaker): designation of speaker</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: pre-processed text</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;ko&quot;</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">romanize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;ja&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">load_g2p_ja</span><span class="p">()</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;zh&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">load_g2p_zh</span><span class="p">()</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_from_numerical_pinyin</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;je&quot;</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jejueo_romanize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">|00-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lang_dict</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">speaker</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">speaker</span>
+
+<div class="viewcode-block" id="PororoTTS.predict"><a class="viewcode-back" href="../../../miscs/tts.html#pororo.tasks.speech_synthesis.PororoTTS.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">speaker</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct speech synthesis on given text</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): text for tts</span>
+<span class="sd">            speaker (speaker): designation of speaker</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">             ndarray: waveform of speech signal</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_synthesizer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">speaker</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">speaker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">speaker</span> <span class="o">=</span> <span class="n">lang</span>
+
+        <span class="k">if</span> <span class="n">speaker</span> <span class="o">==</span> <span class="s2">&quot;ja&quot;</span><span class="p">:</span>
+            <span class="n">speaker</span> <span class="o">=</span> <span class="s2">&quot;jp&quot;</span>
+
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">speaker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Unsupported speaker: </span><span class="si">{</span><span class="n">speaker</span><span class="si">}</span><span class="se">\n</span><span class="s2">Supported speaker: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lang_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">text</span><span class="p">,</span> <span class="n">speaker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">speaker</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">speaker</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Kakao Brain Corp.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

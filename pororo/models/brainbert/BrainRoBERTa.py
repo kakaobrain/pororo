@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc., its affiliates and Kakao Brain. All Rights Reserved
 
-from typing import Union
+from typing import Dict, Tuple, Union
 
 import numpy as np
 import torch
@@ -150,7 +150,7 @@ class BrainRobertaHubInterface(RobertaHubInterface):
         add_special_tokens: bool = True,
         no_separator: bool = False,
         show_probs: bool = False,
-    ) -> Union[str, float]:
+    ) -> Union[str, Dict]:
         """Predict output, either a classification label or regression target,
          using a fine-tuned sentence prediction model.
         :returns output
@@ -211,7 +211,7 @@ class BrainRobertaHubInterface(RobertaHubInterface):
         context: str,
         add_special_tokens: bool = True,
         no_separator: bool = False,
-    ) -> str:
+    ) -> Tuple:
         """
         Predict span from context using a fine-tuned span prediction model.
 
@@ -227,10 +227,6 @@ class BrainRobertaHubInterface(RobertaHubInterface):
         한국어
 
         """
-        assert self.args.task == "span_prediction", (
-            "predict_span() only works for span prediction tasks.\n"
-            "Use predict() to obtain model outputs (e.g., logits); "
-            "use predict_output() for sentence prediction tasks.")
 
         max_length = self.task.max_positions()
         tokens = self.encode(

@@ -275,8 +275,9 @@ class RobertaEncoder(nn.Module):
         tokenized_idx = []
 
         for n in range(math.ceil(len(tokens) / (maxlen - 2))):
-            chunk = ([bos_idx] + tokens[n * (maxlen - 2):(n + 1) *
-                                        (maxlen - 2)] + [eos_idx])
+            # yapf: disable
+            chunk = ([bos_idx] + tokens[n * (maxlen - 2):(n + 1) * (maxlen - 2)] + [eos_idx])
+            # yapf: enable
 
             if len(chunk) < maxlen:
                 chunk += [pad_idx] * (maxlen - len(chunk))

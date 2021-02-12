@@ -46,6 +46,7 @@ from pororo.tasks import (
     PororoWordTranslationFactory,
     PororoZeroShotFactory,
     PororoSpeechTranslationFactory,
+    PororoWsdFactory,
     PororoTtsFactory,
 )
 
@@ -145,6 +146,8 @@ SUPPORTED_TASKS = {
     "qg": PororoQuestionGenerationFactory,
     "question_generation": PororoQuestionGenerationFactory,
     "age_suitability": PororoAgeSuitabilityFactory,
+    "wsd": PororoWsdFactory,
+    "tts": PororoTtsFactory,
 }
 
 LANG_ALIASES = {

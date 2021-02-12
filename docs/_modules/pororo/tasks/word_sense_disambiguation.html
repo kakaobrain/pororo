@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pororo.tasks.word_sense_disambiguation &mdash; PORORO: Platform Of neuRal mOdels for natuRal language prOcessing 0.3.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PORORO: Platform Of neuRal mOdels for natuRal language prOcessing
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/intro.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/config.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text Classification</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/aes.html">Automated Essay Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/age_suitability.html">Age Suitability Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/nli.html">Natural Language Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/para_id.html">Paraphrase Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/review_score.html">Review Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sts.html">Semantic Textual Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sent2vec.html">Sentence Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/sentiment.html">Sentiment Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_cls/zero.html">Zero-shot Topic Classification</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sequence Tagging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/contextualized.html">Contextualized Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/dp.html">Dependency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/fill.html">Fill-in-the-blank</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/mrc.html">Machine Reading Comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/ner.html">Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/pos.html">Part-of-Speech Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tagging/srl.html">Semantic Role Labeling</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seq2Seq</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/const.html">Constituency Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/gec.html">Grammatical Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/g2p.html">Grapheme-to-Phoneme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/p2g.html">Phoneme-to-Grapheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/mt.html">Machine Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/wsd.html">Word Sense Disambiguation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/asr.html">Automatic Speech Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/caption.html">Image Captioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/collocation.html">Collocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tts.html">Speech Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/w2v.html">Word Embedding</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PORORO: Platform Of neuRal mOdels for natuRal language prOcessing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pororo.tasks.word_sense_disambiguation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pororo.tasks.word_sense_disambiguation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Word Sense Disambiguation related modeling class&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoTaskGenerationBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
+
+
+<div class="viewcode-block" id="PororoWsdFactory"><a class="viewcode-back" href="../../../seq2seq/wsd.html#pororo.tasks.word_sense_disambiguation.PororoWsdFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoWsdFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conduct Word Sense Disambiguation</span>
+
+<span class="sd">    Korean (`transformer.large.ko.wsd`)</span>
+<span class="sd">        - dataset: https://corpus.korean.go.kr/ 어휘 의미 분석 말뭉치</span>
+<span class="sd">        - metric: TBU</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text (str): sentence to be inputted</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[Tuple[str, str]]: list of token and its disambiguated meaning tuple</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; wsd = Pororo(task=&quot;wsd&quot;, lang=&quot;ko&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; wsd(&quot;머리에 이가 있나봐.&quot;)</span>
+<span class="sd">        [detail(morph=&#39;머리&#39;, pos=&#39;NNG&#39;, sense_id=&#39;01&#39;, original=None, meaning=&#39;사람이나 동물의 목 위의 부분&#39;, english=&#39;head&#39;),</span>
+<span class="sd">        detail(morph=&#39;에&#39;, pos=&#39;JKB&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;▁&#39;, pos=&#39;SPACE&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;이&#39;, pos=&#39;NNG&#39;, sense_id=&#39;01&#39;, original=None, meaning=&#39;이목의 곤충을 통틀어 이르는 말&#39;, english=&#39;louse&#39;),</span>
+<span class="sd">        detail(morph=&#39;가&#39;, pos=&#39;JKS&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;▁&#39;, pos=&#39;SPACE&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;있&#39;, pos=&#39;VA&#39;, sense_id=&#39;01&#39;, original=None, meaning=&#39;사람이나 동물이 어느 곳에서 떠나거나 벗어나지 아니하고 머물다&#39;, english=&#39;be; stay&#39;),</span>
+<span class="sd">        detail(morph=&#39;나&#39;, pos=&#39;EC&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;보&#39;, pos=&#39;VX&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;아&#39;, pos=&#39;EF&#39;, sense_id=None, original=None, meaning=None, english=None),</span>
+<span class="sd">        detail(morph=&#39;.&#39;, pos=&#39;SF&#39;, sense_id=None, original=None, meaning=None, english=None)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PororoWsdFactory.get_available_langs"><a class="viewcode-back" href="../../../seq2seq/wsd.html#pororo.tasks.word_sense_disambiguation.PororoWsdFactory.get_available_langs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_langs</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PororoWsdFactory.get_available_models"><a class="viewcode-back" href="../../../seq2seq/wsd.html#pororo.tasks.word_sense_disambiguation.PororoWsdFactory.get_available_models">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_available_models</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;transformer.large.ko.wsd&quot;</span><span class="p">],</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="PororoWsdFactory.load"><a class="viewcode-back" href="../../../seq2seq/wsd.html#pororo.tasks.word_sense_disambiguation.PororoWsdFactory.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load user-selected task-specific model</span>
+<span class="sd">        Args:</span>
+<span class="sd">            device (str): device information</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            object: User-selected task-specific model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="n">PororoPosFactory</span>
+
+        <span class="k">if</span> <span class="s2">&quot;transformer.large&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">fairseq.models.transformer</span> <span class="kn">import</span> <span class="n">TransformerModel</span>
+
+            <span class="n">load_dict</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;transformer/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="p">(</span><span class="n">TransformerModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+                <span class="n">model_name_or_path</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">checkpoint_file</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">,</span>
+                <span class="n">data_name_or_path</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">dict_path</span><span class="p">,</span>
+                <span class="n">source_lang</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">src_dict</span><span class="p">,</span>
+                <span class="n">target_lang</span><span class="o">=</span><span class="n">load_dict</span><span class="o">.</span><span class="n">tgt_dict</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+            <span class="n">morph2idx</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+                <span class="nb">open</span><span class="p">(</span>
+                    <span class="n">download_or_load</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;misc/morph2idx.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">.pkl&quot;</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+                <span class="p">))</span>
+            <span class="n">tag2idx</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+                <span class="nb">open</span><span class="p">(</span>
+                    <span class="n">download_or_load</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;misc/tag2idx.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">.pkl&quot;</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+                <span class="p">))</span>
+            <span class="n">query2origin</span><span class="p">,</span> <span class="n">query2meaning</span><span class="p">,</span> <span class="n">query2eng</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+                <span class="nb">open</span><span class="p">(</span>
+                    <span class="n">download_or_load</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;misc/wsd-dicts.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">.pkl&quot;</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+                <span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">PororoTransformerWsd</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">morph2idx</span><span class="p">,</span>
+                <span class="n">tag2idx</span><span class="p">,</span>
+                <span class="n">query2origin</span><span class="p">,</span>
+                <span class="n">query2meaning</span><span class="p">,</span>
+                <span class="n">query2eng</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PororoTransformerWsd"><a class="viewcode-back" href="../../../seq2seq/wsd.html#pororo.tasks.word_sense_disambiguation.PororoTransformerWsd">[docs]</a><span class="k">class</span> <span class="nc">PororoTransformerWsd</span><span class="p">(</span><span class="n">PororoTaskGenerationBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">morph2idx</span><span class="p">,</span>
+        <span class="n">tag2idx</span><span class="p">,</span>
+        <span class="n">query2origin</span><span class="p">,</span>
+        <span class="n">query2meaning</span><span class="p">,</span>
+        <span class="n">query2eng</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cands</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;NNG&quot;</span><span class="p">,</span> <span class="s2">&quot;NNB&quot;</span><span class="p">,</span> <span class="s2">&quot;NNBC&quot;</span><span class="p">,</span> <span class="s2">&quot;VV&quot;</span><span class="p">,</span> <span class="s2">&quot;VA&quot;</span><span class="p">,</span> <span class="s2">&quot;MM&quot;</span><span class="p">,</span> <span class="s2">&quot;MAG&quot;</span><span class="p">,</span> <span class="s2">&quot;NP&quot;</span><span class="p">,</span> <span class="s2">&quot;NNP&quot;</span>
+        <span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_morph2idx</span> <span class="o">=</span> <span class="n">morph2idx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tag2idx</span> <span class="o">=</span> <span class="n">tag2idx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_query2origin</span> <span class="o">=</span> <span class="n">query2origin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_query2meaning</span> <span class="o">=</span> <span class="n">query2meaning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_query2eng</span> <span class="o">=</span> <span class="n">query2eng</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Wdetail</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+            <span class="s2">&quot;detail&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;morph pos sense_id original meaning english&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess input sentence to replace whitespace token with whitespace</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): input sentence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: preprocessed input sentence</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;▁&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">eojeols</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;▁&quot;</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">eojeol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eojeols</span><span class="p">):</span>
+            <span class="n">pairs</span> <span class="o">=</span> <span class="n">eojeol</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;++&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+                <span class="n">morph</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">pair</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; || &quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="s2">&quot;__&quot;</span> <span class="ow">in</span> <span class="n">morph</span><span class="p">:</span>
+                    <span class="n">morph</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">morph</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; __ &quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">sense</span> <span class="o">=</span> <span class="kc">None</span>
+
+                <span class="n">morph</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">morph</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">tag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cands</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_Wdetail</span><span class="p">(</span>
+                            <span class="n">morph</span><span class="p">,</span>
+                            <span class="n">tag</span><span class="p">,</span>
+                            <span class="kc">None</span><span class="p">,</span>
+                            <span class="kc">None</span><span class="p">,</span>
+                            <span class="kc">None</span><span class="p">,</span>
+                            <span class="kc">None</span><span class="p">,</span>
+                        <span class="p">))</span>
+                    <span class="k">continue</span>
+
+                <span class="n">sense</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sense</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+                <span class="n">query_morph</span> <span class="o">=</span> <span class="n">morph</span> <span class="o">+</span> <span class="s2">&quot;다&quot;</span> <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;V&quot;</span> <span class="k">else</span> <span class="n">morph</span>
+                <span class="n">query_sense</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">sense</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;__&quot;</span> <span class="o">+</span> <span class="n">sense</span>
+
+                <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">query_morph</span><span class="si">}{</span><span class="n">query_sense</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query2origin</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="n">meaning</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query2meaning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="n">eng</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query2eng</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">meaning</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">query_morph</span><span class="si">}</span><span class="s2">__00&quot;</span>
+                    <span class="n">meaning</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query2meaning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">meaning</span><span class="p">:</span>
+                        <span class="n">sense</span> <span class="o">=</span> <span class="s2">&quot;00&quot;</span>
+
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_Wdetail</span><span class="p">(</span>
+                        <span class="n">morph</span><span class="p">,</span>
+                        <span class="n">tag</span><span class="p">,</span>
+                        <span class="n">sense</span><span class="p">,</span>
+                        <span class="n">origin</span><span class="p">,</span>
+                        <span class="n">meaning</span><span class="p">,</span>
+                        <span class="n">eng</span><span class="p">,</span>
+                    <span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">eojeols</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_Wdetail</span><span class="p">(</span>
+                        <span class="s2">&quot;▁&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;SPACE&quot;</span><span class="p">,</span>
+                        <span class="kc">None</span><span class="p">,</span>
+                        <span class="kc">None</span><span class="p">,</span>
+                        <span class="kc">None</span><span class="p">,</span>
+                        <span class="kc">None</span><span class="p">,</span>
+                    <span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="PororoTransformerWsd.predict"><a class="viewcode-back" href="../../../seq2seq/wsd.html#pororo.tasks.word_sense_disambiguation.PororoTransformerWsd.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">beam</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conduct Word Sense Disambiguation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): sentence to be inputted</span>
+<span class="sd">            beam (int): beam search argument</span>
+<span class="sd">            ignore_none (bool): whether to ignore `none` meaning</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[str]]: list of token and its disambiguated information tuple</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ignore_none</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_none&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+            <span class="n">text</span><span class="p">,</span>
+            <span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span>
+            <span class="n">max_len_a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">max_len_b</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">([</span><span class="n">pair</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">result</span> <span class="k">if</span> <span class="n">pair</span><span class="o">.</span><span class="n">meaning</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">ignore_none</span> <span class="k">else</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid inference result !&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Kakao Brain Corp.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

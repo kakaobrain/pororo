@@ -116,4 +116,11 @@ CONFIGS = {
             "bpe32k.en",
             None,
         ),
+    "transformer.large.ko.wsd":
+        TransformerConfig(
+            "dict.transformer.large.ko.wsd",
+            "dict.transformer.large.ko.wsd",
+            None,
+            None,
+        ),
 }

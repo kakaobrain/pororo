@@ -17,7 +17,7 @@ sys.path.insert(1, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Pororo'
+project = 'PORORO: Platform Of neuRal mOdels for natuRal language prOcessing'
 copyright = '2021, Kakao Brain Corp'
 author = 'Kakao Brain Corp'
 

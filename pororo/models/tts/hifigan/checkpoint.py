@@ -1,6 +1,7 @@
-import torch
-import os
 import glob
+import os
+
+import torch
 
 
 def load_checkpoint(filepath, device):
@@ -10,8 +11,8 @@ def load_checkpoint(filepath, device):
 
 
 def scan_checkpoint(cp_dir, prefix):
-    pattern = os.path.join(cp_dir, prefix + '*')
+    pattern = os.path.join(cp_dir, prefix + "*")
     cp_list = glob.glob(pattern)
-    if len(cp_list) == 0:
-        return ''
+    if not len(cp_list):
+        return ""
     return sorted(cp_list)[-1]

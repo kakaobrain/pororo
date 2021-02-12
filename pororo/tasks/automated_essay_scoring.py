@@ -46,7 +46,6 @@ class PororoAesFactory(PororoFactoryBase):
             object: User-selected task-specific model
 
         """
-
         if "roberta" in self.config.n_model:
             from pororo.models.brainbert import CustomRobertaModel
 

@@ -1,13 +1,14 @@
-import torch
 import json
-import librosa
 from typing import Tuple
+
+import librosa
+import torch
 
 from pororo.models.tts.hifigan.checkpoint import load_checkpoint
 from pororo.models.tts.hifigan.model import Generator
+from pororo.models.tts.synthesis import synthesize
 from pororo.models.tts.tacotron.params import Params as tacotron_hp
 from pororo.models.tts.tacotron.tacotron2 import Tacotron
-from pororo.models.tts.synthesis import synthesize
 from pororo.models.tts.utils import remove_dataparallel_prefix
 from pororo.models.tts.waveRNN.gen_wavernn import generate as wavernn_generate
 from pororo.models.tts.waveRNN.params import hp as wavernn_hp
@@ -15,22 +16,24 @@ from pororo.models.tts.waveRNN.waveRNN import WaveRNN
 
 
 class AttrDict(dict):
+
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
         self.__dict__ = self
 
 
 class MultilingualSpeechSynthesizer(object):
+
     def __init__(
         self,
-            tacotron_path: str,
-            english_vocoder_path: str,
-            english_vocoder_config: str,
-            korean_vocoder_path: str,
-            korean_vocoder_config: str,
-            wavernn_path: str,
-            device: str,
-            lang: str = "en",
+        tacotron_path: str,
+        english_vocoder_path: str,
+        english_vocoder_config: str,
+        korean_vocoder_path: str,
+        korean_vocoder_config: str,
+        wavernn_path: str,
+        device: str,
+        lang: str = "en",
     ):
         self.lang = lang
         self.device = device
@@ -88,24 +91,31 @@ class MultilingualSpeechSynthesizer(object):
         return wavernn
 
     def build_model(
-            self,
-            tacotron_path: str,
-            english_vocoder_path: str,
-            english_vocoder_config: str,
-            korean_vocoder_path: str,
-            korean_vocoder_config: str,
-            wavernn_path: str,
+        self,
+        tacotron_path: str,
+        english_vocoder_path: str,
+        english_vocoder_config: str,
+        korean_vocoder_path: str,
+        korean_vocoder_config: str,
+        wavernn_path: str,
     ) -> Tuple[Tacotron, Generator, Generator, WaveRNN]:
         """Load and build tacotron a from checkpoint."""
         tacotron = self._build_tacotron(tacotron_path)
         vocoder_multi = self._build_wavernn(wavernn_path)
-        vocoder_ko = self._build_hifigan(korean_vocoder_config, korean_vocoder_path)
-        vocoder_en = self._build_hifigan(english_vocoder_config, english_vocoder_path)
+        vocoder_ko = self._build_hifigan(
+            korean_vocoder_config,
+            korean_vocoder_path,
+        )
+        vocoder_en = self._build_hifigan(
+            english_vocoder_config,
+            english_vocoder_path,
+        )
         return tacotron, vocoder_en, vocoder_ko, vocoder_multi
 
     def _spectrogram_postprocess(self, spectrogram):
         spectrogram = librosa.db_to_amplitude(spectrogram)
-        spectrogram = torch.log(torch.clamp(torch.Tensor(spectrogram), min=1e-5) * 1)
+        spectrogram = torch.log(
+            torch.clamp(torch.Tensor(spectrogram), min=1e-5) * 1)
         return spectrogram
 
     def predict(self, text: str, speaker: str):
@@ -123,9 +133,11 @@ class MultilingualSpeechSynthesizer(object):
             spectrogram = self._spectrogram_postprocess(spectrogram)
 
             if speaker == "ko":
-                y_g_hat = self.vocoder_ko(torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
+                y_g_hat = self.vocoder_ko(
+                    torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
             else:
-                y_g_hat = self.vocoder_en(torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
+                y_g_hat = self.vocoder_en(
+                    torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
 
             audio = y_g_hat.squeeze()
             audio = audio * 32768.0
