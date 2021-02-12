@@ -46,6 +46,7 @@ from pororo.tasks import (
     PororoWordTranslationFactory,
     PororoZeroShotFactory,
     PororoSpeechTranslationFactory,
+    PororoTtsFactory,
 )
 
 SUPPORTED_TASKS = {
@@ -132,6 +133,9 @@ SUPPORTED_TASKS = {
     "speech_recognition": PororoAsrFactory,
     "st": PororoSpeechTranslationFactory,
     "speech_translation": PororoSpeechTranslationFactory,
+    "tts": PororoTtsFactory,
+    "text_to_speech": PororoTtsFactory,
+    "speech_synthesis": PororoTtsFactory,
     "ocr": PororoOcrFactory,
     "srl": PororoSrlFactory,
     "semantic_role_labeling": PororoSrlFactory,

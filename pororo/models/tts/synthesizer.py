@@ -110,12 +110,11 @@ class MultilingualSpeechSynthesizer(object):
 
     def predict(self, text: str, speaker: str):
         speakers = speaker.split(',')
-
         spectrogram = synthesize(self.tacotron, f"|{text}", device=self.device)
 
         if len(speakers) > 1:
             spectrogram = self._spectrogram_postprocess(spectrogram)
-            y_g_hat = self.vocoder_en(torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
+            y_g_hat = self.vocoder_ko(torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
             audio = y_g_hat.squeeze()
             audio = audio * 32768.0
             return audio.cpu().detach().numpy()

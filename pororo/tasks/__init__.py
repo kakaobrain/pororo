@@ -51,3 +51,4 @@ from pororo.tasks.word_translation import PororoWordTranslationFactory
 from pororo.tasks.zero_shot_classification import PororoZeroShotFactory
 from pororo.tasks.review_scoring import PororoReviewFactory
 from pororo.tasks.speech_translation import PororoSpeechTranslationFactory
+from pororo.tasks.speech_synthesis import PororoTtsFactory
