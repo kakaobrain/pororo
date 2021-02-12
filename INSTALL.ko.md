@@ -119,6 +119,28 @@ bash asr-install.sh
 ```
 
 <br>
+  
+### Speech Synthesis
+```
+requirements = [
+    "editdistance==0.5.3",
+    "epitran==1.2",
+    "fastdtw==0.3.4",
+    "future",
+    "jieba==0.42.1",
+    "librosa==0.7.0",
+    "phonemizer==2.1",
+    "Pillow==7.1.0",
+    "pinyin==0.4.0",
+    "scipy",
+    "SoundFile==0.10.2",
+    "numba==0.48",
+    "ko_pron",
+]
+```
+  
+<br>
+  
 
 ### Optical Character Recognition
 
