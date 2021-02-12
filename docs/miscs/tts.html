@@ -237,18 +237,21 @@ Output audio’s sample rate is 22050</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">IPython</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Audio</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;tts&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wave</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s2">&quot;how are you?&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">speaker</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Typical TTS</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wave</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s2">&quot;how are you?&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">wave</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mi">22050</span><span class="p">))</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;tts&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Voice Style Transfer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Pororo</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;tts&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wave</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s2">&quot;저는 미국 사람이에요.&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">speaker</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">wave</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mi">22050</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Code-Switching</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wave</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s2">&quot;저는 미국 사람이에요.&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">speaker</span><span class="o">=</span><span class="s2">&quot;en-15,ko&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">wave</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mi">22050</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Notes</p>
-<p>Currently 10 languages supports.
-Supported Languages: English, Korean, Japanese, Chinese, Jejueo, Dutch, German, Spanish, French, Russian
+<p>Currently 11 languages supports.
+Supported Languages: English, Korean, Japanese, Chinese, Jejueo, Dutch, German, Spanish, French, Russian, Finnish
 This task can designate a speaker such as ko, en, zh etc.</p>
 <dl class="py method">
 <dt id="pororo.tasks.speech_synthesis.PororoTtsFactory.get_available_langs">
@@ -283,18 +286,6 @@ This task can designate a speaker such as ko, en, zh etc.</p>
 <dt id="pororo.tasks.speech_synthesis.PororoTTS">
 <em class="property">class </em><code class="sig-prename descclassname">pororo.tasks.speech_synthesis.</code><code class="sig-name descname">PororoTTS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">synthesizer</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">romanize</span></em>, <em class="sig-param"><span class="n">jejueo_romanize</span></em>, <em class="sig-param"><span class="n">convert_from_numerical_pinyin</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/speech_synthesis.html#PororoTTS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.speech_synthesis.PororoTTS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pororo.tasks.utils.base.PororoSimpleBase</span></code></p>
-<dl class="py method">
-<dt id="pororo.tasks.speech_synthesis.PororoTTS.load_g2p_ja">
-<code class="sig-name descname">load_g2p_ja</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/speech_synthesis.html#PororoTTS.load_g2p_ja"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.speech_synthesis.PororoTTS.load_g2p_ja" title="Permalink to this definition">¶</a></dt>
-<dd><p>load g2p module for Japanese</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="pororo.tasks.speech_synthesis.PororoTTS.load_g2p_zh">
-<code class="sig-name descname">load_g2p_zh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pororo/tasks/speech_synthesis.html#PororoTTS.load_g2p_zh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.speech_synthesis.PororoTTS.load_g2p_zh" title="Permalink to this definition">¶</a></dt>
-<dd><p>load g2p module for Chinese</p>
-</dd></dl>
-
 <dl class="py method">
 <dt id="pororo.tasks.speech_synthesis.PororoTTS.predict">
 <code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">speaker</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/pororo/tasks/speech_synthesis.html#PororoTTS.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pororo.tasks.speech_synthesis.PororoTTS.predict" title="Permalink to this definition">¶</a></dt>
