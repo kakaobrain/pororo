@@ -54,7 +54,18 @@ RUN pip install librosa \
     g2pM \
     jieba \
     opencv-python \
-    scikit-image
+    scikit-image \
+    editdistance==0.5.3 \
+    epitran==1.2 \
+    fastdtw==0.3.4 \
+    future \
+    Pillow==7.2.0 \
+    pinyin==0.4.0 \
+    scikit-learn \
+    scipy \
+    SoundFile==0.10.2 \
+    numba==0.48 \
+    ko_pron
 
 WORKDIR /app/external_lib
 

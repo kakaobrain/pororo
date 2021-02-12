@@ -305,8 +305,10 @@
                 <span class="s2">&quot;misc/hifigan_ko_config.json&quot;</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
             <span class="p">)</span>
-            <span class="n">wavernn_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/wavernn.pyt&quot;</span><span class="p">,</span>
-                                            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
+            <span class="n">wavernn_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span>
+                <span class="s2">&quot;misc/wavernn.pyt&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+            <span class="p">)</span>
             <span class="n">synthesizer</span> <span class="o">=</span> <span class="n">MultilingualSpeechSynthesizer</span><span class="p">(</span>
                 <span class="n">tacotron_path</span><span class="p">,</span>
                 <span class="n">english_vocoder_path</span><span class="p">,</span>
