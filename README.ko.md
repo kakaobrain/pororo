@@ -37,10 +37,16 @@ pip install -e .
 
 - **공통 모듈** 외 특정 태스크를 위한 라이브러리 설치를 위해서는 [INSTALL.md](INSTALL.ko.md)를 참조해주세요.
 
-- **Automatic Speech Recognition**의 활용을 위해서는 [_wav2letter_](https://github.com/facebookresearch/wav2letter)를 별도로 설치해주어야 합니다. 해당 라이브러리 설치를 위해서는 [asr-install.sh](asr-install.sh) 파일을 실행시켜주시면 됩니다.
+- **Automatic Speech Recognition**의 활용을 위해서는 [_wav2letter_](https://github.com/facebookresearch/wav2letter)를 별도로 설치해주어야 합니다. 해당 라이브러리 설치를 위해서는 [asr-install.sh](asr-install.sh) 파일을 실행시켜주세요.
 
 ```console
 bash asr-install.sh
+```
+
+- **Speech Synthesis**의 활용을 위해서는 [tts-install.sh](tts-install.sh) 파일을 실행시켜주세요.
+
+```console
+bash tts-install.sh
 ```
 
 <br>

@@ -37,10 +37,16 @@ pip install -e .
 
 - For library installation for specific tasks other than the **common modules**, please refer to [INSTALL.md](INSTALL.md)
 
-- For the utilization of **Automatic Speech Recognition**, [_wav2letter_](https://github.com/facebookresearch/wav2letter) should be installed separately. For the installation, please run the [asr-install.sh](asr-install.sh) file
+- For the utilization of **Automatic Speech Recognition**, [_wav2letter_](https://github.com/facebookresearch/wav2letter) should be installed separately. For the installation, please run the [asr-install.sh](asr-install.sh)
 
 ```console
 bash asr-install.sh
+```
+
+- For the utilization of **Speech Synthesis**, please run the [tts-install.sh](tts-install.sh)
+
+```console
+bash tts-install.sh
 ```
 
 <br>
