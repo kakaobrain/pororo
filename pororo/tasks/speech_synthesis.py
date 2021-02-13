@@ -231,5 +231,7 @@ class PororoTTS(PororoSimpleBase):
         if speaker is None:
             speaker = lang
 
+        speaker = speaker.replace("ja", "jp")
+
         text, speaker = self._preprocess(text, lang, speaker)
         return self.predict(text, speaker)
