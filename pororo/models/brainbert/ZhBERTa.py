@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc., its affiliates and Kakao Brain. All Rights Reserved
 
-from typing import Union
+from typing import Dict, Union
 
 import torch
 from fairseq.models.roberta import RobertaModel
@@ -124,13 +124,7 @@ class ZhbertaHubInterface(RobertaHubInterface):
         add_special_tokens: bool = True,
         no_separator: bool = False,
         show_probs: bool = False,
-    ) -> Union[str, float]:
-        assert (self.args.task == "sentence_prediction"
-               ), "predict_output() only works for sentence prediction tasks.\n"
-        assert (
-            "sentence_classification_head" in self.model.classification_heads
-        ), "need pre-trained sentence_classification_head to make predictions"
-
+    ) -> Union[str, Dict]:
         tokens = self.encode(
             sentence,
             *addl_sentences,

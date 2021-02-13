@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pororo.tasks.named_entity_recognition &mdash; Pororo 0.3.1 documentation</title>
+  <title>pororo.tasks.named_entity_recognition &mdash; PORORO: Platform Of neuRal mOdels for natuRal language prOcessing 0.3.1 documentation</title>
   
 
   
@@ -51,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Pororo
+            <a href="../../../index.html" class="icon icon-home"> PORORO: Platform Of neuRal mOdels for natuRal language prOcessing
           
 
           
@@ -119,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/para_gen.html">Paraphrase Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/qg.html">Question Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/summary.html">Text Summarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../seq2seq/wsd.html">Word Sense Disambiguation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Misc.</span></p>
 <ul>
@@ -128,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../miscs/lemma.html">Lemmatization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../miscs/inflection.html">Morphological Inflection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../miscs/ocr.html">Optical Character Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../miscs/tts.html">Speech Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../miscs/tokenization.html">Tokenization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../miscs/wt.html">Word Translation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../miscs/w2v.html">Word Embedding</a></li>
@@ -146,7 +148,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">Pororo</a>
+          <a href="../../../index.html">PORORO: Platform Of neuRal mOdels for natuRal language prOcessing</a>
         
       </nav>
 
@@ -199,9 +201,12 @@
   <h1>Source code for pororo.tasks.named_entity_recognition</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Named Entity Recognition related modeling class&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">pororo.tasks.utils.base</span> <span class="kn">import</span> <span class="n">PororoFactoryBase</span><span class="p">,</span> <span class="n">PororoSimpleBase</span>
+<span class="kn">from</span> <span class="nn">pororo.tasks.utils.download_utils</span> <span class="kn">import</span> <span class="n">download_or_load</span>
 
 
 <div class="viewcode-block" id="PororoNerFactory"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoNerFactory">[docs]</a><span class="k">class</span> <span class="nc">PororoNerFactory</span><span class="p">(</span><span class="n">PororoFactoryBase</span><span class="p">):</span>
@@ -236,12 +241,15 @@
 <span class="sd">        List[Tuple[str, str]]: token and its predicted tag tuple list</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; ner = Pororo(task=&quot;ner&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; ner = Pororo(task=&quot;ner&quot;, lang=&quot;en)</span>
 <span class="sd">        &gt;&gt;&gt; ner(&quot;It was in midfield where Arsenal took control of the game, and that was mainly down to Thomas Partey and Mohamed Elneny.&quot;)</span>
 <span class="sd">        [(&#39;It&#39;, &#39;O&#39;), (&#39;was&#39;, &#39;O&#39;), (&#39;in&#39;, &#39;O&#39;), (&#39;midfield&#39;, &#39;O&#39;), (&#39;where&#39;, &#39;O&#39;), (&#39;Arsenal&#39;, &#39;ORG&#39;), (&#39;took&#39;, &#39;O&#39;), (&#39;control&#39;, &#39;O&#39;), (&#39;of&#39;, &#39;O&#39;), (&#39;the&#39;, &#39;O&#39;), (&#39;game&#39;, &#39;O&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39;and&#39;, &#39;O&#39;), (&#39;that&#39;, &#39;O&#39;), (&#39;was&#39;, &#39;O&#39;), (&#39;mainly&#39;, &#39;O&#39;), (&#39;down&#39;, &#39;O&#39;), (&#39;to&#39;, &#39;O&#39;), (&#39;Thomas Partey&#39;, &#39;PERSON&#39;), (&#39;and&#39;, &#39;O&#39;), (&#39;Mohamed Elneny&#39;, &#39;PERSON&#39;), (&#39;.&#39;, &#39;O&#39;)]</span>
 <span class="sd">        &gt;&gt;&gt; ner = Pororo(task=&quot;ner&quot;, lang=&quot;ko&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; ner(&quot;안녕하세요. 제 이름은 카터입니다.&quot;)</span>
-<span class="sd">        [(&quot;안녕하세요.&quot;, &quot;O&quot;), (&quot; &quot;, &quot;O&quot;), (&quot;제&quot;, &quot;O&quot;), (&quot;이름은&quot;, &quot;O&quot;), (&quot;카터&quot;, &quot;PS&quot;), (&quot;입니다.&quot;, &quot;O&quot;)]</span>
+<span class="sd">        &gt;&gt;&gt; ner(&quot;손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.&quot;)</span>
+<span class="sd">        [(&#39;손흥민&#39;, &#39;PERSON&#39;), (&#39;은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;28세&#39;, &#39;QUANTITY&#39;), (&#39;의&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;183 센티미터&#39;, &#39;QUANTITY&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;77 킬로그램&#39;, &#39;QUANTITY&#39;), (&#39;이며,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;현재&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;주급은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;약 3억 원&#39;, &#39;QUANTITY&#39;), (&#39;이다.&#39;, &#39;O&#39;)]</span>
+<span class="sd">        &gt;&gt;&gt; # `apply_wsd` : for korean, you can use Word Sense Disambiguation module to get more specific tag</span>
+<span class="sd">        &gt;&gt;&gt; ner(&quot;손흥민은 28세의 183 센티미터, 77 킬로그램이며, 현재 주급은 약 3억 원이다.&quot;, apply_wsd=True)</span>
+<span class="sd">        [(&#39;손흥민&#39;, &#39;PERSON&#39;), (&#39;은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;28세&#39;, &#39;AGE&#39;), (&#39;의&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;183 센티미터&#39;, &#39;LENGTH/DISTANCE&#39;), (&#39;,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;77 킬로그램&#39;, &#39;WEIGHT&#39;), (&#39;이며,&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;현재&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;주급은&#39;, &#39;O&#39;), (&#39; &#39;, &#39;O&#39;), (&#39;약 3억 원&#39;, &#39;MONEY&#39;), (&#39;이다.&#39;, &#39;O&#39;)]</span>
 <span class="sd">        &gt;&gt;&gt; ner = Pororo(task=&quot;ner&quot;, lang=&quot;zh&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; ner(&quot;毛泽东（1893年12月26日－1976年9月9日），字润之，湖南湘潭人。中华民国大陆时期、中国共产党和中华人民共和国的重要政治家、经济家、军事家、战略家、外交家和诗人。&quot;)</span>
 <span class="sd">        [(&#39;毛泽东&#39;, &#39;PERSON&#39;), (&#39;（&#39;, &#39;O&#39;), (&#39;1893年12月26日－1976年9月9日&#39;, &#39;DATE&#39;), (&#39;）&#39;, &#39;O&#39;), (&#39;，&#39;, &#39;O&#39;), (&#39;字润之&#39;, &#39;O&#39;), (&#39;，&#39;, &#39;O&#39;), (&#39;湖南&#39;, &#39;GPE&#39;), (&#39;湘潭&#39;, &#39;GPE&#39;), (&#39;人&#39;, &#39;O&#39;), (&#39;。&#39;, &#39;O&#39;), (&#39;中华民国大陆时期&#39;, &#39;GPE&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;中国共产党&#39;, &#39;ORG&#39;), (&#39;和&#39;, &#39;O&#39;), (&#39;中华人民共和国&#39;, &#39;GPE&#39;), (&#39;的&#39;, &#39;O&#39;), (&#39;重&#39;, &#39;O&#39;), (&#39;要&#39;, &#39;O&#39;), (&#39;政&#39;, &#39;O&#39;), (&#39;治&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;经&#39;, &#39;O&#39;), (&#39;济&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;军&#39;, &#39;O&#39;), (&#39;事&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;战&#39;, &#39;O&#39;), (&#39;略&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;、&#39;, &#39;O&#39;), (&#39;外&#39;, &#39;O&#39;), (&#39;交&#39;, &#39;O&#39;), (&#39;家&#39;, &#39;O&#39;), (&#39;和&#39;, &#39;O&#39;), (&#39;诗&#39;, &#39;O&#39;), (&#39;人&#39;, &#39;O&#39;), (&#39;。&#39;, &#39;O&#39;)]</span>
@@ -302,9 +310,22 @@
                 <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
             <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
+            <span class="n">f_wsd_dict</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="n">download_or_load</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;misc/wiki.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="si">}</span><span class="s2">.items&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">wsd_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f_wsd_dict</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+                <span class="n">origin</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">wsd_dict</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span>
+
             <span class="k">return</span> <span class="n">PororoBertCharNer</span><span class="p">(</span>
                 <span class="n">model</span><span class="p">,</span>
                 <span class="n">sent_tokenizer</span><span class="p">,</span>
+                <span class="n">wsd_dict</span><span class="p">,</span>
                 <span class="n">device</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
             <span class="p">)</span>
@@ -398,6 +419,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">sent_tokenizer</span><span class="p">,</span>
+        <span class="n">wsd_dict</span><span class="p">,</span>
         <span class="n">device</span><span class="p">,</span>
         <span class="n">config</span><span class="p">,</span>
     <span class="p">):</span>
@@ -421,8 +443,160 @@
             <span class="s2">&quot;MT&quot;</span><span class="p">:</span> <span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
             <span class="s2">&quot;TM&quot;</span><span class="p">:</span> <span class="s2">&quot;TERM&quot;</span><span class="p">,</span>
         <span class="p">}</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wsd_dict</span> <span class="o">=</span> <span class="n">wsd_dict</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wsd</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cls2cat</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_quant2cat</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_term2cat</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_template_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">expression2category</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply template match using regular expression</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): text to be searched</span>
+<span class="sd">            expression2category (dict): regular expression dict</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: regex matched category</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">expression</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">expression2category</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">category</span>
+
+<div class="viewcode-block" id="PororoBertCharNer.apply_dict"><a class="viewcode-back" href="../../../tagging/ner.html#pororo.tasks.named_entity_recognition.PororoBertCharNer.apply_dict">[docs]</a>    <span class="k">def</span> <span class="nf">apply_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply pre-defined dictionary to get detail tag info</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tags (List[Tuple[str, str]]): inference word-tag pair result</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[str, str]]: dict-applied result</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">pair</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wsd_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wsd_dict</span><span class="p">[</span><span class="n">tag</span><span class="p">]):</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">word</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wsd_dict</span><span class="p">[</span><span class="n">tag</span><span class="p">][</span><span class="n">word</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+    <span class="k">def</span> <span class="nf">_apply_wsd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply Word Sense Disambiguation to get detail tag info</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tags (List[Tuple[str, str]]): inference word-tag pair result</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Tuple[str, str]]: wsd-applied result</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wsd</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pororo.tasks</span> <span class="kn">import</span> <span class="n">PororoWsdFactory</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wsd</span> <span class="o">=</span> <span class="n">PororoWsdFactory</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;wsd&quot;</span><span class="p">,</span>
+                <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;transformer.large.ko.wsd&quot;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls2cat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cls2cat</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="p">(</span><span class="nb">open</span><span class="p">(</span>
+                <span class="n">download_or_load</span><span class="p">(</span>
+                    <span class="s2">&quot;misc/wsd.cls.txt&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                <span class="n">morph</span><span class="p">,</span> <span class="n">homonymno</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="n">classifier</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">morph</span><span class="si">}</span><span class="s2">__NNB__</span><span class="si">{</span><span class="n">homonymno</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># bound noun</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cls2cat</span><span class="p">[</span><span class="n">classifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">category</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quant2cat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_quant2cat</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_term2cat</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="p">(</span><span class="nb">open</span><span class="p">(</span>
+                <span class="n">download_or_load</span><span class="p">(</span>
+                    <span class="s2">&quot;misc/re.templates.txt&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                <span class="n">category</span><span class="p">,</span> <span class="n">ner_category</span><span class="p">,</span> <span class="n">expression</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">ner_category</span> <span class="o">==</span> <span class="s2">&quot;QUANTITY&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_quant2cat</span><span class="p">[</span><span class="n">expression</span><span class="p">]</span> <span class="o">=</span> <span class="n">category</span>
+                <span class="k">elif</span> <span class="n">ner_category</span> <span class="o">==</span> <span class="s2">&quot;TERM&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_term2cat</span><span class="p">[</span><span class="n">expression</span><span class="p">]</span> <span class="o">=</span> <span class="n">category</span>
+
+        <span class="n">input_text_with_markers</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+        <span class="n">target_token_ids</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">ner_token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+            <span class="n">surface</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">ner_token</span>
+            <span class="c1"># as {} will be used as special symbols</span>
+            <span class="n">surface</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;｛&quot;</span><span class="p">)</span>
+            <span class="n">surface</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="s2">&quot;｝&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;TERM&quot;</span><span class="p">:</span>
+                <span class="n">cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_template_match</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term2cat</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">tags</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+                <span class="n">input_text_with_markers</span> <span class="o">+=</span> <span class="n">surface</span>
+            <span class="k">elif</span> <span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;QUANTITY&quot;</span><span class="p">:</span>
+                <span class="n">cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_template_match</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quant2cat</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">tags</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+                    <span class="n">input_text_with_markers</span> <span class="o">+=</span> <span class="n">surface</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">target_token_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+                    <span class="n">input_text_with_markers</span> <span class="o">+=</span> <span class="s2">&quot;{&quot;</span> <span class="o">+</span> <span class="n">surface</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_text_with_markers</span> <span class="o">+=</span> <span class="n">surface</span>
+
+        <span class="n">wsd_results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wsd</span><span class="p">(</span><span class="n">input_text_with_markers</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">has_category</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">categories</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">wsd_token</span> <span class="ow">in</span> <span class="n">wsd_results</span><span class="p">:</span>
+            <span class="n">morph</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">homonymno</span> <span class="o">=</span> <span class="n">wsd_token</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">morph</span> <span class="o">==</span> <span class="s2">&quot;{&quot;</span><span class="p">:</span>
+                <span class="n">has_category</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">morph</span> <span class="o">==</span> <span class="s2">&quot;}&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">has_category</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;QUANTITY&quot;</span><span class="p">)</span>  <span class="c1"># original category</span>
+                <span class="n">has_category</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="n">action</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">homonymno</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">homonymno</span> <span class="o">=</span> <span class="s2">&quot;00&quot;</span>
+
+                <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">morph</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">homonymno</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="n">query</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls2cat</span><span class="p">:</span>
+                    <span class="n">category</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls2cat</span><span class="p">[</span><span class="n">query</span><span class="p">]</span>
+                    <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+                    <span class="n">has_category</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">action</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">target_token_ids</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">target_token_id</span><span class="p">,</span> <span class="n">cat</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">target_token_ids</span><span class="p">,</span> <span class="n">categories</span><span class="p">):</span>
+            <span class="n">tags</span><span class="p">[</span><span class="n">target_token_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="n">target_token_id</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">cat</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">tags</span>
 
     <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -446,7 +620,7 @@
         <span class="n">tmp_word</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">prev_ori_tag</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">prev_tag</span> <span class="o">=</span> <span class="n">_remove_tail</span><span class="p">(</span><span class="n">prev_ori_tag</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
             <span class="n">char</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">ori_tag</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">tag</span> <span class="o">=</span> <span class="n">_remove_tail</span><span class="p">(</span><span class="n">ori_tag</span><span class="p">)</span>
@@ -455,7 +629,6 @@
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">))</span>
 
                 <span class="n">tmp_word</span> <span class="o">=</span> <span class="n">char</span>
-                <span class="n">prev_ori_tag</span> <span class="o">=</span> <span class="n">ori_tag</span>
                 <span class="n">prev_tag</span> <span class="o">=</span> <span class="n">tag</span>
                 <span class="k">continue</span>
 
@@ -466,7 +639,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tmp_word</span><span class="p">,</span> <span class="n">prev_tag</span><span class="p">))</span>
                 <span class="n">tmp_word</span> <span class="o">=</span> <span class="n">char</span>
-            <span class="n">prev_ori_tag</span> <span class="o">=</span> <span class="n">ori_tag</span>
+
             <span class="n">prev_tag</span> <span class="o">=</span> <span class="n">tag</span>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tmp_word</span><span class="p">,</span> <span class="n">prev_tag</span><span class="p">))</span>
 
@@ -485,11 +658,14 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            text: (str) sentence to be sequence labeled</span>
+<span class="sd">            apply_wsd: (bool) whether to apply wsd to get more specific label information</span>
+<span class="sd">            ignore_labels: (list) labels to be ignored</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[Tuple[str, str]]: token and its predicted tag tuple list</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">apply_wsd</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apply_wsd&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="n">ignore_labels</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_labels&quot;</span><span class="p">,</span> <span class="p">[])</span>
 
         <span class="n">texts</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -505,7 +681,8 @@
                     <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
                 <span class="p">)</span> <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="k">else</span> <span class="n">pair</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
-                <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">apply_wsd</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_wsd</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">apply_dict</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">)])</span>
         <span class="k">return</span> <span class="n">result</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div></div>
 

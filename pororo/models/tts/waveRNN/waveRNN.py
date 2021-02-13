@@ -1,9 +1,10 @@
 import time
+from pathlib import Path
+from typing import Union
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from pathlib import Path
-from typing import Union
 
 from pororo.models.tts.utils.dsp import *
 
@@ -32,10 +33,12 @@ class MelResNet(nn.Module):
     def __init__(self, res_blocks, in_dims, compute_dims, res_out_dims, pad):
         super().__init__()
         k_size = pad * 2 + 1
-        self.conv_in = nn.Conv1d(in_dims,
-                                 compute_dims,
-                                 kernel_size=k_size,
-                                 bias=False)
+        self.conv_in = nn.Conv1d(
+            in_dims,
+            compute_dims,
+            kernel_size=k_size,
+            bias=False,
+        )
         self.batch_norm = nn.BatchNorm1d(compute_dims)
         self.layers = nn.ModuleList()
         for i in range(res_blocks):
@@ -68,8 +71,15 @@ class Stretch2d(nn.Module):
 
 class UpsampleNetwork(nn.Module):
 
-    def __init__(self, feat_dims, upsample_scales, compute_dims, res_blocks,
-                 res_out_dims, pad):
+    def __init__(
+        self,
+        feat_dims,
+        upsample_scales,
+        compute_dims,
+        res_blocks,
+        res_out_dims,
+        pad,
+    ):
         super().__init__()
         total_scale = np.cumproduct(upsample_scales)[-1]
         self.indent = pad * total_scale
@@ -81,11 +91,13 @@ class UpsampleNetwork(nn.Module):
             k_size = (1, scale * 2 + 1)
             padding = (0, scale)
             stretch = Stretch2d(scale, 1)
-            conv = nn.Conv2d(1,
-                             1,
-                             kernel_size=k_size,
-                             padding=padding,
-                             bias=False)
+            conv = nn.Conv2d(
+                1,
+                1,
+                kernel_size=k_size,
+                padding=padding,
+                bias=False,
+            )
             conv.weight.data.fill_(1.0 / k_size[1])
             self.up_layers.append(stretch)
             self.up_layers.append(conv)
@@ -136,9 +148,14 @@ class WaveRNN(nn.Module):
         self.hop_length = hop_length
         self.sample_rate = sample_rate
 
-        self.upsample = UpsampleNetwork(feat_dims, upsample_factors,
-                                        compute_dims, res_blocks, res_out_dims,
-                                        pad)
+        self.upsample = UpsampleNetwork(
+            feat_dims,
+            upsample_factors,
+            compute_dims,
+            res_blocks,
+            res_out_dims,
+            pad,
+        )
         self.I = nn.Linear(feat_dims + self.aux_dims + 1, rnn_dims)
 
         self.rnn1 = nn.GRU(rnn_dims, rnn_dims, batch_first=True)
@@ -210,9 +227,11 @@ class WaveRNN(nn.Module):
 
             mels = torch.as_tensor(mels, device=device)
             wave_len = (mels.size(-1) - 1) * self.hop_length
-            mels = self.pad_tensor(mels.transpose(1, 2),
-                                   pad=self.pad,
-                                   side="both")
+            mels = self.pad_tensor(
+                mels.transpose(1, 2),
+                pad=self.pad,
+                side="both",
+            )
             mels, aux = self.upsample(mels.transpose(1, 2))
 
             if batched:
@@ -350,10 +369,12 @@ class WaveRNN(nn.Module):
             padding = target + 2 * overlap - remaining
             x = self.pad_tensor(x, padding, side="after")
 
-        folded = torch.zeros(num_folds,
-                             target + 2 * overlap,
-                             features,
-                             device=x.device)
+        folded = torch.zeros(
+            num_folds,
+            target + 2 * overlap,
+            features,
+            device=x.device,
+        )
 
         # Get the values for the folded tensor
         for i in range(num_folds):

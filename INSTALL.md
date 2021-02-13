@@ -121,6 +121,9 @@ bash asr-install.sh
 <br>
   
 ### Speech Synthesis
+
+- To utilize the **Speech Synthesis** module, you need to install additional modules below.
+
 ```
 requirements = [
     "editdistance==0.5.3",

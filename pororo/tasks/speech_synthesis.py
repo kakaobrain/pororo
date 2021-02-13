@@ -1,6 +1,7 @@
 """Speech Synthesis related modeling class"""
 
 from typing import Optional, Tuple
+
 from numpy import ndarray
 
 from pororo.tasks import (
@@ -13,8 +14,8 @@ from pororo.tasks import (
 
 class PororoTtsFactory(PororoFactoryBase):
     """
-    Synthesis text to speech using trained model.
-    Output audio's sample rate is 22050.
+    Synthesis text to speech using trained model
+    Output audio's sample rate is 22050
 
     Multi (`tacotron`)
 
@@ -31,20 +32,19 @@ class PororoTtsFactory(PororoFactoryBase):
 
     Examples:
         >>> import IPython
-        >>> from pororo import Pororo
-        >>> model = Pororo('tts', lang='multi')
-
+        >>> from IPython.display import Audio
+        >>> model = Pororo(task="tts", lang="multi")
         >>> # Typical TTS
-        >>> wave = model('how are you?', lang='en')
-        >>> IPython.display.Audio(data=wave, rate=22050)
-
+        >>> wave = model("how are you?", lang="en")
+        >>> IPython.display.display(IPython.display.Audio(data=wave, rate=22050))
         >>> # Voice Style Transfer
-        >>> wave = model('저는 미국 사람이에요.', lang='ko', speaker='en')
+        >>> model = Pororo(task="tts", lang="multi")
+        >>> wave = model("저는 미국 사람이에요.", lang="ko", speaker="en")
+        >>> IPython.display.display(IPython.display.Audio(data=wave, rate=22050))
+        >>> # Code-Switching
+        >>> wave = model("저는 미국 사람이에요.", lang="ko", speaker="en-15,ko")
         >>> IPython.display.Audio(data=wave, rate=22050)
 
-        >>> # Code-Switching
-        >>> wave = model('저는 미국 사람이에요.', lang='ko', speaker='en-15,ko')
-        >>> IPython.display.Audio(data=wave, rate=22050)
 
     Notes:
         Currently 11 languages supports.
@@ -53,7 +53,12 @@ class PororoTtsFactory(PororoFactoryBase):
 
     """
 
-    def __init__(self, task: str, lang: str = "multi", model: Optional[str] = None):
+    def __init__(
+        self,
+        task: str,
+        lang: str = "multi",
+        model: Optional[str] = None,
+    ):
         super().__init__(task, lang, model)
 
     @staticmethod
@@ -83,11 +88,24 @@ class PororoTtsFactory(PororoFactoryBase):
             from pororo.models.tts.utils.text import jejueo_romanize, romanize
 
             tacotron_path = download_or_load("misc/tacotron2", self.config.lang)
-            english_vocoder_path = download_or_load("misc/hifigan_en", self.config.lang)
-            korean_vocoder_path = download_or_load("misc/hifigan_ko", self.config.lang)
-            english_vocoder_config = download_or_load("misc/hifigan_en_config.json", self.config.lang)
-            korean_vocoder_config = download_or_load("misc/hifigan_ko_config.json", self.config.lang)
-            wavernn_path = download_or_load("misc/wavernn.pyt", self.config.lang)
+            english_vocoder_path = download_or_load(
+                "misc/hifigan_en",
+                self.config.lang,
+            )
+            korean_vocoder_path = download_or_load(
+                "misc/hifigan_ko",
+                self.config.lang,
+            )
+            english_vocoder_config = download_or_load(
+                "misc/hifigan_en_config.json",
+                self.config.lang,
+            )
+            korean_vocoder_config = download_or_load(
+                "misc/hifigan_ko_config.json",
+                self.config.lang,
+            )
+            wavernn_path = download_or_load("misc/wavernn.pyt",
+                                            self.config.lang)
             synthesizer = MultilingualSpeechSynthesizer(
                 tacotron_path,
                 english_vocoder_path,
