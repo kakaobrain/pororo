@@ -113,11 +113,15 @@ class MultilingualSpeechSynthesizer(object):
         spectrogram = synthesize(self.tacotron, f"|{text}", device=self.device)
 
         if len(speakers) > 1:
-            spectrogram = self._spectrogram_postprocess(spectrogram)
-            y_g_hat = self.vocoder_ko(torch.Tensor(spectrogram).to(self.device).unsqueeze(0))
-            audio = y_g_hat.squeeze()
+            audio = wavernn_generate(
+                self.vocoder_multi,
+                spectrogram,
+                wavernn_hp.voc_gen_batched,
+                wavernn_hp.voc_target,
+                wavernn_hp.voc_overlap,
+            )
             audio = audio * 32768.0
-            return audio.cpu().detach().numpy()
+            return audio
 
         if speaker in ("ko", "en"):
             spectrogram = self._spectrogram_postprocess(spectrogram)
