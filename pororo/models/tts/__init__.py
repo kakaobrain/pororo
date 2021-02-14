@@ -1,1 +1,1 @@
-from pororo.models.tts.synthesizer import MultilingualSpeechSynthesizer
+from pororo.models.tts.synthesizer import MultilingualSpeechSynthesizer  # noqa

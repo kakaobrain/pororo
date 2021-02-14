@@ -1,10 +1,9 @@
 import re
-import string
 
 import regex
 
 try:
-    import epitran
+    import epitran  # noqa
 except ImportError:
     raise ImportError("Please install epitran with: `pip install epitran`")
 try:

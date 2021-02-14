@@ -85,8 +85,6 @@ def convert_indiv_character(indiv_character):
 
         debug("Selected vowel:", tone_vowel)
     elif counter == 0:
-        # try:
-
         # If the character is r5 (儿), remove tone number and return
         if letter_list == ["r", "5"]:
             return "".join(letter_list[:-1])
@@ -107,7 +105,7 @@ def convert_indiv_character(indiv_character):
         tone_int = int(tone) - 1
         tonal_pinyin = pinyin[tone_vowel][tone_int]
 
-    except Exception as e:
+    except Exception:
         raise ValueError(
             "Invalid numerical pinyin. The last letter must be an integer between 1-5."
         )

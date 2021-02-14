@@ -60,8 +60,6 @@ class PororoWsdFactory(PororoFactoryBase):
         Returns:
             object: User-selected task-specific model
         """
-        from pororo.tasks import PororoPosFactory
-
         if "transformer.large" in self.config.n_model:
             from fairseq.models.transformer import TransformerModel
 

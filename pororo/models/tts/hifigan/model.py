@@ -236,7 +236,7 @@ class Generator(nn.Module):
         remove_weight_norm(self.conv_post)
 
 
-class DiscriminatorP(torch.nn.Module):
+class DiscriminatorP(nn.Module):
 
     def __init__(
         self,
@@ -247,7 +247,7 @@ class DiscriminatorP(torch.nn.Module):
     ):
         super(DiscriminatorP, self).__init__()
         self.period = period
-        norm_f = weight_norm if use_spectral_norm == False else spectral_norm
+        norm_f = weight_norm if not use_spectral_norm else spectral_norm
         self.convs = nn.ModuleList([
             norm_f(
                 Conv2d(
@@ -319,7 +319,7 @@ class DiscriminatorP(torch.nn.Module):
         return x, fmap
 
 
-class MultiPeriodDiscriminator(torch.nn.Module):
+class MultiPeriodDiscriminator(nn.Module):
 
     def __init__(self):
         super(MultiPeriodDiscriminator, self).__init__()
@@ -347,11 +347,11 @@ class MultiPeriodDiscriminator(torch.nn.Module):
         return y_d_rs, y_d_gs, fmap_rs, fmap_gs
 
 
-class DiscriminatorS(torch.nn.Module):
+class DiscriminatorS(nn.Module):
 
     def __init__(self, use_spectral_norm=False):
         super(DiscriminatorS, self).__init__()
-        norm_f = weight_norm if use_spectral_norm == False else spectral_norm
+        norm_f = weight_norm if not use_spectral_norm else spectral_norm
         self.convs = nn.ModuleList([
             norm_f(Conv1d(1, 128, 15, 1, padding=7)),
             norm_f(Conv1d(128, 128, 41, 2, groups=4, padding=20)),
@@ -376,7 +376,7 @@ class DiscriminatorS(torch.nn.Module):
         return x, fmap
 
 
-class MultiScaleDiscriminator(torch.nn.Module):
+class MultiScaleDiscriminator(nn.Module):
 
     def __init__(self):
         super(MultiScaleDiscriminator, self).__init__()

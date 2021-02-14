@@ -1,7 +1,7 @@
-import time
 from pathlib import Path
 from typing import Union
 
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -83,8 +83,13 @@ class UpsampleNetwork(nn.Module):
         super().__init__()
         total_scale = np.cumproduct(upsample_scales)[-1]
         self.indent = pad * total_scale
-        self.resnet = MelResNet(res_blocks, feat_dims, compute_dims,
-                                res_out_dims, pad)
+        self.resnet = MelResNet(
+            res_blocks,
+            feat_dims,
+            compute_dims,
+            res_out_dims,
+            pad,
+        )
         self.resnet_stretch = Stretch2d(total_scale, 1)
         self.up_layers = nn.ModuleList()
         for scale in upsample_scales:
@@ -210,8 +215,15 @@ class WaveRNN(nn.Module):
         x = F.relu(self.fc2(x))
         return self.fc3(x)
 
-    def generate(self, mels, save_path: Union[str, Path], batched, target,
-                 overlap, mu_law):
+    def generate(
+        self,
+        mels,
+        save_path: Union[str, Path],
+        batched,
+        target,
+        overlap,
+        mu_law,
+    ):
         self.eval()
 
         device = next(self.parameters()).device  # use same device as parameters
@@ -219,7 +231,6 @@ class WaveRNN(nn.Module):
         mu_law = mu_law if self.mode == "RAW" else False
 
         output = []
-        start = time.time()
         rnn1 = self.get_gru_cell(self.rnn1)
         rnn2 = self.get_gru_cell(self.rnn2)
 
@@ -508,9 +519,13 @@ def sample_from_discretized_mix_logistic(y, log_scale_min=None):
     one_hot = F.one_hot(argmax, nr_mix).float()
     # select logistic parameters
     means = torch.sum(y[:, :, nr_mix:2 * nr_mix] * one_hot, dim=-1)
-    log_scales = torch.clamp(torch.sum(y[:, :, 2 * nr_mix:3 * nr_mix] * one_hot,
-                                       dim=-1),
-                             min=log_scale_min)
+    log_scales = torch.clamp(
+        torch.sum(
+            y[:, :, 2 * nr_mix:3 * nr_mix] * one_hot,
+            dim=-1,
+        ),
+        min=log_scale_min,
+    )
     # sample from logistic & clip to interval
     # we don't actually round to the nearest 8bit value when sampling
     u = means.data.new(means.size()).uniform_(1e-5, 1.0 - 1e-5)

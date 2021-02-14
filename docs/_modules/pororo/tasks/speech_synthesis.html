@@ -284,8 +284,12 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_model</span> <span class="o">==</span> <span class="s2">&quot;tacotron&quot;</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">pororo.models.tts.synthesizer</span> <span class="kn">import</span> <span class="n">MultilingualSpeechSynthesizer</span>
-            <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.numerical_pinyin_converter</span> <span class="kn">import</span> <span class="n">convert_from_numerical_pinyin</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.tts.synthesizer</span> <span class="kn">import</span> <span class="p">(</span>
+                <span class="n">MultilingualSpeechSynthesizer</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.numerical_pinyin_converter</span> <span class="kn">import</span> <span class="p">(</span>
+                <span class="n">convert_from_numerical_pinyin</span><span class="p">,</span>
+            <span class="p">)</span>
             <span class="kn">from</span> <span class="nn">pororo.models.tts.utils.text</span> <span class="kn">import</span> <span class="n">jejueo_romanize</span><span class="p">,</span> <span class="n">romanize</span>
 
             <span class="n">tacotron_path</span> <span class="o">=</span> <span class="n">download_or_load</span><span class="p">(</span><span class="s2">&quot;misc/tacotron2&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lang</span><span class="p">)</span>
@@ -366,28 +370,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">convert_from_numerical_pinyin</span> <span class="o">=</span> <span class="n">convert_from_numerical_pinyin</span>
 
     <span class="k">def</span> <span class="nf">_load_g2p_ja</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; load g2p module for Japanese &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Load g2p module for Japanese&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span> <span class="o">=</span> <span class="n">PororoG2pFactory</span><span class="p">(</span>
             <span class="n">task</span><span class="o">=</span><span class="s2">&quot;g2p&quot;</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="s2">&quot;g2p.ja&quot;</span><span class="p">,</span>
             <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_ja</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_load_g2p_zh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; load g2p module for Chinese &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Load g2p module for Chinese&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span> <span class="o">=</span> <span class="n">PororoG2pFactory</span><span class="p">(</span>
             <span class="n">task</span><span class="o">=</span><span class="s2">&quot;g2p&quot;</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="s2">&quot;g2p.zh&quot;</span><span class="p">,</span>
             <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2p_zh</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
-        <span class="n">speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Pre-process text for TTS format</span>
@@ -433,6 +435,8 @@
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">speaker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">speaker</span> <span class="o">=</span> <span class="n">lang</span>
+
+        <span class="n">speaker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang_dict</span><span class="p">[</span><span class="n">speaker</span><span class="p">]</span>
 
         <span class="n">text</span><span class="p">,</span> <span class="n">speaker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">speaker</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">speaker</span><span class="p">)</span></div>

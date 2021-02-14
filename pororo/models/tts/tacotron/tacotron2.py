@@ -1,3 +1,5 @@
+import torch
+import torch.nn as nn
 from torch.nn import Embedding, Linear, ModuleList, ReLU, Sequential
 from torch.nn import functional as F
 
@@ -12,7 +14,7 @@ from pororo.models.tts.tacotron.params import Params as hp
 from pororo.models.tts.utils import *
 
 
-class Prenet(torch.nn.Module):
+class Prenet(nn.Module):
     """Decoder pre-net module.
 
     Details:
@@ -48,7 +50,7 @@ class Prenet(torch.nn.Module):
         return x
 
 
-class Postnet(torch.nn.Module):
+class Postnet(nn.Module):
     """Post-net module for output spectrogram enhancement.
 
     Details:
@@ -94,7 +96,7 @@ class Postnet(torch.nn.Module):
         return x
 
 
-class Decoder(torch.nn.Module):
+class Decoder(nn.Module):
     """Tacotron 2 decoder with queries produced by the first RNN layer and output produced by the second RNN.
 
     Decoder:
@@ -151,7 +153,7 @@ class Decoder(torch.nn.Module):
 
     def _get_embedding(self, embedding_dimension, size=None):
         embedding = Embedding(size, embedding_dimension)
-        torch.nn.init.xavier_uniform_(embedding.weight)
+        nn.init.xavier_uniform_(embedding.weight)
         return embedding
 
     def _target_init(self, target, batch_size):
@@ -313,7 +315,7 @@ class Decoder(torch.nn.Module):
         return spectrogram
 
 
-class Tacotron(torch.nn.Module):
+class Tacotron(nn.Module):
     """
     Tacotron 2:
         characters as learned embedding
@@ -333,7 +335,7 @@ class Tacotron(torch.nn.Module):
             hp.embedding_dimension,
             padding_idx=0,
         )
-        torch.nn.init.xavier_uniform_(self._embedding.weight)
+        nn.init.xavier_uniform_(self._embedding.weight)
 
         # Encoder transforming graphmenes or phonemes into abstract input representation
         self._encoder = self._get_encoder()
@@ -401,13 +403,6 @@ class Tacotron(torch.nn.Module):
         self._postnet = self._get_postnet()
 
     def _get_encoder(self):
-        args = (
-            hp.embedding_dimension,
-            hp.encoder_dimension,
-            hp.encoder_blocks,
-            hp.encoder_kernel_size,
-            hp.dropout,
-        )
         ln = 1 if not hp.multi_language else hp.language_number
         return GeneratedConvolutionalEncoder(
             hp.embedding_dimension,

@@ -2,15 +2,15 @@ import numpy as np
 import scipy
 
 try:
-    import librosa
-    import librosa.effects
-    import librosa.feature
+    import librosa  # noqa
+    import librosa.effects  # noqa
+    import librosa.feature  # noqa
 except ImportError:
     raise ImportError("Please install librosa with: `pip install librosa`")
 import soundfile as sf
 
 try:
-    from fastdtw import fastdtw
+    from fastdtw import fastdtw  # noqa
 except ImportError:
     raise ImportError("Please install fastdtw with: `pip install fastdtw`")
 from pororo.models.tts.tacotron.params import Params as hp
