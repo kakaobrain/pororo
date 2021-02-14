@@ -169,28 +169,26 @@ class PororoTTS(PororoSimpleBase):
         self.convert_from_numerical_pinyin = convert_from_numerical_pinyin
 
     def _load_g2p_ja(self):
-        """ load g2p module for Japanese """
+        """Load g2p module for Japanese"""
         self.g2p_ja = PororoG2pFactory(
             task="g2p",
             model="g2p.ja",
             lang="ja",
-        )
-        self.g2p_ja = self.g2p_ja.load(self.device)
+        ).load(self.device)
 
     def _load_g2p_zh(self):
-        """ load g2p module for Chinese """
+        """Load g2p module for Chinese"""
         self.g2p_zh = PororoG2pFactory(
             task="g2p",
             model="g2p.zh",
             lang="zh",
-        )
-        self.g2p_zh = self.g2p_zh.load(self.device)
+        ).load(self.device)
 
     def _preprocess(
         self,
         text: str,
         lang: str = "en",
-        speaker: str = None,
+        speaker: str = "en",
     ) -> Tuple[str, str]:
         """
         Pre-process text for TTS format
@@ -237,7 +235,7 @@ class PororoTTS(PororoSimpleBase):
         if speaker is None:
             speaker = lang
 
-        speaker = speaker.replace("ja", "jp")
+        speaker = self.lang_dict[speaker]
 
         text, speaker = self._preprocess(text, lang, speaker)
         return self.predict(text, speaker)
