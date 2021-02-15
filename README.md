@@ -49,6 +49,8 @@ bash asr-install.sh
 bash tts-install.sh
 ```
 
+- **Speech Synthesis** samples can be found [here](https://pororo-tts.github.io/)
+
 <br>
 
 ## Usage
