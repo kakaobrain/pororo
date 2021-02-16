@@ -24,7 +24,7 @@ class PororoAgeSuitabilityFactory(PororoFactoryBase):
             +--------------+---------+----------+
             | Emotion Type | Pearson | Spearman |
             +==============+=========+==========+
-            | Nudiy        |  0.41   |   0.41   |
+            | Nudity       |  0.41   |   0.41   |
             +--------------+---------+----------+
             | Violence     |  0.46   |   0.44   |
             +--------------+---------+----------+
