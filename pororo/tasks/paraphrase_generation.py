@@ -20,7 +20,7 @@ class PororoParaphraseFactory(PororoFactoryBase):
             +==========+============+
             | Average  |   33.00    |
             +----------+------------+
-            | Englosh  |   54       |
+            | English  |   54       |
             +----------+------------+
             | Korean   |   50       |
             +----------+------------+
@@ -39,7 +39,7 @@ class PororoParaphraseFactory(PororoFactoryBase):
             +==========+============+
             | Average  |   33.50    |
             +----------+------------+
-            | Englosh  |   56       |
+            | English  |   56       |
             +----------+------------+
             | Korean   |   50       |
             +----------+------------+
