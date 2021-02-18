@@ -7,7 +7,7 @@ from pororo.tasks.utils.base import PororoBiencoderBase, PororoFactoryBase
 
 class PororoMrcFactory(PororoFactoryBase):
     """
-    Conduct machine reading comprehesion with query and its corresponding context
+    Conduct machine reading comprehension with query and its corresponding context
 
     Korean (`brainbert.base.ko.korquad`)
 
@@ -91,7 +91,7 @@ class PororoBertMrc(PororoBiencoderBase):
         **kwargs,
     ) -> Tuple[str, Tuple[int, int]]:
         """
-        Conduct machine reading comprehesion with query and its corresponding context
+        Conduct machine reading comprehension with query and its corresponding context
 
         Args:
             query: (str) query string used as query
