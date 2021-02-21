@@ -610,7 +610,7 @@ def get_paragraph(raw_result,
             # yapf: enable
     # arrage order in paragraph
     result = []
-    for i in set(box[7] for box in box_group):
+    for i in {box[7] for box in box_group}:
         current_box_group = [box for box in box_group if box[7] == i]
         mean_height = np.mean([box[5] for box in current_box_group])
         min_gx = min([box[1] for box in current_box_group])
