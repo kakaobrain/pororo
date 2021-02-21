@@ -473,7 +473,7 @@ class RobertaLabelEncoder(FairseqDecoder):
             src_tokens,
             seg_tokens,
             last_state_only=not return_all_hiddens,
-            token_embeddings=kwargs.get("token_embeddings", None),
+            token_embeddings=kwargs.get("token_embeddings"),
         )
         features = inner_states[-1].transpose(0, 1)  # T x B x C -> B x T x C
         return features, {

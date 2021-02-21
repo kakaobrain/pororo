@@ -333,9 +333,6 @@ class PororoMecabTokenizer(PororoTokenizerBase):
 
 class PororoWordTokenizer(PororoTokenizerBase):
 
-    def __init__(self, config):
-        super().__init__(config)
-
     def detokenize(self, tokens: List[str]) -> str:
         """
         Untokenizing a text undoes the tokenizing operation, restoring
@@ -366,9 +363,6 @@ class PororoWordTokenizer(PororoTokenizerBase):
 
 class PororoCharTokenizer(PororoTokenizerBase):
 
-    def __init__(self, config):
-        super().__init__(config)
-
     def detokenize(self, tokens: List[str]):
         text = "".join(tokens).replace("▁", " ").strip()
         return text
@@ -379,9 +373,6 @@ class PororoCharTokenizer(PororoTokenizerBase):
 
 
 class PororoJamoTokenizer(PororoTokenizerBase):
-
-    def __init__(self, config):
-        super().__init__(config)
 
     def detokenize(self, tokens: List[str]):
         return normalize("NFKC", "".join(tokens)).replace("▁", " ")
