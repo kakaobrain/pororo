@@ -175,9 +175,6 @@ class W2lDecoder(object):
 
 class W2lViterbiDecoder(W2lDecoder):
 
-    def __init__(self, tgt_dict):
-        super().__init__(tgt_dict)
-
     def decode(self, emissions):
         batch_size, time_length, num_classes = emissions.size()
 
