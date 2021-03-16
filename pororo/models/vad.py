@@ -149,7 +149,7 @@ class VoiceActivityDetection(object):
     def get_speech_intervals(self, data, label):
 
         def get_speech_interval(labels):
-            seguence_length = 1024
+            sequence_length = 1024
             speech_interval = [[0, 0]]
             pre_label = 0
 
@@ -157,10 +157,10 @@ class VoiceActivityDetection(object):
 
                 if label:
                     if pre_label == 1:
-                        speech_interval[-1][1] = (idx + 1) * seguence_length
+                        speech_interval[-1][1] = (idx + 1) * sequence_length
                     else:
                         speech_interval.append([
-                            idx * seguence_length, (idx + 1) * seguence_length
+                            idx * sequence_length, (idx + 1) * sequence_length
                         ])
 
                 pre_label = label
@@ -176,19 +176,19 @@ class VoiceActivityDetection(object):
         return speech_intervals
 
     def __call__(self, signal: np.ndarray, sample_rate: int = 16000):
-        seguence_signal = list()
+        sequence_signal = list()
 
         self.sample_rate = sample_rate
         start_pointer = 0
         end_pointer = 1024
 
         while end_pointer < len(signal):
-            seguence_signal.append(signal[start_pointer:end_pointer])
+            sequence_signal.append(signal[start_pointer:end_pointer])
 
             start_pointer = end_pointer
             end_pointer += 1024
 
-        feature = [self.extract_features(signal) for signal in seguence_signal]
+        feature = [self.extract_features(signal) for signal in sequence_signal]
 
         feature = np.array(feature)
         feature = np.expand_dims(feature, 1)
