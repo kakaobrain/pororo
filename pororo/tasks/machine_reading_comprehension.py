@@ -113,4 +113,6 @@ class PororoBertMrc(PororoBiencoderBase):
         return (
             span,
             pair_result[1],
+            pair_result[2],
+            pair_result[3],
         )

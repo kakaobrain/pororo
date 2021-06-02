@@ -241,22 +241,26 @@ class BrainRobertaHubInterface(RobertaHubInterface):
                 tokens,
                 return_logits=True,
             ).squeeze()  # T x 2
-            # first predict start position,
-            # then predict end position among the remaining logits
-            start = logits[:, 0].argmax().item()
-            mask = (torch.arange(
-                logits.size(0), dtype=torch.long, device=self.device) >= start)
-            end = (mask * logits[:, 1]).argmax().item()
-            # end position is shifted during training, so we add 1 back
-            answer_tokens = tokens[start:end + 1]
+            # predict top 10 start positions
+            # then predict top 10 end position among the remaining logits
+            results = []
+            starts = logits[:, 0].argsort(descending=True).tolist()
+            for start in starts:
+                mask = (torch.arange(
+                    logits.size(0), dtype=torch.long, device=self.device) >= start)
+                ends = (mask * logits[:, 1]).argsort(descending=True).tolist()
+                # end position is shifted during training, so we add 1 back
+                for end in ends:
+                    answer_tokens = tokens[start:end + 1]
+                    answer = ""
+                    if len(answer_tokens) >= 1:
+                        decoded = self.decode(answer_tokens)
+                        if isinstance(decoded, str):
+                            answer = decoded
+                    score = (logits[:,0][start] + logits[:,1][end]).item()
+                    results.append((answer, (start, end + 1), (logits[:,0][start].item(),logits[:,1][end].item()), score))
 
-            answer = ""
-            if len(answer_tokens) >= 1:
-                decoded = self.decode(answer_tokens)
-                if isinstance(decoded, str):
-                    answer = decoded
-
-        return (answer, (start, end + 1))
+        return sorted(results,key=lambda x:x[3],reverse=True)[0]
 
     @torch.no_grad()
     def predict_tags(
