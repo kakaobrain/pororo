@@ -258,9 +258,9 @@ class BrainRobertaHubInterface(RobertaHubInterface):
                         if isinstance(decoded, str):
                             answer = decoded
                     score = (logits[:,0][start] + logits[:,1][end]).item()
-                    results.append((answer, (start, end + 1), score))
+                    results.append((answer, (start, end + 1), (logits[:,0][start].item(),logits[:,1][end].item()), score))
 
-        return sorted(results,key=lambda x:x[2],reverse=True)[0]
+        return sorted(results,key=lambda x:x[3],reverse=True)[0]
 
     @torch.no_grad()
     def predict_tags(
