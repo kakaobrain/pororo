@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  pororo:
+    
+    build: .
+
+    runtime: nvidia
+    tty: true
+    volumes:
+      - ./:/app/workspace
+      - /home/users/tom/.vscode-server/extensions:/root/.vscode-server/extensions
+      # IDC only dirs
+      - /mnt/data_input:/mnt/data_input
+      - /mnt/data_output:/mnt/data_output
+      - /home/users:/home/users
+
+
+    command:
+      - /bin/bash
+

@@ -43,8 +43,8 @@ RUN pip install soundfile \
 
 RUN conda install -y -c conda-forge librosa
 
-# 5. install etc modules
-RUN pip install librosa \
+# # 5. install etc modules
+RUN pip install --ignore-installed librosa \
     kollocate \
     koparadigm \
     g2pk \
