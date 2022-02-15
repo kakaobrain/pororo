@@ -56,62 +56,16 @@ class KoBartModel(object):
         if isinstance(texts, str):
             texts = [texts]
 
-        texts = [f"<s> {text}" for text in texts]
-        eos = self.tokenizer.convert_tokens_to_ids(self.tokenizer.eos_token)
-        eos_list = [eos for _ in range(len(texts))]
-
         tokens = self.tokenizer(
             texts,
             return_tensors="pt",
             padding=True,
             truncation=True,
             add_special_tokens=False,
-            max_length=max_len - 1,
+            max_length=max_len,
             # result + <eos>
         )
 
-        return self.add_bos_eos_tokens(tokens, eos_list)
-
-    def add_bos_eos_tokens(self, tokens, eos_list):
-        input_ids = tokens["input_ids"]
-        attention_mask = tokens["attention_mask"]
-        token_added_ids, token_added_masks = [], []
-
-        for input_id, atn_mask, eos in zip(
-                input_ids,
-                attention_mask,
-                eos_list,
-        ):
-            maximum_idx = [
-                i for i, val in enumerate(input_id)
-                if val != self.tokenizer.convert_tokens_to_ids("<pad>")
-            ]
-
-            if len(maximum_idx) == 0:
-                idx_to_add = 0
-            else:
-                idx_to_add = max(maximum_idx) + 1
-
-            eos = torch.tensor([eos], requires_grad=False)
-            additional_atn_mask = torch.tensor([1], requires_grad=False)
-
-            input_id = torch.cat([
-                input_id[:idx_to_add],
-                eos,
-                input_id[idx_to_add:],
-            ]).long()
-
-            atn_mask = torch.cat([
-                atn_mask[:idx_to_add],
-                additional_atn_mask,
-                atn_mask[idx_to_add:],
-            ]).long()
-
-            token_added_ids.append(input_id.unsqueeze(0))
-            token_added_masks.append(atn_mask.unsqueeze(0))
-
-        tokens["input_ids"] = torch.cat(token_added_ids, dim=0)
-        tokens["attention_mask"] = torch.cat(token_added_masks, dim=0)
         return tokens
 
     @torch.no_grad()
