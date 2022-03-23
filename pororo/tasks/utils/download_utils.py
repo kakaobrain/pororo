@@ -258,6 +258,60 @@ def download_or_load_bart(info: DownloadInfo) -> Union[str, Tuple[str, str]]:
     return model_path
 
 
+def download(url, out=None, bar=wget.bar_adaptive):
+    """High level function, which downloads URL into tmp file in current
+    directory and then renames it to filename autodetected from either URL
+    or HTTP headers.
+    
+    Public domain by anatoly techtonik <techtonik@gmail.com>
+    Also available under the terms of MIT license
+    Copyright (c) 2010-2015 anatoly techtonik
+
+    :param bar: function to track download progress (visualize etc.)
+    :param out: output filename or directory
+    :return:    filename where URL is downloaded to
+    """
+    # detect of out is a directory
+    outdir = None
+    if out and os.path.isdir(out):
+        outdir = out
+        out = None
+
+    # get filename for temp file in current directory
+    prefix = wget.detect_filename(url, out)
+    tmpdir = wget.tempfile.TemporaryDirectory()
+    (fd, tmpfile) = wget.tempfile.mkstemp(".tmp", prefix=prefix, dir=tmpdir.name)
+    os.close(fd)
+    os.unlink(tmpfile)
+
+    # set progress monitoring callback
+    def callback_charged(blocks, block_size, total_size):
+        # 'closure' to set bar drawing function in callback
+        wget.callback_progress(blocks, block_size, total_size, bar_function=bar)
+    if bar:
+        callback = callback_charged
+    else:
+        callback = None
+
+    if wget.PY3K:
+        # Python 3 can not quote URL as needed
+        binurl = list(wget.urlparse.urlsplit(url))
+        binurl[2] = wget.urlparse.quote(binurl[2])
+        binurl = wget.urlparse.urlunsplit(binurl)
+    else:
+        binurl = url
+    (tmpfile, headers) = wget.ulib.urlretrieve(binurl, tmpfile, callback)
+    filename = wget.detect_filename(url, out, headers)
+    if outdir:
+        filename = outdir + "/" + filename
+
+    # add numeric ' (x)' suffix if filename already exists
+    if os.path.exists(filename):
+        filename = wget.filename_fix_existing(filename)
+    wget.shutil.move(tmpfile, filename)
+    return filename
+
+
 def download_from_url(
     n_model: str,
     model_path: str,
@@ -285,7 +339,7 @@ def download_from_url(
     url = get_download_url(n_model, key=key, lang=lang)
 
     logging.info("Downloading user-selected model...")
-    wget.download(url, type_dir)
+    download(url, type_dir)
     sys.stderr.write("\n")
     sys.stderr.flush()
 
